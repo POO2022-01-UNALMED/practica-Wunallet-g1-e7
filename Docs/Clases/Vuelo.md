@@ -22,16 +22,16 @@
 
 - \+ agregarPasajero(Tiquete tiquete):
 
-Argumentos: El tiquete del pasajero que se agregará.
+**Argumentos**: El tiquete del pasajero que se agregará.
 
-Funcionalidad: Añade el tiquete a su ArrayList de tiquetes.
+**Funcionalidad**: Añade el tiquete a su ArrayList de tiquetes.
 
-Retorno: Void
+**Retorno**: Void
 
 - \+ quitarPasajero(Tiquete tiquete):
 
-Argumentos: El tiquete del pasajero que se quitará.
+**Argumentos**: El tiquete del pasajero que se quitará.
 
-Funcionalidad: Retira el tiquete de su ArrayList de tiquetes.
+**Funcionalidad**: Retira el tiquete de su ArrayList de tiquetes.
 
-Retorno: Void
+**Retorno**: Void

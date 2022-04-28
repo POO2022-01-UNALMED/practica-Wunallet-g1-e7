@@ -19,9 +19,9 @@
 
 - \+ venderTiquete(Pasajero pasajero):
 
-Argumentos: El pasajero a quién se le venderá la aerolinea.
+**Argumentos**: El pasajero a quién se le venderá la aerolinea.
 
-Funcionamiento: Crea un tiquete asociado al pasajero y agrega el pasajero a la lista de pasajeros del vuelo.
+**Funcionamiento**: Crea un tiquete asociado al pasajero y agrega el pasajero a la lista de pasajeros del vuelo.
 
 Este método debe acceder y suministrar toda la información necesaria para crear un Tiquete. 
 
@@ -33,24 +33,24 @@ Al finalizar se debe usar otro método (**Pendiente por definir**) que nos permi
 
 *PROPUESTA* Además, también ejecutará un chequeo del vuelo sobre el que se vendió el tiquete llamando al método de la misma clase aprobarVuelo. **Ojo, hay que considerar que si se implementa esto, un vuelo nunca va a llenar su capacidad porque va a estar listo para salir en cuanto llene su mínima capacidad. Es necesario pensar en como funcionará la aprobación de vuelos y qué escenarios va a permitir/prohibir**
 
-Retorno: El tiquete.
+**Retorno**: El tiquete.
 
 - \+ cancelacionTiquete(Tiquete tiquete):
 
-Argumentos: Un tiquete.
+**Argumentos**: Un tiquete.
 
-Funcionamiento: Desasigna al pasajero del vuelo asociado en su tiquete. 
+**Funcionamiento**: Desasigna al pasajero del vuelo asociado en su tiquete. 
 
 Invocará al método quitarPasajero de la clase Vuelo.
 
-Retorno: Void
+**Retorno**: Void
 
 
 - \- crearVuelo(Aerolinea aerolinea):
 
-Argumentos: La aerolinea que va a crear el vuelo (entonces... Ninguno(? )
+**Argumentos**: La aerolinea que va a crear el vuelo (entonces... Ninguno(? )
 
-Funcionalidad:  Creará un vuelo asociado a la aerolinea.
+**Funcionalidad**:  Creará un vuelo asociado a la aerolinea.
 
 El método debe proveer todos los atributos necesarios para crear un vuelo. 
 
@@ -60,14 +60,14 @@ También debe asociar el vuelo creado con un avión, y llamar un método de la c
 
 El vuelo es quien determina si el avión es de primera clase, económica o comercial y NO EL AVION (**esto se debería re considerar, ya que podríamos simplificar el asunto creando 3 tipos de aviones con categorías asociadas a esos aviones [primera clase, econ...], y suponer que la aerolinea tiene capacidad ilimitada de crear estos aviones a necesidad (por si se vendieran 1000 tiquetes de primera clase o algo así, simplemente suponemos que la aerolinea está en capacidad de proveer los aviones necesarios para esa demanda, y serán aviones de primera clase**)
 
-Retorno: El vuelo creado.
+**Retorno**: El vuelo creado.
 
 - \- aprobarVuelo(Vuelo vuelo):
 
-Argumentos: Un vuelo.
+**Argumentos**: Un vuelo.
 
-Funcionamiento: Revisa la capacidad del avión asociada al vuelo junto a la cantidad de tiquetes que tiene el vuelo, para determinar si cumplió con un mínimo y puede, por parte de la aerolínea, despegar.
+**Funcionamiento**: Revisa la capacidad del avión asociada al vuelo junto a la cantidad de tiquetes que tiene el vuelo, para determinar si cumplió con un mínimo y puede, por parte de la aerolínea, despegar.
 
-**Adicion a considerar** Si el vuelo recibe el aprobado por parte de la aerolinea, ya debería solicitar permiso de la torre de control para despegar.
+*Adicion a considerar: Si el vuelo recibe el aprobado por parte de la aerolinea, ya debería solicitar permiso de la torre de control para despegar.*
 
-Retorno: Verdadero o falso.
+**Retorno**: Verdadero o falso.

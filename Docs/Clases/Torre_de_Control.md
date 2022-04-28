@@ -16,26 +16,27 @@
 
 - \+ aprobarSalida(Avion avion): 
 
-Argumentos: El avión que solicita la salida.
+**Argumentos**: El avión que solicita la salida.
 
-Funcionamiento: Autoriza o no el despegue de un avión según el clima.
+**Funcionamiento**: Autoriza o no el despegue de un avión según el clima.
 
 Si el clima es soleado o lluvioso, retorna true, de lo crontrario false.
 
-**Pregunta** Debe hacer una selección del clima?
+*Pregunta* Debe hacer una selección del clima?
 
-Retorno: Verdadero o falso.
+**Retorno**: Verdadero o falso.
 
 - \+ aprobarEntrada(Avion avion):
 
-Argumentos: El avión que solicita la entrada.
+**Argumentos**: El avión que solicita la entrada.
 
-Funcionamiento: Autoriza o no le aterrizaje de un avión según si hay pistas disponibles.
+**Funcionamiento**: Autoriza o no le aterrizaje de un avión según si hay pistas disponibles.
 
 Si hay al menos una pista disponible permite el aterrizaje, de lo contrario lo rechaza.
 
 **OPCIONAL** Hacer que el atributo de pistas disponibles sea un Array, y que al solicitar el permiso la torre le asgine a un atributo 'pistaLlegada' del avión, la pista que está libre.
 
+**Retorno**: Void
 
 ## Problemas
 
