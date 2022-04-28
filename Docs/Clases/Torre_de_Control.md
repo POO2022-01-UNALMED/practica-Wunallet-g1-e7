@@ -8,13 +8,13 @@
 
 ## Atributos
 
-- - numeroPistas: int
-- - pistasDisponibles: int
-- - clima: enum[]
+- \- numeroPistas: int
+- \- pistasDisponibles: int
+- \- clima: enum[]
 
 ## Métodos
 
-- + aprobarSalida(Avion avion): 
+- \+ aprobarSalida(Avion avion): 
 
 Argumentos: El avión que solicita la salida.
 
@@ -26,7 +26,7 @@ Si el clima es soleado o lluvioso, retorna true, de lo crontrario false.
 
 Retorno: Verdadero o falso.
 
-- + aprobarEntrada(Avion avion):
+- \+ aprobarEntrada(Avion avion):
 
 Argumentos: El avión que solicita la entrada.
 

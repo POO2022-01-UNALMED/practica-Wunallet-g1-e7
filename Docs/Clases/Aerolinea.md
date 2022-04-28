@@ -8,16 +8,16 @@
 
 ## Atributos
 
-- - idAerolinea: int
+- \- idAerolinea: int
 - REVISAR - idVueloActual: int (**A qué hace referencia?**)
-- - nombreAerolinea: String
-- - vuelosDisponibles: Vuelo[0..\*] (ArrayList de vuelos)
+- \- nombreAerolinea: String
+- \- vuelosDisponibles: Vuelo[0..\*] (ArrayList de vuelos)
 
 ## Métodos
 
 - POR DEFINIR cuáles métodos get y set será necesario implementar. (Si es necesario implementar alguno)
 
-- + venderTiquete(Pasajero pasajero):
+- \+ venderTiquete(Pasajero pasajero):
 
 Argumentos: El pasajero a quién se le venderá la aerolinea.
 
@@ -35,7 +35,7 @@ Al finalizar se debe usar otro método (**Pendiente por definir**) que nos permi
 
 Retorno: El tiquete.
 
-- + cancelacionTiquete(Tiquete tiquete):
+- \+ cancelacionTiquete(Tiquete tiquete):
 
 Argumentos: Un tiquete.
 
@@ -46,7 +46,7 @@ Invocará al método quitarPasajero de la clase Vuelo.
 Retorno: Void
 
 
-- - crearVuelo(Aerolinea aerolinea):
+- \- crearVuelo(Aerolinea aerolinea):
 
 Argumentos: La aerolinea que va a crear el vuelo (entonces... Ninguno(? )
 
@@ -62,7 +62,7 @@ El vuelo es quien determina si el avión es de primera clase, económica o comer
 
 Retorno: El vuelo creado.
 
-- - aprobarVuelo(Vuelo vuelo):
+- \- aprobarVuelo(Vuelo vuelo):
 
 Argumentos: Un vuelo.
 
