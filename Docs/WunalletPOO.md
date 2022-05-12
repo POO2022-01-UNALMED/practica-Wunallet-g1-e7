@@ -42,7 +42,11 @@
 
 - \- String nombreBanco : El nombre del Banco
 
-- \- ArrayList<Cuenta> listaDeCuentas: Lista con todos los objetos de tipo Cuenta que tiene asociadas un Banco.
+- \- ArrayList<Cuenta> listaCuentas: Lista con todos los objetos de tipo Cuenta que tiene asociadas un Banco. 
+
+- \- ArrayList<Credito> listaCreditos: Lista con todos los objetos de tipo Credito que tiene asociadas un Banco.
+
+- \- final float TasaInteresAnual: Interés anual que manejan los créditos del banco.
 
 ###  Métodos
 
@@ -55,3 +59,25 @@
     - **Retorno:** Void
 
 ---
+
+## Crédito
+
+### Generalidades
+
+-
+-
+-
+
+### Atributos
+
+- Banco banco: 
+
+- Usuario titular: 
+
+- float Deuda:
+
+- float cuotaMensual:
+
+
+
+### 
