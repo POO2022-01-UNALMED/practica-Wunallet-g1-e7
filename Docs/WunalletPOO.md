@@ -16,11 +16,11 @@
 
     - **Idea de código:**
 
-    >```{
+    >```
     >bancoDestino = Banco.extraerBanco(nombreBanco);
     >cuentaDestio = bancoDestino.extraerCuenta;
     >this.listaInscritos.add(cuentaDestino);
-    >prueba}```
+    >```
 
     - **Funcionamiento:** 
 
@@ -46,7 +46,7 @@
 
 ###  Métodos
 
-\+ extraerCuenta(int cc, int nroCuenta, String tipoDeCuenta) \{
+\+ extraerCuenta(int cc, int nroCuenta, String tipoDeCuenta){
 
     - **Funcionamiento:**
 
