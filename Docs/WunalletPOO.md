@@ -16,11 +16,11 @@
 
     - **Idea de código:**
 
-    >{
+    >```{
     >bancoDestino = Banco.extraerBanco(nombreBanco);
     >cuentaDestio = bancoDestino.extraerCuenta;
     >this.listaInscritos.add(cuentaDestino);
-    >```prueba```}
+    >prueba}```
 
     - **Funcionamiento:** 
 
