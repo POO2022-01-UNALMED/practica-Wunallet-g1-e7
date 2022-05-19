@@ -22,7 +22,11 @@
 
 - \- float ingresosMensuales : Valor de ingresos mensuales que tiene el usuario.
 
-- \- boolean conDeuda :
+- \- boolean conDeuda : Si tiene algún crédito activo.
+
+- \- int cedula : Identificador único del usuario.
+
+- \- ArrayList<String> bancosAsociados : Nombres de los bancos a los cuales el usuario está asociado (mediante créditos o cuentas).
 
 ### Métodos
 
@@ -42,6 +46,36 @@
     Usará el método de la clase Banco 'extraerBanco(nombreBanco)' para primero verificar si el nombre del banco existe, y de ser así se le retornará el objeto Banco que tiene dicho nombre.
 
     Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cuentas para buscar alguna cuenta en la que los demás parámetros coincidan mediante el método de clase 'extraerCuenta(int cc, int nroCuenta, String tipoDeCuenta)'. Si hay alguna cuenta la retornará, de lo contrario retorne Null. En caso de darse el retorno, se debe añadir a la listaDeInscritos del usuario.
+
+    - **Retorno:** Void
+
+- verHistorial()
+
+
+    - **Idea de código:**
+
+    - **Funcionamiento:** 
+
+    1. El método se ejecuta sin parámetros
+    2. Muestra en pantalla los bancos asociados al usuario. Esto lo hace imprimiendo todos los string de la lista bancosAsociados.
+    3. La selección anterior se asignará a una variable que luego pasará como parámetro al método de clase 
+    extraerBanco(String nombreBanco) de la clase Banco.
+    4. Muesta en pantalla las cuentas del usuario asociadas a ese banco en un formato de <Tipo de cuenta>. Lo hace llamando al 
+    método extraerCuenta(int cc) que retornará un arrayList de cuentas y a cada cuenta se le obtiene su atributo tipoDeCuenta 
+    mediante un get.
+    5. En base al objeto seleccionado en el paso anterior, se ejecuta el método solicitarHistorial(). Se formateará la salida
+    con una iteración que extraiga y retorne la información de las tuplas en forma de String: 
+    **NOTA**: En el segundo elemento de la tupla puede ir un objeto cuenta o un String con el nombre del Banco. Es necesario hacer
+    un if que verifique qué tipo es y muestre su respectivo mensaje
+
+    Ejemplos de mensaje
+    
+    Para transferencias
+    Transferencia de <nroCuentaOrigen> a <nroCuentaDestino> por valor de <valor>.
+
+    Para pago de créditos
+    Transferencia de <nroCuentaOrigen> a <nombreBanco> por valor de <valor>.
+
 
     - **Retorno:** Void
 
@@ -188,9 +222,56 @@ aleatoria en el constructor.
 
 - \- float saldo : Saldo de la cuenta
 
-- \- 
+- \- int nroCuenta : El número de la cuenta
+
+- \- String tipoDeCuenta : El tipo de la cuenta
 
 
 ### Métodos
 
+- transferir()
+
+---
+
+## Corriente extends Cuenta
+
+### Generalidades
+
+### Atributos
+
+- \- float Sobregiro : Cantidad máxima en la que puede sobregirarse la cuenta
+
+### Métodos
+
+\+ transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
+
+---
+
+## Ahorros extends Cuenta
+
+### Generalidades
+
+### Atributos
+
+- \- float tasaDeInteres : Tasa de interes ganada sobre el saldo de la cuenta
+
+### Métodos
+
+\+ transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
+
+---
+
+## BajoMonto extends Cuenta
+
+### Generalidades
+
+### Atributos
+
+- \- limiteMensual : Dinero máximo que se puede transferir por mes.
+
+- \- acumuladorTransferencia : Contador de cuánto dinero se ha transferido de la cuenta durante el mes.
+
+### Métodos
+
+\+ transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
 ---
