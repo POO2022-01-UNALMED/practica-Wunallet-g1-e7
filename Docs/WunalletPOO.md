@@ -122,14 +122,6 @@ aleatoria en el constructor.
     solamente el usuario de donde se extraerá los ingrsos mensuales para calcular su nivel de endeudamiento, y el comportamiento de
     pago medido de 1 a 3, se fijará de forma aleatoria.
 
-
-    
-
-
-   
-
-   
-
 ---
 
 ## Banco
