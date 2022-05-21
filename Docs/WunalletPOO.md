@@ -114,7 +114,7 @@ aleatoria en el constructor.
 
 ###  Métodos
 
-\+ Constructor(Usuario usuario):
+\+ Constructor(Usuario usuario)
 
     -  **Funcionamiento:**
 
