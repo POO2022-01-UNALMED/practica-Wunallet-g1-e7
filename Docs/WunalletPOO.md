@@ -30,7 +30,7 @@
 
 ### Métodos
 
-- Inscribir(int cc, int nroCuenta, String tipoDeCuenta, String nombreBanco)
+#### Inscribir(int cc, int nroCuenta, String tipoDeCuenta, String nombreBanco)
 
 
     - **Idea de código:**
@@ -121,21 +121,6 @@ aleatoria en el constructor.
     Será invocado en caso de que al solicitarse un crédito el usuario no tenga perfil crediticio. Se le deberá pasar como
     parámetros solamente el usuario de donde se extraerá los ingrsos mensuales para calcular su nivel de endeudamiento, y
     el comportamiento de pago medido de 1 a 3, se fijará de forma aleatoria.
-
-    - **Funcionamiento:** 
-    
-    Desde la interfaz el usuario escoge un banco (la lista de todos los bancos disponibles se obtiene del atributo estático
-    listaBancos), una vez escogido se pasa como primer parámetro de este método.
-
-    Luego se chequeará si el usuario tiene asociado un perfil crediticio en su atributo perfilCrediticio, o en caso contrario, se
-    creará.
-
-    Verificado el perfil, se simulará el crédito el cual retornará la cuota mensual tentativa. Si la cuota mensual supera la
-    capacidad de endeudamiento el crédito se rechazará. En caso contrario, se continua revisando el comportamiento de pago, que si
-    es mayor o igual a 2, permitirá finalmente crear el crédito.
-
-    Una vez creado se le asignará al atributo de usuario 'conDeuda' un true, y se añadirá el crédito a la listaCreditos del Banco
-    mediante un llamado al método añadirCredito(Credito credito) de banco.
 
 ---
 
