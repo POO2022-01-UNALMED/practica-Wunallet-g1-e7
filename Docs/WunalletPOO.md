@@ -30,8 +30,7 @@
 
 ### Métodos
 
-#### - Inscribir(int cc, int nroCuenta, String tipoDeCuenta, String nombreBanco)
-
+#### + Inscribir(int cc, int nroCuenta, String tipoDeCuenta, String nombreBanco)
 
 - **Idea de código:**
 
@@ -45,16 +44,13 @@
 
     Usará el método de la clase Banco 'extraerBanco(nombreBanco)' para primero verificar si el nombre del banco existe, y de ser así se le retornará el objeto Banco que tiene dicho nombre.
 
-Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cuentas para buscar alguna cuenta en la que los demás parámetros coincidan mediante el método de clase 'extraerCuenta(int cc, int nroCuenta, String tipoDeCuenta)'. Si hay alguna cuenta la retornará, de lo contrario retorne Null. En caso de darse el retorno, se debe añadir a la listaDeInscritos del usuario.
+    Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cuentas para buscar alguna cuenta en la que los demás parámetros coincidan mediante el método de clase 'extraerCuenta(int cc, int nroCuenta, String tipoDeCuenta)'. Si hay alguna cuenta la retornará, de lo contrario retorne Null. En caso de darse el retorno, se debe añadir a la listaDeInscritos del usuario.
 
 - **Retorno:** Void
 
-- verHistorial()
+#### + verHistorial()
 
-
-    - **Idea de código:**
-
-    - **Funcionamiento:** 
+- **Funcionamiento:** 
 
     1. El método se ejecuta sin parámetros
     2. Muestra en pantalla los bancos asociados al usuario. Esto lo hace imprimiendo todos los string de la lista bancosAsociados.
@@ -77,12 +73,12 @@ Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cue
     Transferencia de <nroCuentaOrigen> a <nombreBanco> por valor de <valor>.
 
 
-    - **Retorno:** Void
+- **Retorno:** Void
 
 
-- solicitarCredito(Banco banco, float monto, int plazo)
+#### + solicitarCredito(Banco banco, float monto, int plazo)
 
-    - **Funcionamiento:** 
+- **Funcionamiento:** 
     
     Desde la interfaz el usuario escoge un banco (la lista de todos los bancos disponibles se obtiene del atributo estático
     listaBancos), una vez escogido se pasa como primer parámetro de este método.
@@ -97,6 +93,9 @@ Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cue
     Una vez creado se le asignará al atributo de usuario 'conDeuda' un true, y se añadirá el crédito a la listaCreditos del Banco
     mediante un llamado al método añadirCredito(Credito credito) de banco.
     
+
+- **Retorno:** Void
+
 --- 
 
 ## PerfilCrediticio
@@ -114,13 +113,15 @@ aleatoria en el constructor.
 
 ###  Métodos
 
-- \+ Constructor(Usuario usuario)
+#### + Constructor(Usuario usuario)
 
-    - **Funcionamiento:**
+- **Funcionamiento:**
 
     Será invocado en caso de que al solicitarse un crédito el usuario no tenga perfil crediticio. Se le deberá pasar como
     parámetros solamente el usuario de donde se extraerá los ingrsos mensuales para calcular su nivel de endeudamiento, y
     el comportamiento de pago medido de 1 a 3, se fijará de forma aleatoria.
+
+- **Retorno:** Void
 
 ---
 
@@ -142,21 +143,21 @@ aleatoria en el constructor.
 
 ###  Métodos
 
-\+ extraerCuenta(int cc, int nroCuenta, String tipoDeCuenta){
+#### - extraerCuenta(int cc, int nroCuenta, String tipoDeCuenta)
 
-    - **Funcionamiento:**
+- **Funcionamiento:**
 
     Recorre iterativamente la listaDeCuentas del Banco, buscando una Cuenta cuyos atributos coincidan con los 3 parámetros. De ser así retorna el objeto, o en caso contrario, retorna Null
 
-    - **Retorno:** Cuenta (o Null si no hay cuenta)
+- **Retorno:** Cuenta (o Null si no hay cuenta)
 
-\+ añadirCredito(Credito credito){
+#### - añadirCredito(Credito credito){
 
-    - **Funcionamiento:**
+- **Funcionamiento:**
 
     Añade un crédito a la listaCreditos del banco.
 
-    - **Retorno:** Void
+- **Retorno:** Void
 
 ---
 
@@ -181,14 +182,16 @@ aleatoria en el constructor.
 
 ### Métodos
 
-\+ Constructor(Titular, Banco, Monto, Plazo){
+#### + Constructor(Titular, Banco, Monto, Plazo){
     
-    - **Funcionamiento:**
+- **Funcionamiento:**
 
-\+ static simularCredito(Banco banco, float monto, int plazo)
+- **Retorno:** Void
+
+#### + static simularCredito(Banco banco, float monto, int plazo)
 
     
-    - **Funcionamiento:**
+- **Funcionamiento:**
 
     Es un método estático que se ejecutará para verificar si, al solicitar un crédito, la cuota mensual esperada no supera la capacidad de endeudamiento del usuario.
 
@@ -199,6 +202,8 @@ aleatoria en el constructor.
     Es decir, el monto que pide, más el interés aplicado a ese monto multiplicado por el plazo del crédito.
 
     Una vez calculada la deuda, se retornará el valor de cada cuota, es decir Deuda/Plazo.
+
+- **Retorno:** Void
 
 ---
 
@@ -221,7 +226,11 @@ aleatoria en el constructor.
 
 ### Métodos
 
-- transferir()
+#### - transferir()
+
+- **Funcionamiento:**
+
+- **Retorno:** Void
 
 ---
 
@@ -235,8 +244,11 @@ aleatoria en el constructor.
 
 ### Métodos
 
-\+ transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
+#### + transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
 
+- **Funcionamiento:**
+
+- **Retorno:** Void
 ---
 
 ## Ahorros extends Cuenta
@@ -249,7 +261,11 @@ aleatoria en el constructor.
 
 ### Métodos
 
-\+ transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
+#### + transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
+
+- **Funcionamiento:**
+
+- **Retorno:** Void
 
 ---
 
@@ -265,5 +281,10 @@ aleatoria en el constructor.
 
 ### Métodos
 
-\+ transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
+#### + transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
+
+- **Funcionamiento:**
+
+- **Retorno:** Void
+
 ---
