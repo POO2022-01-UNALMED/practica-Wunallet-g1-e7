@@ -33,7 +33,7 @@
 #### - Inscribir(int cc, int nroCuenta, String tipoDeCuenta, String nombreBanco)
 
 
-    - **Idea de código:**
+- **Idea de código:**
 
     >```
     >bancoDestino = Banco.extraerBanco(nombreBanco);
@@ -41,13 +41,13 @@
     >this.listaInscritos.add(cuentaDestino);
     >```
 
-    - **Funcionamiento:** 
+- **Funcionamiento:** 
 
     Usará el método de la clase Banco 'extraerBanco(nombreBanco)' para primero verificar si el nombre del banco existe, y de ser así se le retornará el objeto Banco que tiene dicho nombre.
 
-    Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cuentas para buscar alguna cuenta en la que los demás parámetros coincidan mediante el método de clase 'extraerCuenta(int cc, int nroCuenta, String tipoDeCuenta)'. Si hay alguna cuenta la retornará, de lo contrario retorne Null. En caso de darse el retorno, se debe añadir a la listaDeInscritos del usuario.
+Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cuentas para buscar alguna cuenta en la que los demás parámetros coincidan mediante el método de clase 'extraerCuenta(int cc, int nroCuenta, String tipoDeCuenta)'. Si hay alguna cuenta la retornará, de lo contrario retorne Null. En caso de darse el retorno, se debe añadir a la listaDeInscritos del usuario.
 
-    - **Retorno:** Void
+- **Retorno:** Void
 
 - verHistorial()
 
