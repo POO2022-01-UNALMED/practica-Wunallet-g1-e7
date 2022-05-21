@@ -30,7 +30,7 @@
 
 ### Métodos
 
-#### Inscribir(int cc, int nroCuenta, String tipoDeCuenta, String nombreBanco)
+#### - Inscribir(int cc, int nroCuenta, String tipoDeCuenta, String nombreBanco)
 
 
     - **Idea de código:**
