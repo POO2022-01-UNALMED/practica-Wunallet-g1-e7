@@ -116,7 +116,7 @@ aleatoria en el constructor.
 
 \+ Constructor(Usuario usuario)
 
-    -  **Funcionamiento:**
+    - **Funcionamiento:**
 
     Será invocado en caso de que al solicitarse un crédito el usuario no tenga perfil crediticio. Se le deberá pasar como parámetros
     solamente el usuario de donde se extraerá los ingrsos mensuales para calcular su nivel de endeudamiento, y el comportamiento de
