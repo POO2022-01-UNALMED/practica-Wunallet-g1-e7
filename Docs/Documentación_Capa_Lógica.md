@@ -23,11 +23,13 @@
 
 - \- float ingresosMensuales : Valor de ingresos mensuales que tiene el usuario.
 
-- \- boolean conDeuda : Si tiene algún crédito activo.
+- \- Credito creditoActivo : Null en caso de que el usuario no tenga un crédito asociado, o el objeto de tipo CReedito que tenga asociado
 
 - \- int cedula : Identificador único del usuario.
 
 - \- ArrayList<String> bancosAsociados : Nombres de los bancos a los cuales el usuario está asociado (mediante créditos o cuentas).
+
+- \- ArrayList<Cuenta> cuentasAsociadas : Lista de cuentas que tiene el usuario con algún banco
 
 ### Métodos
 
@@ -91,8 +93,8 @@
     capacidad de endeudamiento el crédito se rechazará. En caso contrario, se continua revisando el comportamiento de pago, que si
     es mayor o igual a 2, permitirá finalmente crear el crédito.
 
-    Una vez creado se le asignará al atributo de usuario 'conDeuda' un true, y se añadirá el crédito a la listaCreditos del Banco
-    mediante un llamado al método añadirCredito(Credito credito) de banco.
+    Una vez creado se le asignará al atributo de usuario 'creditoActivo' el objeto, y se añadirá el crédito a la listaCreditos 
+    del Banco mediante un llamado al método añadirCredito(Credito credito) de banco.
     
 
 - **Retorno:** Void
