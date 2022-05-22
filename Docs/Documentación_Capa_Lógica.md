@@ -10,6 +10,7 @@
 
 ### Métodos
 
+
 ---
 
 ## Usuario
@@ -56,7 +57,7 @@
     2. Muestra en pantalla los bancos asociados al usuario. Esto lo hace imprimiendo todos los string de la lista bancosAsociados.
     3. La selección anterior se asignará a una variable que luego pasará como parámetro al método de clase 
     extraerBanco(String nombreBanco) de la clase Banco.
-    4. Muesta en pantalla las cuentas del usuario asociadas a ese banco en un formato de <Tipo de cuenta>. Lo hace llamando al 
+    4. Muesta en pantalla las cuentas del usuario asociadas a ese banco en un formato de \<Tipo de cuenta\>. Lo hace llamando al 
     método extraerCuenta(int cc) que retornará un arrayList de cuentas y a cada cuenta se le obtiene su atributo tipoDeCuenta 
     mediante un get.
     5. En base al objeto seleccionado en el paso anterior, se ejecuta el método solicitarHistorial(). Se formateará la salida
@@ -67,10 +68,10 @@
     Ejemplos de mensaje
     
     Para transferencias
-    Transferencia de <nroCuentaOrigen> a <nroCuentaDestino> por valor de <valor>.
+    Transferencia de \<nroCuentaOrigen\> a \<nroCuentaDestino\> por valor de <valor>.
 
     Para pago de créditos
-    Transferencia de <nroCuentaOrigen> a <nombreBanco> por valor de <valor>.
+    Transferencia de \<nroCuentaOrigen\> a \<nombreBanco\> por valor de <valor>.
 
 
 - **Retorno:** Void
