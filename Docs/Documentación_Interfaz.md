@@ -27,9 +27,10 @@ Todos los bancos tienen los 3 tipos de cuentas
 #### Atributos
 
 
-### Main
+### Pantallas
 
 ---
+*Inicio*
 
 ¿Qué usuario desea seleccionar?
 
@@ -37,6 +38,8 @@ Todos los bancos tienen los 3 tipos de cuentas
 2. Hernesto Perez
 
 ---
+*Inicio\.Funcionalidades*
+
 ¿Qué desea hacer?
 
 1. Inscribir cuenta
@@ -49,6 +52,9 @@ Todos los bancos tienen los 3 tipos de cuentas
 
 #### Inscribir cuenta
 
+---
+*Inicio\.Funcionalidades\.InscribirCuenta*
+
 Seleccione de qué banco es la cuenta que desea inscribir
 
 1. Unalombia 
@@ -57,6 +63,8 @@ Seleccione de qué banco es la cuenta que desea inscribir
 0. Volver al menú de funcionalidades 
 
 ---
+*Inicio\.Funcionalidades\.InscribirCuenta*
+
 Seleccione el tipo de cuenta
 
 1. Cuenta de bajo monto
@@ -273,7 +281,6 @@ Tu crédito es de \< Deuda \> y pagarás una cuota de \< cuotaMensual \>.
 ¿Quieres continuar con el pago de tu crédito?
 
 1. Si
-2. No
 
 0. Volver al menú de funcionalidades.
 ---
@@ -322,8 +329,7 @@ Seleccione la cuenta de destino
 *Transferencia a otra cuenta inscrita*
 Digite el valor que desea transferir
 
-
-(Leer entrada, que corresponderá al índice + 1 de la lista cuentasAsociadas) 
+\---------------
 
 0. Volver al menú de funcionalidades.
 
@@ -341,15 +347,34 @@ Envío rechazado. El saldo de su cuenta es insuficiente para realizar el movimie
 0. Volver al menú de funcionalidades.
 
 ###### Transferencia a otra cuenta no inscrita
+
+---
+*Transferencia a otra cuenta no inscrita*
+Seleccione el banco de la cuenta destino:
+
+1. Unalombia 
+2. PooBanco
+3. QuitaVivienda 
+
+0. Volver al menú de funcionalidades.
+---
 *Transferencia a otra cuenta no inscrita*
 Ingrese el número de cuenta de destino:
-
 
 
 0. Volver al menú de funcionalidades.
 
 ---
+*Transferencia a otra cuenta no inscrita*
+Digite el valor que desea transferir
+
+\------
+
+0. Volver al menú de funcionalidades.
+
+---
 *Transferencia a otra cuenta no inscrita rechazo*
+
 Hubo un error en la operación. Verifique que su cuenta de origen tenga y permita mover el saldo indicado, o que la cuenta de 
 destino exista.
 
@@ -358,6 +383,7 @@ destino exista.
 
 ---
 *Transferencia a otra cuenta no inscrita aprobación*
+
 Envío exitoso. El saldo de su cuenta es de \<saldo - envío \>.
 
 9. Salida segura
