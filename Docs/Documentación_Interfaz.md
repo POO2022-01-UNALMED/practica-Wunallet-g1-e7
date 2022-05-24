@@ -30,7 +30,7 @@ Todos los bancos tienen los 3 tipos de cuentas
 ### Pantallas
 
 ---
-*Inicio*
+***Inicio***
 
 ¿Qué usuario desea seleccionar?
 
