@@ -431,26 +431,23 @@ seleccionado en una variable cuentaOrigen
 
     1. Selección de pago de crédito
 
-        Se verifica que el usuario tenga un crédito Activo
+    Se verifica que el usuario tenga un crédito Activo
 
         1. Si no tiene, se muestra la pantalla Transferir.PagarCredito.SinCredito
 
         2. Si tiene, se muestra la pantalla Transferir.PagarCredito.ConCredito preguntando si se confirma el pago
 
-            1. En caso de confirmación se ejecuta el método abstracto de la clase Cuenta que tiene como firma 
+            En caso de confirmación se ejecuta el método abstracto de la clase Cuenta que tiene como firma 
             transferencia(Cuenta cuentaOrigen, Credito credito)
 
-                1. Si la transferencia no se pudo realizar por falta de saldo en la cuenta de origen, se mostrará la pantalla
-                Transferir.PagarCredito.ConCredito.Rechazo
+            1. Si la transferencia no se pudo realizar por falta de saldo en la cuenta de origen, se mostrará la pantalla
+            Transferir.PagarCredito.ConCredito.Rechazo
 
-                2. Si la transferencia se realiza exitosamente se muestra la pantalla Transferir.PagarCredito.ConCredito.Aprobacion
+            2. Si la transferencia se realiza exitosamente se muestra la pantalla Transferir.PagarCredito.ConCredito.Aprobacion
 
 
     2. Transferencia a otra cuenta
 
-
-2.1.1.2.1.2. En caso de que la transferencia sea exitosa se mostrará la pantalla
-*Pagar crédito con crédito aprobado*
 
 2.2. Selección de transferir a otra cuenta
 
