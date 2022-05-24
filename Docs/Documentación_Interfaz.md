@@ -50,6 +50,7 @@ Todos los bancos tienen los 3 tipos de cuentas
 9. Salida segura
 0. Volver al menú de usuarios
 
+---
 #### Inscribir cuenta
 
 ---
