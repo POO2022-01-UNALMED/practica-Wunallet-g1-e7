@@ -23,7 +23,8 @@
 
 - \- float ingresosMensuales : Valor de ingresos mensuales que tiene el usuario.
 
-- \- Credito creditoActivo : Null en caso de que el usuario no tenga un crédito asociado, o el objeto de tipo CReedito que tenga asociado
+- \- Credito creditoActivo : Null en caso de que el usuario no tenga un crédito asociado, o el objeto de tipo Credito que tenga 
+asociado
 
 - \- int cedula : Identificador único del usuario.
 
