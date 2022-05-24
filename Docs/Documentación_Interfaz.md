@@ -428,8 +428,10 @@ Envío exitoso. El saldo de su cuenta es de \<saldo - envío \>.
 seleccionado en una variable cuentaOrigen
 
 2. Una vez seleccionado qué tipo de transferencia se desea hacer (pago crédito o a otra cuenta), se ejecuta lo siguiente:
+    1. Selección de pago de crédito
 
-2.1. Selección de pago de crédito
+    2.1. Selección de pago de crédito
+
 2.1.1. Llamará un método de la clase Usuario para verificar si el Usuario tiene un crédito activo y que retornará un booleano.
 2.1.1.1. Si el retorno es un false (la cuenta del atributo sería Null), mostrará la pantalla correspondiente a 
 *Pagar crédito sin crédito*
