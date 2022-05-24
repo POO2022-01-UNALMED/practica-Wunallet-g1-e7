@@ -52,9 +52,9 @@ Todos los bancos tienen los 3 tipos de cuentas
 
 ---
 #### Inscribir cuenta
-
 ---
-***Inicio.Funcionalidades.InscribirCuenta.SeleccionBanco***
+
+***InscribirCuenta.SeleccionBanco***
 
 Seleccione de qué banco es la cuenta que desea inscribir
 
@@ -64,7 +64,7 @@ Seleccione de qué banco es la cuenta que desea inscribir
 0. Volver al menú de funcionalidades 
 
 ---
-***Inicio.Funcionalidades.InscribirCuenta.SeleccionTipoCuenta***
+***InscribirCuenta.SeleccionTipoCuenta***
 
 Seleccione el tipo de cuenta
 
@@ -74,7 +74,7 @@ Seleccione el tipo de cuenta
 0. Volver al menú de funcionalidades 
 
 ---
-***Inicio.Funcionalidades.InscribirCuenta.IngresoNumeroCuenta***
+***InscribirCuenta.IngresoNumeroCuenta***
 
 Ingrese el número de cuenta
 
@@ -86,7 +86,7 @@ Ingrese el número de cuenta
 ya creados.
 
 ---
-***Inicio.Funcionalidades.InscribirCuenta.IngresoCedula***
+***InscribirCuenta.IngresoCedula***
 
 Ingrese el número de cédula del titular de la cuenta que desea inscribir
 
@@ -97,7 +97,7 @@ Ingrese el número de cédula del titular de la cuenta que desea inscribir
 **Nota** Rechazará todos los números excepto si es de alguno de los usuarios ya creados.
 
 ---
-***Inicio.Funcionalidades.InscribirCuenta.Error***
+***InscribirCuenta.Error***
 
 Esta cuenta no existe, por favor compruebe los datos.
 
@@ -106,21 +106,21 @@ Esta cuenta no existe, por favor compruebe los datos.
 0. Volver al menú de funcionalidades 
 
 ---
-***Inicio.Funcionalidades.InscribirCuenta.Aprobacion***
+***InscribirCuenta.Aprobacion***
 
 Cuenta inscrita exitosamente.
 
 9. Salida segura
 0. Volver al menú de funcionalidades.
----
 
+---
 #### Romper topes
 
 ::**NOTA Comprobacion de que existe una cuenta de bajo monto asociada al usuario -> Es necesario implementar este chequeo en 
 la lógica!!**::
 
 ---
-Caso 1 : El usuario no tiene cuenta de bajo monto.
+***RomperTopes.SinCuentaBajoMonto***
 
 Esta funcionalidad no está habilitada para tus cuentas.
 
@@ -128,7 +128,7 @@ Esta funcionalidad no está habilitada para tus cuentas.
 0. Volver al menú de funcionalidades.
 
 ---
-Caso 2 : El usuario tiene una cuenta de bajo monto.
+***RomperTopes.ConCuentaBajoMonto***
 
 ¡Recuerde! El procedimiento de romper topes consiste en transformar su cuenta de tipo Bajo monto, a una cuenta de ahorros
 convencional, eliminando las limitaciones de este tipo de cuentas. Este proceso tiene un costo de 15.000 pesos que pagará una única vez.
@@ -144,20 +144,22 @@ Para continuar seleccione la cuenta de bajo monto que desea transformar
 0. Volver al menú de funcionalidades.
 
 ---
+***RomperTopes.ConCuentaBajoMonto.Espera***
 
 Un asesor está verificando tu solicitud.
 
 sleep 3
 
 ---
-*Interfaz de error*
+***RomperTopes.ConCuentaBajoMonto.Error***
+
 Tu solicitud ha sido rechazada ya que no cuentas con saldo suficiente en tu cuenta para realizar el proceso.
 
 9. Salida segura
 0. Volver al menú de funcionalidades.
 
 ---
-*Interfaz de aprobación*
+***RomperTopes.ConCuentaBajoMonto.Aprobación***
 
 Tu solicitud ha sido aprobada, se descontará 15.000 de tu saldo para realizar el proceso. Espera un momento...
 
@@ -168,10 +170,11 @@ Tu cuenta ha sido actualizada y ahora no tiene topes.
 9. Salida segura
 0. Volver al menú de funcionalidades.
 
-
-#### Solicitar crédito
-
 ---
+#### Solicitar crédito
+---
+***SolicitarCredito.SeleccionBanco***
+
 Con qué banco desea solicitar el crédito:
 
 - UNALombia \<tasa de interés del banco\>
@@ -179,39 +182,47 @@ Con qué banco desea solicitar el crédito:
 - QuitaVivienda \<tasa de interés del banco\> **Nota** El 36% de Daniel
 
 ---
+***SolicitarCredito.IngresoMonto***
+
 Ingrese el monto en pesos a solicitar:
 
 \------
 
 ---
+***SolicitarCredito.IngresoPlazos***
+
 Ingrese el plazo en meses del crédito:
 
 \------
 
 ---
+***SolicitarCredito.Espera***
+
 Un asesor está verificando tu solicitud.
 
 sleep 3
 
 ---
-*Interfaz de error*
+***SolicitarCredito.Error***
+
 Tu solicitud de crédito ha sido rechazada.
 
 9. Salida segura
 0. Volver al menú de funcionalidades.
 
 ---
-*Interfaz de aprobación*
+***SolicitarCredito.Aprobación***
 
 Tu solicitud de crédito ha sido aprobada y tu saldo ha sido actualizado con el monto solicitado.
 
 9. Salida segura
 0. Volver al menú de funcionalidades.
----
 
+---
 #### Ver historial de transacciones
-
 ---
+***VerHistorial.SeleccionBanco***
+
 Seleccione de qué banco es la cuenta que desea consultar
 
 1. \< Banco asociado 1 \>
@@ -222,6 +233,8 @@ Seleccione de qué banco es la cuenta que desea consultar
 0. Volver al menú de funcionalidades 
 
 ---
+***VerHistorial.SeleccionCuenta***
+
 Para continuar seleccione la cuenta a consultar
 
 1. Cuenta x
@@ -233,6 +246,8 @@ Para continuar seleccione la cuenta a consultar
 0. Volver al menú de funcionalidades 
 
 ---
+***VerHistorial.Historial***
+
 El historial de transacciones de su cuenta es
 
 Ejemplos de mensaje
@@ -245,13 +260,12 @@ Transferencia de \<nroCuentaOrigen\> a \<nombreBanco\> por valor de <valor>.
 
 9. Salida segura
 0. Volver al menú de funcionalidades.
----
 
+---
 #### Transferir
-
-(De cuentas asociadas se mostrará lo siguiente)
-
 ---
+***Transferir.SeleccionCuentaOrigen***
+
 Selecciona el producto de origen que quieres usar
 
 1. Cuenta 1 de las cuentas asociadas con saldo \<saldo\>
@@ -262,24 +276,25 @@ Selecciona el producto de origen que quieres usar
 0. Volver al menú de funcionalidades.
 
 ---
+***Transferir.SeleccionTipoTransferencia***
+
 Selecciona qué tipo de transferencia quieres hacer
 
 1. Pagar crédito.
 2. Transferencia a otra cuenta.
 0. Volver al menú de funcionalidades.
 
-##### Pagar crédito
 ---
-*Pagar crédito sin crédito*
+***Transferir.PagarCredito.SinCredito***
+
 No tienes ningún crédito activo para pagar.
 
 9. Salida segura
 0. Volver al menú de funcionalidades.
 
-*Fin*
-
 ---
-*Pagar crédito con crédito*
+***Transferir.PagarCredito.ConCredito***
+
 Tu crédito es de \< Deuda \> y pagarás una cuota de \< cuotaMensual \>.
 
 ¿Quieres continuar con el pago de tu crédito?
@@ -288,28 +303,30 @@ Tu crédito es de \< Deuda \> y pagarás una cuota de \< cuotaMensual \>.
 
 0. Volver al menú de funcionalidades.
 ---
+***Transferir.PagarCredito.ConCredito.Espera***
 
 Un asesor está verificando tu solicitud.
 
 sleep 3
 
 ---
-*Pagar crédito con crédito rechazo*
+***Transferir.PagarCredito.ConCredito.Rechazo***
+
 Tu pago ha sido rechazado ya que no cuentas con saldo suficiente en tu producto de origen.
 
 9. Salida segura
 0. Volver al menú de funcionalidades.
 
 ---
-*Pagar crédito con crédito aprobado*
+***Transferir.PagarCredito.ConCredito.Aprobacion***
+
 Tu pago ha sido exitoso. Tu credito restante es de \< Deuda - Pago \>.
 
 9. Salida segura
 0. Volver al menú de funcionalidades.
 
 ---
-
-##### Transferencia a otra cuenta
+***Transferir.OtraCuenta.SeleccionTipoInscripcion***
 
 Selecciona a qué tipo de cuenta quieres transferir
 
@@ -317,9 +334,9 @@ Selecciona a qué tipo de cuenta quieres transferir
 2. Cuentas no inscritas
 0. Volver al menú de funcionalidades.
 
-###### Transferencia a otra cuenta inscrita
 ---
-*Transferencia a otra cuenta inscrita*
+***Transferir.OtraCuenta.Inscritas***
+
 Seleccione la cuenta de destino
 
 1. Cuenta inscrita 1
@@ -330,7 +347,8 @@ Seleccione la cuenta de destino
 0. Volver al menú de funcionalidades.
 
 ---
-*Transferencia a otra cuenta inscrita*
+***Transferir.OtraCuenta.Inscritas.IngresoValor***
+
 Digite el valor que desea transferir
 
 \---------------
@@ -338,22 +356,23 @@ Digite el valor que desea transferir
 0. Volver al menú de funcionalidades.
 
 ---
-*Transferencia a otra cuenta inscrita aprobada*
-Envío exitoso. El saldo de su cuenta es de \<saldo - envío \>.
+***Transferir.OtraCuenta.Inscritas.Rechazo***
 
-9. Salida segura
-0. Volver al menú de funcionalidades.
----
-*Transferencia a otra cuenta inscrita rechazada*
 Envío rechazado. El saldo de su cuenta es insuficiente para realizar el movimiento.
 
 9. Salida segura
 0. Volver al menú de funcionalidades.
 
-###### Transferencia a otra cuenta no inscrita
-
 ---
-*Transferencia a otra cuenta no inscrita*
+***Transferir.OtraCuenta.Inscritas.Aprobacion***
+
+Envío exitoso. El saldo de su cuenta es de \<saldo - envío \>.
+
+9. Salida segura
+0. Volver al menú de funcionalidades.
+---
+***Transferir.OtraCuenta.NoInscritas.SeleccionBanco***
+
 Seleccione el banco de la cuenta destino:
 
 1. Unalombia 
@@ -362,14 +381,16 @@ Seleccione el banco de la cuenta destino:
 
 0. Volver al menú de funcionalidades.
 ---
-*Transferencia a otra cuenta no inscrita*
+***Transferir.OtraCuenta.NoInscritas.IngresoNumeroCuenta***
+
 Ingrese el número de cuenta de destino:
 
 
 0. Volver al menú de funcionalidades.
 
 ---
-*Transferencia a otra cuenta no inscrita*
+***Transferir.OtraCuenta.NoInscritas.IngresoValor***
+
 Digite el valor que desea transferir
 
 \------
@@ -377,7 +398,7 @@ Digite el valor que desea transferir
 0. Volver al menú de funcionalidades.
 
 ---
-*Transferencia a otra cuenta no inscrita rechazo*
+***Transferir.OtraCuenta.NoInscritas.Rechazo***
 
 Hubo un error en la operación. Verifique que su cuenta de origen tenga y permita mover el saldo indicado, o que la cuenta de 
 destino exista.
@@ -386,7 +407,7 @@ destino exista.
 0. Volver al menú de funcionalidades.
 
 ---
-*Transferencia a otra cuenta no inscrita aprobación*
+***Transferir.OtraCuenta.NoInscritas.Aprobacion***
 
 Envío exitoso. El saldo de su cuenta es de \<saldo - envío \>.
 
