@@ -419,6 +419,37 @@ Envío exitoso. El saldo de su cuenta es de \<saldo - envío \>.
 
 ### Funcionalidades/Métodos
 
+#### - inscribirCuenta(Usuario usuario)
+
+**Funcionamiento:**
+
+1. Se muestra la pantalla InscribirCuenta.SeleccionBanco donde el entero ingresado por el usuario es el índice + 1 del nombre
+contenido en la lista Banco.listaBancos. Este nombre se debe extraer de la lista y asignársele a la variable nombreBanco.
+
+2. Se muestra la pantalla InscribirCuenta.SeleccionTipoCuenta, donde el entero que ingrese el usuario determinará el String que se
+le asignará a la variable tipoCuenta (puede ser ahorro, bajo monto o corriente).
+
+3. Desde la pantalla InscribirCuenta.IngresoNumeroCuenta se asigna el entero que ingresó el usuario a la variable nroCuenta.
+
+4. Desde InscribirCuenta.IngresoCedula se asigna el entero que ingresó el usuario a la variable cc(cédula).
+
+5. Se realiza el llamado al método de usuario inscribir(int cc, int nroCuenta, String tipoCuenta, String nombreBanco)
+
+    1. En caso de que falle el método se muestra la pantalla InscribirCuenta.Error
+
+    2. En caso de que la inscripción sea exitosa se muestra la pantalla InscribirCuenta.Aprobacion
+
+#### - romperTopes(Usuario usuario)
+
+**Funcionamiento:**
+
+#### - solicitarCredito(Usuario usuario)
+
+**Funcionamiento:**
+
+#### - verHistorial(Usuario usuario)
+
+**Funcionamiento:**
 
 #### - transferencia(Usuario usuario)
 
@@ -464,7 +495,7 @@ seleccionado en una variable cuentaOrigen
 
             2. Si la transferencia se aprueba se muestra la pantalla Transferir.OtraCuenta.Inscritas.Aprobacion
 
-        2. Si se seleecciona cuentas no inscritas se mostrará la pantalla Transferir.OtraCuenta.NoInscritas.SeleccionBanco. La
+        2. Si se selecciona cuentas no inscritas se mostrará la pantalla Transferir.OtraCuenta.NoInscritas.SeleccionBanco. La
         selección del usuario es el índice + 1 de la lista listaBancos de la clase Banco, que contiene los nombres de los bancos. 
         Luego se llama al método estático extraerBanco(String nombreBanco) que retornará el objeto tipo Banco y este se debe
         asociar a la variable bancoDestino.
@@ -481,3 +512,4 @@ seleccionado en una variable cuentaOrigen
             1. En caso de que falle el método se mostrará la pantalla Transferir.OtraCuenta.NoInscritas.Rechazo
 
             2. En caso de que se transfiera exitosamente se mostrará la pantalla Transferir.OtraCuenta.NoInscritas.Aprobacion
+
