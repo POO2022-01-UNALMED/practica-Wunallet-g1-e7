@@ -14,6 +14,8 @@ Funcionalidades que ejecutará:
 
 ### Estado inicial
 
+### Atributos
+
 ### Bancos 
 
 Todos los bancos tienen los 3 tipos de cuentas
@@ -415,7 +417,63 @@ Envío exitoso. El saldo de su cuenta es de \<saldo - envío \>.
 0. Volver al menú de funcionalidades.
 ---
 
-### Atributos
+### Funcionalidades/Métodos
 
-### Métodos
 
+#### - transferencia(Usuario usuario)
+
+    **Funcionamiento:**
+
+    1. Imprime los atributos importantes de cada cuenta en la lista cuentasAsociadas y asigna la cuenta que corresponde al indice 
+    seleccionado en una variable cuentaOrigen
+    
+    2. Una vez seleccionado qué tipo de transferencia se desea hacer (pago crédito o a otra cuenta), se ejecuta lo siguiente:
+
+    2.1. Selección de pago de crédito
+    2.1.1. Llamará un método de la clase Usuario para verificar si el Usuario tiene un crédito activo y que retornará un booleano.
+    2.1.1.1. Si el retorno es un false (la cuenta del atributo sería Null), mostrará la pantalla correspondiente a 
+    *Pagar crédito sin crédito*
+    2.1.1.2. En caso de que el retorno del paso anterior sea un True, preguntará si quiere realizar el pago.
+    2.1.1.2.1. De ser así, ejecutará el método abstracto de la clase Cuenta que tiene como firma 
+    trasferencia(Cuenta cuentaOrigen, Credito credito)
+    2.1.1.2.1.1. En caso de que la transferencia no se pueda realizar por falta de saldo en la cuenta, se mostrará la pantalla 
+    *Pagar crédito con crédito rechazo*
+    2.1.1.2.1.2. En caso de que la transferencia sea exitosa se mostrará la pantalla
+    *Pagar crédito con crédito aprobado*
+
+    2.2. Selección de transferir a otra cuenta
+
+    2.2.1. Se muestra en pantalla todas las cuentas inscritas.
+
+    2.2.1.1. Se guardará el objeto tipo Cuenta correspondiente al índice seleccionado en la interfaz, en una variable llamada 
+    cuentaDestino. Luego se pide el valor a transferir que se asigna a una variable valorTransferencia, y se llama al método 
+    abstracto de la clase Cuenta que tiene como firma transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino,float valorTransferencia)
+
+    2.2.1.1.1. Si la transferencia es rechazada muestra la pantalla 
+    *Transferencia a otra cuenta inscrita rechazada*
+    2.2.1.1.2. Si la transferencia es aprobada muestra la pantalla 
+    *Transferencia a otra cuenta inscrita aprobada*
+
+    2.2.2. Selección de transferir a cuenta no inscrita
+
+    2.2.2.
+
+    (1) Solicitará la selección de banco a la que pertenece la cuenta, en donde el número que ingrese el usuario corresponde 
+    al índice de la lista listaBancos de la clase Banco, con el que se debe llamar al método estático 
+    extraerBanco(String nombreBanco) cuyo retorno será un objeto de tipo Banco que se asociará a la variable bancoDestino
+
+    (2) Se asignará el entero ingresado por el usuario a la variable nroCuentaDestino
+
+    (3) Se asignará el float ingresado por el usuario a la variable valorTransferencia
+
+    (4) Se llama al método bancoDestino.extraerCuenta(int nroCuentaDestino) y su retorno de tipo Cuenta se asignará a la 
+    variable cuentaDestino
+
+    (5) Se ejecuta el método abstracto de Cuenta con firma 
+    transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino, float valorTransferencia)
+
+    (5.1) En caso de que falle el método se mostrará la pantalla 
+    *Transferencia a otra cuenta no inscrita rechazo*
+
+    (5.2) En caso de que se transfiera exitosamente se mostrará la pantalla 
+    *Transferencia a otra cuenta no inscrita aprobación*
