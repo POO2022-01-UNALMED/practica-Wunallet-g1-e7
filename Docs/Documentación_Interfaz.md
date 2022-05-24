@@ -328,7 +328,7 @@ Tu pago ha sido exitoso. Tu credito restante es de \< Deuda - Pago \>.
 0. Volver al menú de funcionalidades.
 
 ---
-***Transferir.OtraCuenta.SeleccionTipoInscripcion***
+***Transferir.OtraCuenta.SeleccionStatusDeInscripcion***
 
 Selecciona a qué tipo de cuenta quieres transferir
 
@@ -431,7 +431,7 @@ seleccionado en una variable cuentaOrigen
 
     1. Selección de pago de crédito
 
-    Se verifica que el usuario tenga un crédito Activo
+        Se verifica que el usuario tenga un crédito Activo
 
         1. Si no tiene, se muestra la pantalla Transferir.PagarCredito.SinCredito
 
@@ -448,40 +448,35 @@ seleccionado en una variable cuentaOrigen
 
     2. Transferencia a otra cuenta
 
+        Se muestra la pantalla Transferir.OtraCuenta.SeleccionStatusDeInscripcion
+        
+        1. Si se seleccionan cuentas inscritas, se muestra la pantalla Transferir.OtraCuenta.Inscritas. El entero ingresado en la
+        interfaz es el índice + 1 de la lista listaInscritos. Este índice se usará para extraer el objeto de tipo Cuenta
+        correspondiente y asignarlo a la variable cuentaDestino.
 
-2.2. Selección de transferir a otra cuenta
+        Luego desde la pantalla Transferir.OtraCuenta.Inscritas.IngresoValor se asigna el float ingresado a la variable 
+        valorTransferencia.
 
-2.2.1. Se muestra en pantalla todas las cuentas inscritas.
+        Se llama al método abstracto de la clase Cuenta que tiene como firma 
+        transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino, float valorTransferencia)
 
-2.2.1.1. Se guardará el objeto tipo Cuenta correspondiente al índice seleccionado en la interfaz, en una variable llamada 
-cuentaDestino. Luego se pide el valor a transferir que se asigna a una variable valorTransferencia, y se llama al método 
-abstracto de la clase Cuenta que tiene como firma transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino,float valorTransferencia)
+            1. Si la transferencia se rechaza se muestra la pantalla Transferir.OtraCuenta.Inscritas.Rechazo
+            2. Si la transferencia se aprueba se muestra la pantalla Transferir.OtraCuenta.Inscritas.Aprobacion
 
-2.2.1.1.1. Si la transferencia es rechazada muestra la pantalla 
-*Transferencia a otra cuenta inscrita rechazada*
-2.2.1.1.2. Si la transferencia es aprobada muestra la pantalla 
-*Transferencia a otra cuenta inscrita aprobada*
+        2. Si se seleecciona cuentas no inscritas se mostrará la pantalla Transferir.OtraCuenta.NoInscritas.SeleccionBanco. La
+        selección del usuario es el índice + 1 de la lista listaBancos de la clase Banco, que contiene los nombres de los bancos. 
+        Luego se llama al método estático extraerBanco(String nombreBanco) que retornará el objeto tipo Banco y este se debe
+        asociar a la variable bancoDestino.
 
-2.2.2. Selección de transferir a cuenta no inscrita
+        Luego se muestra la pantalla Transferir.OtraCuenta.NoInscritas.IngresoNumeroCuenta, y el entero ingresado se asignará a la 
+        variable nroCuentaDestino.
 
-2.2.2.
+        Posteriormente se muestra la pantalla Transferir.OtraCuenta.NoInscritas.IngresoValor, y el float ingresado se asignará a
+        la variable valorTransferencia
 
-(1) Solicitará la selección de banco a la que pertenece la cuenta, en donde el número que ingrese el usuario corresponde 
-al índice de la lista listaBancos de la clase Banco, con el que se debe llamar al método estático 
-extraerBanco(String nombreBanco) cuyo retorno será un objeto de tipo Banco que se asociará a la variable bancoDestino
+        Se llama al método abstracto de Cuenta con firma
+        transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino, float valorTransferencia)
 
-(2) Se asignará el entero ingresado por el usuario a la variable nroCuentaDestino
+            1. En caso de que falle el método se mostrará la pantalla Transferir.OtraCuenta.NoInscritas.Rechazo
 
-(3) Se asignará el float ingresado por el usuario a la variable valorTransferencia
-
-(4) Se llama al método bancoDestino.extraerCuenta(int nroCuentaDestino) y su retorno de tipo Cuenta se asignará a la 
-variable cuentaDestino
-
-(5) Se ejecuta el método abstracto de Cuenta con firma 
-transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino, float valorTransferencia)
-
-(5.1) En caso de que falle el método se mostrará la pantalla 
-*Transferencia a otra cuenta no inscrita rechazo*
-
-(5.2) En caso de que se transfiera exitosamente se mostrará la pantalla 
-*Transferencia a otra cuenta no inscrita aprobación*
+            2. En caso de que se transfiera exitosamente se mostrará la pantalla Transferir.OtraCuenta.NoInscritas.Aprobacion
