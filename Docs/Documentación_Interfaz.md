@@ -424,17 +424,21 @@ Envío exitoso. El saldo de su cuenta es de \<saldo - envío \>.
 
 **Funcionamiento:**
 
-Imprime los atributos importantes de cada cuenta en la lista cuentasAsociadas y asigna la cuenta que corresponde al indice 
+1. Imprime los atributos importantes de cada cuenta en la lista cuentasAsociadas y asigna la cuenta que corresponde al indice 
 seleccionado en una variable cuentaOrigen
 
-Una vez seleccionado qué tipo de transferencia se desea hacer (pago crédito o a otra cuenta), se ejecuta lo siguiente:
+2. Se selecciona el tipo de transferencia que se desea hacer
 
-1. Selección de pago de crédito
+    1. Selección de pago de crédito
 
+        1. Se verifica que el usuario tenga un crédito Activo
 
+            1. Si no tiene, se muestra la pantalla Transferir.PagarCredito.SinCredito
 
+            2. Si tiene, se muestra la pantalla Transferir.PagarCredito.ConCredito
 
-    
+    2. Transferencia a otra cuenta
+
 
     2.1. Selección de pago de crédito
 
