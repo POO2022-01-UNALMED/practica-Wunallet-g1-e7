@@ -454,14 +454,14 @@ seleccionado en una variable cuentaOrigen
         interfaz es el índice + 1 de la lista listaInscritos. Este índice se usará para extraer el objeto de tipo Cuenta
         correspondiente y asignarlo a la variable cuentaDestino.
 
-        Luego desde la pantalla Transferir.OtraCuenta.Inscritas.IngresoValor se asigna el float ingresado a la variable 
-        valorTransferencia.
+            Luego desde la pantalla Transferir.OtraCuenta.Inscritas.IngresoValor se asigna el float ingresado a la variable 
+            valorTransferencia.
 
-        Se llama al método abstracto de la clase Cuenta que tiene como firma 
-        transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino, float valorTransferencia)
+            Se llama al método abstracto de la clase Cuenta que tiene como firma 
+            transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino, float valorTransferencia)
 
-            .
             1. Si la transferencia se rechaza se muestra la pantalla Transferir.OtraCuenta.Inscritas.Rechazo
+
             2. Si la transferencia se aprueba se muestra la pantalla Transferir.OtraCuenta.Inscritas.Aprobacion
 
         2. Si se seleecciona cuentas no inscritas se mostrará la pantalla Transferir.OtraCuenta.NoInscritas.SeleccionBanco. La
@@ -469,14 +469,14 @@ seleccionado en una variable cuentaOrigen
         Luego se llama al método estático extraerBanco(String nombreBanco) que retornará el objeto tipo Banco y este se debe
         asociar a la variable bancoDestino.
 
-        Luego se muestra la pantalla Transferir.OtraCuenta.NoInscritas.IngresoNumeroCuenta, y el entero ingresado se asignará a la 
-        variable nroCuentaDestino.
+            Luego se muestra la pantalla Transferir.OtraCuenta.NoInscritas.IngresoNumeroCuenta, y el entero ingresado se asignará a la 
+            variable nroCuentaDestino.
 
-        Posteriormente se muestra la pantalla Transferir.OtraCuenta.NoInscritas.IngresoValor, y el float ingresado se asignará a
-        la variable valorTransferencia
+            Posteriormente se muestra la pantalla Transferir.OtraCuenta.NoInscritas.IngresoValor, y el float ingresado se asignará a
+            la variable valorTransferencia
 
-        Se llama al método abstracto de Cuenta con firma
-        transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino, float valorTransferencia)
+            Se llama al método abstracto de Cuenta con firma
+            transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino, float valorTransferencia)
 
             1. En caso de que falle el método se mostrará la pantalla Transferir.OtraCuenta.NoInscritas.Rechazo
 
