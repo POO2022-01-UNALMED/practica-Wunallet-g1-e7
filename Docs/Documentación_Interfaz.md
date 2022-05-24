@@ -38,7 +38,7 @@ Todos los bancos tienen los 3 tipos de cuentas
 2. Hernesto Perez
 
 ---
-*Inicio\.Funcionalidades*
+::*Inicio.Funcionalidades*::
 
 ¿Qué desea hacer?
 
