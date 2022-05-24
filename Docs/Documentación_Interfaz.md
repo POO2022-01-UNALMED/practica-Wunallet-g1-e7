@@ -38,7 +38,7 @@ Todos los bancos tienen los 3 tipos de cuentas
 2. Hernesto Perez
 
 ---
-::*Inicio.Funcionalidades*::
+***Inicio.Funcionalidades***
 
 ¿Qué desea hacer?
 
@@ -53,7 +53,7 @@ Todos los bancos tienen los 3 tipos de cuentas
 #### Inscribir cuenta
 
 ---
-*Inicio\.Funcionalidades\.InscribirCuenta*
+***Inicio.Funcionalidades.InscribirCuenta.SeleccionBanco***
 
 Seleccione de qué banco es la cuenta que desea inscribir
 
@@ -63,7 +63,7 @@ Seleccione de qué banco es la cuenta que desea inscribir
 0. Volver al menú de funcionalidades 
 
 ---
-*Inicio\.Funcionalidades\.InscribirCuenta*
+***Inicio.Funcionalidades.InscribirCuenta.SeleccionTipoCuenta***
 
 Seleccione el tipo de cuenta
 
@@ -73,6 +73,8 @@ Seleccione el tipo de cuenta
 0. Volver al menú de funcionalidades 
 
 ---
+***Inicio.Funcionalidades.InscribirCuenta.IngresoNumeroCuenta***
+
 Ingrese el número de cuenta
 
 \--------
@@ -82,9 +84,10 @@ Ingrese el número de cuenta
 **Nota** El comportamiento por defecto será rechazar todos los números que se ingresen excepto si es de alguno de los usuarios 
 ya creados.
 
-
 ---
-Ingrese el número de cédula
+***Inicio.Funcionalidades.InscribirCuenta.IngresoCedula***
+
+Ingrese el número de cédula del titular de la cuenta que desea inscribir
 
 \--------
 
@@ -93,7 +96,7 @@ Ingrese el número de cédula
 **Nota** Rechazará todos los números excepto si es de alguno de los usuarios ya creados.
 
 ---
-*Interfaz de error*
+***Inicio.Funcionalidades.InscribirCuenta.Error***
 
 Esta cuenta no existe, por favor compruebe los datos.
 
@@ -102,7 +105,7 @@ Esta cuenta no existe, por favor compruebe los datos.
 0. Volver al menú de funcionalidades 
 
 ---
-*Interfaz de aprobación*
+***Inicio.Funcionalidades.InscribirCuenta.Aprobacion***
 
 Cuenta inscrita exitosamente.
 
