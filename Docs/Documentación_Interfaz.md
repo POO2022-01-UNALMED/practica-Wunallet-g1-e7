@@ -460,6 +460,7 @@ seleccionado en una variable cuentaOrigen
         Se llama al método abstracto de la clase Cuenta que tiene como firma 
         transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino, float valorTransferencia)
 
+            .
             1. Si la transferencia se rechaza se muestra la pantalla Transferir.OtraCuenta.Inscritas.Rechazo
             2. Si la transferencia se aprueba se muestra la pantalla Transferir.OtraCuenta.Inscritas.Aprobacion
 
