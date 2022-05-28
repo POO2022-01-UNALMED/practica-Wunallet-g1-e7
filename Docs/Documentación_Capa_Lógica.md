@@ -128,7 +128,47 @@ aleatoria en el constructor.
 - **Retorno:** Void
 
 ---
+## Transacción 
 
+### Generalidades
+Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la información que describe cada transacción.
+
+### Atributos
+
+- \- Cuenta cuentaOrigen: 
+
+- \- Cuenta cuentaDestino: 
+
+- \- String nombreBanco: 
+
+- \- float valorTransaccion: 
+
+
+### Métodos
+
+#### public toString()
+
+- **Funcionamiento:**
+
+    1. Verificar si cuentaDestino no es un Null. En este caso se retornará el String
+
+    return "Transferencia de " + cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + 
+    " cuentaDestino.getTitular() + " a la cuenta " + cuentaDestino.getNroCuenta() + " por valor de " + \<Valor\> + "."
+
+    Para transferencias
+    Transferencia de \<nombreTitular\> desde la cuenta \<nroCuentaOrigen\> a \<nombreTitularDestino\> a la cuenta 
+    \<nroCuentaDestino\> por valor de <valor>.
+
+    2. 
+    Para pago de créditos
+    Transferencia de \<nroCuentaOrigen\> a \<nombreBanco\> por valor de <valor>.
+
+
+
+
+- **Retorno:** String
+
+---
 ## Banco
 
 ### Generalidades
@@ -270,12 +310,17 @@ Este método se ejecuta como cuentaOrigen.transferir(cuentaDestino, valorTransfe
 
 1. Verificar si valorTransferencia <= saldoCuentaOrigen + sobregiroActual
 
-2. Realiza los ajustos de saldo a ambas cuentas mediante 
+2. En caso de haber usado la capacidad de sobregiro, se setea el atributo sobregiroActual con la cantidad valorTransferencia-saldo
+Esto se debe comprobar con un if, si valorTransferencia-saldo>0.
 
-    >this.restarSaldo(_)
-    >cuentaDestino.sumarSaldo(_)
+3. Realiza los ajustos de saldo a ambas cuentas mediante 
 
-3. Crea el objeto (
+    ```java
+    this.restarSaldo(_)
+    cuentaDestino.sumarSaldo(_)
+    ```
+
+4. Crea el objeto (
 
 - **Retorno:** Boolean
 
