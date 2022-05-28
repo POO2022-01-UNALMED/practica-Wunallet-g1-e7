@@ -230,12 +230,27 @@ aleatoria en el constructor.
 
 ### Métodos
 
-#### - transferir()
+#### - transferir(Cuenta cuentaDestino, float valorTransferencia);
 
 - **Funcionamiento:**
 
-- **Retorno:** Void
+Ejecutará las comprobaciones y actualizaciones de saldo correspondientes al realizar una transferencia. Este proceso depende del
+tipo de cuenta que lo ejecute, y por eso debe ser un método abstracto.
 
+Este método se ejecuta como cuentaOrigen.transferir(cuentaDestino, valorTransferencia)
+    
+- **Retorno:** Boolean
+
+#### - transferir(Credito credito);
+
+- **Funcionamiento:**
+
+Ejecutará las comprobaciones y actualizaciones de saldo correspondientes al realizar el pago de un crédito. Este proceso depende del
+tipo de cuenta que lo ejecute, y por eso debe ser un método abstracto.
+
+Este método se ejecuta como cuentaOrigen.transferir(cuentaDestino, valorTransferencia)
+
+- **Retorno:** Boolean
 ---
 
 ## Corriente extends Cuenta
@@ -244,15 +259,31 @@ aleatoria en el constructor.
 
 ### Atributos
 
-- \- float Sobregiro : Cantidad máxima en la que puede sobregirarse la cuenta
+- \- static final float capacidadSobregiro : Cantidad máxima en la que puede sobregirarse la cuenta
+- \- float sobregiroActual : Cantidad actual que ha sido sobregirada
 
 ### Métodos
 
-#### + transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
+#### + transferir(Cuenta cuentaDestino, float valorTransferencia);
 
 - **Funcionamiento:**
 
-- **Retorno:** Void
+1. Verificar si valorTransferencia <= saldoCuentaOrigen + sobregiroActual
+
+2. Realiza los ajustos de saldo a ambas cuentas mediante 
+
+    >this.restarSaldo(_)
+    >cuentaDestino.sumarSaldo(_)
+
+3. Crea el objeto (
+
+- **Retorno:** Boolean
+
+#### + transferir(Credito credito);
+
+- **Funcionamiento:**
+
+- **Retorno:** Boolean
 ---
 
 ## Ahorros extends Cuenta
@@ -265,12 +296,17 @@ aleatoria en el constructor.
 
 ### Métodos
 
-#### + transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
+#### + transferir(Cuenta cuentaDestino, float valorTransferencia);
 
 - **Funcionamiento:**
 
-- **Retorno:** Void
+- **Retorno:** Boolean
 
+#### + transferir(Credito credito);
+
+- **Funcionamiento:**
+
+- **Retorno:** Boolean
 ---
 
 ## BajoMonto extends Cuenta
@@ -285,10 +321,57 @@ aleatoria en el constructor.
 
 ### Métodos
 
-#### + transferir(Banco banco, int nroCuenta, float cantidadTransferir, String tipo )
+#### + transferir(Cuenta cuentaDestino, float valorTransferencia);
 
 - **Funcionamiento:**
 
-- **Retorno:** Void
+- **Retorno:** Boolean
 
+#### + transferir(Credito credito);
+
+- **Funcionamiento:**
+
+- **Retorno:** Boolean
 ---
+
+## interface Gestor
+
+### Generalidades
+
+- La interfaz Gestor almacena todas las operaciones que modifican el estado de una cuenta
+
+### Atributos
+
+- static final float SOBREGIROMAXIMOCIERRE = 0 : Representa que para cerrar una cuenta se puede tener un sobregiro máximo de 0 pesos
+(no se puede deber al banco)
+
+### Métodos
+
+#### + crearCuenta()
+
+- **Funcionamiento:**
+
+- **Retorno:** Boolean
+
+#### + eliminarCuenta()
+
+- **Funcionamiento:**
+
+- **Retorno:** Boolean
+
+#### default + sumarSaldo(float Valor);
+
+- **Funcionamiento:**
+
+- **Retorno:** Boolean
+
+#### default + restarSaldo(float Valor);
+
+- **Funcionamiento:**
+
+- **Retorno:** Boolean
+
+***Nota: Estos métodos se ejecutan, en las funciones transferir, como
+this.restarSaldo(_)
+cuentaDestino.sumarSaldo(_)
+***

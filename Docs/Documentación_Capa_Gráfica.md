@@ -469,7 +469,7 @@ seleccionado en una variable cuentaOrigen
         2. Si tiene, se muestra la pantalla Transferir.PagarCredito.ConCredito preguntando si se confirma el pago
 
             En caso de confirmación se ejecuta el método abstracto de la clase Cuenta que tiene como firma 
-            transferencia(Cuenta cuentaOrigen, Credito credito)
+            transferencia(Credito credito)
 
             1. Si la transferencia no se pudo realizar por falta de saldo en la cuenta de origen, se mostrará la pantalla
             Transferir.PagarCredito.ConCredito.Rechazo
@@ -489,7 +489,7 @@ seleccionado en una variable cuentaOrigen
             valorTransferencia.
 
             Se llama al método abstracto de la clase Cuenta que tiene como firma 
-            transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino, float valorTransferencia)
+            transferir(Cuenta cuentaDestino, float valorTransferencia)
 
             1. Si la transferencia se rechaza se muestra la pantalla Transferir.OtraCuenta.Inscritas.Rechazo
 
@@ -507,7 +507,7 @@ seleccionado en una variable cuentaOrigen
             la variable valorTransferencia
 
             Se llama al método abstracto de Cuenta con firma
-            transferir(Cuenta cuentaOrigen, Cuenta cuentaDestino, float valorTransferencia)
+            transferir(Cuenta cuentaDestino, float valorTransferencia)
 
             1. En caso de que falle el método se mostrará la pantalla Transferir.OtraCuenta.NoInscritas.Rechazo
 
