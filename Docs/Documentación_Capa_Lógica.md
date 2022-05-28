@@ -318,13 +318,33 @@ Esto se debe comprobar con un if, si valorTransferencia-saldo>0.
     cuentaDestino.sumarSaldo(_)
     ```
 
-4. Crea el objeto (
+4. Crea el objeto de tipo Transaccion llamando al constructor Transaccion(Cuenta cuentaOrigen, Cuenta cuentaDestino,
+float valorTransaccion) 
+
+5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
 
 - **Retorno:** Boolean
 
 #### + transferir(Credito credito);
 
 - **Funcionamiento:**
+
+1. Verificar si cuotaMensual <= saldoCuentaOrigen + sobregiroActual
+
+2. En caso de haber usado la capacidad de sobregiro, se setea el atributo sobregiroActual con la cantidad valorTransferencia-saldo
+Esto se debe comprobar con un if, si valorTransferencia-saldo>0.
+
+3. Realiza los ajustos de saldo a la cuentaOrigen y al Credito
+
+    ```java
+    this.restarSaldo(cuotaMensual)
+    credito.setDeuda(credito.getDeuda()-credito.getCuotaMensual())
+    ```
+
+4. Crea el objeto de tipo Transaccion llamando al constructor Transaccion(Cuenta cuentaOrigen, String nombreBanco,
+float valorTransaccion) 
+
+5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
 
 - **Retorno:** Boolean
 ---
@@ -343,13 +363,43 @@ Esto se debe comprobar con un if, si valorTransferencia-saldo>0.
 
 - **Funcionamiento:**
 
+1. Verificar si valorTransferencia <= saldoCuentaOrigen
+
+3. Realiza los ajustos de saldo a ambas cuentas mediante 
+
+    ```java
+    this.restarSaldo(_)
+    cuentaDestino.sumarSaldo(_)
+    ```
+
+4. Crea el objeto de tipo Transaccion llamando al constructor Transaccion(Cuenta cuentaOrigen, Cuenta cuentaDestino,
+float valorTransaccion) 
+
+5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
+
 - **Retorno:** Boolean
+
 
 #### + transferir(Credito credito);
 
 - **Funcionamiento:**
 
+1. Verificar si cuotaMensual <= saldoCuentaOrigen
+
+3. Realiza los ajustos de saldo a la cuentaOrigen y al Credito
+
+    ```java
+    this.restarSaldo(cuotaMensual)
+    credito.setDeuda(credito.getDeuda()-credito.getCuotaMensual())
+    ```
+
+4. Crea el objeto de tipo Transaccion llamando al constructor Transaccion(Cuenta cuentaOrigen, String nombreBanco,
+float valorTransaccion) 
+
+5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
+
 - **Retorno:** Boolean
+
 ---
 
 ## BajoMonto extends Cuenta
@@ -368,11 +418,43 @@ Esto se debe comprobar con un if, si valorTransferencia-saldo>0.
 
 - **Funcionamiento:**
 
+1. Verificar si valorTransferencia <= saldoCuentaOrigen
+
+2. Verificar si valorTransferencia + acumuladorTransferencia <= limiteMensual
+
+3. Realiza los ajustos de saldo a ambas cuentas mediante 
+
+    ```java
+    this.restarSaldo(_)
+    cuentaDestino.sumarSaldo(_)
+    ```
+
+4. Crea el objeto de tipo Transaccion llamando al constructor Transaccion(Cuenta cuentaOrigen, Cuenta cuentaDestino,
+float valorTransaccion) 
+
+5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
+
 - **Retorno:** Boolean
 
 #### + transferir(Credito credito);
 
 - **Funcionamiento:**
+
+1. Verificar si cuotaMensual <= saldoCuentaOrigen
+
+2. Verificar si cuotaMensual + acumuladorTransferencia <= limiteMensual
+
+3. Realiza los ajustos de saldo a la cuentaOrigen y al Credito
+
+    ```java
+    this.restarSaldo(cuotaMensual)
+    credito.setDeuda(credito.getDeuda()-credito.getCuotaMensual())
+    ```
+
+4. Crea el objeto de tipo Transaccion llamando al constructor Transaccion(Cuenta cuentaOrigen, String nombreBanco,
+float valorTransaccion) 
+
+5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
 
 - **Retorno:** Boolean
 ---

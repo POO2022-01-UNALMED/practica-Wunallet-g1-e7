@@ -314,7 +314,7 @@ sleep 3
 ---
 ***Transferir.PagarCredito.ConCredito.Rechazo***
 
-Tu pago ha sido rechazado ya que no cuentas con saldo suficiente en tu producto de origen.
+Tu pago ha sido rechazado ya que no cuentas con saldo suficiente o  tu producto de origen no permite mover el valor indicado.
 
 9. Salida segura
 0. Volver al menú de funcionalidades.
@@ -360,7 +360,7 @@ Digite el valor que desea transferir
 ---
 ***Transferir.OtraCuenta.Inscritas.Rechazo***
 
-Envío rechazado. El saldo de su cuenta es insuficiente para realizar el movimiento.
+Hubo un error en la operación. Verifique que su cuenta de origen tenga y permita mover el saldo indicado.
 
 9. Salida segura
 0. Volver al menú de funcionalidades.
