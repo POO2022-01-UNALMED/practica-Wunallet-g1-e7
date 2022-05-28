@@ -152,19 +152,17 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 
     1. Verificar si cuentaDestino no es un Null. En este caso se retornará el String
 
+    ```java
     return "Transferencia de " + cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + 
-    " cuentaDestino.getTitular() + " a la cuenta " + cuentaDestino.getNroCuenta() + " por valor de " + \<Valor\> + "."
+    " cuentaDestino.getTitular() + " a la cuenta " + cuentaDestino. getNroCuenta() + " por valor de " + \<Valor\> + "."
+    
+    ```
 
-    Para transferencias
-    Transferencia de \<nombreTitular\> desde la cuenta \<nroCuentaOrigen\> a \<nombreTitularDestino\> a la cuenta 
-    \<nroCuentaDestino\> por valor de <valor>.
+    2. Para pago de créditos.
 
-    2. 
-    Para pago de créditos
-    Transferencia de \<nroCuentaOrigen\> a \<nombreBanco\> por valor de <valor>.
-
-
-
+    ```java
+    return "Tranferencia "+ cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + getNombreBanco() + " por valor de " + getValorTransaccion() + "." 
+    ```    
 
 - **Retorno:** String
 
