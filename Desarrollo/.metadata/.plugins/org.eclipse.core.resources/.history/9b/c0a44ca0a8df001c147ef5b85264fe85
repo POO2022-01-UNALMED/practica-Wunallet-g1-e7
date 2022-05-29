@@ -49,11 +49,11 @@ public abstract class Cuenta implements Gestor{
 		return this.banco;
 	}
 	
-	public void setTipoCuenta(String tipoDeCuenta) {
-		this.tipoDeCuenta = tipoDeCuenta;
+	public void setTipoCuenta(String tipoCuenta) {
+		this.tipoCuenta = tipoCuenta;
 	}
 	public String getTipoCuenta() {
-		return this.tipoDeCuenta;
+		return this.tipoCuenta;
 	}
 	
 	

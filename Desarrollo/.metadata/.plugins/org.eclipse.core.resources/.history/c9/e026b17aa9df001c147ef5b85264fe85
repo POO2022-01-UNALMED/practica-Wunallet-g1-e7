@@ -14,7 +14,7 @@ public class Credito {
 		this.cuotaMensual = cuotaMensual;
 	}
 	
-//	-------------------------------------- Métodos get-set --------------------------------------
+//	Métodos get-set
 	
 	//	Get-Set usuario
 	public void setTitular(Usuario titular) {
