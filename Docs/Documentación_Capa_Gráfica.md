@@ -443,7 +443,6 @@ le asignará a la variable tipoCuenta (puede ser ahorro, bajo monto o corriente)
 
 #### - verHistorial(Usuario usuario)
 
-
 **Funcionamiento:**
 
 1. Se imprime la lista de cuentas asociadas al usuario con la pantalla VerHistorial.SeleccionCuenta. La selección del usuario es el índice + 1 de la lista cuentasAsociadas del usuario. Esta cuenta se asignará a la variable cuenta.

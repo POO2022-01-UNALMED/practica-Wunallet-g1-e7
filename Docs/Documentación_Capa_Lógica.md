@@ -74,6 +74,27 @@ asociado
 
 - **Retorno:** Void
 
+#### + removerCuentaAsociada(Cuenta cuenta)
+
+
+
+- **Funcionamiento:** 
+    
+    Desde la interfaz el usuario escoge un banco (la lista de todos los bancos disponibles se obtiene del atributo estático
+    listaBancos), una vez escogido se pasa como primer parámetro de este método.
+
+    Luego se chequeará si el usuario tiene asociado un perfil crediticio en su atributo perfilCrediticio, o en caso contrario, se
+    creará.
+
+    Verificado el perfil, se simulará el crédito el cual retornará la cuota mensual tentativa. Si la cuota mensual supera la
+    capacidad de endeudamiento el crédito se rechazará. En caso contrario, se continua revisando el comportamiento de pago, que si
+    es mayor o igual a 2, permitirá finalmente crear el crédito.
+
+    Una vez creado se le asignará al atributo de usuario 'creditoActivo' el objeto, y se añadirá el crédito a la listaCreditos 
+    del Banco mediante un llamado al método añadirCredito(Credito credito) de banco.
+    
+
+- **Retorno:** Void
 --- 
 
 ## PerfilCrediticio
@@ -239,6 +260,7 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 
 - \- String tipoDeCuenta : El tipo de la cuenta
 
+- \- ArrayList[Transaccion] historialTransferencia : Historial de todas las transacciones realizadas con la cuenta
 
 ### Métodos
 
@@ -333,6 +355,7 @@ float valorTransaccion)
 5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
 
 - **Retorno:** Boolean
+
 ---
 
 ## Ahorros extends Cuenta
@@ -341,7 +364,7 @@ float valorTransaccion)
 
 ### Atributos
 
-- \- float tasaDeInteres : Tasa de interes ganada sobre el saldo de la cuenta
+- \# float tasaDeInteres : Tasa de interes ganada sobre el saldo de la cuenta
 
 ### Métodos
 
@@ -443,6 +466,20 @@ float valorTransaccion)
 5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
 
 - **Retorno:** Boolean
+
+#### + romperTopes();
+
+- **Funcionamiento:**
+
+1. Se debe verificar que el saldo de la cuenta sea mayor o igual a 15.000 pesos, que es el costo de rompe
+2. Se creará un nuevo objeto de tipo Ahorro asignado a la variable nuevaCuentaAhorro
+    ```java
+    Ahorro nuevaCuentaAhorro = new Ahorro(this.getTitular(), this.getBanco(), this.getSaldo(), this.getNroCuenta(), "Ahorro",
+    this.getHistorialTransferencia(), this.getTasaInteres())
+    ```
+
+- **Retorno:** Boolean
+
 ---
 
 ## interface Gestor 
@@ -455,33 +492,46 @@ Cuenta
 ### Atributos
 
 - static final float SOBREGIROMAXIMOCIERRE = 0 : Representa que para cerrar una cuenta se puede tener un sobregiro máximo de 0 pesos
-(no se puede deber al banco)
+(no se puede deber al banco).
 
-- static final float SALDOMAXIMOCIERRE = 0 : 
+- static final float SALDOMAXIMOCIERRE = 0 : Para cerrar una cuenta es necesario que no tenga saldo.
 
 ### Métodos
 
-#### + eliminarCuenta()
+#### default + eliminarCuenta()
 
 - **Funcionamiento:**
-Será una clase abstracta que verificará que se cumplan los requisiton necesarios para eliminar cada tipo de cuenta, quitará todas 
-las referencias a un objeto y llamará al garbage collector. 
+
+cuenta.eliminarCuenta()
+1. Toma el objeto tipo Usuario que hay en el atributo titular de la cuenta, para remover la cuenta que invoca el método de la lista de cuentasAsociadas que tiene el usuario
+
+```java
+// ver https://www.geeksforgeeks.org/remove-element-arraylist-java/
+
+import java.util.ArrayList;
+import java.util.List;
+
+usuario = this.getTitular()
+usuario.cuentasAsociadas.remove(this)
+
+```
 
 - **Retorno:** Boolean
 
 #### default + sumarSaldo(float Valor);
 
 - **Funcionamiento:**
+    ```java
+    this.setSaldo(this.getSaldo() + valor)
+    ```
 
-- **Retorno:** 
+- **Retorno:** Void
 
 #### default + restarSaldo(float Valor);
 
 - **Funcionamiento:**
+    ```java
+    this.setSaldo(this.getSaldo() - valor)
+    ```
 
-- **Retorno:** 
-
-***Nota: Estos métodos se ejecutan, en las funciones transferir, como
-this.restarSaldo(_)
-cuentaDestino.sumarSaldo(_)
-***
+- **Retorno:**  Void
