@@ -127,7 +127,7 @@ public class Banquero {
 		String nombreBanco = null;
 
 		nombreBanco = Banco.listaBancos.get(numBanco-1);
-//		System.out.println(" Usted seleccioó " + nombreBanco);
+		System.out.println(" Usted seleccioó " + nombreBanco);
 
 		
 //		Seleccione el tipo de cuenta - InscribirCuenta.SeleccionTipoCuenta
