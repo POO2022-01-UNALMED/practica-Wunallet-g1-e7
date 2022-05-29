@@ -116,8 +116,8 @@ public class Banquero {
 	
 		System.out.println("-------------- Seleección del banco --------------");
 		int c = 0;
-		for(String i: Banco.listaBancos) {
-			System.out.println((c+1) + ". " + i);
+		for(Banco i: Banco.listaBancos) {
+			System.out.println((c+1) + ". " + i.getNombreBanco());
 			c++;
 		}
 		System.out.println("Seleccione de qué banco es la cuenta que desea inscribir: ");
@@ -126,8 +126,8 @@ public class Banquero {
 		
 		String nombreBanco = null;
 
-		nombreBanco = Banco.listaBancos.get(numBanco-1);
-//		System.out.println(" Usted seleccioó " + nombreBanco);
+		nombreBanco = Banco.listaBancos.get(numBanco-1).getNombreBanco();
+		System.out.println(" Usted seleccioó " + nombreBanco);
 
 		
 //		Seleccione el tipo de cuenta - InscribirCuenta.SeleccionTipoCuenta

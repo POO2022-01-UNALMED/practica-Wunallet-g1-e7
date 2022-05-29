@@ -23,7 +23,7 @@ public class Usuario {
 	
 	
 	public void inscribir(int cc,int numeroCuenta,String tipoCuenta, String nombreBanco) {
-		
+		Banco banco = Banco.extraerBanco(nombreBanco);
 	}
 	
 }
