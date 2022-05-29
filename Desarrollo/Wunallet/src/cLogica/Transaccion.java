@@ -1,4 +1,5 @@
 package cLogica;
+import Cuenta;
 
 public class Transaccion {
 	private Cuenta cuentaOrigen;
@@ -58,12 +59,12 @@ public class Transaccion {
 		
 		if (this.cuentaDestino == NULL) {
 			
-			return "Tranferencia "+ cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + getNombreBanco() + " por valor de " + getValorTransaccion() + "." 
+			return "Tranferencia "+ cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + getNombreBanco() + " por valor de " + getValorTransaccion() + "." ;
 		}
 		
 		else {
 			return "Transferencia de " + cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + 
-					 cuentaDestino.getTitular() + " a la cuenta " + cuentaDestino. getNroCuenta() + " por valor de " + getValorTransaccion() + "."
+					 cuentaDestino.getTitular() + " a la cuenta " + cuentaDestino. getNroCuenta() + " por valor de " + getValorTransaccion() + ".";
 		}
 		
 		
