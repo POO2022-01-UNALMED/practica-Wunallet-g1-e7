@@ -1,0 +1,8 @@
+package cLogica;
+
+public class Transaccion {
+	private Cuenta cuentaOrigen;
+	private Cuenta cuentaDestino;
+	private String nombreBanco;
+	private float valorTransaccion;
+}

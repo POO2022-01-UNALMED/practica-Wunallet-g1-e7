@@ -1,0 +1,12 @@
+package cLogica;
+
+public class PerfilCreditico {
+	private Usuario user;
+	private float nivelDeEndeudamiento;
+//	Enum
+	
+	public PerfilCreditico(Usuario user) {
+		this.user = user;
+	}
+	
+}

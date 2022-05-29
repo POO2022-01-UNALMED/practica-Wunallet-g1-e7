@@ -1,0 +1,14 @@
+package cLogica;
+import java.util.ArrayList;
+
+public abstract class Cuenta implements Gestor{
+	
+	protected int nroCuenta;
+	protected Usuario titular;
+	protected float saldo;
+	protected Banco banco;
+	protected String tipoDeCuenta;
+	protected ArrayList<Transaccion> historialTransferencia = new ArrayList<Transaccion>();
+	
+	
+}

@@ -1,0 +1,21 @@
+package cLogica;
+import java.util.ArrayList;
+
+public class Usuario {
+	private PerfilCreditico perfilCrediticio;
+	private float ingreso;
+	private int cc;
+	private Credito creditoActivo;
+	private ArrayList<String> bancosAsociados = new ArrayList<String>();
+	private ArrayList<Cuenta> listaInscritos = new ArrayList<Cuenta>();
+	private ArrayList<Cuenta> cuentasAsociadas = new ArrayList<Cuenta>();
+	
+	public Usuario(PerfilCreditico perfilCrediticio,float ingreso,int cc,Credito creditoActivo) {
+		
+	}
+	
+
+	
+//	public solicitarCredito() {}
+	
+}

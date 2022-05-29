@@ -1,0 +1,12 @@
+package cLogica;
+
+public class BajoMonto extends Ahorro{
+	private float limiteMensual;
+	private float acumuladorTransferencia;
+	
+	public BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,float acumuladorTransferencia) {
+		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,tasaDeInteres);
+		this.limiteMensual = limiteMensual;
+		this.acumuladorTransferencia = acumuladorTransferencia;
+	}
+}

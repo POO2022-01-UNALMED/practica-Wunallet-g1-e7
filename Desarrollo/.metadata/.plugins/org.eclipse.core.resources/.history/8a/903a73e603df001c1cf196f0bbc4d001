@@ -1,0 +1,14 @@
+package cLogica;
+
+public class Corriente extends Cuenta{
+	private static final float capacidadSobregiro = 600000;
+	private float sobregiroActual;
+	
+	public Corriente(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float sobregiroActual) {
+		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
+		this.sobregiroActual = sobregiroActual;
+	}
+	
+	
+
+}
