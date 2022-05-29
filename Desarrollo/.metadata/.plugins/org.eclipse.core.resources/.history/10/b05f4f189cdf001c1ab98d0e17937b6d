@@ -125,9 +125,15 @@ public class Banquero {
 		
 		
 		String nombreBanco = null;
-
-		nombreBanco = Banco.listaBancos.get(numBanco-1);
-//		System.out.println(" Usted seleccioó " + nombreBanco);
+		
+//		switch(numBanco) {
+//		case 1: nombreBanco = "Unalombia";break;
+//		case 2: nombreBanco = "PooBanco";break;
+//		case 3: nombreBanco = "QuitaVivienda";break;
+//		}
+		nombreBanco = Banco.listaBancos[numBanco-1];
+		
+		System.out.println(" Usted seleccioó " + nombreBanco);
 
 		
 //		Seleccione el tipo de cuenta - InscribirCuenta.SeleccionTipoCuenta
@@ -137,7 +143,7 @@ public class Banquero {
 		System.out.println("2. Cuenta de ahorros");
 		System.out.println("3. Cuenta corriente ");
 		System.out.println("4. Volver al menú de funcionalidades");
-		System.out.println("Seleccione el tipo de cuenta: ");
+		System.out.println("Seleccione el tipo de cuenta");
 		int tipCuenta = readInt(); 
 		
 		String tipoCuenta = null;
@@ -152,13 +158,13 @@ public class Banquero {
 //		Selección del banco - InscribirCuenta.IngresoNumeroCuenta
 		
 		System.out.println("--------- Insersión del número de cuenta --------------");
-		System.out.println("Ingrese el número de la cuenta: ");
+		System.out.println("Ingrese el número de la cuenta");
 		int numeroCuenta = readInt();
 		
 //		Selección del banco - InscribirCuenta.IngresoNumeroCedula
 		
 		System.out.println("--------- Insersión del número de cédula --------------");
-		System.out.println("Ingrese el número de cedula: ");
+		System.out.println("Ingrese el número de cedula");
 		int numeroCc = readInt();
 		
 //		Llamado del método inscribir
