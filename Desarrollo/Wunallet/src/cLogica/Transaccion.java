@@ -10,7 +10,20 @@ public class Transaccion {
 		this.cuentaOrigen = cuentaOrigen;
 		this.cuentaDestino = cuentaDestino;
 		this.nombreBanco = nombreBanco;
-		this.valorTransaccion = valorTransaccion;				
+		this.valorTransaccion = valorTransaccion;	
+		
 	}
+	
+	
+	
+	public String toString() {
+		
+		if (this.cuentaDestino == NULL) {
+			
+			return "Tranferencia "+ cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + getNombreBanco() + " por valor de " + getValorTransaccion() + "." 
+		}
+		
+	}
+	
 	
 }
