@@ -14,6 +14,13 @@ public class Transaccion {
 		
 	}
 	
+	public Transaccion(Cuenta cuentaOrigen,String nombreBanco,float valorTransaccion) {
+		this.cuentaOrigen = cuentaOrigen;
+		this.nombreBanco = nombreBanco;
+		this.valorTransaccion = valorTransaccion;	
+		
+	}
+	
 //	-------------------------------------- Metodos get-set --------------------------------------
 
 	public void setCuentaOrigen(Cuenta cuentaOrigen) {
@@ -53,6 +60,13 @@ public class Transaccion {
 			
 			return "Tranferencia "+ cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + getNombreBanco() + " por valor de " + getValorTransaccion() + "." 
 		}
+		
+		else {
+			return "Transferencia de " + cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + 
+					 cuentaDestino.getTitular() + " a la cuenta " + cuentaDestino. getNroCuenta() + " por valor de " + getValorTransaccion() + "."
+		}
+		
+		
 		
 	}
 	
