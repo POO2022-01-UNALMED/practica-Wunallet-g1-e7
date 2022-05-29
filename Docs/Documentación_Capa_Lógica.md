@@ -52,32 +52,6 @@ asociado
 
 - **Retorno:** Void
 
-#### + verHistorial()
-
-- **Funcionamiento:** 
-
-    1. El método se ejecuta sin parámetros
-    2. Muestra en pantalla los bancos asociados al usuario. Esto lo hace imprimiendo todos los string de la lista bancosAsociados.
-    3. La selección anterior se asignará a una variable que luego pasará como parámetro al método de clase 
-    extraerBanco(String nombreBanco) de la clase Banco.
-    4. Muesta en pantalla las cuentas del usuario asociadas a ese banco en un formato de \<Tipo de cuenta\>. Lo hace llamando al 
-    método extraerCuenta(int cc) que retornará un arrayList de cuentas y a cada cuenta se le obtiene su atributo tipoDeCuenta 
-    mediante un get.
-    5. En base al objeto seleccionado en el paso anterior, se ejecuta el método solicitarHistorial(). Se formateará la salida
-    con una iteración que extraiga y retorne la información de las tuplas en forma de String: 
-    **NOTA**: En el segundo elemento de la tupla puede ir un objeto cuenta o un String con el nombre del Banco. Es necesario hacer
-    un if que verifique qué tipo es y muestre su respectivo mensaje
-
-    Ejemplos de mensaje
-    
-    Para transferencias
-    Transferencia de \<nroCuentaOrigen\> a \<nroCuentaDestino\> por valor de <valor>.
-
-    Para pago de créditos
-    Transferencia de \<nroCuentaOrigen\> a \<nombreBanco\> por valor de <valor>.
-
-
-- **Retorno:** Void
 
 
 #### + solicitarCredito(Banco banco, float monto, int plazo)
@@ -268,7 +242,19 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 
 ### Métodos
 
-#### - transferir(Cuenta cuentaDestino, float valorTransferencia);
+#### + verHistorial()
+
+- **Funcionamiento:** 
+    
+    *Nota: El método se ejecuta sin parámetros*
+
+    1. Al ser ejecutado desde la cuenta origen, se iterará sobre la lista historialTransferencia e imprimiendo cada uno de los
+    objetos que ya estarán formateados por el método toString()
+
+
+- **Retorno:** Void
+
+#### abstract - transferir(Cuenta cuentaDestino, float valorTransferencia);
 
 - **Funcionamiento:**
 
@@ -279,7 +265,7 @@ Este método se ejecuta como cuentaOrigen.transferir(cuentaDestino, valorTransfe
     
 - **Retorno:** Boolean
 
-#### - transferir(Credito credito);
+#### abstract - transferir(Credito credito);
 
 - **Funcionamiento:**
 
@@ -459,28 +445,27 @@ float valorTransaccion)
 - **Retorno:** Boolean
 ---
 
-## interface Gestor
+## interface Gestor 
 
 ### Generalidades
 
-- La interfaz Gestor almacena todas las operaciones que modifican el estado de una cuenta
+- La interfaz Gestor almacena todas las operaciones que modifican el estado de una cuenta. Será implementada por la clase abstracta
+Cuenta
 
 ### Atributos
 
 - static final float SOBREGIROMAXIMOCIERRE = 0 : Representa que para cerrar una cuenta se puede tener un sobregiro máximo de 0 pesos
 (no se puede deber al banco)
 
+- static final float SALDOMAXIMOCIERRE = 0 : 
+
 ### Métodos
-
-#### + crearCuenta()
-
-- **Funcionamiento:**
-
-- **Retorno:** Boolean
 
 #### + eliminarCuenta()
 
 - **Funcionamiento:**
+Será una clase abstracta que verificará que se cumplan los requisiton necesarios para eliminar cada tipo de cuenta, quitará todas 
+las referencias a un objeto y llamará al garbage collector. 
 
 - **Retorno:** Boolean
 
@@ -488,13 +473,13 @@ float valorTransaccion)
 
 - **Funcionamiento:**
 
-- **Retorno:** Boolean
+- **Retorno:** 
 
 #### default + restarSaldo(float Valor);
 
 - **Funcionamiento:**
 
-- **Retorno:** Boolean
+- **Retorno:** 
 
 ***Nota: Estos métodos se ejecutan, en las funciones transferir, como
 this.restarSaldo(_)

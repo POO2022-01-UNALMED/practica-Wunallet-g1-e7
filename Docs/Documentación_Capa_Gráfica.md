@@ -223,18 +223,6 @@ Tu solicitud de crédito ha sido aprobada y tu saldo ha sido actualizado con el 
 ---
 #### Ver historial de transacciones
 ---
-***VerHistorial.SeleccionBanco***
-
-Seleccione de qué banco es la cuenta que desea consultar
-
-1. \< Banco asociado 1 \>
-2. \< Banco asociado 2 \>
-3. \< Banco asociado 3 \>
-
-(Leer entrada, que corresponderá al índice + 1 de la lista bancosAsociados)
-0. Volver al menú de funcionalidades 
-
----
 ***VerHistorial.SeleccionCuenta***
 
 Para continuar seleccione la cuenta a consultar
@@ -248,7 +236,13 @@ Para continuar seleccione la cuenta a consultar
 0. Volver al menú de funcionalidades 
 
 ---
-***VerHistorial.Historial***
+***VerHistorial.Historial.SinHistorial***
+No tiene transacciones por mostrar.
+
+9. Salida segura
+0. Volver al menú de funcionalidades.
+---
+***VerHistorial.Historial.ConHistorial***
 
 El historial de transacciones de su cuenta es
 
@@ -449,7 +443,20 @@ le asignará a la variable tipoCuenta (puede ser ahorro, bajo monto o corriente)
 
 #### - verHistorial(Usuario usuario)
 
+
 **Funcionamiento:**
+
+1. Se imprime la lista de cuentas asociadas al usuario con la pantalla VerHistorial.SeleccionCuenta. La selección del usuario es el índice + 1 de la lista cuentasAsociadas del usuario. Esta cuenta se asignará a la variable cuenta.
+
+2. Se llama al método verHistorial de la clase cuenta ejecutándolo desde la cuenta seleccionada en el paso anterior.
+    
+    Dependiendo de si la cuenta tiene o no transacciones por mostrar, se mostrará
+
+    1. VerHistorial.Historial.SinHistorial en caso de que el Array esté vacío
+
+    2. VerHistorial.Historial.ConHistorial en caso de que el Array tenga transacciones.
+
+    
 
 #### - transferencia(Usuario usuario)
 
