@@ -175,15 +175,17 @@ public class Banquero {
 		System.out.println("--------- Insersión del número de cédula --------------");
 		System.out.println("Ingrese el número de cedula: ");
 		int numeroCc = readInt();
-		
-//		Usuario existeUsuario = existeCuenta.
 
-		
-		
-		
 //		Comprobación de la existencia del usuario
 		
+		Usuario existeUsuario = existeCuenta.getTitular();
 		
+		if (existeUsuario !=null) {
+			
+		}else {
+			System.out.println("Numero de cuenta no existe en el banco:" + nombreBanco);
+			return ;
+		}
 		
 //		Llamado del método inscribir
 		
