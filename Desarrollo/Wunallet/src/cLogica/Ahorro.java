@@ -1,4 +1,5 @@
 package cLogica;
+import Cuenta;
 
 public class Ahorro extends Cuenta{
 	protected float tasaDeInteres;
