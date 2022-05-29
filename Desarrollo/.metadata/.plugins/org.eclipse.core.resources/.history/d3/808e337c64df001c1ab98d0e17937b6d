@@ -1,0 +1,43 @@
+package cLogica;
+import java.util.ArrayList;
+
+public class Banco {
+	private String nombreBanco;
+	private final float tasaInteresAnual = (float) 1.82;
+	static ArrayList<String> listaBancos = new ArrayList<String>();
+	private ArrayList<Cuenta> listaCuentas = new ArrayList<Cuenta>();
+	private ArrayList<Credito> listaCreditos = new ArrayList<Credito>();
+	
+	
+	public Banco(String nombreBanco) {
+		this.nombreBanco = nombreBanco;
+	}
+	
+//	-------------------------------------- Metodos get-set --------------------------------------
+	
+//	get-set nombreBanco
+	public void setNombreBanco(String nombreBanco) {
+		this.nombreBanco = nombreBanco;
+	}
+	public String getBanco() {
+		return this.nombreBanco;
+	}
+//	get-set listaBancos
+	public ArrayList<String> getListaBancos() {
+		return this.listaBancos;
+	}
+	
+	
+	
+	
+//	-------------------------------------- Metodos propuestos --------------------------------------	
+	
+	public static String extraerBanco(String nombreBanco) {
+		for(String i:)		
+		
+	}
+	
+	
+	
+	
+}
