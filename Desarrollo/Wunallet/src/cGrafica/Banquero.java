@@ -4,6 +4,7 @@ import cLogica.Usuario;
 import cLogica.Banco;
 import cLogica.Credito;
 import cLogica.PerfilCreditico;
+import cLogica.Cuenta;
 
 public class Banquero {
 
@@ -106,6 +107,8 @@ public class Banquero {
 	
 //	-------------------------------------- Metodos --------------------------------------	
 	
+	
+	
 	static void inscribirCuenta(Usuario usuario) {
 		
 		System.out.println("-------------- Inscribir cuenta ------------------");
@@ -125,8 +128,9 @@ public class Banquero {
 		
 		
 		String nombreBanco = null;
-
-		nombreBanco = Banco.listaBancos.get(numBanco-1).getNombreBanco();
+		
+        Banco banco = Banco.listaBancos.get(numBanco-1);
+		nombreBanco = banco.getNombreBanco();
 		System.out.println(" Usted seleccioó " + nombreBanco);
 
 		
@@ -155,13 +159,35 @@ public class Banquero {
 		System.out.println("Ingrese el número de la cuenta: ");
 		int numeroCuenta = readInt();
 		
+//		Comprobación de la existencia de la cuenta
+		
+		Cuenta existeCuenta = banco.extraerCuenta(numeroCuenta);
+		if (existeCuenta != null) {
+			
+		}else {
+			System.out.println("Numero de cuenta no existe en el banco:" + nombreBanco);
+			return ;
+			
+		}
+		
 //		Selección del banco - InscribirCuenta.IngresoNumeroCedula
 		
 		System.out.println("--------- Insersión del número de cédula --------------");
 		System.out.println("Ingrese el número de cedula: ");
 		int numeroCc = readInt();
 		
+//		Usuario existeUsuario = existeCuenta.
+
+		
+		
+		
+//		Comprobación de la existencia del usuario
+		
+		
+		
 //		Llamado del método inscribir
+		
+		
 		usuario.inscribir(numeroCc,numeroCuenta,tipoCuenta,nombreBanco);
 		
 		

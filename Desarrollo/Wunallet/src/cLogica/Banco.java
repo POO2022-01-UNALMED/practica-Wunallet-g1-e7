@@ -24,10 +24,10 @@ public class Banco {
 	public String getNombreBanco() {
 		return this.nombreBanco;
 	}
-
 	
-	
-	
+	public ArrayList<Cuenta> getListaCuentas(){
+		return this.listaCuentas;
+	}
 	
 //	-------------------------------------- Metodos propuestos --------------------------------------	
 	
@@ -41,7 +41,15 @@ public class Banco {
 		return banco;
 	}
 	
-	
-	
+	public Cuenta extraerCuenta(int nroCuenta) {
+		Cuenta cuenta = null;
+		for(Cuenta i: this.getListaCuentas()) {
+			if (nroCuenta == i.nroCuenta) {
+				cuenta = i;
+				
+			}
+		}
+		return cuenta;		
+	}	
 	
 }
