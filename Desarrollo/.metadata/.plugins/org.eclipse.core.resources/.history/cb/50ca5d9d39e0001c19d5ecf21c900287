@@ -256,7 +256,6 @@ public class Banquero {
 //		Verificar si tiene un crédito
 		
 		if(usuario.getCreditoActivo() != null) {
-			System.out.println("El usuario " + usuario.getCc() +" ya tiene un crédito activo");
 			return ;
 		}
 		
@@ -288,7 +287,6 @@ public class Banquero {
 		float plazo = readLong();
 		System.out.println(" Usted ingresó " + plazo);
 		
-		usuario.solicitarCredito();
 		
 	}
 	

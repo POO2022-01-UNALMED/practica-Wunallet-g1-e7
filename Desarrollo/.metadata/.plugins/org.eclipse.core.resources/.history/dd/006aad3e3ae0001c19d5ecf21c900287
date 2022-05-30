@@ -18,6 +18,9 @@ public class Usuario {
 		
 	}
 	
+
+	
+//	public solicitarCredito() {}
 	
 //	Los parametros cc y tipoCuenta no son necesarios porque se utilizan para las verificaciones en Banquero
 	public void inscribir(int cc,int numeroCuenta,String tipoCuenta, String nombreBanco) {
@@ -70,11 +73,6 @@ public class Usuario {
 	public ArrayList<Cuenta> getCuentasAsocidas(){
 		return this.cuentasAsociadas;
 	}
-	
-//	-------------------------------------- Métodos creados --------------------------------------
-	public 
-	
-	
 	
 	
 	public String toString() {

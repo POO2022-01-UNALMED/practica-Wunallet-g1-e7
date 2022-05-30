@@ -175,6 +175,11 @@ Tu cuenta ha sido actualizada y ahora no tiene topes.
 ---
 #### Solicitar crédito
 ---
+***SolicitarCredito.VerificacionCreditoActivo***
+
+Se verifica que el usario ya no tenga un credito activo, si el usuario tiene un crédito activo entonces se mostará en pantalla "El usuario " \<Cc usuario\>" ya tiene un crédito activo".
+
+---
 ***SolicitarCredito.SeleccionBanco***
 
 Con qué banco desea solicitar el crédito:
