@@ -60,7 +60,7 @@ public abstract class Cuenta implements Gestor{
 	
 	//--------------------------------------------------------------------------------------
 
-	public void verHistoria() {
+	public void verHistorial() {
 		for(int i=0;i<historialTransferencia.size();i++) {
 			System.out.print(historialTransferencia.get(i));
 		}
