@@ -49,6 +49,10 @@ public class Credito {
 	}
 	
 	
+//--------------------------------------------------------------------------------------------------------
+	
+	public static void simularCredito(Banco banco,float monto, int plazo) {
 		
+	}
 	
 }
