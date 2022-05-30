@@ -5,10 +5,6 @@ import cLogica.Banco;
 import cLogica.Credito;
 import cLogica.PerfilCreditico;
 import cLogica.Cuenta;
-import cLogica.Ahorro;
-import cLogica.Corriente;
-import cLogica.BajoMonto;
-
 
 public class Banquero {
 
@@ -40,14 +36,9 @@ public class Banquero {
 	Usuario juanPerez = new Usuario(null,1000000,10109878,null);
 	Usuario hernestoPerez = new Usuario(null,1000000,98783268,null);
 	
-//	Creación de algunas cuentas
-//	Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres)
-//	BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,float acumuladorTransferencia) 
-//	Corriente(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float sobregiroActual)
-	
-	Cuenta cuenta1 = new Ahorro(89,juanPerez, (float)10000.0 ,QuitaVivienda,"ahorro",(float)32.0);
-	Cuenta cuenta2 = new BajoMonto(69,hernestoPerez, (float)1000000.0,PooBanco, "bajoMonto", (float)5.0,(float)3000000.0,(float)3000000.0);
-	Cuenta cuenta3 = new Corriente(23,juanPerez,(float)50000000.0,Unalombia,"corriente",(float)2000000);
+//	Creación de algunos usuarios
+	Usuario juanPerez = new Usuario(null,1000000,10109878,null);
+	Usuario hernestoPerez = new Usuario(null,1000000,98783268,null);
 	
 		
 		int optionUser;
