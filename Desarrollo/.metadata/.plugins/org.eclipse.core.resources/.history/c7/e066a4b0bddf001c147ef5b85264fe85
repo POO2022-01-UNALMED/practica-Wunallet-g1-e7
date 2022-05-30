@@ -25,6 +25,8 @@ public class Usuario {
 	public void inscribir(int cc,int numeroCuenta,String tipoCuenta, String nombreBanco) {
 		Banco banco = Banco.extraerBanco(nombreBanco);
 		Cuenta cuenta = banco.extraerCuenta(numeroCuenta);
+		System.out.println(cuenta.getNroCuenta());
+		System.out.println(this.cc);
 		this.listaInscritos.add(cuenta);
 		
 

@@ -37,8 +37,8 @@ public class Banquero {
 	Banco QuitaVivienda = new Banco("QuitaVivienda");
 	
 //	Creación de algunos usuarios
-	Usuario juanPerez = new Usuario(null,1000000,10,null);
-	Usuario hernestoPerez = new Usuario(null,1000000,98,null);
+	Usuario juanPerez = new Usuario(null,1000000,10109878,null);
+	Usuario hernestoPerez = new Usuario(null,1000000,98783268,null);
 	
 //	Creación de algunas cuentas
 //	Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres)
@@ -207,8 +207,8 @@ public class Banquero {
 		
 		usuario.inscribir(numeroCc,numeroCuenta,tipoCuenta,nombreBanco);
 		System.out.println(usuario);
-//		System.out.println(usuario.getListaIncritos());
-
+		System.out.println(usuario.getListaIncritos());
+//		hola mundo
 		
 	
 	}
