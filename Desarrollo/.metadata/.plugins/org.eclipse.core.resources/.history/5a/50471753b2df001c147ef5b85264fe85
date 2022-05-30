@@ -17,7 +17,6 @@ public abstract class Cuenta implements Gestor{
 		this.saldo = saldo;
 		this.banco = banco;
 		this.tipoDeCuenta = tipoDeCuenta;
-		
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------

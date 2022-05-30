@@ -195,7 +195,7 @@ public class Banquero {
 		
 		Usuario existeUsuario = existeCuenta.getTitular();
 		
-		if (existeUsuario.getCc() == numeroCc) {
+		if (existeUsuario.getCc() != numeroCc) {
 			
 		}else {
 			System.out.println("Numero de cedula "+numeroCc+" no concuerda con la cuenta");

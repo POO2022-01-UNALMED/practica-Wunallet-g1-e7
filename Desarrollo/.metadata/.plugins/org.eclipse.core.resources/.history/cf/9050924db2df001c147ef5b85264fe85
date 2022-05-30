@@ -1,6 +1,5 @@
 package cLogica;
 import cLogica.Cuenta;
-import cLogica.Banco;
 
 public class Ahorro extends Cuenta{
 	protected float tasaDeInteres;
@@ -8,7 +7,6 @@ public class Ahorro extends Cuenta{
 	public Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres) {
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
 		this.tasaDeInteres = tasaDeInteres;
-		banco.getListaCuentas().add(this);
 	}
 
 

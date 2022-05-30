@@ -7,7 +7,6 @@ public class Corriente extends Cuenta{
 	public Corriente(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float sobregiroActual) {
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
 		this.sobregiroActual = sobregiroActual;
-		banco.getListaCuentas().add(this);
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------

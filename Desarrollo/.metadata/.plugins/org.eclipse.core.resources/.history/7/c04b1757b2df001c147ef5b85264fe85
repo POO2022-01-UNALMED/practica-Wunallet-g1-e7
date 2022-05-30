@@ -8,7 +8,6 @@ public class BajoMonto extends Ahorro{
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,tasaDeInteres);
 		this.limiteMensual = limiteMensual;
 		this.acumuladorTransferencia = acumuladorTransferencia;
-		banco.getListaCuentas().add(this);
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------
