@@ -57,6 +57,10 @@ public abstract class Cuenta implements Gestor{
 		return this.tipoDeCuenta;
 	}
 	
+	public ArrayList<Transaccion> getHistorialTransferencia(){
+		return this.historialTransferencia;
+	}
+	
 	
 	//--------------------------------------------------------------------------------------
 
@@ -65,15 +69,6 @@ public abstract class Cuenta implements Gestor{
 			System.out.print(historialTransferencia.get(i));
 		}
 	}
-	
-	public  void sumarCuenta(float valorTransferencia) {
-		this.setSaldo(this.getSaldo() + valorTransferencia);
-	}
-	
-	public  void restarCuenta(float valorTransferencia) {
-		this.setSaldo(this.getSaldo() - valorTransferencia);
-	}
-	
 	
 	abstract boolean transferir(Cuenta cuentaDestino, float valorTranseferencia);
 	

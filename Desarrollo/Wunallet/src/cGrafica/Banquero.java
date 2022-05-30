@@ -234,9 +234,16 @@ public class Banquero {
 		
 		
 //		VerHistorial.Historial.SinHistorial
-		
-		
-//		VerHistorial.Historial.ConHistorial
+	
+		if(cuentaVH.getHistorialTransferencia().isEmpty()) {
+			System.out.println("No tiene historial de transacciones");
+			return ;
+		}else {
+//			VerHistorial.Historial.ConHistorial
+			cuentaVH.verHistorial();
+		}
+			
+
 		
 		
 		
