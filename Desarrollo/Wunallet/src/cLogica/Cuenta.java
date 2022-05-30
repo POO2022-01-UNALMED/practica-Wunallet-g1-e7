@@ -66,4 +66,8 @@ public abstract class Cuenta implements Gestor{
 		}
 	}
 	
+	abstract boolean transferir(Cuenta cuentaDestino, float valorTranseferencia);
+	
+	abstract boolean transferir(Credito credito);
+
 }
