@@ -60,6 +60,8 @@ public abstract class Cuenta implements Gestor{
 	
 	//--------------------------------------------------------------------------------------
 
-	
+	public void verHistoria() {
+		
+	}
 	
 }
