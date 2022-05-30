@@ -14,29 +14,21 @@
 
 - \- float ingresosMensuales : Valor de ingresos mensuales que tiene el usuario.
 
+- \- PerfilCrediticio perfilCrediticio : Perfil crediticio con el que cuenta el usuario.
+
+- \- int cc : Número de identificación del usuario.
+
 - \- Credito creditoActivo : Null en caso de que el usuario no tenga un crédito asociado, o el objeto de tipo Credito que tenga 
 asociado.
-
-- \- int cedula : Identificador único del usuario.
 
 - \- ArrayList<String> bancosAsociados : Nombres de los bancos a los cuales el usuario está asociado (mediante créditos o cuentas).
 
 - \- ArrayList<Cuenta> cuentasAsociadas : Lista de cuentas que tiene el usuario con algún banco.
 
-- \- PerfilCrediticio perfilCrediticio : Perfil crediticio con el que cuenta el usuario.
 
 ### Métodos
 
-
 #### + Inscribir(int nroCuenta, String nombreBanco)
-
-- **Idea de código:**
-
-    ```java
-    bancoDestino = Banco.extraerBanco(nombreBanco);
-    cuentaDestio = bancoDestino.extraerCuenta;
-    this.listaInscritos.add(cuentaDestino);
-    ```
 
 - **Funcionamiento:** 
 
@@ -48,51 +40,34 @@ asociado.
 
 - **Retorno:** Void
 
-- **Retorno:** Void
 
-
-
-#### + solicitarCredito(Banco banco, float monto, int plazo)
+#### + solicitarCredito(Banco banco, float monto, int plazo, Cuenta cuentaSeleccionada)
 
 - **Funcionamiento:** 
     
-    Desde la interfaz el usuario escoge un banco (la lista de todos los bancos disponibles se obtiene del atributo estático
-    listaBancos), una vez escogido se pasa como primer parámetro de este método.
+    Se verificará si el usuraio cuenta con un perfil crediticio. De no ser así, se le creará uno y se le asignará a su atributo
+    perfilCrediticio.
 
-    Luego se chequeará si el usuario tiene asociado un perfil crediticio en su atributo perfilCrediticio, o en caso contrario, se
-    creará.
+    Luego se revisarán los atributos del perfilCrediticio y, en caso de que el comportamientoDePago del usuario sea suficientemente
+    bueno, se simulará el crédito para retornar la cuota mensual tentativa. Si esta cuota supera la capacidad de endeudamiento del
+    usuario el crédito se rechazará. En caso contrario, el crédito será creado y asignado al atributo creditoActivo del usuario.
 
-    Verificado el perfil, se simulará el crédito el cual retornará la cuota mensual tentativa. Si la cuota mensual supera la
-    capacidad de endeudamiento el crédito se rechazará. En caso contrario, se continua revisando el comportamiento de pago, que si
-    es mayor o igual a 2, permitirá finalmente crear el crédito.
+    Finalmente se sumará el saldo del crédito otorgado al usuario en la cuenta seleeccionada, y se añadirá a la listaCreditos
+    del banco mediante un llamado al método añadirCredito(Credito credito) del banco.
 
-    Una vez creado se le asignará al atributo de usuario 'creditoActivo' el objeto, y se añadirá el crédito a la listaCreditos 
-    del Banco mediante un llamado al método añadirCredito(Credito credito) de banco.
+    Su retorno será un entero, en base al cual se harán los llamados correspondientes a las pantallas de la interfaz gráfica.
     
+- **Retorno:** int
 
-- **Retorno:** Void
 
 #### + removerCuentaAsociada(Cuenta cuenta)
 
-
-
 - **Funcionamiento:** 
     
-    Desde la interfaz el usuario escoge un banco (la lista de todos los bancos disponibles se obtiene del atributo estático
-    listaBancos), una vez escogido se pasa como primer parámetro de este método.
-
-    Luego se chequeará si el usuario tiene asociado un perfil crediticio en su atributo perfilCrediticio, o en caso contrario, se
-    creará.
-
-    Verificado el perfil, se simulará el crédito el cual retornará la cuota mensual tentativa. Si la cuota mensual supera la
-    capacidad de endeudamiento el crédito se rechazará. En caso contrario, se continua revisando el comportamiento de pago, que si
-    es mayor o igual a 2, permitirá finalmente crear el crédito.
-
-    Una vez creado se le asignará al atributo de usuario 'creditoActivo' el objeto, y se añadirá el crédito a la listaCreditos 
-    del Banco mediante un llamado al método añadirCredito(Credito credito) de banco.
+    *Pendiente por verificar si este método se va a usar en romperTopes*
     
-
 - **Retorno:** Void
+
 --- 
 
 ## PerfilCrediticio
@@ -103,20 +78,22 @@ asociado.
 
 - \- Usuario usuario : Usuario a quién pertenece el perfil crediticio
 
-- \- float nivelEndeudamiento: Corresponde al 20% de los ingresos mensuales.
+- \- float capacidadEndeudamiento: Corresponde al 20% de los ingresos mensuales.
 
-- \- enum[] comportamientoDePago: Entero entre 1 y 3 (representando bueno, malo y regular). Se debe definir mediante una elección
-aleatoria en el constructor.
+- \- comportamientoDePago comportamientoDePago: Entero entre 1 y 3 (representando bueno, malo y regular). Se debe definir mediante
+una elección aleatoria en el constructor.
 
 ###  Métodos
 
-#### + Constructor(Usuario usuario)
+#### + Constructor(Usuario usuario, float ingresosMensuales, comportamientoDePago nivel)
 
 - **Funcionamiento:**
 
-    Será invocado en caso de que al solicitarse un crédito el usuario no tenga perfil crediticio. Se le deberá pasar como
-    parámetros solamente el usuario de donde se extraerá los ingrsos mensuales para calcular su nivel de endeudamiento, y
-    el comportamiento de pago medido de 1 a 3, se fijará de forma aleatoria.
+    Será invocado en caso de que al solicitarse un crédito el usuario no tenga perfil crediticio. 
+    
+    Asignará a su atributo usuario el usuario enviado como parámetro. También asignará en la capacidadEndeudamiento el 20% de los
+    ingresos mensuales del usuario, y finalmente asignará el nivel (extraido del enum comportamientoDePago), a su
+    comportamientoDePago.
 
 - **Retorno:** Void
 
@@ -469,7 +446,7 @@ float valorTransaccion)
 
 - **Funcionamiento:**
 
-1. Se debe verificar que el saldo de la cuenta sea mayor o igual a 15.000 pesos, que es el costo de rompe
+1. Se debe verificar que el saldo de la cuenta sea mayor o igual a 15.000 pesos, que es el costo de romper los topes.
 2. Se creará un nuevo objeto de tipo Ahorro asignado a la variable nuevaCuentaAhorro
     ```java
     Ahorro nuevaCuentaAhorro = new Ahorro(this.getTitular(), this.getBanco(), this.getSaldo(), this.getNroCuenta(), "Ahorro",

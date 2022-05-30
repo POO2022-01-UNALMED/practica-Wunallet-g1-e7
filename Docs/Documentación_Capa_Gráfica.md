@@ -460,6 +460,8 @@ le asignará a la variable tipoCuenta (puede ser ahorro, bajo monto o corriente)
 
 **Funcionamiento:**
 
+
+
 #### - verHistorial(Usuario usuario)
 
 **Funcionamiento:**
