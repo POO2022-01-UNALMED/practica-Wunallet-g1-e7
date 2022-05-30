@@ -53,6 +53,7 @@ public class Banquero {
 	Cuenta cuenta1 = new Ahorro(89,juanPerez, (float)10000.0 ,QuitaVivienda,"ahorro",(float)36.0);
 	Cuenta cuenta2 = new BajoMonto(69,hernestoPerez, (float)1000000.0,PooBanco, "bajoMonto", (float)5.0,(float)3000000.0,(float)3000000.0);
 	Cuenta cuenta3 = new Corriente(23,juanPerez,(float)50000000.0,Unalombia,"corriente",(float)2000000);
+	Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)1000000.0,Unalombia, "bajoMonto", (float)5000.0,(float)3000.0,(float)3000.0);
 	
 		
 		int optionUser;
@@ -110,7 +111,7 @@ public class Banquero {
 			switch(option) {
 //			case 1: System.out.print("Metodo que ejecuta a inscribir cuentas");break;
 			case 1: inscribirCuenta(usuario);break;
-			case 2: System.out.print("Metodo que ejecuta a romper topes");break;
+			case 2: romperTopes(usuario);break;
 			case 3: solicitarCredito(usuario);break;
 			case 4: verHistorial(usuario);break;
 			case 5: System.out.print("Metodo que ejecuta a tranferir");break;
@@ -321,6 +322,48 @@ public class Banquero {
 	
 	
 	
+	static void romperTopes(Usuario usuario) {
 	
-
+//		Chaqueo de las cuentas debajo monto
+		int cRT = 0;
+		for(Cuenta cuentaI : usuario.getCuentasAsocidas()) {
+			if(cuentaI instanceof BajoMonto) {
+				cRT++;
+//				System.out.println(cRT + " Cuenta "+ cuentaI.getNroCuenta());
+			}
+		}
+		
+		
+		
+//		RomperTopes.SinCuentaBajoMonto				
+		if(cRT == 0) {
+			System.out.println("Esta funcionalidad no está habilitada para tus cuentas.");
+		}
+		
+//		RomperTopes.ConCuentaBajoMonto
+		
+		System.out.println("¡Recuerde! El procedimiento de romper topes consiste en transformar su cuenta de tipo Bajo monto, ");
+		System.out.println("a una cuenta de ahorros convencional, eliminando las limitaciones de este tipo de cuentas.");
+		System.out.println("Este proceso tiene un costo de 15.000 pesos que pagará una única vez.");
+		int cRT_1 = 0;
+		for(Cuenta cuentaI : usuario.getCuentasAsocidas()) {
+			if(cuentaI instanceof BajoMonto) {
+				cRT_1++;
+				System.out.println(cRT_1 + " Cuenta "+ cuentaI.getNroCuenta());
+			}
+		}
+		
+		System.out.print("Para continuar seleccione la cuenta de bajo monto que desea transformar: ");
+		int rtCuenta = readInt(); 
+		
+		Cuenta CuentaRt = usuario.getCuentasAsocidas().get(rtCuenta-1);	
+		
+		
+		System.out.println("Usted seleccionó: " + CuentaRt.getNroCuenta());
+		boolean c = ((BajoMonto)CuentaRt).romperTopes();
+				
+		
+	}
+	
+	
 }

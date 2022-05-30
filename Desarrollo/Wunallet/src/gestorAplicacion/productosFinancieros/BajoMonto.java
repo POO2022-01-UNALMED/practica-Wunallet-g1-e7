@@ -15,7 +15,7 @@ public class BajoMonto extends Ahorro{
 		this.limiteMensual = limiteMensual;
 		this.acumuladorTransferencia = acumuladorTransferencia;
 		banco.getListaCuentas().add(this);
-		titular.getCuentasAsocidas().add(this);
+//		titular.getCuentasAsocidas().add(this);
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------
@@ -86,7 +86,12 @@ public class BajoMonto extends Ahorro{
 			return false;
 		}
 
-	}	
+	}
+	
+	
+	public boolean romperTopes() {
+		return true;
+	}
 	
 
 }
