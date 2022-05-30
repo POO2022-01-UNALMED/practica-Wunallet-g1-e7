@@ -52,4 +52,10 @@ public class Banco {
 		return cuenta;		
 	}	
 	
+	public void añadirCredito(Credito credito) {
+		
+		listaCreditos.add(credito);
+	}
+	
+	
 }
