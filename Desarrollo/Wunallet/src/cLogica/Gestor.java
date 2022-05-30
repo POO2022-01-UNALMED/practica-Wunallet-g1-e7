@@ -10,7 +10,12 @@ public abstract interface Gestor {
 	}
 	
 	
-	public abstract void sumarCuenta(float valorTransferencia);
-	public abstract void restarCuenta(float valorTransferencia);
+	public default void sumarCuenta(float valorTransferencia) {
+		this.setSaldo(this.getSaldo() + valorTransferencia);
+	}
+	
+	public default void restarCuenta(float valorTransferencia) {
+		this.setSaldo(this.getSaldo() - valorTransferencia);
+	}
 	
 }
