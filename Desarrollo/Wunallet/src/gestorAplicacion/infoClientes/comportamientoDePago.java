@@ -26,9 +26,5 @@ public enum comportamientoDePago {
 		  public static comportamientoDePago randomNivel()  {
 		    return VALUES.get(RANDOM.nextInt(SIZE));
 		  }
-	
-	
-//	public static void main(String[] args) {
-//		System.out.println(comportamientoDePago.randomNivel().getNivel());
-//	}
+
 }
