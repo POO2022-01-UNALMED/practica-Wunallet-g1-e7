@@ -1,8 +1,9 @@
-package cLogica;
+package gestorAplicacion.infoClientes;
 import java.util.ArrayList;
-import cLogica.Cuenta;
 
-import cLogica.PerfilCreditico;
+import gestorAplicacion.infoClientes.PerfilCreditico;
+import gestorAplicacion.productosFinancieros.Credito;
+import gestorAplicacion.productosFinancieros.Cuenta;
 
 public class Usuario {
 	private ArrayList<Cuenta> listaInscritos = new ArrayList<Cuenta>();
@@ -87,7 +88,7 @@ public class Usuario {
 		}else {
 			float cuotaTentativa = Credito.simularCredito(banco, monto, plazo);
 			
-			if(cuotaTentativa>this.getPerfilCrediticio().getNivelDeEndeudamiento()) {
+			if(cuotaTentativa>this.getPerfilCrediticio().getCapacidadEndeudamiento()) {
 				salida=2;
 			}else {
 				Credito credito = new Credito(this,banco,monto,cuotaTentativa);

@@ -1,4 +1,4 @@
-package cLogica;
+package gestorAplicacion.infoClientes;
 import java.util.ArrayList;
 
 public abstract interface Gestor{

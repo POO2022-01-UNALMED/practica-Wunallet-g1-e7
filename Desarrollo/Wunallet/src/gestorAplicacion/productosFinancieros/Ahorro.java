@@ -1,6 +1,8 @@
-package cLogica;
-import cLogica.Cuenta;
-import cLogica.Banco;
+package gestorAplicacion.productosFinancieros;
+import gestorAplicacion.infoClientes.Banco;
+import gestorAplicacion.infoClientes.Transaccion;
+import gestorAplicacion.infoClientes.Usuario;
+import gestorAplicacion.productosFinancieros.Cuenta;
 
 public class Ahorro extends Cuenta{
 	protected float tasaDeInteres;

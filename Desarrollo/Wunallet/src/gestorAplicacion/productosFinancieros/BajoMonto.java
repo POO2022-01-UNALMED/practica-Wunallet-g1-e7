@@ -1,4 +1,8 @@
-package cLogica;
+package gestorAplicacion.productosFinancieros;
+
+import gestorAplicacion.infoClientes.Banco;
+import gestorAplicacion.infoClientes.Transaccion;
+import gestorAplicacion.infoClientes.Usuario;
 
 public class BajoMonto extends Ahorro{
 	private float limiteMensual;

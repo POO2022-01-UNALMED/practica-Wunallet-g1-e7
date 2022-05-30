@@ -1,5 +1,5 @@
-package cLogica;
-import cLogica.Cuenta;
+package gestorAplicacion.infoClientes;
+import gestorAplicacion.productosFinancieros.Cuenta;
 
 public class Transaccion {
 	private Cuenta cuentaOrigen;

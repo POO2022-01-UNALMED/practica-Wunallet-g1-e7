@@ -1,13 +1,15 @@
 package cGrafica;
 import java.util.Scanner;
-import cLogica.Usuario;
-import cLogica.Banco;
-import cLogica.Credito;
-import cLogica.PerfilCreditico;
-import cLogica.Cuenta;
-import cLogica.Ahorro;
-import cLogica.Corriente;
-import cLogica.BajoMonto;
+
+import gestorAplicacion.infoClientes.Banco;
+import gestorAplicacion.infoClientes.PerfilCreditico;
+import gestorAplicacion.infoClientes.Usuario;
+import gestorAplicacion.productosFinancieros.Ahorro;
+import gestorAplicacion.productosFinancieros.BajoMonto;
+import gestorAplicacion.productosFinancieros.Corriente;
+import gestorAplicacion.productosFinancieros.Credito;
+import gestorAplicacion.productosFinancieros.Cuenta;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 

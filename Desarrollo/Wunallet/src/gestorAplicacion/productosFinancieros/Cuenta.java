@@ -1,5 +1,10 @@
-package cLogica;
+package gestorAplicacion.productosFinancieros;
 import java.util.ArrayList;
+
+import gestorAplicacion.infoClientes.Banco;
+import gestorAplicacion.infoClientes.Gestor;
+import gestorAplicacion.infoClientes.Transaccion;
+import gestorAplicacion.infoClientes.Usuario;
 
 public abstract class Cuenta implements Gestor{
 	

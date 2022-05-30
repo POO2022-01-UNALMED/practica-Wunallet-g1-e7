@@ -1,4 +1,8 @@
-package cLogica;
+package gestorAplicacion.productosFinancieros;
+
+import gestorAplicacion.infoClientes.Banco;
+import gestorAplicacion.infoClientes.Transaccion;
+import gestorAplicacion.infoClientes.Usuario;
 
 public class Corriente extends Cuenta{
 	private static final float capacidadSobregiro = 600000;

@@ -1,14 +1,14 @@
-package cLogica;
+package gestorAplicacion.infoClientes;
 import java.util.ArrayList;
 
 public class PerfilCreditico {
 	private Usuario user;
-	private float nivelDeEndeudamiento;
+	private float capacidadEndeudamiento;
 	private comportamientoDePago comportamientoDePago;
 	
 	public PerfilCreditico(Usuario user, float ingresosMensuales, comportamientoDePago nivel) {
 		this.user = user;
-		this.nivelDeEndeudamiento = (float)0.2*ingresosMensuales;
+		this.capacidadEndeudamiento = (float)0.2*ingresosMensuales;
 		this.comportamientoDePago = nivel;
 	}
 	
@@ -22,11 +22,11 @@ public class PerfilCreditico {
 	}
 
 //	get-set nivelDeEndeudamiento
-	public void setNivelDeEndeudamiento(float nivelDeEndeudamiento) {
-		this.nivelDeEndeudamiento = nivelDeEndeudamiento;
+	public void setCapacidadEndeudamiento(float nivelDeEndeudamiento) {
+		this.capacidadEndeudamiento = nivelDeEndeudamiento;
 	}
-	public float getNivelDeEndeudamiento() {
-		return this.nivelDeEndeudamiento;
+	public float getCapacidadEndeudamiento() {
+		return this.capacidadEndeudamiento;
 	}
 //	get-set nivel
 	public comportamientoDePago getComportamientoDePago() {

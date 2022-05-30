@@ -1,5 +1,8 @@
-package cLogica;
+package gestorAplicacion.infoClientes;
 import java.util.ArrayList;
+
+import gestorAplicacion.productosFinancieros.Credito;
+import gestorAplicacion.productosFinancieros.Cuenta;
 
 public class Banco {
 	private String nombreBanco;
@@ -54,7 +57,7 @@ public class Banco {
 	public Cuenta extraerCuenta(int nroCuenta) {
 		Cuenta cuenta = null;
 		for(Cuenta i: this.getListaCuentas()) {
-			if (nroCuenta == i.nroCuenta) {
+			if (nroCuenta == i.getNroCuenta()) {
 				cuenta = i;
 				
 			}
