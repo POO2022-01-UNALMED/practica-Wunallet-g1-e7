@@ -23,9 +23,58 @@ public class Ahorro extends Cuenta{
 	}
 
 	
+	public boolean transferir(Cuenta cuentaDestino, float valorTransferencia) {
+		
+		if(this.saldo >= valorTransferencia) {
+			
+
+			
+			
+			this.restarCuenta(valorTransferencia);
+
+			
+			
+			cuentaDestino.sumarCuenta(valorTransferencia);
+			
+			Transaccion trans = new Transaccion(this,cuentaDestino,cuentaDestino.banco.getNombreBanco(),valorTransferencia);
+			
+			historialTransferencia.add(trans);
+			
+			return true;
+		}
+		
+		else {
+			return false;
+		}
+	}
 	
-	
-	
+	public boolean transferir(Credito credito) {
+		
+		if(this.saldo >= credito.getCuotaMensual()) {
+			
+
+			
+			
+			this.restarCuenta(credito.getCuotaMensual());
+
+			
+			
+			credito.setDeuda(credito.getDeuda()-credito.getCuotaMensual());
+			
+			Transaccion trans = new Transaccion(this,credito.getBanco().getNombreBanco(),credito.getCuotaMensual());
+			
+			historialTransferencia.add(trans);
+			
+			
+			return true;
+			
+		}
+		
+		else {
+			return false;
+		}
+
+	}
 	
 	
 	public void crearCuenta() {
