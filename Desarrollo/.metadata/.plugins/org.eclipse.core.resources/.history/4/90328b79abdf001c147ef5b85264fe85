@@ -28,7 +28,6 @@ public class Usuario {
 	}
 	
 //	-------------------------------------- Métodos get-set --------------------------------------
-//	Get-Set ingresosMensuales
 	public void setIngresosMensuales(float ingresosMensuales) {
 		this.ingresosMensuales = ingresosMensuales;
 	}
@@ -36,28 +35,11 @@ public class Usuario {
 		return this.ingresosMensuales;
 	}
 	
-//	Get-Set perfilCrediticio
 	public void setPerfilCrediticio(PerfilCreditico perfilCrediticio) {
 		this.perfilCrediticio = perfilCrediticio;
 	}
 	public PerfilCreditico getPerfilCrediticio() {
 		return this.perfilCrediticio;
-	}
-	
-//	Get-Set cc
-	public void setCc(int cc) {
-		this.cc = cc;
-	}
-	public int getCc() {
-		return this.cc;
-	}
-	
-//	Get-Set creditoActivo
-	public void setCreditoActivo(Credito creditoActivo) {
-		this.creditoActivo = creditoActivo;
-	}
-	public Credito getCreditoActivo() {
-		return this.creditoActivo;
 	}
 	
 }
