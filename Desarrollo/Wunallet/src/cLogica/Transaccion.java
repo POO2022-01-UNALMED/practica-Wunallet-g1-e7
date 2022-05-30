@@ -1,5 +1,5 @@
 package cLogica;
-import Cuenta;
+import cLogica.Cuenta;
 
 public class Transaccion {
 	private Cuenta cuentaOrigen;
@@ -41,7 +41,7 @@ public class Transaccion {
 	public void setNombreBanco(String nombreBanco) {
 		this.nombreBanco = nombreBanco;
 	}
-	public float getNombreBanco() {
+	public String getNombreBanco() {
 		return this.nombreBanco;
 	}
 	
@@ -57,7 +57,7 @@ public class Transaccion {
 
 	public String toString() {
 		
-		if (this.cuentaDestino == NULL) {
+		if (this.cuentaDestino == null) {
 			
 			return "Tranferencia "+ cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + getNombreBanco() + " por valor de " + getValorTransaccion() + "." ;
 		}

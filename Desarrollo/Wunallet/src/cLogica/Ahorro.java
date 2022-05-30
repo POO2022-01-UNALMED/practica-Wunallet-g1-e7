@@ -1,5 +1,5 @@
 package cLogica;
-import Cuenta;
+import cLogica.Cuenta;
 
 public class Ahorro extends Cuenta{
 	protected float tasaDeInteres;
@@ -15,7 +15,7 @@ public class Ahorro extends Cuenta{
 	public void setTasaDeInteres(float tasaDeInteres) {
 		this.tasaDeInteres = tasaDeInteres;
 	}
-	public float getBanco() {
+	public float getTasaDeInteres() {
 		return this.tasaDeInteres;
 	}
 
