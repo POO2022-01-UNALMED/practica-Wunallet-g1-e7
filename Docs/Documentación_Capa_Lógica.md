@@ -316,7 +316,7 @@ Este método se ejecuta como cuentaOrigen.transferir(cuentaDestino, valorTransfe
 
 - **Funcionamiento:**
 
-1. Verificar si valorTransferencia <= saldoCuentaOrigen + sobregiroActual
+1. Verificar si valorTransferencia <= saldoCuentaOrigen + (capacidadSobregiro - sobregiroActual)
 
 2. En caso de haber usado la capacidad de sobregiro, se setea el atributo sobregiroActual con la cantidad valorTransferencia-saldo
 Esto se debe comprobar con un if, si valorTransferencia-saldo>0.
@@ -339,7 +339,7 @@ float valorTransaccion)
 
 - **Funcionamiento:**
 
-1. Verificar si cuotaMensual <= saldoCuentaOrigen + sobregiroActual
+1. Verificar si cuotaMensual <= saldoCuentaOrigen + (capacidadSobregiro - sobregiroActual)
 
 2. En caso de haber usado la capacidad de sobregiro, se setea el atributo sobregiroActual con la cantidad valorTransferencia-saldo
 Esto se debe comprobar con un if, si valorTransferencia-saldo>0.
