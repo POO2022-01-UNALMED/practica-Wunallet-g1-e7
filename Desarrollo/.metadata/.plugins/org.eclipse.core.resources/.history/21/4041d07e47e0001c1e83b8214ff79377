@@ -1,0 +1,319 @@
+package cGrafica;
+import java.util.Scanner;
+import cLogica.Usuario;
+import cLogica.Banco;
+import cLogica.Credito;
+import cLogica.PerfilCreditico;
+import cLogica.Cuenta;
+import cLogica.Ahorro;
+import cLogica.Corriente;
+import cLogica.BajoMonto;
+
+
+public class Banquero {
+
+	static Scanner sc = new Scanner(System.in);
+	
+	static long readLong() {
+		return sc.nextLong();
+	}
+	
+	static int readInt() {
+		return sc.nextInt();
+	}
+	
+	static String readln() {
+		sc.nextLine();
+		return sc.nextLine();
+	}
+	
+	
+	
+	public static void main (String args[]) {
+		
+//	Creación de algunos bancos
+	Banco Unalombia = new Banco("Unalombia",(float)1.6);
+	Banco PooBanco = new Banco("PooBanco",(float)2.5);
+	Banco QuitaVivienda = new Banco("QuitaVivienda",(float)36.0);
+	
+//	Creación de algunos usuarios
+	Usuario juanPerez = new Usuario(null,1000000,10,null);
+	Usuario hernestoPerez = new Usuario(null,1000000,98,null);
+	
+//	Creación de algunas cuentas
+//	Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres)
+//	BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,float acumuladorTransferencia) 
+//	Corriente(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float sobregiroActual)
+	
+	Cuenta cuenta1 = new Ahorro(89,juanPerez, (float)10000.0 ,QuitaVivienda,"ahorro",(float)36.0);
+	Cuenta cuenta2 = new BajoMonto(69,hernestoPerez, (float)1000000.0,PooBanco, "bajoMonto", (float)5.0,(float)3000000.0,(float)3000000.0);
+	Cuenta cuenta3 = new Corriente(23,juanPerez,(float)50000000.0,Unalombia,"corriente",(float)2000000);
+	
+		
+		int optionUser;
+		Usuario usuario;
+		do {
+			System.out.println("¿Que usuario desea realizar?");
+			System.out.println(" 1. Juan Perez");
+			System.out.println(" 2. Hernesto Perez");
+			System.out.println(" 0. Salida segura");
+			System.out.print("Ingrese la opcion :");
+			optionUser = (int) readLong();
+				
+			
+			switch (optionUser) {
+//			Primer usuario.
+			case 1: usuario = juanPerez; 
+					funcionalidadesEjecucion(usuario);
+					break;
+					
+				
+//			Segundo usuario.
+			case 2: usuario = hernestoPerez;
+					funcionalidadesEjecucion(usuario);
+					break;
+				
+			}
+		} while(optionUser != 5);
+		
+
+		
+		
+		
+		
+		
+	}
+	
+	
+	public static void funcionalidadesEjecucion(Usuario usuario) {
+		int option;
+		
+		
+		do {
+			System.out.println("¿Que operacion desea realizar?");
+			System.out.println(" 1. Inscribir cuenta");
+			System.out.println(" 2. Romper topes");
+			System.out.println(" 3. Solicitar credito");
+			System.out.println(" 4. Ver historial de transacciones");
+			System.out.println(" 5. Tranferir");
+			System.out.println(" 6. Salida segura");
+			System.out.println(" 7. Volver al menu de usuarios");
+			System.out.print("Ingrese la opcion :");
+			
+			option = (int) readLong();
+			
+			switch(option) {
+//			case 1: System.out.print("Metodo que ejecuta a inscribir cuentas");break;
+			case 1: inscribirCuenta(usuario);break;
+			case 2: System.out.print("Metodo que ejecuta a romper topes");break;
+			case 3: solicitarCredito(usuario);break;
+			case 4: verHistorial(usuario);break;
+			case 5: System.out.print("Metodo que ejecuta a tranferir");break;
+			case 6: break;
+//			Hacen lo mismo xD
+			case 7: break;
+			}
+			
+		}while(option != 7);
+	}
+	
+	
+	
+	
+//	-------------------------------------- Metodos --------------------------------------	
+	
+	
+	
+	static void inscribirCuenta(Usuario usuario) {
+		
+		System.out.println("-------------- Inscribir cuenta ------------------");
+		
+		
+		
+//		Selección del banco - InscribirCuenta.SeleccionBanco
+	
+		System.out.println("-------------- Seleección del banco --------------");
+		int c = 0;
+		for(Banco i: Banco.listaBancos) {
+			System.out.println((c+1) + ". " + i.getNombreBanco());
+			c++;
+		}
+		System.out.println("Seleccione de qué banco es la cuenta que desea inscribir: ");
+		int numBanco = readInt();
+		
+		
+		String nombreBanco = null;
+		
+        Banco banco = Banco.listaBancos.get(numBanco-1);
+		nombreBanco = banco.getNombreBanco();
+		System.out.println(" Usted selecciono " + nombreBanco);
+
+		
+//		Seleccione el tipo de cuenta - InscribirCuenta.SeleccionTipoCuenta
+		
+		System.out.println("-------------- Seleección tipo de cuenta --------------");
+		System.out.println("1. Cuenta de bajo monto ");
+		System.out.println("2. Cuenta de ahorros");
+		System.out.println("3. Cuenta corriente ");
+		System.out.println("4. Volver al menú de funcionalidades");
+		System.out.println("Seleccione el tipo de cuenta: ");
+		int tipCuenta = readInt(); 
+		
+		String tipoCuenta = null;
+		
+		switch(tipCuenta) {
+		case 1: tipoCuenta = "bajoMonto";break;
+		case 2: tipoCuenta = "ahorro";break;
+		case 3: tipoCuenta = "corriente";break;
+		}
+//		System.out.println(" Usted seleccioó " + tipoCuenta);
+		
+//		Selección del banco - InscribirCuenta.IngresoNumeroCuenta
+		
+		System.out.println("--------- Insersión del número de cuenta --------------");
+		System.out.println("Ingrese el número de la cuenta: ");
+		int numeroCuenta = readInt();
+		
+//		Comprobación de la existencia de la cuenta
+		
+		Cuenta existeCuenta = banco.extraerCuenta(numeroCuenta);
+		if (existeCuenta != null) {
+			
+		}else {
+			System.out.println("Numero de cuenta "+numeroCuenta+" no existe en el banco:" + nombreBanco);
+			return ;
+			
+		}
+		
+//		Selección del banco - InscribirCuenta.IngresoNumeroCedula
+		
+		System.out.println("--------- Insersión del número de cédula --------------");
+		System.out.println("Ingrese el número de cedula: ");
+		int numeroCc = readInt();
+
+//		Comprobación de la existencia del usuario
+		
+		Usuario existeUsuario = existeCuenta.getTitular();
+		
+		if (existeUsuario.getCc() == numeroCc) {
+			
+		}else {
+			System.out.println("Numero de cedula "+numeroCc+" no concuerda con la cuenta");
+			return ;
+		}
+		
+//		Llamado del método inscribir
+		
+		
+		usuario.inscribir(numeroCc,numeroCuenta,tipoCuenta,nombreBanco);
+		System.out.println(usuario);
+//		System.out.println(usuario.getListaIncritos());
+
+		
+	
+	}
+	
+	static void verHistorial(Usuario usuario) {
+		System.out.println("-------------- Ver Historial ------------------");
+		
+		
+//		VerHistorial.SeleccionCuenta
+		
+		System.out.println("---- Las cuentas que teiene asociadas son: ----");
+		int coVh = 0;
+		
+		for(Cuenta cuentas : usuario.getCuentasAsocidas()) {
+			coVh++;
+			System.out.println(coVh + ". Cuenta " + cuentas.getNroCuenta());	
+		}
+		System.out.println("Seleccione la cuenta de la que quiere ver el historial: ");
+		int vhCuenta = readInt(); 
+				
+        Cuenta cuentaVH = usuario.getCuentasAsocidas().get(vhCuenta-1);	
+		System.out.println("Usted eligio "+cuentaVH.getNroCuenta());
+		
+		
+//		VerHistorial.Historial.SinHistorial
+	
+		if(cuentaVH.getHistorialTransferencia().isEmpty()) {
+			System.out.println("No tiene historial de transacciones");
+			return ;
+		}else {
+//			VerHistorial.Historial.ConHistorial
+			cuentaVH.verHistorial();
+		}
+			
+
+		
+		
+		
+	}
+	
+	
+	static void solicitarCredito(Usuario usuario) {
+		System.out.println("-------------- Solicitar credito ------------------");
+		
+//		Verificar si tiene un crédito
+		
+		if(usuario.getCreditoActivo() != null) {
+			System.out.println("El usuario " + usuario.getCc() +" ya tiene un crédito activo");
+			return ;
+		}
+		
+		
+//		SolicitarCredito.SeleccionBanco
+		System.out.println("-------------- Seleección del banco --------------");
+		int c = 0;
+		for(Banco i: Banco.listaBancos) {
+			System.out.println((c+1) + ". " + i.getNombreBanco() + " tasa de interés del "+ i.getTasaInteresAnual());
+			c++;
+		}
+		System.out.println("Seleccione el banco con el que desea solicitar el crédito : ");
+		int numBanco = readInt();
+		
+		
+		String nombreBanco = null;
+		
+        Banco banco = Banco.listaBancos.get(numBanco-1);
+		nombreBanco = banco.getNombreBanco();
+		System.out.println(" Usted seleccionó " + nombreBanco);
+		
+//		SolicitarCredito.SolicitarCuenta
+		
+		System.out.println("---- Las cuentas que teiene asociadas son: ----");
+		int coSc = 0;
+		
+		for(Cuenta cuentas : usuario.getCuentasAsocidas()) {
+			coSc++;
+			System.out.println(coSc + ". Cuenta " + cuentas.getNroCuenta());	
+		}
+		System.out.println("Seleccione la cuenta de la que desea guardar el crédito: ");
+		int scCuenta = readInt(); 
+		Cuenta CuentaSc = usuario.getCuentasAsocidas().get(scCuenta-1);	
+		
+		
+//		SolicitarCredito.IngresoMonto
+		System.out.println("-------------- Ingrese el monto en pesos a solicitar --------------");
+		float monto = readLong();
+		System.out.println(" Usted ingresó " + monto);
+		
+//		SolicitarCredito.IngresoPlazos
+		System.out.println("-------------- Ingrese el plazo en meses del crédito --------------");
+		int plazo = readInt();
+		System.out.println(" Usted ingresó " + plazo);
+		
+//		SolicitarCredito.SolicitarCuenta
+		
+		int sCredito = usuario.solicitarCredito(banco, monto, plazo,cuentaSc);
+		switch(sCredito) {
+		case 1: System.out.println("Credito rechazado por mal comportamiento crediticio");break;
+		case 2: System.out.println("Credito rechazado por falta de capacidad de endeudamiento");;break;
+		case 3: System.out.println("Tu solicitud de crédito ha sido aprobada y tu saldo ha sido actualizado con el monto solicitado. ");;break;
+		}
+	}
+	
+	
+	
+	
+
+}

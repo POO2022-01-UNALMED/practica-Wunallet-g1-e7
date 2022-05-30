@@ -1,14 +1,17 @@
 package cGrafica;
 import java.util.Scanner;
-import cLogica.Usuario;
-import cLogica.Banco;
-import cLogica.Credito;
-import cLogica.PerfilCreditico;
-import cLogica.Cuenta;
-import cLogica.Ahorro;
-import cLogica.Corriente;
-import cLogica.BajoMonto;
 
+import gestorAplicacion.infoClientes.Banco;
+import gestorAplicacion.infoClientes.PerfilCreditico;
+import gestorAplicacion.infoClientes.Usuario;
+import gestorAplicacion.productosFinancieros.Ahorro;
+import gestorAplicacion.productosFinancieros.BajoMonto;
+import gestorAplicacion.productosFinancieros.Corriente;
+import gestorAplicacion.productosFinancieros.Credito;
+import gestorAplicacion.productosFinancieros.Cuenta;
+
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class Banquero {
 
@@ -205,7 +208,7 @@ public class Banquero {
 //		Llamado del método inscribir
 		
 		
-		usuario.inscribir(numeroCc,numeroCuenta,tipoCuenta,nombreBanco);
+		usuario.inscribir(numeroCuenta,nombreBanco);
 		System.out.println(usuario);
 //		System.out.println(usuario.getListaIncritos());
 
@@ -278,6 +281,20 @@ public class Banquero {
 		nombreBanco = banco.getNombreBanco();
 		System.out.println(" Usted seleccionó " + nombreBanco);
 		
+//		SolicitarCredito.SolicitarCuenta
+		
+		System.out.println("---- Las cuentas que teiene asociadas son: ----");
+		int coSc = 0;
+		
+		for(Cuenta cuentas : usuario.getCuentasAsocidas()) {
+			coSc++;
+			System.out.println(coSc + ". Cuenta " + cuentas.getNroCuenta());	
+		}
+		System.out.println("Seleccione la cuenta de la que desea guardar el crédito: ");
+		int scCuenta = readInt(); 
+		Cuenta CuentaSc = usuario.getCuentasAsocidas().get(scCuenta-1);	
+		
+		
 //		SolicitarCredito.IngresoMonto
 		System.out.println("-------------- Ingrese el monto en pesos a solicitar --------------");
 		float monto = readLong();
@@ -289,12 +306,14 @@ public class Banquero {
 		System.out.println(" Usted ingresó " + plazo);
 		
 //		SolicitarCredito.SolicitarCuenta
-		
-		int sCredito = usuario.solicitarCredito(banco, monto, plazo);
+		System.out.println("Saldo antes del credito " + String.format("%.1f", CuentaSc.getSaldo()));
+		int sCredito = usuario.solicitarCredito(banco, monto, plazo,CuentaSc);
 		switch(sCredito) {
 		case 1: System.out.println("Credito rechazado por mal comportamiento crediticio");break;
 		case 2: System.out.println("Credito rechazado por falta de capacidad de endeudamiento");;break;
-		case 3: System.out.println("Tu solicitud de crédito ha sido aprobada y tu saldo ha sido actualizado con el monto solicitado. ");;break;
+		case 3: System.out.println("Tu solicitud de crédito ha sido aprobada y tu saldo actual es: "+ String.format("%.1f", CuentaSc.getSaldo()) );
+			
+		break;
 		}
 	}
 	
