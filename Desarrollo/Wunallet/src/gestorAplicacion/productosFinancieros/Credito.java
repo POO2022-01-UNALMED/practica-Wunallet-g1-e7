@@ -3,23 +3,42 @@ import java.util.ArrayList;
 
 import gestorAplicacion.infoClientes.Banco;
 import gestorAplicacion.infoClientes.Usuario;
+import java.io.Serializable;
 
 
 
-public class Credito {
+public class Credito implements Serializable {
 	private Usuario titular;
 	private Banco banco;
 	private float deuda;
 	private float cuotaMensual;
+	
+    // El Array de clase de clientes de encarga de guardar todas las instancias de
+    // Cliente para poder guardar y cargarlas en la serializacion
+	private static ArrayList<Credito> credito = new ArrayList<>();
+	
 	
 	public Credito (Usuario titular, Banco banco,float deuda,float cuotaMensual) {
 		this.titular = titular;
 		this.banco = banco;
 		this.deuda = deuda;
 		this.cuotaMensual = cuotaMensual;
+		
+		credito.add(this);
+
 	}
 	
 //	-------------------------------------- Métodos get-set --------------------------------------
+   
+	public static ArrayList<Credito> getCredito() {
+        return credito;
+    }
+
+    public static void setCredito(ArrayList<Credito> credito) {
+        Credito.credito = credito;
+    }
+	
+	
 	
 	//	Get-Set usuario
 	public void setTitular(Usuario titular) {
