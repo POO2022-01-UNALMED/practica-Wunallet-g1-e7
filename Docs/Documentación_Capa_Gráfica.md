@@ -362,6 +362,13 @@ Seleccione la cuenta de destino
 0. Volver al menú de funcionalidades.
 
 ---
+***Transferir.OtraCuenta.Inscritas.Error***
+
+La cuenta inscrita que ha seleccionado ya no está disponible, por lo tanto será eliminada de su lista de cuentas inscritas.
+
+0. Volver al menú de funcionalidades.
+
+---
 ***Transferir.OtraCuenta.Inscritas.IngresoValor***
 
 Digite el valor que desea transferir
@@ -456,6 +463,9 @@ le asignará a la variable tipoCuenta (puede ser ahorro, bajo monto o corriente)
 
 **Funcionamiento:**
 
+1. 
+
+
 #### - solicitarCredito(Usuario usuario)
 
 **Funcionamiento:**
@@ -510,7 +520,11 @@ seleccionado en una variable cuentaOrigen
         
         1. Si se seleccionan cuentas inscritas, se muestra la pantalla Transferir.OtraCuenta.Inscritas. El entero ingresado en la
         interfaz es el índice + 1 de la lista listaInscritos. Este índice se usará para extraer el objeto de tipo Cuenta
-        correspondiente y asignarlo a la variable cuentaDestino.
+        correspondiente y asignarlo a la variable cuentaDestino. 
+
+        Es necesario revisar que exista la cuenta seleccionada en la listaCuentas del banco. De no ser así, significa que la cuenta
+        ya no existe para el banco (pasó de bajo monto a ahorro) y por lo tanto se mostrará la pantalla
+        Transferir.OtraCuenta.Inscritas.Error y se eliminará de la listaInscritos del usuario dicha cuenta.
 
             Luego desde la pantalla Transferir.OtraCuenta.Inscritas.IngresoValor se asigna el float ingresado a la variable 
             valorTransferencia.

@@ -64,15 +64,25 @@ asociado.
 
 - **Funcionamiento:** 
     
-    *Pendiente por verificar si este método se va a usar en romperTopes*
+    Remueve de la lista cuentasAsociadas la cuenta dada en el parámetro.
     
 - **Retorno:** Void
 
+
+#### + removerCuentaInscrita(Cuenta cuenta)
+
+- **Funcionamiento:** 
+    
+    Remueve de la lista listaInscritos la cuenta dada en el parámetro.
+    
+- **Retorno:** Void
 --- 
 
 ## PerfilCrediticio
 
 ### Generalidades
+
+Clase que contiene la información necesaria para permitir o rechazar una solicitud de crédito. Están asociados a un usuario.
 
 ### Atributos
 
@@ -101,17 +111,18 @@ una elección aleatoria en el constructor.
 ## Transacción 
 
 ### Generalidades
+
 Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la información que describe cada transacción.
 
 ### Atributos
 
-- \- Cuenta cuentaOrigen: 
+- \- Cuenta cuentaOrigen: Cuenta desde la que se realiza la transacción.
 
-- \- Cuenta cuentaDestino: 
+- \- Cuenta cuentaDestino: Cuenta a la que se le realiza la transacción.
 
-- \- String nombreBanco: 
+- \- String nombreBanco: Nombre del banco al que se le realiza el pago del crédito.
 
-- \- float valorTransaccion: 
+- \- float valorTransaccion: Valor de la transacción.
 
 
 ### Métodos
@@ -143,27 +154,39 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 
 ### Atributos
 
-- \- static ArrayList<Banco> listaDeBancos: Lista con todos los objetos Banco que se han creado.
+- \- String nombreBanco : El nombre del banco
 
-- \- String nombreBanco : El nombre del Banco
+- \- final float TasaInteresAnual: Interés anual que manejan los créditos del banco.
+
+- \- static ArrayList<Banco> listaBancos: Lista con todos los objetos Banco que se han creado.
 
 - \- ArrayList<Cuenta> listaCuentas: Lista con todos los objetos de tipo Cuenta que tiene asociadas un Banco. 
 
 - \- ArrayList<Credito> listaCreditos: Lista con todos los objetos de tipo Credito que tiene asociadas un Banco.
 
-- \- final float TasaInteresAnual: Interés anual que manejan los créditos del banco.
 
 ###  Métodos
 
-#### - extraerCuenta(int cc, int nroCuenta, String tipoDeCuenta)
+#### + static extraerBanco(String nombreBanco) 
 
 - **Funcionamiento:**
 
-    Recorre iterativamente la listaDeCuentas del Banco, buscando una Cuenta cuyos atributos coincidan con los 3 parámetros. De ser así retorna el objeto, o en caso contrario, retorna Null
+    Recorre iterativamente la listaBancos de la clase Banco, buscando un banco cuyo nombre coincida con el parámetro ingresado. De
+    existir retornará el objeto.
 
-- **Retorno:** Cuenta (o Null si no hay cuenta)
+- **Retorno:** Banco
 
-#### - añadirCredito(Credito credito){
+#### + extraerCuenta(int nroCuenta)
+
+- **Funcionamiento:**
+
+    Recorre iterativamente la listaDeCuentas del banco desde donde se invoca el método, buscando una cuenta que tenga el numero
+    de cuenta ingresado. 
+
+- **Retorno:** Cuenta
+
+
+#### + añadirCredito(Credito credito)
 
 - **Funcionamiento:**
 
@@ -171,37 +194,35 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 
 - **Retorno:** Void
 
+#### + removerCuenta(Cuenta cuenta)
+
+- **Funcionamiento:**
+
+    Remueve la cuenta del parámetro de la listaCuentas del banco.
+
+- **Retorno:** Void
 ---
 
 ## Credito
 
 ### Generalidades
 
--
--
--
+Los objetos de esta clase representan los créditos que otorga un banco a un usuario tras una solicitud exitosa.
 
 ### Atributos
 
-- Banco banco: Banco que tendrá asociado el crédito
+- \- Usuario titular: Titular del crédito.
 
-- Usuario titular: Titular del crédito
+- \- Banco banco: Banco que tendrá asociado el crédito.
 
-- float Deuda: Cálculo resultante de considerar el interes del banco, el plazo, y el monto.
+- \- float deuda: Cálculo resultante de considerar el interes del banco, el plazo, y el monto.
 
-- float cuotaMensual: Deuda dividido plazo.
+- \- float cuotaMensual: Es el valor que resulta de dividir la deuda inicial entre el plazo.
 
 
 ### Métodos
 
-#### + Constructor(Titular, Banco, Monto, Plazo){
-    
-- **Funcionamiento:**
-
-- **Retorno:** Void
-
 #### + static simularCredito(Banco banco, float monto, int plazo)
-
     
 - **Funcionamiento:**
 
@@ -447,6 +468,7 @@ float valorTransaccion)
 - **Funcionamiento:**
 
 1. Se debe verificar que el saldo de la cuenta sea mayor o igual a 15.000 pesos, que es el costo de romper los topes.
+
 2. Se creará un nuevo objeto de tipo Ahorro asignado a la variable nuevaCuentaAhorro
     ```java
     Ahorro nuevaCuentaAhorro = new Ahorro(this.getTitular(), this.getBanco(), this.getSaldo(), this.getNroCuenta(), "Ahorro",
