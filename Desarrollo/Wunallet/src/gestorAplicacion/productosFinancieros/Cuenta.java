@@ -83,6 +83,8 @@ public abstract class Cuenta implements Gestor{
 		this.setSaldo(this.getSaldo() + valor);
 	}
 	
+//	
+	
 	public void  restarCuenta(float valor) {
 		this.setSaldo(this.getSaldo() - valor);
 	}

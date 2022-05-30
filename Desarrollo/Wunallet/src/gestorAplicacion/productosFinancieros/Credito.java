@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import gestorAplicacion.infoClientes.Banco;
 import gestorAplicacion.infoClientes.Usuario;
 
+
+
 public class Credito {
 	private Usuario titular;
 	private Banco banco;

@@ -5,6 +5,7 @@ import gestorAplicacion.infoClientes.PerfilCreditico;
 import gestorAplicacion.productosFinancieros.Credito;
 import gestorAplicacion.productosFinancieros.Cuenta;
 
+
 public class Usuario {
 	private ArrayList<Cuenta> listaInscritos = new ArrayList<Cuenta>();
 	private float ingresosMensuales;
