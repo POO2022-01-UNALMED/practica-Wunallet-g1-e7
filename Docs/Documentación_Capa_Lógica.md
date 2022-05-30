@@ -1,48 +1,42 @@
 # Documentación de Clases
 
----
-
-## Plantilla
-
-### Generalidades
-
-### Atributos
-
-### Métodos
-
-
----
-
 ## Usuario
 
 ### Generalidades
 
+- Toda funcionalidad será ejecutada sobre un usuario, o usando los atributos de este. 
+- Es la primera selección que se debe realizar en la interfaz.
+- Cuenta como una de las tres clases con las que se debe interactuar en todas las funcionalidades.
+
 ### Atributos
 
-- \- ArrayList<Cuenta> listaDeInscritos : Una lista que contendrá objetos tipo Cuenta, los cuales corresponden a las cuentas que tiene inscritas el usuario ante su entidad bancaria.
+- \- ArrayList<Cuenta> listaInscritos : Una lista que contendrá objetos tipo Cuenta, los cuales corresponden a las cuentas que tiene inscritas el usuario ante su entidad bancaria.
 
 - \- float ingresosMensuales : Valor de ingresos mensuales que tiene el usuario.
 
 - \- Credito creditoActivo : Null en caso de que el usuario no tenga un crédito asociado, o el objeto de tipo Credito que tenga 
-asociado
+asociado.
 
 - \- int cedula : Identificador único del usuario.
 
 - \- ArrayList<String> bancosAsociados : Nombres de los bancos a los cuales el usuario está asociado (mediante créditos o cuentas).
 
-- \- ArrayList<Cuenta> cuentasAsociadas : Lista de cuentas que tiene el usuario con algún banco
+- \- ArrayList<Cuenta> cuentasAsociadas : Lista de cuentas que tiene el usuario con algún banco.
+
+- \- PerfilCrediticio perfilCrediticio : Perfil crediticio con el que cuenta el usuario.
 
 ### Métodos
+
 
 #### + Inscribir(int nroCuenta, String nombreBanco)
 
 - **Idea de código:**
 
-    >```
-    >bancoDestino = Banco.extraerBanco(nombreBanco);
-    >cuentaDestio = bancoDestino.extraerCuenta;
-    >this.listaInscritos.add(cuentaDestino);
-    >```
+    ```java
+    bancoDestino = Banco.extraerBanco(nombreBanco);
+    cuentaDestio = bancoDestino.extraerCuenta;
+    this.listaInscritos.add(cuentaDestino);
+    ```
 
 - **Funcionamiento:** 
 
@@ -51,6 +45,8 @@ asociado
     Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cuentas para buscar alguna cuenta en la que los demás parámetros coincidan mediante el método de clase 'extraerCuenta(int nroCuenta)'.
     
     Finalmente se agrega la cuenta a la listaInscritos del usuario.
+
+- **Retorno:** Void
 
 - **Retorno:** Void
 
@@ -537,3 +533,16 @@ usuario.cuentasAsociadas.remove(this)
     ```
 
 - **Retorno:**  Void
+
+---
+
+## Plantilla
+
+### Generalidades
+
+### Atributos
+
+### Métodos
+
+
+---

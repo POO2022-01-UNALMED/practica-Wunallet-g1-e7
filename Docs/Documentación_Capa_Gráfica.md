@@ -1,4 +1,4 @@
-# Documentación capa UI
+# Documentación Capa Gráfica
 
 ## Banquero
 
@@ -174,6 +174,7 @@ Tu cuenta ha sido actualizada y ahora no tiene topes.
 
 ---
 #### Solicitar crédito
+
 ---
 ***SolicitarCredito.VerificacionCreditoActivo***
 
@@ -189,6 +190,7 @@ Con qué banco desea solicitar el crédito:
 - QuitaVivienda \<tasa de interés del banco\> **Nota** El 36% de Daniel
 
 ---
+
 ***SolicitarCredito.SolicitarCuenta***
 
 En que cuenta desa guardar el credito
@@ -200,6 +202,7 @@ En que cuenta desa guardar el credito
 3. Cuenta z // Opcional
 
 ---
+
 ***SolicitarCredito.IngresoMonto***
 
 Ingrese el monto en pesos a solicitar:
