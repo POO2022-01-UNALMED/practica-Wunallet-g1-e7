@@ -35,14 +35,7 @@ public class Corriente extends Cuenta{
 	}
 	
 	
-	
-	public void crearCuenta() {
-		
-	}
-	
-	public void eliminarCuenta() {
-		
-	}
+
 	
 	public void sumarCuenta(float valorTransferencia) {
 		
