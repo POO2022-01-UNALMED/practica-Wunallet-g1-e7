@@ -4,10 +4,12 @@ import java.util.ArrayList;
 public class PerfilCreditico {
 	private Usuario user;
 	private float nivelDeEndeudamiento;
-//	Enum
+	private comportamientoDePago nivel;
 	
-	public PerfilCreditico(Usuario user) {
+	public PerfilCreditico(Usuario user, float ingresosMensuales, comportamientoDePago nivel) {
 		this.user = user;
+		this.nivelDeEndeudamiento = (float)0.2*ingresosMensuales;
+		this.nivel = nivel;
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------
@@ -21,7 +23,7 @@ public class PerfilCreditico {
 
 //	get-set nivelDeEndeudamiento
 	public void setNivelDeEndeudamiento(float nivelDeEndeudamiento) {
-		this.user = user;
+		this.nivelDeEndeudamiento = nivelDeEndeudamiento;
 	}
 	public float getNivelDeEndeudamiento() {
 		return this.nivelDeEndeudamiento;

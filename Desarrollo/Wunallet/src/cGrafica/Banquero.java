@@ -285,10 +285,10 @@ public class Banquero {
 		
 //		SolicitarCredito.IngresoPlazos
 		System.out.println("-------------- Ingrese el plazo en meses del crédito --------------");
-		float plazo = readLong();
+		int plazo = readInt();
 		System.out.println(" Usted ingresó " + plazo);
 		
-		usuario.solicitarCredito();
+		usuario.solicitarCredito(banco, monto, plazo);
 		
 	}
 	

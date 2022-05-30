@@ -1,5 +1,6 @@
 package cLogica;
 import java.util.ArrayList;
+import cLogica.PerfilCreditico;
 
 public class Usuario {
 	private ArrayList<Cuenta> listaInscritos = new ArrayList<Cuenta>();
@@ -72,7 +73,12 @@ public class Usuario {
 	}
 	
 //	-------------------------------------- Métodos creados --------------------------------------
-	public 
+	public void solicitarCredito(Banco banco, float monto, int plazo) {
+		if(this.getPerfilCrediticio()==null) {
+			PerfilCreditico perfil = new PerfilCreditico(this,this.getIngresosMensuales(),comportamientoDePago.randomNivel());
+			this.setPerfilCrediticio(perfil);
+		}
+	}
 	
 	
 	
