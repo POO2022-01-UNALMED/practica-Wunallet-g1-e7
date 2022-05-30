@@ -1,7 +1,7 @@
 package cLogica;
 import java.util.ArrayList;
 
-public abstract interface Gestor {
+public abstract interface Gestor{
 	public static final float sobregiroMaximo = 600000;
 	
 //	Modificar
@@ -10,12 +10,7 @@ public abstract interface Gestor {
 	}
 	
 	
-	public default void sumarCuenta(float valorTransferencia) {
-		this.setSaldo(this.getSaldo() + valorTransferencia);
-	}
-	
-	public default void restarCuenta(float valorTransferencia) {
-		this.setSaldo(this.getSaldo() - valorTransferencia);
-	}
+	public abstract void sumarCuenta(float valorTransferencia);
+	public abstract void restarCuenta(float valorTransferencia);
 	
 }

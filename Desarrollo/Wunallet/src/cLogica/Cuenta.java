@@ -66,6 +66,15 @@ public abstract class Cuenta implements Gestor{
 		}
 	}
 	
+	public  void sumarCuenta(float valorTransferencia) {
+		this.setSaldo(this.getSaldo() + valorTransferencia);
+	}
+	
+	public  void restarCuenta(float valorTransferencia) {
+		this.setSaldo(this.getSaldo() - valorTransferencia);
+	}
+	
+	
 	abstract boolean transferir(Cuenta cuentaDestino, float valorTranseferencia);
 	
 	abstract boolean transferir(Credito credito);
