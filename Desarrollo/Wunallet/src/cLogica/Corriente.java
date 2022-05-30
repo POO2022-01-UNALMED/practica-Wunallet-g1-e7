@@ -26,6 +26,21 @@ public class Corriente extends Cuenta{
 		
 		if(this.saldo+(this.capacidadSobregiro-this.sobregiroActual)>= valorTransferencia) {
 			
+			if(valorTransferencia>this.saldo) {
+				setSaldo(0);
+				setSobregiroActual(this.sobregiroActual+(valorTransferencia-this.saldo));
+			}
+			
+			else{
+				this.restarCuenta(valorTransferencia);
+
+			}
+			
+			cuentaDestino.sumarCuenta(valorTransferencia);
+			
+			Transaccion trans = new Transaccion(this,cuentaDestino,cuentaDestino.banco.getNombreBanco(),valorTransferencia);
+			
+			historialTransferencia.add(trans);
 			
 			return true;
 		}
@@ -34,7 +49,6 @@ public class Corriente extends Cuenta{
 			return false;
 		}
 	}
-	
 	
 
 	
