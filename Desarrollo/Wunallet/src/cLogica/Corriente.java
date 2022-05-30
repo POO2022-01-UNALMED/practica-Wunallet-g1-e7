@@ -50,6 +50,38 @@ public class Corriente extends Cuenta{
 		}
 	}
 	
+	
+	public boolean transferir(Credito credito) {
+		
+		if(this.saldo+(this.capacidadSobregiro-this.sobregiroActual)>= credito.getCuotaMensual()) {
+			
+			if(credito.getCuotaMensual()>this.saldo) {
+				setSaldo(0);
+				setSobregiroActual(this.sobregiroActual+(credito.getCuotaMensual()-this.saldo));
+			}
+			
+			else{
+				this.restarCuenta(credito.getCuotaMensual());
+
+			}
+			
+			credito.setDeuda(credito.getDeuda()-credito.getCuotaMensual());
+			
+			Transaccion trans = new Transaccion(this,credito.getBanco().getNombreBanco(),credito.getCuotaMensual());
+			
+			historialTransferencia.add(trans);
+			
+			
+			return true;
+			
+		}
+		
+		else {
+			return false;
+		}
+
+	}
+	
 
 	
 	public void sumarCuenta(float valorTransferencia) {
