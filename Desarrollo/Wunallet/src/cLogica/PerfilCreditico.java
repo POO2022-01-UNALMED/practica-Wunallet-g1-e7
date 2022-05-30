@@ -4,12 +4,12 @@ import java.util.ArrayList;
 public class PerfilCreditico {
 	private Usuario user;
 	private float nivelDeEndeudamiento;
-	private comportamientoDePago nivel;
+	private comportamientoDePago comportamientoDePago;
 	
 	public PerfilCreditico(Usuario user, float ingresosMensuales, comportamientoDePago nivel) {
 		this.user = user;
 		this.nivelDeEndeudamiento = (float)0.2*ingresosMensuales;
-		this.nivel = nivel;
+		this.comportamientoDePago = nivel;
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------
@@ -28,5 +28,10 @@ public class PerfilCreditico {
 	public float getNivelDeEndeudamiento() {
 		return this.nivelDeEndeudamiento;
 	}
+//	get-set nivel
+	public comportamientoDePago getComportamientoDePago() {
+		return this.comportamientoDePago;
+	}
+	
 	
 }

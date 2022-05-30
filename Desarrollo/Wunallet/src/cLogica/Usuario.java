@@ -73,11 +73,28 @@ public class Usuario {
 	}
 	
 //	-------------------------------------- Métodos creados --------------------------------------
-	public void solicitarCredito(Banco banco, float monto, int plazo) {
+	public int solicitarCredito(Banco banco, float monto, int plazo) {
+		int salida=0;
 		if(this.getPerfilCrediticio()==null) {
 			PerfilCreditico perfil = new PerfilCreditico(this,this.getIngresosMensuales(),comportamientoDePago.randomNivel());
 			this.setPerfilCrediticio(perfil);
 		}
+		
+		if(this.getPerfilCrediticio().getComportamientoDePago().getNivel()==3) {
+			salida=1;
+		}else {
+			float cuotaTentativa = Credito.simularCredito(banco, monto, plazo);
+			
+			if(cuotaTentativa>this.getPerfilCrediticio().getNivelDeEndeudamiento()) {
+				salida=2;
+			}else {
+				Credito credito = new Credito(this,banco,monto,cuotaTentativa);
+				this.setCreditoActivo(credito);
+				banco.añadirCredito(credito);
+				salida=3;
+				}
+		}
+		return salida;
 	}
 	
 	
