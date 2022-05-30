@@ -107,7 +107,7 @@ public class Banquero {
 			case 1: inscribirCuenta(usuario);break;
 			case 2: System.out.print("Metodo que ejecuta a romper topes");break;
 			case 3: System.out.print("Metodo que ejecuta a solicitar credito");break;
-			case 4: verHistorial(usuario);break;
+			case 4: System.out.print("Metodo que ejecuta a ver historial de transacciones");break;
 			case 5: System.out.print("Metodo que ejecuta a tranferir");break;
 			case 6: break;
 //			Hacen lo mismo xD
@@ -211,35 +211,6 @@ public class Banquero {
 
 		
 	
-	}
-	
-	static void verHistorial(Usuario usuario) {
-		System.out.println("-------------- Ver Historial ------------------");
-		
-		
-//		VerHistorial.SeleccionCuenta
-		
-		System.out.println("---- Las cuentas que teiene asociadas son: ----");
-		int coVh = 0;
-		
-		for(Cuenta cuentas : usuario.getCuentasAsocidas()) {
-			coVh++;
-			System.out.println(coVh + ". Cuenta " + cuentas.getNroCuenta());	
-		}
-		System.out.println("Seleccione la cuenta de la que quiere ver el historial: ");
-		int vhCuenta = readInt(); 
-				
-        Cuenta cuentaVH = usuario.getCuentasAsocidas().get(vhCuenta-1);	
-		System.out.println("Usted eligio "+cuentaVH.getNroCuenta());
-		
-		
-//		VerHistorial.Historial.SinHistorial
-		
-		
-//		VerHistorial.Historial.ConHistorial
-		
-		
-		
 	}
 	
 	

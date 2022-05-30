@@ -13,7 +13,7 @@ public class Ahorro extends Cuenta{
 	}
 
 
-//	-------------------------------------- Metodos get-set --------------------------------------
+//	--------------------------------------  get-set --------------------------------------
 //	get-set user
 	public void setTasaDeInteres(float tasaDeInteres) {
 		this.tasaDeInteres = tasaDeInteres;

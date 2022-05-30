@@ -9,7 +9,6 @@ public class Ahorro extends Cuenta{
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
 		this.tasaDeInteres = tasaDeInteres;
 		banco.getListaCuentas().add(this);
-		titular.getCuentasAsocidas().add(this);
 	}
 
 

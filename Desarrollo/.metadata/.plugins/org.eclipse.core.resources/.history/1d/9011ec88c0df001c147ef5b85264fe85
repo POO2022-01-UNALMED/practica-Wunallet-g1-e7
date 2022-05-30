@@ -15,7 +15,6 @@ public class Usuario {
 		this.ingresosMensuales = ingresosMensuales;
 		this.cc = cc;
 		this.creditoActivo = creditoActivo;
-		
 	}
 	
 
@@ -63,17 +62,10 @@ public class Usuario {
 	public Credito getCreditoActivo() {
 		return this.creditoActivo;
 	}
-	
-//	Get listaInscritos
+//	Get cuentasAsociadas
 	public ArrayList<Cuenta> getListaIncritos(){
 		return this.listaInscritos;
 	}
-	
-//	Get cuentasAsociadas
-	public ArrayList<Cuenta> getCuentasAsocidas(){
-		return this.cuentasAsociadas;
-	}
-	
 	
 	public String toString() {
 		StringBuffer texto = new StringBuffer(110);

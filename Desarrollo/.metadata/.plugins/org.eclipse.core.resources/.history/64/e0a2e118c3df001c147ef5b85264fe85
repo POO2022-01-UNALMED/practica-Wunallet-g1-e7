@@ -215,22 +215,22 @@ public class Banquero {
 	
 	static void verHistorial(Usuario usuario) {
 		System.out.println("-------------- Ver Historial ------------------");
-		
-		
-//		VerHistorial.SeleccionCuenta
-		
 		System.out.println("---- Las cuentas que teiene asociadas son: ----");
 		int coVh = 0;
-		
-		for(Cuenta cuentas : usuario.getCuentasAsocidas()) {
+		for(Cuenta cuentas:usuario.getCuentasAsocidas()) {
 			coVh++;
 			System.out.println(coVh + ". Cuenta " + cuentas.getNroCuenta());	
 		}
 		System.out.println("Seleccione la cuenta de la que quiere ver el historial: ");
 		int vhCuenta = readInt(); 
-				
-        Cuenta cuentaVH = usuario.getCuentasAsocidas().get(vhCuenta-1);	
-		System.out.println("Usted eligio "+cuentaVH.getNroCuenta());
+		
+		String nombreBanco = null;
+		
+        Banco banco = Banco.listaBancos.get(numBanco-1);	
+		
+		
+		
+//		VerHistorial.SeleccionCuenta
 		
 		
 //		VerHistorial.Historial.SinHistorial

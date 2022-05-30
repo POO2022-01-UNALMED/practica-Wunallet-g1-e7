@@ -8,7 +8,6 @@ public class Corriente extends Cuenta{
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
 		this.sobregiroActual = sobregiroActual;
 		banco.getListaCuentas().add(this);
-		titular.getCuentasAsocidas().add(this);
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------

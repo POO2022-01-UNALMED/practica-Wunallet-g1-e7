@@ -70,10 +70,10 @@ public class Usuario {
 	}
 	
 //	Get cuentasAsociadas
-	public ArrayList<Cuenta> getCuentasAsocidas(){
-		return this.cuentasAsociadas;
+	public ArrayList<Cuenta> getListaIncritos(){
+		return this.listaInscritos;
 	}
-	
+	getCuentasAsocidas
 	
 	public String toString() {
 		StringBuffer texto = new StringBuffer(110);

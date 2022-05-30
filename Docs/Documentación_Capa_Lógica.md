@@ -48,7 +48,7 @@ asociado
 
     Usará el método de la clase Banco 'extraerBanco(nombreBanco)' que retornará el objeto Banco que tiene dicho nombre.
 
-    Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cuentas para buscar alguna cuenta en la que los demás parámetros coincidan mediante el método de clase 'extraerCuenta(int nroCuenta)'. 
+    Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cuentas para buscar alguna cuenta en la que los demás parámetros coincidan mediante el método de clase 'extraerCuenta(int nroCuenta)'.
     
     Finalmente se agrega la cuenta a la listaInscritos del usuario.
 

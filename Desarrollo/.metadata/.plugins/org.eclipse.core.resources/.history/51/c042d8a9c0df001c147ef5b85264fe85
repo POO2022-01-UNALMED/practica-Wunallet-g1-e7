@@ -71,7 +71,7 @@ public class Usuario {
 	
 //	Get cuentasAsociadas
 	public ArrayList<Cuenta> getCuentasAsocidas(){
-		return this.cuentasAsociadas;
+		return this.cuentasAsocidas;
 	}
 	
 	
