@@ -28,6 +28,11 @@ public class Banco {
 	public ArrayList<Cuenta> getListaCuentas(){
 		return this.listaCuentas;
 	}
+
+	
+	public float getTasaInteresAnual() {
+		return this.tasaInteresAnual;
+	}
 	
 //	-------------------------------------- Metodos propuestos --------------------------------------	
 	

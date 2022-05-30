@@ -51,7 +51,11 @@ public class Credito {
 	
 //--------------------------------------------------------------------------------------------------------
 	
-	public static void simularCredito(Banco banco,float monto, int plazo) {
+	public static float simularCredito(Banco banco,float monto, int plazo) {
+		
+		float deuda = (1+((banco.getTasaInteresAnual()/12)*plazo))*monto;
+		
+		return deuda/plazo; 	
 		
 	}
 	
