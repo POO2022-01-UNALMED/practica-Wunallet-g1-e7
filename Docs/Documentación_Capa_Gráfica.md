@@ -189,6 +189,17 @@ Con qué banco desea solicitar el crédito:
 - QuitaVivienda \<tasa de interés del banco\> **Nota** El 36% de Daniel
 
 ---
+***SolicitarCredito.SolicitarCuenta***
+
+En que cuenta desa guardar el credito
+
+1. Cuenta x
+
+2. Cuenta y  // Opcional
+
+3. Cuenta z // Opcional
+
+---
 ***SolicitarCredito.IngresoMonto***
 
 Ingrese el monto en pesos a solicitar:

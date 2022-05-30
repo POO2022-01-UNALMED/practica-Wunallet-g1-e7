@@ -288,8 +288,6 @@ public class Banquero {
 		int plazo = readInt();
 		System.out.println(" Usted ingresó " + plazo);
 		
-//		SolicitarCredito.SolicitarCuenta
-		
 		int sCredito = usuario.solicitarCredito(banco, monto, plazo);
 		switch(sCredito) {
 		case 1: System.out.println("Credito rechazado por mal comportamiento crediticio");break;

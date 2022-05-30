@@ -242,7 +242,7 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 
     Una vez calculada la deuda, se retornará el valor de cada cuota, es decir Deuda/Plazo.
 
-- **Retorno:** Void
+- **Retorno:** float
 
 ---
 

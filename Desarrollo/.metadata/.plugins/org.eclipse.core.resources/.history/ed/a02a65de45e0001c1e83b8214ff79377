@@ -90,7 +90,6 @@ public class Usuario {
 			}else {
 				Credito credito = new Credito(this,banco,monto,cuotaTentativa);
 				this.setCreditoActivo(credito);
-				this.se
 				banco.añadirCredito(credito);
 				
 				salida=3;
