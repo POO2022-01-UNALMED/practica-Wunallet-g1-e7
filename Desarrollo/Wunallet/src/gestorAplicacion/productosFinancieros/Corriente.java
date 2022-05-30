@@ -5,22 +5,41 @@ import java.util.ArrayList;
 import gestorAplicacion.infoClientes.Banco;
 import gestorAplicacion.infoClientes.Transaccion;
 import gestorAplicacion.infoClientes.Usuario;
+import java.io.Serializable;
 
 
 
-public class Corriente extends Cuenta{
+public class Corriente extends Cuenta implements Serializable{
 	private static final float capacidadSobregiro = 600000;
 	private float sobregiroActual;
+	
+	
+    // El Array de clase de clientes de encarga de guardar todas las instancias de
+    // Cliente para poder guardar y cargarlas en la serializacion
+	private static ArrayList<Corriente> corriente = new ArrayList<>();
 	
 	public Corriente(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,ArrayList<Transaccion> historial,float sobregiroActual) {
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,historial);
 		this.sobregiroActual = sobregiroActual;
 		banco.getListaCuentas().add(this);
 		titular.getCuentasAsocidas().add(this);
+		
+		corriente.add(this);
+
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------
 //	get-set sobregiroActual
+	
+    public static ArrayList<Corriente> getCorriente() {
+        return corriente;
+    }
+
+    public static void setCorriente(ArrayList<Corriente> corriente) {
+        Corriente.corriente = corriente;
+    }
+	
+	
 	public void setSobregiroActual(float sobregiroActual) {
 		this.sobregiroActual = sobregiroActual;
 	}
@@ -29,6 +48,7 @@ public class Corriente extends Cuenta{
 	}		
 	
 	
+//--------------------------------------------------------------------------------------------------
 	
 	public boolean transferir(Cuenta cuentaDestino, float valorTransferencia) {
 		
