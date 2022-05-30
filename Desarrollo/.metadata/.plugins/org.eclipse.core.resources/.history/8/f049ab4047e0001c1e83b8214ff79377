@@ -1,7 +1,5 @@
 package cLogica;
 import java.util.ArrayList;
-import cLogica.Cuenta;
-
 import cLogica.PerfilCreditico;
 
 public class Usuario {
@@ -23,7 +21,7 @@ public class Usuario {
 	
 	
 //	Los parametros cc y tipoCuenta no son necesarios porque se utilizan para las verificaciones en Banquero
-	public void inscribir(int numeroCuenta, String nombreBanco) {
+	public void inscribir(int cc,int numeroCuenta,String tipoCuenta, String nombreBanco) {
 		Banco banco = Banco.extraerBanco(nombreBanco);
 		Cuenta cuenta = banco.extraerCuenta(numeroCuenta);
 		this.listaInscritos.add(cuenta);
@@ -75,7 +73,7 @@ public class Usuario {
 	}
 	
 //	-------------------------------------- Métodos creados --------------------------------------
-	public int solicitarCredito(Banco banco, float monto, int plazo,Cuenta cuentaSc) {
+	public int solicitarCredito(Banco banco, float monto, int plazo, Cuenta cuentaSc) {
 		int salida=0;
 		if(this.getPerfilCrediticio()==null) {
 			PerfilCreditico perfil = new PerfilCreditico(this,this.getIngresosMensuales(),comportamientoDePago.randomNivel());
@@ -92,13 +90,12 @@ public class Usuario {
 			}else {
 				Credito credito = new Credito(this,banco,monto,cuotaTentativa);
 				this.setCreditoActivo(credito);
-				cuentaSc.setSaldo(cuentaSc.getSaldo() + monto);
+				this.se
 				banco.añadirCredito(credito);
 				
 				salida=3;
 				}
 		}
-		
 		return salida;
 	}
 	

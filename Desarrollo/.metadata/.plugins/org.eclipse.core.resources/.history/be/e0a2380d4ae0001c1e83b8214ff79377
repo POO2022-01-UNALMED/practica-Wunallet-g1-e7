@@ -8,8 +8,8 @@ import cLogica.Cuenta;
 import cLogica.Ahorro;
 import cLogica.Corriente;
 import cLogica.BajoMonto;
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
+//import java.math.BigDecimal;
+//import java.text.DecimalFormat;
 
 public class Banquero {
 
@@ -206,7 +206,7 @@ public class Banquero {
 //		Llamado del método inscribir
 		
 		
-		usuario.inscribir(numeroCuenta,nombreBanco);
+		usuario.inscribir(numeroCc,numeroCuenta,tipoCuenta,nombreBanco);
 		System.out.println(usuario);
 //		System.out.println(usuario.getListaIncritos());
 
@@ -304,13 +304,16 @@ public class Banquero {
 		System.out.println(" Usted ingresó " + plazo);
 		
 //		SolicitarCredito.SolicitarCuenta
-		System.out.println("Saldo antes del credito " + String.format("%.1f", CuentaSc.getSaldo()));
+		System.out.print("Saldo antes del credito" + CuentaSc.getSaldo());
 		int sCredito = usuario.solicitarCredito(banco, monto, plazo,CuentaSc);
 		switch(sCredito) {
 		case 1: System.out.println("Credito rechazado por mal comportamiento crediticio");break;
 		case 2: System.out.println("Credito rechazado por falta de capacidad de endeudamiento");;break;
-		case 3: System.out.println("Tu solicitud de crédito ha sido aprobada y tu saldo actual es: "+ String.format("%.1f", CuentaSc.getSaldo()) );
-			
+		case 3: System.out.println("Tu solicitud de crédito ha sido aprobada y tu saldo ha sido actualizado con el monto solicitado. ");
+			System.out.println("Saldo después del credito" + CuentaSc.getSaldo());
+			System.out.println("Saldo después del credito" + usuario.getCreditoActivo().getCuotaMensual());
+			System.out.println("Saldo después del credito" + banco.getListaCreditos().size());
+		
 		break;
 		}
 	}

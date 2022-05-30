@@ -29,11 +29,7 @@ public class Banco {
 	public ArrayList<Cuenta> getListaCuentas(){
 		return this.listaCuentas;
 	}
-	
-	public ArrayList<Credito> getListaCreditos(){
-		return this.listaCreditos;
-	}
-	
+
 	
 	public float getTasaInteresAnual() {
 		return this.tasaInteresAnual;

@@ -206,7 +206,7 @@ public class Banquero {
 //		Llamado del método inscribir
 		
 		
-		usuario.inscribir(numeroCuenta,nombreBanco);
+		usuario.inscribir(numeroCc,numeroCuenta,tipoCuenta,nombreBanco);
 		System.out.println(usuario);
 //		System.out.println(usuario.getListaIncritos());
 
