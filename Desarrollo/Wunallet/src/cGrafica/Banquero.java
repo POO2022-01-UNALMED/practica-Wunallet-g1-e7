@@ -165,7 +165,7 @@ public class Banquero {
 		if (existeCuenta != null) {
 			
 		}else {
-			System.out.println("Numero de cuenta no existe en el banco:" + nombreBanco);
+			System.out.println("Numero de cuenta "+numeroCuenta+" no existe en el banco:" + nombreBanco);
 			return ;
 			
 		}
@@ -180,10 +180,10 @@ public class Banquero {
 		
 		Usuario existeUsuario = existeCuenta.getTitular();
 		
-		if (existeUsuario !=null) {
+		if (existeUsuario.getCc() != numeroCc) {
 			
 		}else {
-			System.out.println("Numero de cuenta no existe en el banco:" + nombreBanco);
+			System.out.println("Numero de cedula "+numeroCc+" no concuerda con la cuenta");
 			return ;
 		}
 		
