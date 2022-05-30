@@ -32,9 +32,9 @@ public class Banquero {
 	public static void main (String args[]) {
 		
 //	Creación de algunos bancos
-	Banco Unalombia = new Banco("Unalombia",(float)1.6);
-	Banco PooBanco = new Banco("PooBanco",(float)2.5);
-	Banco QuitaVivienda = new Banco("QuitaVivienda",(float)36.0);
+	Banco Unalombia = new Banco("Unalombia");
+	Banco PooBanco = new Banco("PooBanco");
+	Banco QuitaVivienda = new Banco("QuitaVivienda");
 	
 //	Creación de algunos usuarios
 	Usuario juanPerez = new Usuario(null,1000000,10,null);
@@ -257,7 +257,7 @@ public class Banquero {
 		System.out.println("-------------- Seleección del banco --------------");
 		int c = 0;
 		for(Banco i: Banco.listaBancos) {
-			System.out.println((c+1) + ". " + i.getNombreBanco() + " tasa de interés del "+ i.getTasaInteresAnual());
+			System.out.println((c+1) + ". " + i.getNombreBanco() + " tasa de interés del"+ i.getTasaInteresAnual());
 			c++;
 		}
 		System.out.println("Seleccione el banco con el que desea solicitar el crédito : ");
@@ -270,15 +270,7 @@ public class Banquero {
 		nombreBanco = banco.getNombreBanco();
 		System.out.println(" Usted seleccionó " + nombreBanco);
 		
-//		SolicitarCredito.IngresoMonto
-		System.out.println("-------------- Ingrese el monto en pesos a solicitar --------------");
-		float monto = readLong();
-		System.out.println(" Usted ingresó " + monto);
 		
-//		SolicitarCredito.IngresoPlazos
-		System.out.println("-------------- Ingrese el plazo en meses del crédito --------------");
-		float plazo = readLong();
-		System.out.println(" Usted ingresó " + plazo);
 		
 		
 	}

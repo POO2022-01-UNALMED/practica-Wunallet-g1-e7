@@ -3,16 +3,15 @@ import java.util.ArrayList;
 
 public class Banco {
 	private String nombreBanco;
-	private final float tasaInteresAnual;
+	private final float tasaInteresAnual = (float) 1.82;
 	public static ArrayList<Banco> listaBancos = new ArrayList<Banco>();
 	private ArrayList<Cuenta> listaCuentas = new ArrayList<Cuenta>();
 	private ArrayList<Credito> listaCreditos = new ArrayList<Credito>();
 	
 	
-	public Banco(String nombreBanco,float tasaInteresAnual) {
+	public Banco(String nombreBanco) {
 		this.nombreBanco = nombreBanco;
 		Banco.listaBancos.add(this);
-		this.tasaInteresAnual = tasaInteresAnual;
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------

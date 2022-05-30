@@ -271,14 +271,14 @@ public class Banquero {
 		System.out.println(" Usted seleccionó " + nombreBanco);
 		
 //		SolicitarCredito.IngresoMonto
-		System.out.println("-------------- Ingrese el monto en pesos a solicitar --------------");
+		System.out.println("-------------- Ingrese el mmonto en pesos a solicitar --------------");
 		float monto = readLong();
 		System.out.println(" Usted ingresó " + monto);
 		
 //		SolicitarCredito.IngresoPlazos
 		System.out.println("-------------- Ingrese el plazo en meses del crédito --------------");
-		float plazo = readLong();
-		System.out.println(" Usted ingresó " + plazo);
+		float monto = readLong();
+		System.out.println(" Usted ingresó " + monto);
 		
 		
 	}
