@@ -77,20 +77,5 @@ public class Ahorro extends Cuenta{
 	}
 	
 	
-	public void crearCuenta() {
-		
-	}
-	
-	public void eliminarCuenta() {
-		
-	}
-	
-	public void sumarCuenta(float valorTransferencia) {
-		
-	}
-	
-	public void restarCuenta(float valorTransferencia) {
-		
-	}
-	
+
 }
