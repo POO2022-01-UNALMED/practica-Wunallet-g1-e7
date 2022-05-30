@@ -1,4 +1,6 @@
 package gestorAplicacion.productosFinancieros;
+import java.util.ArrayList;
+
 import gestorAplicacion.infoClientes.Banco;
 import gestorAplicacion.infoClientes.Transaccion;
 import gestorAplicacion.infoClientes.Usuario;
@@ -7,8 +9,8 @@ import gestorAplicacion.productosFinancieros.Cuenta;
 public class Ahorro extends Cuenta{
 	protected float tasaDeInteres;
 	
-	public Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres) {
-		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
+	public Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,ArrayList<Transaccion> historial,float tasaDeInteres) {
+		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,historial);
 		this.tasaDeInteres = tasaDeInteres;
 		banco.getListaCuentas().add(this);
 		titular.getCuentasAsocidas().add(this);

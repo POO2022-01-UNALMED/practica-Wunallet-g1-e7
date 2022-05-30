@@ -1,5 +1,7 @@
 package gestorAplicacion.productosFinancieros;
 
+import java.util.ArrayList;
+
 import gestorAplicacion.infoClientes.Banco;
 import gestorAplicacion.infoClientes.Transaccion;
 import gestorAplicacion.infoClientes.Usuario;
@@ -10,8 +12,8 @@ public class Corriente extends Cuenta{
 	private static final float capacidadSobregiro = 600000;
 	private float sobregiroActual;
 	
-	public Corriente(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float sobregiroActual) {
-		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
+	public Corriente(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,ArrayList<Transaccion> historial,float sobregiroActual) {
+		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,historial);
 		this.sobregiroActual = sobregiroActual;
 		banco.getListaCuentas().add(this);
 		titular.getCuentasAsocidas().add(this);

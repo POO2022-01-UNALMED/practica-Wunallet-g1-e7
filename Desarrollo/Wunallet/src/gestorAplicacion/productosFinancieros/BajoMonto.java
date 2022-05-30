@@ -1,5 +1,7 @@
 package gestorAplicacion.productosFinancieros;
 
+import java.util.ArrayList;
+
 import gestorAplicacion.infoClientes.Banco;
 import gestorAplicacion.infoClientes.Transaccion;
 import gestorAplicacion.infoClientes.Usuario;
@@ -10,8 +12,8 @@ public class BajoMonto extends Ahorro{
 	private float limiteMensual;
 	private float acumuladorTransferencia;
 	
-	public BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,float acumuladorTransferencia) {
-		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,tasaDeInteres);
+	public BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,ArrayList<Transaccion> historial,float acumuladorTransferencia) {
+		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,historial,tasaDeInteres);
 		this.limiteMensual = limiteMensual;
 		this.acumuladorTransferencia = acumuladorTransferencia;
 		banco.getListaCuentas().add(this);
@@ -90,7 +92,14 @@ public class BajoMonto extends Ahorro{
 	
 	
 	public boolean romperTopes() {
-		return true;
+		boolean salida = false;
+		if(this.getSaldo()<15000) {
+			salida=false;
+		}else {
+			Ahorro nuevaCuentaAhorro = new Ahorro(this.getNroCuenta(),this.getTitular(),this.getSaldo(),this.getBanco(),"ahorro",this.getHistorialTransferencia(),this.getTasaDeInteres());
+			salida=true;
+		}
+		return salida;
 	}
 	
 

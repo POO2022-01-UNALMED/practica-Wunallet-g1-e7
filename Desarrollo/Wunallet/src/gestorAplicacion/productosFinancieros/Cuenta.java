@@ -13,15 +13,17 @@ public abstract class Cuenta implements Gestor{
 	protected float saldo;
 	protected Banco banco;
 	protected String tipoDeCuenta;
-	protected ArrayList<Transaccion> historialTransferencia = new ArrayList<Transaccion>();
+//	protected ArrayList<Transaccion> historialTransferencia = new ArrayList<Transaccion>();
+	protected ArrayList<Transaccion> historialTransferencia;
 	
 	
-	public Cuenta(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta) {
+	public Cuenta(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,ArrayList<Transaccion> historial) {
 		this.nroCuenta = nroCuenta;
 		this.titular = titular;
 		this.saldo = saldo;
 		this.banco = banco;
 		this.tipoDeCuenta = tipoDeCuenta;
+		this.historialTransferencia = historial;
 		
 	}
 	
