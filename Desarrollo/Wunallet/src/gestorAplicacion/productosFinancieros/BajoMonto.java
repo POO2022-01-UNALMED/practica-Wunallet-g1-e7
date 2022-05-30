@@ -5,23 +5,41 @@ import java.util.ArrayList;
 import gestorAplicacion.infoClientes.Banco;
 import gestorAplicacion.infoClientes.Transaccion;
 import gestorAplicacion.infoClientes.Usuario;
+import java.io.Serializable;
 
 
 
-public class BajoMonto extends Ahorro{
+public class BajoMonto extends Ahorro implements Serializable{
 	private float limiteMensual;
 	private float acumuladorTransferencia;
+	
+    // El Array de clase de clientes de encarga de guardar todas las instancias de
+    // Cliente para poder guardar y cargarlas en la serializacion
+	private static ArrayList<BajoMonto> bajoMonto = new ArrayList<>();
 	
 	public BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,ArrayList<Transaccion> historial,float acumuladorTransferencia) {
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,historial,tasaDeInteres);
 		this.limiteMensual = limiteMensual;
 		this.acumuladorTransferencia = acumuladorTransferencia;
 		banco.getListaCuentas().add(this);
+		bajoMonto.add(this);
+
+		
 //		titular.getCuentasAsocidas().add(this);
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------
 //	get-set limiteMensual
+	
+    public static ArrayList<BajoMonto> getBajoMonto() {
+        return bajoMonto;
+    }
+
+    public static void setBajoMonto(ArrayList<BajoMonto> bajoMonto) {
+        BajoMonto.bajoMonto = bajoMonto;
+    }
+	
+	
 	public void setLimiteMensual(float limiteMensual) {
 		this.limiteMensual = limiteMensual;
 	}
