@@ -208,6 +208,7 @@ public class Banquero {
 		usuario.inscribir(numeroCc,numeroCuenta,tipoCuenta,nombreBanco);
 		System.out.println(usuario);
 		System.out.println(usuario.getListaIncritos());
+//		hola mundo
 		
 	
 	}
