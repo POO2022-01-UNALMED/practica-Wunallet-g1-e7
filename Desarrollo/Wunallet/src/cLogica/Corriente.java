@@ -21,6 +21,20 @@ public class Corriente extends Cuenta{
 	
 	
 	
+	public boolean transferir(Cuenta cuentaDestino, float valorTransferencia) {
+		
+		if(this.saldo+(this.capacidadSobregiro-this.sobregiroActual)>= valorTransferencia) {
+			
+			
+			return true;
+		}
+		
+		else {
+			return false;
+		}
+	}
+	
+	
 	
 	public void crearCuenta() {
 		
