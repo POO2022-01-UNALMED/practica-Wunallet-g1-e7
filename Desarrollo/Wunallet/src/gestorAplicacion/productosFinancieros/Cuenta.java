@@ -5,8 +5,9 @@ import gestorAplicacion.infoClientes.Banco;
 import gestorAplicacion.infoClientes.Gestor; 
 import gestorAplicacion.infoClientes.Transaccion;
 import gestorAplicacion.infoClientes.Usuario;
+import java.io.Serializable;
 
-public abstract class Cuenta implements Gestor{
+public abstract class Cuenta implements Gestor,Serializable{
 	
 	protected int nroCuenta;
 	protected Usuario titular;
@@ -15,6 +16,8 @@ public abstract class Cuenta implements Gestor{
 	protected String tipoDeCuenta;
 //	protected ArrayList<Transaccion> historialTransferencia = new ArrayList<Transaccion>();
 	protected ArrayList<Transaccion> historialTransferencia;
+	
+ 
 	
 	
 	public Cuenta(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,ArrayList<Transaccion> historial) {
