@@ -152,13 +152,18 @@ public class Banquero {
 			System.out.println((c+1) + ". " + i.getNombreBanco());
 			c++;
 		}
+		String nombreBanco = null;
 		System.out.println("----------------------------------------------");
 		System.out.println("Seleccione de qué banco es la cuenta que desea inscribir: ");
 		int numBanco = readInt();
 		System.out.println("----------------------------------------------");
-		
-		String nombreBanco = null;
-        Banco banco = Banco.listaBancos.get(numBanco-1);
+		Banco banco = null;		
+		switch(numBanco) {
+		case 1: banco = Banco.extraerBanco("Unalombia");break;
+		case 2: banco = Banco.extraerBanco("PooBanco");break;
+		case 3: banco = Banco.extraerBanco("QuitaVivienda");break;
+		}
+		        
 		nombreBanco = banco.getNombreBanco();
 		System.out.println(" Usted selecciono " + nombreBanco);
 		System.out.println("----------------------------------------------");
@@ -293,18 +298,24 @@ public class Banquero {
 		System.out.println("-------------- Seleección del banco --------------");
 		int c = 0;
 		for(Banco i: Banco.listaBancos) {
-			System.out.println((c+1) + ". " + i.getNombreBanco() + " tasa de interés del "+ i.getTasaInteresAnual());
+			System.out.println((c+1) + ". " + i.getNombreBanco());
 			c++;
 		}
-		System.out.println("Seleccione el banco con el que desea solicitar el crédito : ");
-		int numBanco = readInt();
-		
-		
 		String nombreBanco = null;
-		
-        Banco banco = Banco.listaBancos.get(numBanco-1);
+		System.out.println("----------------------------------------------");
+		System.out.println("Seleccione de qué banco es la cuenta que desea inscribir: ");
+		int numBanco = readInt();
+		System.out.println("----------------------------------------------");
+		Banco banco = null;		
+		switch(numBanco) {
+		case 1: banco = Banco.extraerBanco("Unalombia");break;
+		case 2: banco = Banco.extraerBanco("PooBanco");break;
+		case 3: banco = Banco.extraerBanco("QuitaVivienda");break;
+		}
+		        
 		nombreBanco = banco.getNombreBanco();
-		System.out.println(" Usted seleccionó " + nombreBanco);
+		System.out.println(" Usted selecciono " + nombreBanco);
+		System.out.println("----------------------------------------------");
 		
 //		SolicitarCredito.SolicitarCuenta
 		
@@ -606,13 +617,18 @@ public class Banquero {
 						System.out.println((c+1) + ". " + i.getNombreBanco());
 						c++;
 					}
+					String nombreBanco = null;
 					System.out.println("----------------------------------------------");
-					System.out.print("Seleccione de qué banco es la cuenta que desea inscribir: ");
+					System.out.println("Seleccione de qué banco es la cuenta que desea inscribir: ");
 					int numBanco = readInt();
 					System.out.println("----------------------------------------------");
-					
-					String nombreBanco = null;
-			        Banco banco = Banco.listaBancos.get(numBanco-1);
+					Banco banco = null;		
+					switch(numBanco) {
+					case 1: banco = Banco.extraerBanco("Unalombia");break;
+					case 2: banco = Banco.extraerBanco("PooBanco");break;
+					case 3: banco = Banco.extraerBanco("QuitaVivienda");break;
+					}
+					        
 					nombreBanco = banco.getNombreBanco();
 					System.out.println(" Usted selecciono " + nombreBanco);
 					System.out.println("----------------------------------------------");
