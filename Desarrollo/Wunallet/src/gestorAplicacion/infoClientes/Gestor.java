@@ -10,7 +10,7 @@ public interface Gestor{
 	}
 	
 	
-	public abstract void sumarCuenta(float valorTransferencia);
-	public abstract void restarCuenta(float valorTransferencia);
+	public abstract void sumarSaldo(float valorTransferencia);
+	public abstract void restarSaldo(float valorTransferencia);
 	
 }

@@ -88,7 +88,7 @@ public class Usuario implements Serializable {
 	}
 	
 //	Get cuentasAsociadas
-	public ArrayList<Cuenta> getCuentasAsocidas(){
+	public ArrayList<Cuenta> getCuentasAsociadas(){
 		return this.cuentasAsociadas;
 	}
 	
@@ -120,8 +120,9 @@ public class Usuario implements Serializable {
 		return salida;
 	}
 	
-	
-	
+	public void removerCuentaAsociada(Cuenta cuenta) {
+		this.getCuentasAsociadas().remove(cuenta);
+	}
 	
 	public String toString() {
 		StringBuffer texto = new StringBuffer(110);

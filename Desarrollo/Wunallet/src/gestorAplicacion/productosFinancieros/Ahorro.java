@@ -19,11 +19,11 @@ public class Ahorro extends Cuenta implements Serializable{
 	private static ArrayList<Ahorro> ahorro = new ArrayList<>();
 
 	
-	public Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,ArrayList<Transaccion> historial,float tasaDeInteres) {
-		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,historial);
+	public Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres) {
+		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
 		this.tasaDeInteres = tasaDeInteres;
 		banco.getListaCuentas().add(this);
-		titular.getCuentasAsocidas().add(this);
+		titular.getCuentasAsociadas().add(this);
 		
 		ahorro.add(this);
 	}
@@ -45,7 +45,14 @@ public class Ahorro extends Cuenta implements Serializable{
 	public float getTasaDeInteres() {
 		return this.tasaDeInteres;
 	}
-
+	
+	public ArrayList<Transaccion> getHistorialTransferencia(){
+		return this.historialTransferencia;
+	}
+	
+	public void setHistorialTransferencia(ArrayList<Transaccion> historial){
+		this.historialTransferencia = historial;
+	}
 	
 	public boolean transferir(Cuenta cuentaDestino, float valorTransferencia) {
 		
@@ -54,13 +61,13 @@ public class Ahorro extends Cuenta implements Serializable{
 
 			
 			
-			this.restarCuenta(valorTransferencia);
+			this.restarSaldo(valorTransferencia);
 
 			
 			
-			cuentaDestino.sumarCuenta(valorTransferencia);
+			cuentaDestino.sumarSaldo(valorTransferencia);
 			
-			Transaccion trans = new Transaccion(this,cuentaDestino,cuentaDestino.banco.getNombreBanco(),valorTransferencia);
+			Transaccion trans = new Transaccion(this,cuentaDestino,valorTransferencia);
 			
 			historialTransferencia.add(trans);
 			
@@ -79,7 +86,7 @@ public class Ahorro extends Cuenta implements Serializable{
 
 			
 			
-			this.restarCuenta(credito.getCuotaMensual());
+			this.restarSaldo(credito.getCuotaMensual());
 
 			
 			

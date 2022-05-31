@@ -18,11 +18,11 @@ public class Corriente extends Cuenta implements Serializable{
     // Cliente para poder guardar y cargarlas en la serializacion
 	private static ArrayList<Corriente> corriente = new ArrayList<>();
 	
-	public Corriente(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,ArrayList<Transaccion> historial,float sobregiroActual) {
-		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,historial);
+	public Corriente(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float sobregiroActual) {
+		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
 		this.sobregiroActual = sobregiroActual;
 		banco.getListaCuentas().add(this);
-		titular.getCuentasAsocidas().add(this);
+		titular.getCuentasAsociadas().add(this);
 		
 		corriente.add(this);
 
@@ -46,6 +46,13 @@ public class Corriente extends Cuenta implements Serializable{
 	public float getSobregiroActual() {
 		return this.sobregiroActual;
 	}		
+	public ArrayList<Transaccion> getHistorialTransferencia(){
+		return this.historialTransferencia;
+	}
+	
+	public void setHistorialTransferencia(ArrayList<Transaccion> historial){
+		this.historialTransferencia = historial;
+	}
 	
 	
 //--------------------------------------------------------------------------------------------------
@@ -60,13 +67,13 @@ public class Corriente extends Cuenta implements Serializable{
 			}
 			
 			else{
-				this.restarCuenta(valorTransferencia);
+				this.restarSaldo(valorTransferencia);
 
 			}
 			
-			cuentaDestino.sumarCuenta(valorTransferencia);
+			cuentaDestino.sumarSaldo(valorTransferencia);
 			
-			Transaccion trans = new Transaccion(this,cuentaDestino,cuentaDestino.banco.getNombreBanco(),valorTransferencia);
+			Transaccion trans = new Transaccion(this,cuentaDestino,valorTransferencia);
 			
 			historialTransferencia.add(trans);
 			
@@ -89,7 +96,7 @@ public class Corriente extends Cuenta implements Serializable{
 			}
 			
 			else{
-				this.restarCuenta(credito.getCuotaMensual());
+				this.restarSaldo(credito.getCuotaMensual());
 
 			}
 			
@@ -112,12 +119,6 @@ public class Corriente extends Cuenta implements Serializable{
 	
 
 	
-	public void sumarCuenta(float valorTransferencia) {
-		
-	}
 	
-	public void restarCuenta(float valorTransferencia) {
-		
-	}	
 
 }

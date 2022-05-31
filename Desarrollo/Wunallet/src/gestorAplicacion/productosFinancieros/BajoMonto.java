@@ -17,11 +17,11 @@ public class BajoMonto extends Ahorro implements Serializable{
     // Cliente para poder guardar y cargarlas en la serializacion
 	private static ArrayList<BajoMonto> bajoMonto = new ArrayList<>();
 	
-	public BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,ArrayList<Transaccion> historial,float acumuladorTransferencia) {
-		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,historial,tasaDeInteres);
+	public BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,float acumuladorTransferencia) {
+		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,tasaDeInteres);
 		this.limiteMensual = limiteMensual;
 		this.acumuladorTransferencia = acumuladorTransferencia;
-		banco.getListaCuentas().add(this);
+//		banco.getListaCuentas().add(this);
 		bajoMonto.add(this);
 
 		
@@ -54,6 +54,14 @@ public class BajoMonto extends Ahorro implements Serializable{
 		return this.acumuladorTransferencia;
 	}	
 	
+	public ArrayList<Transaccion> getHistorialTransferencia(){
+		return this.historialTransferencia;
+	}
+	
+	public void setHistorialTransferencia(ArrayList<Transaccion> historial){
+		this.historialTransferencia = historial;
+	}
+	
 	
 	public boolean transferir(Cuenta cuentaDestino, float valorTransferencia) {
 		
@@ -62,13 +70,13 @@ public class BajoMonto extends Ahorro implements Serializable{
 
 			
 			
-			this.restarCuenta(valorTransferencia);
+			this.restarSaldo(valorTransferencia);
 
 			
 			
-			cuentaDestino.sumarCuenta(valorTransferencia);
+			cuentaDestino.sumarSaldo(valorTransferencia);
 			
-			Transaccion trans = new Transaccion(this,cuentaDestino,cuentaDestino.banco.getNombreBanco(),valorTransferencia);
+			Transaccion trans = new Transaccion(this,cuentaDestino,valorTransferencia);
 			
 			historialTransferencia.add(trans);
 			
@@ -87,7 +95,7 @@ public class BajoMonto extends Ahorro implements Serializable{
 
 			
 			
-			this.restarCuenta(credito.getCuotaMensual());
+			this.restarSaldo(credito.getCuotaMensual());
 
 			
 			
@@ -114,7 +122,8 @@ public class BajoMonto extends Ahorro implements Serializable{
 		if(this.getSaldo()<15000) {
 			salida=false;
 		}else {
-			Ahorro nuevaCuentaAhorro = new Ahorro(this.getNroCuenta(),this.getTitular(),this.getSaldo(),this.getBanco(),"ahorro",this.getHistorialTransferencia(),this.getTasaDeInteres());
+			Ahorro nuevaCuentaAhorro = new Ahorro(this.getNroCuenta(),this.getTitular(),(this.getSaldo()-15000),this.getBanco(),"ahorro",this.getTasaDeInteres());
+			nuevaCuentaAhorro.setHistorialTransferencia(this.getHistorialTransferencia());
 			salida=true;
 		}
 		return salida;

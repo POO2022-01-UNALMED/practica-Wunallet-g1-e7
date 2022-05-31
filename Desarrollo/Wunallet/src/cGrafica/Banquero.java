@@ -228,14 +228,14 @@ public class Banquero {
 		System.out.println("---- Las cuentas que teiene asociadas son: ----");
 		int coVh = 0;
 		
-		for(Cuenta cuentas : usuario.getCuentasAsocidas()) {
+		for(Cuenta cuentas : usuario.getCuentasAsociadas()) {
 			coVh++;
 			System.out.println(coVh + ". Cuenta " + cuentas.getNroCuenta());	
 		}
 		System.out.println("Seleccione la cuenta de la que quiere ver el historial: ");
 		int vhCuenta = readInt(); 
 				
-        Cuenta cuentaVH = usuario.getCuentasAsocidas().get(vhCuenta-1);	
+        Cuenta cuentaVH = usuario.getCuentasAsociadas().get(vhCuenta-1);	
 		System.out.println("Usted eligio "+cuentaVH.getNroCuenta());
 		
 		
@@ -289,13 +289,13 @@ public class Banquero {
 		System.out.println("---- Las cuentas que teiene asociadas son: ----");
 		int coSc = 0;
 		
-		for(Cuenta cuentas : usuario.getCuentasAsocidas()) {
+		for(Cuenta cuentas : usuario.getCuentasAsociadas()) {
 			coSc++;
 			System.out.println(coSc + ". Cuenta " + cuentas.getNroCuenta());	
 		}
 		System.out.println("Seleccione la cuenta de la que desea guardar el crédito: ");
 		int scCuenta = readInt(); 
-		Cuenta CuentaSc = usuario.getCuentasAsocidas().get(scCuenta-1);	
+		Cuenta CuentaSc = usuario.getCuentasAsociadas().get(scCuenta-1);	
 		
 		
 //		SolicitarCredito.IngresoMonto
@@ -323,10 +323,10 @@ public class Banquero {
 	
 	
 	static void romperTopes(Usuario usuario) {
-	
+		
 //		Chaqueo de las cuentas debajo monto
 		int cRT = 0;
-		for(Cuenta cuentaI : usuario.getCuentasAsocidas()) {
+		for(Cuenta cuentaI : usuario.getCuentasAsociadas()) {
 			if(cuentaI instanceof BajoMonto) {
 				cRT++;
 //				System.out.println(cRT + " Cuenta "+ cuentaI.getNroCuenta());
@@ -346,7 +346,7 @@ public class Banquero {
 		System.out.println("a una cuenta de ahorros convencional, eliminando las limitaciones de este tipo de cuentas.");
 		System.out.println("Este proceso tiene un costo de 15.000 pesos que pagará una única vez.");
 		int cRT_1 = 0;
-		for(Cuenta cuentaI : usuario.getCuentasAsocidas()) {
+		for(Cuenta cuentaI : usuario.getCuentasAsociadas()) {
 			if(cuentaI instanceof BajoMonto) {
 				cRT_1++;
 				System.out.println(cRT_1 + " Cuenta "+ cuentaI.getNroCuenta());
@@ -356,12 +356,60 @@ public class Banquero {
 		System.out.print("Para continuar seleccione la cuenta de bajo monto que desea transformar: ");
 		int rtCuenta = readInt(); 
 		
-		Cuenta CuentaRt = usuario.getCuentasAsocidas().get(rtCuenta-1);	
-		
-		
+		Cuenta CuentaRt = usuario.getCuentasAsociadas().get(rtCuenta-1);	
 		System.out.println("Usted seleccionó: " + CuentaRt.getNroCuenta());
+		
+		
+		
+		
+		Banco banco = ((BajoMonto)CuentaRt).getBanco(); 
+		
+		
+		int cRT_3 = 0;
+		for(Cuenta CuentaI : banco.getListaCuentas()) {
+			cRT_3++;
+			System.out.println(cRT_3 + " Cuenta antes de romper topes "+ CuentaI.getNroCuenta());
+		}	
+		
+		
 		boolean c = ((BajoMonto)CuentaRt).romperTopes();
-				
+		
+		
+		
+
+		usuario.removerCuentaAsociada(CuentaRt);
+		banco.removerCuenta(CuentaRt);
+
+		if (c == false) {
+			System.out.println("Tu solicitud ha sido rechazada ya que no cuentas con saldo suficiente en tu cuenta para realizar el proceso.");
+		}else {
+			
+//			CuentaRt = null;
+//			System.gc();
+			
+			System.out.println("Tu solicitud ha sido aprobada, se descontará 15.000 de tu saldo para realizar el proceso. Espera un momento...");
+			System.out.println("Tu cuenta ha sido actualizada y ahora no tiene topes.");
+			
+			
+//			int cRT_2 = 0;
+//			for(Cuenta cuentaI : usuario.getCuentasAsociadas()) {
+//				if(cuentaI instanceof BajoMonto) {
+//					cRT_2++;
+//					System.out.println(cRT_2 + " Cuenta "+ cuentaI.getNroCuenta());
+//				}
+//			}
+			int cRT_2 = 0;
+			for(Cuenta CuentaI : banco.getListaCuentas()) {
+				cRT_2++;
+				if(CuentaI instanceof BajoMonto) {
+					System.out.println(cRT_2 + " Cuenta "+ CuentaI.getNroCuenta());				
+				}else {
+					System.out.println("Papi todo está melo");
+				}
+			}
+			
+			
+		}
 		
 	}
 	

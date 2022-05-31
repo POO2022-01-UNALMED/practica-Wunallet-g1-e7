@@ -14,13 +14,11 @@ public class Transaccion implements Serializable {
     // Cliente para poder guardar y cargarlas en la serializacion
 	private static ArrayList<Transaccion> transaccion = new ArrayList<>();
 	
-	public Transaccion(Cuenta cuentaOrigen,Cuenta cuentaDestino,String nombreBanco,float valorTransaccion) {
+	public Transaccion(Cuenta cuentaOrigen,Cuenta cuentaDestino,float valorTransaccion) {
 		this.cuentaOrigen = cuentaOrigen;
 		this.cuentaDestino = cuentaDestino;
-		this.nombreBanco = nombreBanco;
 		this.valorTransaccion = valorTransaccion;	
 		
-		transaccion.add(this);
 	}
 	
 	public Transaccion(Cuenta cuentaOrigen,String nombreBanco,float valorTransaccion) {
@@ -28,7 +26,6 @@ public class Transaccion implements Serializable {
 		this.nombreBanco = nombreBanco;
 		this.valorTransaccion = valorTransaccion;	
 		
-		transaccion.add(this);
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------

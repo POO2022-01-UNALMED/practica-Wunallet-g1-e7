@@ -14,19 +14,18 @@ public abstract class Cuenta implements Gestor,Serializable{
 	protected float saldo;
 	protected Banco banco;
 	protected String tipoDeCuenta;
-//	protected ArrayList<Transaccion> historialTransferencia = new ArrayList<Transaccion>();
-	protected ArrayList<Transaccion> historialTransferencia;
+	protected ArrayList<Transaccion> historialTransferencia = new ArrayList<Transaccion>();
+//	protected ArrayList<Transaccion> historialTransferencia;
 	
  
 	
 	
-	public Cuenta(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,ArrayList<Transaccion> historial) {
+	public Cuenta(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta) {
 		this.nroCuenta = nroCuenta;
 		this.titular = titular;
 		this.saldo = saldo;
 		this.banco = banco;
 		this.tipoDeCuenta = tipoDeCuenta;
-		this.historialTransferencia = historial;
 		
 	}
 	
@@ -70,7 +69,10 @@ public abstract class Cuenta implements Gestor,Serializable{
 	public ArrayList<Transaccion> getHistorialTransferencia(){
 		return this.historialTransferencia;
 	}
-	
+		
+	public void setHistorialTransferencia(ArrayList<Transaccion> historial){
+		this.historialTransferencia = historial;
+	}
 	
 	//--------------------------------------------------------------------------------------
 
@@ -84,13 +86,13 @@ public abstract class Cuenta implements Gestor,Serializable{
 	
 	abstract boolean transferir(Credito credito);
 	
-	public void sumarCuenta(float valor) {
+	public void sumarSaldo(float valor) {
 		this.setSaldo(this.getSaldo() + valor);
 	}
 	
 //	
 	
-	public void  restarCuenta(float valor) {
+	public void  restarSaldo(float valor) {
 		this.setSaldo(this.getSaldo() - valor);
 	}
 
