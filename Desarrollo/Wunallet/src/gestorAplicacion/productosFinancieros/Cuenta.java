@@ -82,9 +82,9 @@ public abstract class Cuenta implements Gestor,Serializable{
 		}
 	}
 	
-	abstract boolean transferir(Cuenta cuentaDestino, float valorTranseferencia);
+	public abstract boolean transferir(Cuenta cuentaDestino, float valorTranseferencia);
 	
-	abstract boolean transferir(Credito credito);
+	public abstract boolean transferir(Credito credito);
 	
 	public void sumarSaldo(float valor) {
 		this.setSaldo(this.getSaldo() + valor);

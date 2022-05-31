@@ -124,6 +124,10 @@ public class Usuario implements Serializable {
 		this.getCuentasAsociadas().remove(cuenta);
 	}
 	
+	public void removerCuentaIncrita(Cuenta cuenta) {
+		this.getListaIncritos().remove(cuenta);
+	}
+	
 	public String toString() {
 		StringBuffer texto = new StringBuffer(110);
 		texto.append("Las cuentas inscritas del usuario "+ this.getCc() +" son: ");
