@@ -12,7 +12,7 @@ import gestorAplicacion.productosFinancieros.Cuenta;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-
+import basedatos.*;
 
 
 public class Banquero {
@@ -35,7 +35,9 @@ public class Banquero {
 	
 	
 	public static void main (String args[]) {
-		
+	
+	Deserializador.deserializar();	
+	
 //	Creación de algunos bancos
 	Banco Unalombia = new Banco("Unalombia",(float)1.6);
 	Banco PooBanco = new Banco("PooBanco",(float)2.5);
