@@ -46,7 +46,7 @@ public class Usuario implements Serializable {
         return usuario;
     }
 
-    public static void setCorriente(ArrayList<Usuario> usuario) {
+    public static void setUsuario(ArrayList<Usuario> usuario) {
         Usuario.usuario = usuario;
     }
 	
