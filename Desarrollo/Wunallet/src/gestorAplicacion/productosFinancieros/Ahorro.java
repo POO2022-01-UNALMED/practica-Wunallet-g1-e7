@@ -35,7 +35,7 @@ public class Ahorro extends Cuenta implements Serializable{
         return ahorro;
     }
 
-    public static void setClientes(ArrayList<Ahorro> ahorro) {
+    public static void setAhorro(ArrayList<Ahorro> ahorro) {
         Ahorro.ahorro = ahorro;
     }
 	
