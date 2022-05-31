@@ -1,11 +1,18 @@
 package gestorAplicacion.infoClientes;
+import gestorAplicacion.productosFinancieros.Corriente;
 import gestorAplicacion.productosFinancieros.Cuenta;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Transaccion {
+public class Transaccion implements Serializable {
 	private Cuenta cuentaOrigen;
 	private Cuenta cuentaDestino;
 	private String nombreBanco;
 	private float valorTransaccion;
+	
+    // El Array de clase de clientes de encarga de guardar todas las instancias de
+    // Cliente para poder guardar y cargarlas en la serializacion
+	private static ArrayList<Transaccion> transaccion = new ArrayList<>();
 	
 	public Transaccion(Cuenta cuentaOrigen,Cuenta cuentaDestino,String nombreBanco,float valorTransaccion) {
 		this.cuentaOrigen = cuentaOrigen;
@@ -13,6 +20,7 @@ public class Transaccion {
 		this.nombreBanco = nombreBanco;
 		this.valorTransaccion = valorTransaccion;	
 		
+		transaccion.add(this);
 	}
 	
 	public Transaccion(Cuenta cuentaOrigen,String nombreBanco,float valorTransaccion) {
@@ -20,10 +28,21 @@ public class Transaccion {
 		this.nombreBanco = nombreBanco;
 		this.valorTransaccion = valorTransaccion;	
 		
+		transaccion.add(this);
 	}
 	
 //	-------------------------------------- Metodos get-set --------------------------------------
 
+	
+    public static ArrayList<Transaccion> getTransaccion() {
+        return transaccion;
+    }
+
+    public static void setCorriente(ArrayList<Transaccion> transaccion) {
+    	Transaccion.transaccion = transaccion;
+    }
+	
+	
 	public void setCuentaOrigen(Cuenta cuentaOrigen) {
 		this.cuentaOrigen = cuentaOrigen;
 	}
