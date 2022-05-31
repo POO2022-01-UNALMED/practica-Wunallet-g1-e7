@@ -4,6 +4,7 @@ import java.util.Scanner;
 import gestorAplicacion.infoClientes.Banco;
 import gestorAplicacion.infoClientes.PerfilCreditico;
 import gestorAplicacion.infoClientes.Usuario;
+import gestorAplicacion.infoClientes.comportamientoDePago;
 import gestorAplicacion.productosFinancieros.Ahorro;
 import gestorAplicacion.productosFinancieros.BajoMonto;
 import gestorAplicacion.productosFinancieros.Corriente;
@@ -43,6 +44,7 @@ public class Banquero {
 	Banco PooBanco = new Banco("PooBanco",(float)2.5);
 	Banco QuitaVivienda = new Banco("QuitaVivienda",(float)36.0);
 	
+
 //	Creación de algunos usuarios
 	Usuario juanPerez = new Usuario(null,1000000,10,null);
 	Usuario hernestoPerez = new Usuario(null,1000000,98,null);
@@ -57,7 +59,8 @@ public class Banquero {
 	Cuenta cuenta3 = new Corriente(23,juanPerez,(float)50000000.0,Unalombia,"corriente",(float)2000000);
 	Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)6000000.0,Unalombia, "bajoMonto", (float)5000.0,(float)3000.0,(float)3000.0);
 	
-		
+	
+	
 		int optionUser;
 		Usuario usuario;
 		do {
@@ -319,7 +322,7 @@ public class Banquero {
 		
 //		SolicitarCredito.SolicitarCuenta
 		
-		System.out.println("---- Las cuentas que teiene asociadas son: ----");
+		System.out.println("---- Las cuentas que tiene asociadas son: ----");
 		int coSc = 0;
 		
 		for(Cuenta cuentas : usuario.getCuentasAsociadas()) {
@@ -693,7 +696,7 @@ public class Banquero {
 						System.out.println("----------------------------------------------");
 						break;
 					}
-					
+
 					
 				}
 				
