@@ -33,7 +33,7 @@ Cuenta cuenta2 = new BajoMonto(69,hernestoPerez, (float)1000000.0,PooBanco, "baj
 
 Cuenta cuenta3 = new Corriente(23,juanPerez,(float)50000000.0,Unalombia,"corriente",(float)2000000);
 
-Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)1000000.0,Unalombia, "bajoMonto", (float)5000.0,(float)3000.0,(float)3000.0);
+Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)6000000.0,Unalombia, "bajoMonto", (float)5000.0,(float)3000.0,(float)3000.0);
 
 ```
 	
@@ -57,9 +57,8 @@ Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)1000000.0,Unalombia, "ba
 
     - Seleccione el número de cuenta: **69**
 
-    - Seleccione el número de cedula: **10**
-
         - **Numero de cuenta 1 no existe en el banco: Unalombia**
+
 ---
 
 - ### **Caso 2: (El número de cuenta exite en el banco):** 
@@ -103,3 +102,31 @@ Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)1000000.0,Unalombia, "ba
 
     **No tendrá cuentas inscritas**
 ---
+
+---
+## Funcionalidad romperTopes
+---
+
+
+- ## ***¿Que usuario desea realizar?***
+    - juanPerez
+---
+---
+- ### **Caso 1: (No tiene cuentas de bajo monto):**
+    - Esta funcionalidad no está habilitada para tus cuentas.
+---
+---
+- ## ***¿Que usuario desea realizar?***
+    - hernestoPerez
+---
+
+- ### **Caso 1: (No tiene cuentas de bajo monto):**
+    -  
+        - **¡Recuerde! El procedimiento de romper topes consiste en transformar su cuenta de tipo Bajo monto, a una cuenta de ahorros convencional, eliminando las limitaciones de este tipo de cuentas. Este proceso tiene un costo de 15.000 pesos que pagará una única vez.**
+    - Para continuar seleccione la cuenta de bajo monto que desea transformar: **1**
+
+        - **Tu solicitud ha sido aprobada, se descontarÃ¡ 15.000 de tu saldo para realizar el proceso. Espera un momento...**
+
+        - **Tu cuenta ha sido actualizada y ahora no tiene topes.** 
+
+        - **Tu nueva cuenta de ahorros ahora tiene un saldo de: \<SaldoCuentaAhorros\>.**

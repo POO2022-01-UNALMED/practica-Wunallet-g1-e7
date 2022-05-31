@@ -16,6 +16,7 @@ public class BajoMonto extends Ahorro implements Serializable{
     // El Array de clase de clientes de encarga de guardar todas las instancias de
     // Cliente para poder guardar y cargarlas en la serializacion
 	private static ArrayList<BajoMonto> bajoMonto = new ArrayList<>();
+	private final float costoRomperTopes = (float)15000.0;
 	
 	public BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,float acumuladorTransferencia) {
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,tasaDeInteres);
@@ -119,10 +120,10 @@ public class BajoMonto extends Ahorro implements Serializable{
 	
 	public boolean romperTopes() {
 		boolean salida = false;
-		if(this.getSaldo()<15000) {
+		if(this.getSaldo()<costoRomperTopes) {
 			salida=false;
 		}else {
-			Ahorro nuevaCuentaAhorro = new Ahorro(this.getNroCuenta(),this.getTitular(),(this.getSaldo()-15000),this.getBanco(),"ahorro",this.getTasaDeInteres());
+			Ahorro nuevaCuentaAhorro = new Ahorro(this.getNroCuenta(),this.getTitular(),(this.getSaldo()-costoRomperTopes),this.getBanco(),"ahorro",this.getTasaDeInteres());
 			nuevaCuentaAhorro.setHistorialTransferencia(this.getHistorialTransferencia());
 			salida=true;
 		}

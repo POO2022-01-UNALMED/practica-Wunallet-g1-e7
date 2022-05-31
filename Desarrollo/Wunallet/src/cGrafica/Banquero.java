@@ -55,7 +55,7 @@ public class Banquero {
 	Cuenta cuenta1 = new Ahorro(89,juanPerez, (float)10000.0 ,QuitaVivienda,"ahorro",(float)36.0);
 	Cuenta cuenta2 = new BajoMonto(69,hernestoPerez, (float)1000000.0,PooBanco, "bajoMonto", (float)5.0,(float)3000000.0,(float)3000000.0);
 	Cuenta cuenta3 = new Corriente(23,juanPerez,(float)50000000.0,Unalombia,"corriente",(float)2000000);
-	Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)1000000.0,Unalombia, "bajoMonto", (float)5000.0,(float)3000.0,(float)3000.0);
+	Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)6000000.0,Unalombia, "bajoMonto", (float)5000.0,(float)3000.0,(float)3000.0);
 	
 		
 		int optionUser;
@@ -421,7 +421,7 @@ public class Banquero {
 //		}	
 		
 		boolean c = ((BajoMonto)CuentaRt).romperTopes();
-		
+		int numeroCuenta = ((BajoMonto)CuentaRt).getNroCuenta();
 		usuario.removerCuentaAsociada(CuentaRt);
 		banco.removerCuenta(CuentaRt);
 
@@ -437,6 +437,20 @@ public class Banquero {
 			System.out.println("Tu solicitud ha sido aprobada, se descontarÃ¡ 15.000 de tu saldo para realizar el proceso. Espera un momento...");
 			System.out.println("----------------------------------------------");
 			System.out.println("Tu cuenta ha sido actualizada y ahora no tiene topes.");
+			Cuenta cANueva = banco.extraerCuenta(numeroCuenta);
+//			for(Cuenta cuentaAhorro : banco.getListaCuentas()) {
+////				numeroCuenta
+//				if(cuentaAhorro.getNroCuenta() == numeroCuenta) {
+//					cANueva = cuentaAhorro;
+//				}
+//			}
+//			if(cANueva instanceof BajoMonto) {
+//				System.out.println("AUN ES BAJO MONTO :c");
+//			}else {
+//				System.out.println("Si se actualizó");
+//			}
+			
+			System.out.println("Tu nueva cuenta de ahorros ahora tiene un saldo de: "+cANueva.getSaldo() +".");
 			System.out.println("----------------------------------------------");
 			
 //			int cRT_2 = 0;

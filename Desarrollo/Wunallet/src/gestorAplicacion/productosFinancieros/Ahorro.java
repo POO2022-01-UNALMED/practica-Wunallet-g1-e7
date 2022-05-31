@@ -17,7 +17,7 @@ public class Ahorro extends Cuenta implements Serializable{
     // El Array de clase de clientes de encarga de guardar todas las instancias de
     // Cliente para poder guardar y cargarlas en la serializacion
 	private static ArrayList<Ahorro> ahorro = new ArrayList<>();
-
+	
 	
 	public Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres) {
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
