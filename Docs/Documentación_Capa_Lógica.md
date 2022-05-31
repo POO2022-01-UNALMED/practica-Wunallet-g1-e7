@@ -246,17 +246,17 @@ Los objetos de esta clase representan los créditos que otorga un banco a un usu
 
 ### Atributos
 
-- \- Usuario titular : Titular de la cuenta
+- \# Usuario titular : Titular de la cuenta
 
-- \- Banco banco: Banco asociado
+- \# Banco banco: Banco asociado
 
-- \- float saldo : Saldo de la cuenta
+- \# float saldo : Saldo de la cuenta
 
-- \- int nroCuenta : El número de la cuenta
+- \# int nroCuenta : El número de la cuenta
 
-- \- String tipoDeCuenta : El tipo de la cuenta
+- \# String tipoDeCuenta : El tipo de la cuenta
 
-- \- ArrayList[Transaccion] historialTransferencia : Historial de todas las transacciones realizadas con la cuenta
+- \# ArrayList[Transaccion] historialTransferencia : Historial de todas las transacciones realizadas con la cuenta
 
 ### Métodos
 
@@ -266,13 +266,13 @@ Los objetos de esta clase representan los créditos que otorga un banco a un usu
     
     *Nota: El método se ejecuta sin parámetros*
 
-    1. Al ser ejecutado desde la cuenta origen, se iterará sobre la lista historialTransferencia e imprimiendo cada uno de los
-    objetos que ya estarán formateados por el método toString()
+    1. Al ser ejecutado desde la cuenta origen, iterará sobre la lista historialTransferencia e imprimirá cada uno de los
+    objetos ya formateados por el método toString()
 
 
 - **Retorno:** Void
 
-#### abstract - transferir(Cuenta cuentaDestino, float valorTransferencia);
+#### abstract - transferir(Cuenta cuentaDestino, float valorTransferencia)
 
 - **Funcionamiento:**
 
@@ -283,16 +283,33 @@ Este método se ejecuta como cuentaOrigen.transferir(cuentaDestino, valorTransfe
     
 - **Retorno:** Boolean
 
-#### abstract - transferir(Credito credito);
+#### abstract - transferir(Credito credito)
 
 - **Funcionamiento:**
 
 Ejecutará las comprobaciones y actualizaciones de saldo correspondientes al realizar el pago de un crédito. Este proceso depende del
 tipo de cuenta que lo ejecute, y por eso debe ser un método abstracto.
 
-Este método se ejecuta como cuentaOrigen.transferir(cuentaDestino, valorTransferencia)
+Este método se ejecuta como cuentaOrigen.transferir(credito)
 
 - **Retorno:** Boolean
+
+#### sumarSaldo(float valor)
+
+- **Funcionamiento:**
+
+Sumará el saldo del parámetro a la cuenta desde la que se invoca el método.
+
+- **Retorno:** Void
+
+#### restarSaldo(float valor)
+
+- **Funcionamiento:**
+
+Restará el saldo del parámetro a la cuenta desde la que se invoca el método.
+
+- **Reetorno:** Void
+
 ---
 
 ## Corriente extends Cuenta
@@ -407,7 +424,7 @@ float valorTransaccion)
 
 ---
 
-## BajoMonto extends Cuenta
+## BajoMonto extends Ahorro
 
 ### Generalidades
 
