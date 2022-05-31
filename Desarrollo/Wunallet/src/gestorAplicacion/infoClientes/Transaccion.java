@@ -35,7 +35,7 @@ public class Transaccion implements Serializable {
         return transaccion;
     }
 
-    public static void setCorriente(ArrayList<Transaccion> transaccion) {
+    public static void setTransaccion(ArrayList<Transaccion> transaccion) {
     	Transaccion.transaccion = transaccion;
     }
 	
