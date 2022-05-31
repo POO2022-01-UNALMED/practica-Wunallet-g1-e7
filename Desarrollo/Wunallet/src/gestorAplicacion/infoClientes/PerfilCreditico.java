@@ -28,7 +28,7 @@ public class PerfilCreditico implements Serializable{
         return perfilCreditico;
     }
 
-    public static void setCorriente(ArrayList<PerfilCreditico> perfilCreditico) {
+    public static void setPerfilCreditico(ArrayList<PerfilCreditico> perfilCreditico) {
     	PerfilCreditico.perfilCreditico = perfilCreditico;
     }
 	
