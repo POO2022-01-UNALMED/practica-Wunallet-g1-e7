@@ -2,11 +2,13 @@ package gestorAplicacion.infoClientes;
 import java.util.ArrayList;
 
 import gestorAplicacion.infoClientes.PerfilCreditico;
+import gestorAplicacion.productosFinancieros.Corriente;
 import gestorAplicacion.productosFinancieros.Credito;
 import gestorAplicacion.productosFinancieros.Cuenta;
+import java.io.Serializable;
 
 
-public class Usuario {
+public class Usuario implements Serializable {
 	private ArrayList<Cuenta> listaInscritos = new ArrayList<Cuenta>();
 	private float ingresosMensuales;
 	private PerfilCreditico perfilCrediticio;
@@ -15,12 +17,17 @@ public class Usuario {
 	private ArrayList<String> bancosAsociados = new ArrayList<String>();
 	private ArrayList<Cuenta> cuentasAsociadas = new ArrayList<Cuenta>();
 	
+    // El Array de clase de clientes de encarga de guardar todas las instancias de
+    // Cliente para poder guardar y cargarlas en la serializacion
+	private static ArrayList<Usuario> usuario = new ArrayList<>();
+	
 	public Usuario(PerfilCreditico perfilCrediticio,float ingresosMensuales,int cc,Credito creditoActivo) {
 		this.perfilCrediticio = perfilCrediticio;
 		this.ingresosMensuales = ingresosMensuales;
 		this.cc = cc;
 		this.creditoActivo = creditoActivo;
 		
+		usuario.add(this);
 	}
 	
 	
@@ -34,7 +41,16 @@ public class Usuario {
 	}
 	
 //	-------------------------------------- Métodos get-set --------------------------------------
-//	Get-Set ingresosMensuales
+    
+    public static ArrayList<Usuario> getUsuario() {
+        return usuario;
+    }
+
+    public static void setCorriente(ArrayList<Usuario> usuario) {
+        Usuario.usuario = usuario;
+    }
+	
+	//	Get-Set ingresosMensuales
 	public void setIngresosMensuales(float ingresosMensuales) {
 		this.ingresosMensuales = ingresosMensuales;
 	}
