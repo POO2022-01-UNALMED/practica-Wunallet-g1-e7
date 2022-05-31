@@ -74,11 +74,8 @@ public class Transaccion implements Serializable {
 	public String toString() {
 		
 		if (this.cuentaDestino == null) {
-			
 			return "Tranferencia "+ cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + getNombreBanco() + " por valor de " + getValorTransaccion() + "." ;
-		}
-		
-		else {
+		}else {
 			return "Transferencia de " + cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + 
 					 cuentaDestino.getTitular() + " a la cuenta " + cuentaDestino. getNroCuenta() + " por valor de " + getValorTransaccion() + ".";
 		}

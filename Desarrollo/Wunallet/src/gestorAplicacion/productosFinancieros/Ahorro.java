@@ -57,9 +57,7 @@ public class Ahorro extends Cuenta implements Serializable{
 	public boolean transferir(Cuenta cuentaDestino, float valorTransferencia) {
 		
 		if(this.saldo >= valorTransferencia) {
-			
-
-			
+				
 			
 			this.restarSaldo(valorTransferencia);
 
@@ -82,21 +80,11 @@ public class Ahorro extends Cuenta implements Serializable{
 	public boolean transferir(Credito credito) {
 		
 		if(this.saldo >= credito.getCuotaMensual()) {
-			
-
-			
-			
+					
 			this.restarSaldo(credito.getCuotaMensual());
-
-			
-			
 			credito.setDeuda(credito.getDeuda()-credito.getCuotaMensual());
-			
 			Transaccion trans = new Transaccion(this,credito.getBanco().getNombreBanco(),credito.getCuotaMensual());
-			
 			historialTransferencia.add(trans);
-			
-			
 			return true;
 			
 		}

@@ -130,3 +130,113 @@ Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)6000000.0,Unalombia, "ba
         - **Tu cuenta ha sido actualizada y ahora no tiene topes.** 
 
         - **Tu nueva cuenta de ahorros ahora tiene un saldo de: \<SaldoCuentaAhorros\>.**
+    
+---
+## Funcionalidad solicitarCredito
+---
+
+---
+- ## ***¿Que usuario desea realizar?***
+    - juanPerez
+---
+
+
+- ### **Caso 1: (Aprovación del crédito):** 
+**NOTA:** Todos los usuarios inician sin ningún crédito.
+
+- Seleccione de que banco es la cuenta que desea inscribir: **2**
+    - 
+
+- Seleccione de que banco es la cuenta que desea inscribir: **1**
+    - **Usted selecciono Unalombia que tiene una tasa de interés de 1.6 anual**
+- Las cuentas que tiene asociadas son: 
+
+    - **1. Cuenta 89**
+    
+    - **2. Cuenta 23**
+
+- Ingrese el monto en pesos a solicitar **3000**
+
+- Ingrese el plazo en meses del crédito **12**
+
+    - **Tu solicitud de crÃ©dito ha sido aprobada y tu saldo actual es: 13000,0**
+---
+
+---
+- ### **Caso 2: (Error porque ya se tiene un crédito):**
+
+- 
+    -**El usuario 10 ya tiene un crédito activo**
+
+
+---
+- ## ***¿Que usuario desea realizar?***
+    - hernestoPerez
+---
+
+- ### **Caso 3: (La cuota tentativa del crédito supera la capacidadDeEndeudamiento):**
+
+- Seleccione de que banco es la cuenta que desea inscribir: **3**
+
+    - **Usted selecciono QuitaVivienda que tiene una tasa de interés de 36.0 anual**
+
+    - **Las cuentas que tiene asociadas son:**
+            
+        **1. Cuenta 69**
+            
+        **2. Cuenta 26**
+    
+- Seleccione la cuenta de la que desea guardar el crédito: **1**
+
+- Ingrese el monto en pesos a solicitar: **100.000**
+
+- Ingrese el plazo en meses del crédito: **12**
+
+    - **Credito rechazado por falta de capacidad de endeudamiento**
+
+<!-- 
+capacidadEndeudamiento = 1'000.000 * 0,2 ==> 200.000
+(1+((banco.getTasaInteresAnual()/12)*plazo))*monto
+(1+((36/12)*12))*100.000 = 3.700.000
+
+cuotaTentativa = 3.700.000/12 = 308.833
+
+ -->
+
+
+---
+## Funcionalidad transferir
+---
+
+---
+- ## ***¿Que usuario desea realizar?***
+    - juanPerez
+---
+
+- ### **Caso 1: (Aprovación del crédito):**
+    - 
+        - **Selecciona el producto de origen que quieres usar:**
+            
+            **1. Cuenta 89**
+
+            **2. Cuenta 23**
+    - Seleccione la cuenta de la cual quiere realizar una transferencia: **1**
+        - **Usted eligio la cuenta 89**
+    
+    - Selecciona quÃ© tipo de transferencia quieres hacer
+        1. Pagar credito
+        2. Transferencia a otra cuenta
+
+        : **1**
+    
+    - Selecionaste: pagar credito
+        Tu crÃ©dito es de 3000.0 y pagarÃ¡s una cuota de 875.0.
+        1. Sí
+        2. Volver al menú de funcionalidades.
+        
+        **Sí**
+        
+        **- Tu pago ha sido exitoso. Tu credito restante es de 1250.0**
+
+---
+

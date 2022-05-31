@@ -78,7 +78,7 @@ public abstract class Cuenta implements Gestor,Serializable{
 
 	public void verHistorial() {
 		for(int i=0;i<historialTransferencia.size();i++) {
-			System.out.print(historialTransferencia.get(i));
+			System.out.println(historialTransferencia.get(i));
 		}
 	}
 	

@@ -298,10 +298,10 @@ public class Banquero {
 		
 		
 //		SolicitarCredito.SeleccionBanco
-		System.out.println("-------------- SeleecciÃ³n del banco --------------");
+		System.out.println("-------------- Seleección del banco --------------");
 		int c = 0;
 		for(Banco i: Banco.listaBancos) {
-			System.out.println((c+1) + ". " + i.getNombreBanco());
+			System.out.println((c+1) + ". " + i.getNombreBanco() + " tasa de interés del " + i.getTasaInteresAnual() + " anual");
 			c++;
 		}
 		String nombreBanco = null;
@@ -317,7 +317,7 @@ public class Banquero {
 		}
 		        
 		nombreBanco = banco.getNombreBanco();
-		System.out.println(" Usted selecciono " + nombreBanco);
+		System.out.println(" Usted selecciono " + nombreBanco + " que tiene una tasa de interés de " + banco.getTasaInteresAnual() + " anual");
 		System.out.println("----------------------------------------------");
 		
 //		SolicitarCredito.SolicitarCuenta
