@@ -298,10 +298,10 @@ public class Banquero {
 		
 		
 //		SolicitarCredito.SeleccionBanco
-		System.out.println("-------------- Seleección del banco --------------");
+		System.out.println("-------------- Seleecciï¿½n del banco --------------");
 		int c = 0;
 		for(Banco i: Banco.listaBancos) {
-			System.out.println((c+1) + ". " + i.getNombreBanco() + " tasa de interés del " + i.getTasaInteresAnual() + " anual");
+			System.out.println((c+1) + ". " + i.getNombreBanco() + " tasa de interï¿½s del " + i.getTasaInteresAnual() + " anual");
 			c++;
 		}
 		String nombreBanco = null;
@@ -317,7 +317,7 @@ public class Banquero {
 		}
 		        
 		nombreBanco = banco.getNombreBanco();
-		System.out.println(" Usted selecciono " + nombreBanco + " que tiene una tasa de interés de " + banco.getTasaInteresAnual() + " anual");
+		System.out.println(" Usted selecciono " + nombreBanco + " que tiene una tasa de interï¿½s de " + banco.getTasaInteresAnual() + " anual");
 		System.out.println("----------------------------------------------");
 		
 //		SolicitarCredito.SolicitarCuenta
@@ -450,7 +450,7 @@ public class Banquero {
 //			if(cANueva instanceof BajoMonto) {
 //				System.out.println("AUN ES BAJO MONTO :c");
 //			}else {
-//				System.out.println("Si se actualizó");
+//				System.out.println("Si se actualizï¿½");
 //			}
 			
 			System.out.println("Tu nueva cuenta de ahorros ahora tiene un saldo de: "+cANueva.getSaldo() +".");
@@ -686,8 +686,8 @@ public class Banquero {
 					if(transferenciaOcNOIns) {
 						System.out.println("EnvÃ­o exitoso. El saldo de su cuenta es de "+ cuentaT.getSaldo()  +"." );
 						System.out.println("----------------------------------------------");
-						System.out.println("CuentaOrigen" + cuentaT.getSaldo());
-						System.out.println("CuentaDestino" + cuentaDestino.getSaldo());
+						System.out.println("Quedaste con un saldo de: " + cuentaT.getSaldo());
+//						System.out.println("CuentaDestino" + cuentaDestino.getSaldo());
 						
 						
 						break;

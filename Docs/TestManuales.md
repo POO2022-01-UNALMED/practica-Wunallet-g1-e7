@@ -213,7 +213,7 @@ cuotaTentativa = 3.700.000/12 = 308.833
     - juanPerez
 ---
 
-- ### **Caso 1: (Aprovación del crédito):**
+- ### **Caso 1: (Pago de crédito):**
     - 
         - **Selecciona el producto de origen que quieres usar:**
             
@@ -225,12 +225,10 @@ cuotaTentativa = 3.700.000/12 = 308.833
     
     - Selecciona quÃ© tipo de transferencia quieres hacer
         1. Pagar credito
-        2. Transferencia a otra cuenta
-
-        : **1**
+        2. Transferencia a otra cuenta: **1**
     
     - Selecionaste: pagar credito
-        Tu crÃ©dito es de 3000.0 y pagarÃ¡s una cuota de 875.0.
+        Tu crédito es de 3000.0 y pagarás una cuota de 875.0.
         1. Sí
         2. Volver al menú de funcionalidades.
         
@@ -239,4 +237,52 @@ cuotaTentativa = 3.700.000/12 = 308.833
         **- Tu pago ha sido exitoso. Tu credito restante es de 1250.0**
 
 ---
+
+- ### **Caso 2: (Transferencia):**
+    - 
+        - **Selecciona el producto de origen que quieres usar:**
+            
+            **1. Cuenta 89**
+
+            **2. Cuenta 23**
+    - Seleccione la cuenta de la cual quiere realizar una transferencia: **1**
+        - **Usted eligio la cuenta 89**
+    
+    - Selecciona que tipo de transferencia quieres hacer
+        
+        \1. Pagar credito
+        
+        \2. Transferencia a otra cuenta: 
+        
+        Entrada: **2**
+    
+    - Selecionaste: tranferir a otra cuenta.
+
+        Selecciona a qué tipo de cuenta quieres transferir:
+        
+        \1. Cuentas inscritas
+        
+        \2. Cuentas no inscritas
+        
+        Entrada: **2**
+    
+    - Selecionaste: cuentas no inscritas.
+
+        Seleección del banco
+        
+        \1. Unalombia
+        
+        \2. PooBanco
+        
+        \3. QuitaVivienda
+        
+        Seleccione de qué banco es la cuenta que desea inscribir: 
+
+         - **Entrada: 3**
+
+        - **Usted selecciono QuitaVivienda**
+        
+    - Ingrese el número de cuenta de destino:
+---
+
 
