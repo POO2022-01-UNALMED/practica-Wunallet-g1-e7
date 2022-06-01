@@ -112,7 +112,7 @@ public class Banquero {
 			System.out.println(" 3. Solicitar credito");
 			System.out.println(" 4. Ver historial de transacciones");
 			System.out.println(" 5. Tranferir");
-			System.out.println(" 6. Salida segura");
+			System.out.println(" 6. Volver a seleccionar usuario");
 			System.out.println(" 7. Volver al menu de usuarios");
 			System.out.println("----------------------------------------------");
 			System.out.print("Ingrese la opcion :");
