@@ -610,4 +610,4 @@ Secuencia:
 **2** - Selección de usuario
 5
 1
-1 ------No tienes ningÃºn crÃ©dito activo para pagar.-
+1 ------No tienes ningÃºn crÃ©dito activo para pagar.--
