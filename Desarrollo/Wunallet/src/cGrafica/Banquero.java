@@ -43,47 +43,47 @@ public class Banquero {
 	cargar();
 	inicializa();
 	
-	System.out.println("            :~^^^^^^~:  :~^^^^^^^^  :~^^^^^^^^");                            
-	System.out.println("            :5PPPPPP5^  :5PPPPPPP~  .YPPPPPPP~");                            
-	System.out.println("             7PPPPPP?    7PPPPPPJ    ~PPPPPPY ");                            
-	System.out.println("             7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
-	System.out.println("             7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
-	System.out.println("             7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
-	System.out.println("             7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
-	System.out.println("             7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
-	System.out.println("             JPPPPPPJ    7PPPPPPJ    7PPPPPPY.");                            
-	System.out.println("            !PPPPPPPP7   7PPPPPPJ   ~PPPPPPPP?");                            
-	System.out.println("            ~PPPPPPPP~   7PPPPPPJ   :5PPPPPPP7");                            
-	System.out.println("             ?PPPPPPJ    7PPPPPPJ    7PPPPPPY.");                            
-	System.out.println("             7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
-	System.out.println("        :~?JY5PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
-	System.out.println("     :7YPPGP5555PPPPPJ:  7PPPPPPJ    ~PPPPPPJ ");                            
-	System.out.println("    !5GPPY!^....^?PPPPY. 7PPPPPPJ    ~PPPPPPJ ");                            
-	System.out.println("   ?PP7!!        .5PPPY. 7PPPPPPJ    ~PPPPPPJ ");                            
-	System.out.println("  ~P5^         .^JPP5?:  !PPPPPPJ    ~PPPPPPJ ");                            
-	System.out.println("  JP~        .:^!7!~^..:.7PPPPPPJ:::.!PPPPPPJ ");                            
-	System.out.println(" .5Y.        7P5555555PP5PPPPPPPP55P5PPPPPPPJ ");                            
-	System.out.println("  Y5.        7PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPY ");                            
-	System.out.println("  ^P!       :5PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP~");                            
-	System.out.println("   ~5!      :^^^^^^^^^^75PPPPPPPY^^^^^^^^^^^^^");                            
-	System.out.println("    .7?~.:~^.      .^!JPPPPY7?5PP!            ");                            
-	System.out.println("      .!?77JYYYYYY5PPGPPY7^.  .:^~:           ");                            
-	System.out.println("         :^!7?JYYYJJ?!^:                      ");                            
-	System.out.println("                                              ");                                                                                                                             
-	System.out.println("                                              ");                                                                                                    
-	System.out.println("                                              ");                                                                                                    
-	System.out.println("                                              ");                                                                                                    
-	System.out.println(":J! ^Y~ ~Y^ 	^Y~ :J!     .?J.  ??.      ?J.       ??.     ~Y^     7JJJJ. ^??J??^ ");                  
-	System.out.println(":PY 7G? ?G^ 	~G7 ^G7     .5G!  Y5.     :PP^      .55.     7G~     JP~:^   .!G7.. ");                  
-	System.out.println(".55.?PJ JP: 	~P7 ^P7     .5P5. Y5.     ^PP!      .Y5.     7P^     JP:      ~P!   ");                  
-	System.out.println(".YP:JPY.55: 	~P7 ^P7     .5PP! Y5.     7PP?      .Y5.     7P^     JP:      ~P!   ");                  
-	System.out.println(" JP~YP5^55. 	~P7 ^P7     .55P5:Y5.     JPPY.     .Y5.     7P^     JP~^^    ~P!   ");                  
-	System.out.println(" ?P75P5!PY. 	~P7 ^P7     .5J?P7J5.    .5J?P:     .Y5.     7P^     JPJJ?.   ~P!   ");                  
-	System.out.println(" 7P5P755PJ  	~P7 ^P7     .5J:P555.    :P7~P~     .Y5.     7P^     JP:      ~P!   ");                  
-	System.out.println(" !PP5.JPP?  	~P7 ^P7     .5Y ?PP5.    ~PYJP7     .Y5.     7P^     JP:      ~P!   ");                  
-	System.out.println(" ~PP? !PP7  	~P7 ^P7     .5Y :5P5.    7P~^5J     .Y5.     7P^     JP:      ~P!   ");                  
-	System.out.println(" ^PP^ :5P!  	~G7 ^G7     .5Y  ?P5.    J5. Y5.     Y5.     7P^     JP:      ~G!   ");                  
-	System.out.println(" :PY.  JP~  	:J5Y5Y^     .5Y  :55.   .5J  ?P:     YPJJ7   !PYJJ^  ?PYJJ.   ~P!   ");                  
+    System.out.println("                                                                    :~^^^^^^~:  :~^^^^^^^^  :~^^^^^^^^");                            
+	System.out.println("                                                                    :5PPPPPP5^  :5PPPPPPP~  .YPPPPPPP~");                            
+	System.out.println("                                                                     7PPPPPP?    7PPPPPPJ    ~PPPPPPY ");                            
+	System.out.println("                                                                     7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
+	System.out.println("                                                                     7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
+	System.out.println("                                                                     7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
+	System.out.println("                                                                     7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
+	System.out.println("                                                                     7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
+	System.out.println("                                                                     JPPPPPPJ    7PPPPPPJ    7PPPPPPY.");                            
+	System.out.println("                                                                    !PPPPPPPP7   7PPPPPPJ   ~PPPPPPPP?");                            
+	System.out.println("                                                                    ~PPPPPPPP~   7PPPPPPJ   :5PPPPPPP7");                            
+	System.out.println("                                                                     ?PPPPPPJ    7PPPPPPJ    7PPPPPPY.");                            
+	System.out.println("                                                                     7PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
+	System.out.println("                                                                :~?JY5PPPPPP?    7PPPPPPJ    ~PPPPPPJ ");                            
+	System.out.println("                                                             :7YPPGP5555PPPPPJ:  7PPPPPPJ    ~PPPPPPJ ");                            
+	System.out.println("                                                            !5GPPY!^....^?PPPPY. 7PPPPPPJ    ~PPPPPPJ ");                            
+	System.out.println("                                                           ?PP7!!        .5PPPY. 7PPPPPPJ    ~PPPPPPJ ");                            
+	System.out.println("                                                          ~P5^         .^JPP5?:  !PPPPPPJ    ~PPPPPPJ ");                            
+	System.out.println("                                                          JP~        .:^!7!~^..:.7PPPPPPJ:::.!PPPPPPJ ");                            
+	System.out.println("                                                         .5Y.        7P5555555PP5PPPPPPPP55P5PPPPPPPJ ");                            
+	System.out.println("                                                          Y5.        7PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPY ");                            
+	System.out.println("                                                          ^P!       :5PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP~");                            
+	System.out.println("                                                           ~5!      :^^^^^^^^^^75PPPPPPPY^^^^^^^^^^^^^");                            
+	System.out.println("                                                            .7?~.:~^.      .^!JPPPPY7?5PP!            ");                            
+	System.out.println("                                                              .!?77JYYYYYY5PPGPPY7^.  .:^~:           ");                            
+	System.out.println("                                                                 :^!7?JYYYJJ?!^:                      ");                            
+	System.out.println("                                                                                                      ");                                                                                                                             
+	System.out.println("                                                                                                      ");                                                                                                    
+	System.out.println("                                                                                                      ");                                                                                                    
+	System.out.println("                                                                                                      ");                                                                                                    
+	System.out.println("                                     :J! ^Y~ ~Y^ 	^Y~ :J!     .?J.  ??.      ?J.       ??.     ~Y^     7JJJJ. ^??J??^ ");                  
+	System.out.println("                                     :PY 7G? ?G^ 	~G7 ^G7     .5G!  Y5.     :PP^      .55.     7G~     JP~:^   .!G7.. ");                  
+	System.out.println("                                     .55.?PJ JP: 	~P7 ^P7     .5P5. Y5.     ^PP!      .Y5.     7P^     JP:      ~P!   ");                  
+	System.out.println("                                     .YP:JPY.55: 	~P7 ^P7     .5PP! Y5.     7PP?      .Y5.     7P^     JP:      ~P!   ");                  
+	System.out.println("                                      JP~YP5^55. 	~P7 ^P7     .55P5:Y5.     JPPY.     .Y5.     7P^     JP~^^    ~P!   ");                  
+	System.out.println("                                      ?P75P5!PY. 	~P7 ^P7     .5J?P7J5.    .5J?P:     .Y5.     7P^     JPJJ?.   ~P!   ");                  
+	System.out.println("                                      7P5P755PJ  	~P7 ^P7     .5J:P555.    :P7~P~     .Y5.     7P^     JP:      ~P!   ");                  
+	System.out.println("                                      !PP5.JPP?  	~P7 ^P7     .5Y ?PP5.    ~PYJP7     .Y5.     7P^     JP:      ~P!   ");                  
+	System.out.println("                                      ~PP? !PP7  	~P7 ^P7     .5Y :5P5.    7P~^5J     .Y5.     7P^     JP:      ~P!   ");                  
+	System.out.println("                                      ^PP^ :5P!  	~G7 ^G7     .5Y  ?P5.    J5. Y5.     Y5.     7P^     JP:      ~G!   ");                  
+	System.out.println("                                      :PY.  JP~  	:J5Y5Y^     .5Y  :55.   .5J  ?P:     YPJJ7   !PYJJ^  ?PYJJ.   ~P!   ");                   
 	
 //	for(Banco i:Banco.listaBancos) {
 //		System.out.println("Banco "+ i.getNombreBanco());
@@ -125,14 +125,16 @@ public class Banquero {
 	int optionUser;
 	do {
 		System.out.println("----------------------------------------------");
-		System.out.println("¿Que usuario desea realizar?");
+		System.out.println("	¿Que usuario desea realizar?");
+		System.out.println("----------------------------------------------");
 		int uC = 0;
 		for(Usuario usuarioI:Usuario.getUsuario()) {
 			uC++;
 			System.out.println(uC + ". Usuario con CC: "+ usuarioI.getCc());
 		}
 		System.out.println("0. Salida segura");
-		System.out.print("Ingrese la opcion :");
+		System.out.println("----------------------------------------------");
+		System.out.print("	Ingrese la opcion :");
 		optionUser = (int) readLong();
 		System.out.println("----------------------------------------------");
 		
@@ -140,6 +142,7 @@ public class Banquero {
 	//		Primer usuario.
 			case 1: 
 					System.out.println("Usted seleccionó: "+ Usuario.getUsuario().get(0).getCc());
+					System.out.println("----------------------------------------------");
 					funcionalidadesEjecucion(Usuario.getUsuario().get(0));
 					break;
 					
@@ -147,6 +150,7 @@ public class Banquero {
 	//		Segundo usuario.
 			case 2: 
 					System.out.println("Usted seleccionó: "+ Usuario.getUsuario().get(1).getCc());					
+					System.out.println("----------------------------------------------");
 					funcionalidadesEjecucion(Usuario.getUsuario().get(1));
 					break;
 			
@@ -187,7 +191,8 @@ public class Banquero {
 		
 		do {
 //			System.out.println("----------------------------------------------");
-			System.out.println("¿Que operacion desea realizar?");
+			System.out.println("	¿Que operacion desea realizar?");
+			System.out.println("----------------------------------------------");
 			System.out.println(" 1. Inscribir cuenta");
 			System.out.println(" 2. Romper topes");
 			System.out.println(" 3. Solicitar credito");
@@ -224,13 +229,14 @@ public class Banquero {
 	
 	static void inscribirCuenta(Usuario usuario) {
 		
-		System.out.println("-------------- Inscribir cuenta ------------------");
-		
+		System.out.println("	#   Inscribir cuenta");
+		System.out.println("----------------------------------------------");
 		
 		
 //		SelecciÃ³n del banco - InscribirCuenta.SeleccionBanco
 	
-		System.out.println("-------------- SeleecciÃ³n del banco --------------");
+		System.out.println("	- Seleeccion del banco");
+		System.out.println("----------------------------------------------");
 		int c = 0;
 		for(Banco i: Banco.listaBancos) {
 			System.out.println((c+1) + ". " + i.getNombreBanco());
@@ -238,7 +244,7 @@ public class Banquero {
 		}
 		String nombreBanco = null;
 		System.out.println("----------------------------------------------");
-		System.out.println("Seleccione de quÃ© banco es la cuenta que desea inscribir: ");
+		System.out.print("- Seleccione de que banco es la cuenta que desea inscribir: ");
 		int numBanco = readInt();
 		System.out.println("----------------------------------------------");
 		Banco banco = null;		
@@ -249,18 +255,19 @@ public class Banquero {
 		}
 		        
 		nombreBanco = banco.getNombreBanco();
-		System.out.println(" Usted selecciono " + nombreBanco);
+		System.out.println("	R / Usted selecciono " + nombreBanco);
 		System.out.println("----------------------------------------------");
 
 		
 //		Seleccione el tipo de cuenta - InscribirCuenta.SeleccionTipoCuenta
 		
-		System.out.println("-------------- SeleecciÃ³n tipo de cuenta --------------");
+		System.out.println("     - Seleección tipo de cuenta");
+		System.out.println("----------------------------------------------");
 		System.out.println("1. Cuenta de bajo monto ");
 		System.out.println("2. Cuenta de ahorros");
 		System.out.println("3. Cuenta corriente ");
-		System.out.println("4. Volver al menÃº de funcionalidades");
-		System.out.println("Seleccione el tipo de cuenta: ");
+		System.out.println("4. Volver al menú de funcionalidades");
+		System.out.print("Seleccione el tipo de cuenta: ");
 		int tipCuenta = readInt(); 
 		System.out.println("----------------------------------------------");
 		
@@ -271,14 +278,16 @@ public class Banquero {
 		case 2: tipoCuenta = "ahorro";break;
 		case 3: tipoCuenta = "corriente";break;
 		}
-		System.out.println(" Usted seleccioÃ³ " + tipoCuenta);
+		System.out.println(" R / Usted seleccionó " + tipoCuenta);
 		System.out.println("----------------------------------------------");
 		
 //		SelecciÃ³n del banco - InscribirCuenta.IngresoNumeroCuenta
 		
-		System.out.println("--------- InsersiÃ³n del nÃºmero de cuenta --------------");
-		System.out.println("Ingrese el nÃºmero de la cuenta: ");
+		System.out.println("	- Insersión del número de cuenta");
+		System.out.println("----------------------------------------------");
+		System.out.print("Ingrese el número de la cuenta: ");
 		int numeroCuenta = readInt();
+		System.out.println("----------------------------------------------");
 		
 //		ComprobaciÃ³n de la existencia de la cuenta
 		
@@ -287,7 +296,7 @@ public class Banquero {
 			
 		}else {
 			System.out.println("----------------------------------------------");
-			System.out.println("Numero de cuenta "+numeroCuenta+" no existe en el banco: " + nombreBanco);
+			System.out.println("R / Numero de cuenta "+numeroCuenta+" no existe en el banco: " + nombreBanco);
 			System.out.println("----------------------------------------------");
 			return ;
 			
@@ -295,8 +304,8 @@ public class Banquero {
 		
 //		SelecciÃ³n del banco - InscribirCuenta.IngresoNumeroCedula
 		
-		System.out.println("--------- InsersiÃ³n del nÃºmero de cÃ©dula --------------");
-		System.out.println("Ingrese el nÃºmero de cedula: ");
+		System.out.println("	- Insersión del número de cédula");
+		System.out.print("Ingrese el número de cedula: ");
 		int numeroCc = readInt();
 		System.out.println("----------------------------------------------");
 
@@ -308,7 +317,7 @@ public class Banquero {
 			
 		}else {
 			System.out.println("----------------------------------------------");
-			System.out.println("Numero de cedula "+numeroCc+" no concuerda con la cuenta");
+			System.out.println("R / Numero de cedula "+numeroCc+" no concuerda con la cuenta");
 			System.out.println("----------------------------------------------");
 			return ;
 		}
@@ -318,7 +327,7 @@ public class Banquero {
 		
 		usuario.inscribir(numeroCuenta,nombreBanco);
 		System.out.println("----------------------------------------------");
-		System.out.println(usuario);
+		System.out.println("R / " + usuario);
 		System.out.println("----------------------------------------------");
 //		System.out.println(usuario.getListaIncritos());
 
