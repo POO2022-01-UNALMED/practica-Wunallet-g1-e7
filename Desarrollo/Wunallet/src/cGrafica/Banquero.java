@@ -37,7 +37,7 @@ public class Banquero {
 	
 	public static void main (String args[]) {
 	
-	Deserializador.deserializar();	
+//	Deserializador.deserializar();	
 	
 //	Creación de algunos bancos
 	Banco Unalombia = new Banco("Unalombia",(float)1.6);
