@@ -73,17 +73,17 @@ public class Banquero {
 	System.out.println("                                              ");                                                                                                    
 	System.out.println("                                              ");                                                                                                    
 	System.out.println("                                              ");                                                                                                    
-	System.out.println(":J! ^Y~ ~Y^ ^Y~ :J! .?J.  ??.   ?J.   ??.   ~Y^    7JJJJ.^??J??^ ");                  
-	System.out.println(":PY 7G? ?G^ ~G7 ^G7 .5G!  Y5.  :PP^  .55.   7G~    JP~:^  .!G7.. ");                  
-	System.out.println(".55.?PJ JP: ~P7 ^P7 .5P5. Y5.  ^PP!  .Y5.   7P^    JP:     ~P!   ");                  
-	System.out.println(".YP:JPY.55: ~P7 ^P7 .5PP! Y5.  7PP?  .Y5.   7P^    JP:     ~P!   ");                  
-	System.out.println(" JP~YP5^55. ~P7 ^P7 .55P5:Y5.  JPPY. .Y5.   7P^    JP~^^   ~P!   ");                  
-	System.out.println(" ?P75P5!PY. ~P7 ^P7 .5J?P7J5. .5J?P: .Y5.   7P^    JPJJ?.  ~P!   ");                  
-	System.out.println(" 7P5P755PJ  ~P7 ^P7 .5J:P555. :P7~P~ .Y5.   7P^    JP:     ~P!   ");                  
-	System.out.println(" !PP5.JPP?  ~P7 ^P7 .5Y ?PP5. ~PYJP7 .Y5.   7P^    JP:     ~P!   ");                  
-	System.out.println(" ~PP? !PP7  ~P7 ^P7 .5Y :5P5. 7P~^5J .Y5.   7P^    JP:     ~P!   ");                  
-	System.out.println(" ^PP^ :5P!  ~G7 ^G7 .5Y  ?P5. J5. Y5. Y5.   7P^    JP:     ~G!   ");                  
-	System.out.println(" :PY.  JP~  :J5Y5Y^ .5Y  :55..5J  ?P: YPJJ7 !PYJJ^ ?PYJJ.  ~P!   ");                  
+	System.out.println(":J! ^Y~ ~Y^ 	^Y~ :J!     .?J.  ??.      ?J.       ??.     ~Y^     7JJJJ. ^??J??^ ");                  
+	System.out.println(":PY 7G? ?G^ 	~G7 ^G7     .5G!  Y5.     :PP^      .55.     7G~     JP~:^   .!G7.. ");                  
+	System.out.println(".55.?PJ JP: 	~P7 ^P7     .5P5. Y5.     ^PP!      .Y5.     7P^     JP:      ~P!   ");                  
+	System.out.println(".YP:JPY.55: 	~P7 ^P7     .5PP! Y5.     7PP?      .Y5.     7P^     JP:      ~P!   ");                  
+	System.out.println(" JP~YP5^55. 	~P7 ^P7     .55P5:Y5.     JPPY.     .Y5.     7P^     JP~^^    ~P!   ");                  
+	System.out.println(" ?P75P5!PY. 	~P7 ^P7     .5J?P7J5.    .5J?P:     .Y5.     7P^     JPJJ?.   ~P!   ");                  
+	System.out.println(" 7P5P755PJ  	~P7 ^P7     .5J:P555.    :P7~P~     .Y5.     7P^     JP:      ~P!   ");                  
+	System.out.println(" !PP5.JPP?  	~P7 ^P7     .5Y ?PP5.    ~PYJP7     .Y5.     7P^     JP:      ~P!   ");                  
+	System.out.println(" ~PP? !PP7  	~P7 ^P7     .5Y :5P5.    7P~^5J     .Y5.     7P^     JP:      ~P!   ");                  
+	System.out.println(" ^PP^ :5P!  	~G7 ^G7     .5Y  ?P5.    J5. Y5.     Y5.     7P^     JP:      ~G!   ");                  
+	System.out.println(" :PY.  JP~  	:J5Y5Y^     .5Y  :55.   .5J  ?P:     YPJJ7   !PYJJ^  ?PYJJ.   ~P!   ");                  
 	
 //	for(Banco i:Banco.listaBancos) {
 //		System.out.println("Banco "+ i.getNombreBanco());
