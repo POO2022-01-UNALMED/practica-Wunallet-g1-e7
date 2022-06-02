@@ -81,7 +81,7 @@ public class Banco implements Serializable {
 		return cuenta;		
 	}	
 	
-	public void añadirCredito(Credito credito) {
+	public void aÃ±adirCredito(Credito credito) {
 		listaCreditos.add(credito);
 	}
 	public void removerCuenta(Cuenta cuenta) {

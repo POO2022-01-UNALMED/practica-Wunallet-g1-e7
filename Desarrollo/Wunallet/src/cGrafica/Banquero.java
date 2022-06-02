@@ -51,7 +51,7 @@ public class Banquero {
 //		Usuario usuario;
 //		do {
 //			System.out.println("----------------------------------------------");
-//			System.out.println("�Que usuario desea realizar?");
+//			System.out.println("¿Que usuario desea realizar?");
 //			System.out.println(" 1. Juan Perez");
 //			System.out.println(" 2. Hernesto Perez");
 //			System.out.println(" 0. Salida segura");
@@ -82,7 +82,7 @@ public class Banquero {
 	int optionUser;
 	do {
 		System.out.println("----------------------------------------------");
-		System.out.println("�Que usuario desea realizar?");
+		System.out.println("¿Que usuario desea realizar?");
 		int uC = 0;
 		for(Usuario usuarioI:Usuario.getUsuario()) {
 			uC++;
@@ -96,14 +96,14 @@ public class Banquero {
 		switch (optionUser) {
 	//		Primer usuario.
 			case 1: 
-					System.out.println("Usted seleccion�: "+ Usuario.getUsuario().get(0).getCc());
+					System.out.println("Usted seleccionó: "+ Usuario.getUsuario().get(0).getCc());
 					funcionalidadesEjecucion(Usuario.getUsuario().get(0));
 					break;
 					
 				
 	//		Segundo usuario.
 			case 2: 
-					System.out.println("Usted seleccion�: "+ Usuario.getUsuario().get(1).getCc());					
+					System.out.println("Usted seleccionó: "+ Usuario.getUsuario().get(1).getCc());					
 					funcionalidadesEjecucion(Usuario.getUsuario().get(1));
 					break;
 			
@@ -117,7 +117,7 @@ public class Banquero {
 	}
 	
 	public static void inicializa() {
-//		Creaci�n de algunos usuarios
+//		Creación de algunos usuarios
 		if ((Banco.listaBancos.isEmpty())) {
 			System.out.println("CREANDO ....");
 			Usuario juanPerez = new Usuario(null,1000000,10,null);
@@ -144,7 +144,7 @@ public class Banquero {
 		
 		do {
 //			System.out.println("----------------------------------------------");
-			System.out.println("¿Que operacion desea realizar?");
+			System.out.println("Â¿Que operacion desea realizar?");
 			System.out.println(" 1. Inscribir cuenta");
 			System.out.println(" 2. Romper topes");
 			System.out.println(" 3. Solicitar credito");
@@ -185,9 +185,9 @@ public class Banquero {
 		
 		
 		
-//		Selección del banco - InscribirCuenta.SeleccionBanco
+//		SelecciÃ³n del banco - InscribirCuenta.SeleccionBanco
 	
-		System.out.println("-------------- Seleección del banco --------------");
+		System.out.println("-------------- SeleecciÃ³n del banco --------------");
 		int c = 0;
 		for(Banco i: Banco.listaBancos) {
 			System.out.println((c+1) + ". " + i.getNombreBanco());
@@ -195,7 +195,7 @@ public class Banquero {
 		}
 		String nombreBanco = null;
 		System.out.println("----------------------------------------------");
-		System.out.println("Seleccione de qué banco es la cuenta que desea inscribir: ");
+		System.out.println("Seleccione de quÃ© banco es la cuenta que desea inscribir: ");
 		int numBanco = readInt();
 		System.out.println("----------------------------------------------");
 		Banco banco = null;		
@@ -212,11 +212,11 @@ public class Banquero {
 		
 //		Seleccione el tipo de cuenta - InscribirCuenta.SeleccionTipoCuenta
 		
-		System.out.println("-------------- Seleección tipo de cuenta --------------");
+		System.out.println("-------------- SeleecciÃ³n tipo de cuenta --------------");
 		System.out.println("1. Cuenta de bajo monto ");
 		System.out.println("2. Cuenta de ahorros");
 		System.out.println("3. Cuenta corriente ");
-		System.out.println("4. Volver al menú de funcionalidades");
+		System.out.println("4. Volver al menÃº de funcionalidades");
 		System.out.println("Seleccione el tipo de cuenta: ");
 		int tipCuenta = readInt(); 
 		System.out.println("----------------------------------------------");
@@ -228,16 +228,16 @@ public class Banquero {
 		case 2: tipoCuenta = "ahorro";break;
 		case 3: tipoCuenta = "corriente";break;
 		}
-		System.out.println(" Usted seleccioó " + tipoCuenta);
+		System.out.println(" Usted seleccioÃ³ " + tipoCuenta);
 		System.out.println("----------------------------------------------");
 		
-//		Selección del banco - InscribirCuenta.IngresoNumeroCuenta
+//		SelecciÃ³n del banco - InscribirCuenta.IngresoNumeroCuenta
 		
-		System.out.println("--------- Insersión del número de cuenta --------------");
-		System.out.println("Ingrese el número de la cuenta: ");
+		System.out.println("--------- InsersiÃ³n del nÃºmero de cuenta --------------");
+		System.out.println("Ingrese el nÃºmero de la cuenta: ");
 		int numeroCuenta = readInt();
 		
-//		Comprobación de la existencia de la cuenta
+//		ComprobaciÃ³n de la existencia de la cuenta
 		
 		Cuenta existeCuenta = banco.extraerCuenta(numeroCuenta);
 		if (existeCuenta != null) {
@@ -250,14 +250,14 @@ public class Banquero {
 			
 		}
 		
-//		Selección del banco - InscribirCuenta.IngresoNumeroCedula
+//		SelecciÃ³n del banco - InscribirCuenta.IngresoNumeroCedula
 		
-		System.out.println("--------- Insersión del número de cédula --------------");
-		System.out.println("Ingrese el número de cedula: ");
+		System.out.println("--------- InsersiÃ³n del nÃºmero de cÃ©dula --------------");
+		System.out.println("Ingrese el nÃºmero de cedula: ");
 		int numeroCc = readInt();
 		System.out.println("----------------------------------------------");
 
-//		Comprobación de la existencia del usuario
+//		ComprobaciÃ³n de la existencia del usuario
 		
 		Usuario existeUsuario = existeCuenta.getTitular();
 		
@@ -270,7 +270,7 @@ public class Banquero {
 			return ;
 		}
 		
-//		Llamado del método inscribir
+//		Llamado del mÃ©todo inscribir
 		
 		
 		usuario.inscribir(numeroCuenta,nombreBanco);
@@ -327,24 +327,24 @@ public class Banquero {
 	static void solicitarCredito(Usuario usuario) {
 		System.out.println("-------------- Solicitar credito ------------------");
 		
-//		Verificar si tiene un crédito
+//		Verificar si tiene un crÃ©dito
 		
 		if(usuario.getCreditoActivo() != null) {
-			System.out.println("El usuario " + usuario.getCc() +" ya tiene un crédito activo");
+			System.out.println("El usuario " + usuario.getCc() +" ya tiene un crÃ©dito activo");
 			return ;
 		}
 		
 		
 //		SolicitarCredito.SeleccionBanco
-		System.out.println("-------------- Seleecci�n del banco --------------");
+		System.out.println("-------------- Seleecciï¿½n del banco --------------");
 		int c = 0;
 		for(Banco i: Banco.listaBancos) {
-			System.out.println((c+1) + ". " + i.getNombreBanco() + " tasa de inter�s del " + i.getTasaInteresAnual() + " anual");
+			System.out.println((c+1) + ". " + i.getNombreBanco() + " tasa de interï¿½s del " + i.getTasaInteresAnual() + " anual");
 			c++;
 		}
 		String nombreBanco = null;
 		System.out.println("----------------------------------------------");
-		System.out.println("Seleccione de qué banco es la cuenta que desea inscribir: ");
+		System.out.println("Seleccione de quÃ© banco es la cuenta que desea inscribir: ");
 		int numBanco = readInt();
 		System.out.println("----------------------------------------------");
 		Banco banco = null;		
@@ -355,7 +355,7 @@ public class Banquero {
 		}
 		        
 		nombreBanco = banco.getNombreBanco();
-		System.out.println(" Usted selecciono " + nombreBanco + " que tiene una tasa de inter�s de " + banco.getTasaInteresAnual() + " anual");
+		System.out.println(" Usted selecciono " + nombreBanco + " que tiene una tasa de interï¿½s de " + banco.getTasaInteresAnual() + " anual");
 		System.out.println("----------------------------------------------");
 		
 //		SolicitarCredito.SolicitarCuenta
@@ -367,7 +367,7 @@ public class Banquero {
 			coSc++;
 			System.out.println(coSc + ". Cuenta " + cuentas.getNroCuenta());	
 		}
-		System.out.println("Seleccione la cuenta de la que desea guardar el crédito: ");
+		System.out.println("Seleccione la cuenta de la que desea guardar el crÃ©dito: ");
 		int scCuenta = readInt(); 
 		Cuenta CuentaSc = usuario.getCuentasAsociadas().get(scCuenta-1);	
 		
@@ -376,14 +376,14 @@ public class Banquero {
 		System.out.println("-------------- Ingrese el monto en pesos a solicitar --------------");
 		float monto = readLong();
 		System.out.println("----------------------------------------------");
-		System.out.println(" Usted ingresó " + monto);
+		System.out.println(" Usted ingresÃ³ " + monto);
 		System.out.println("----------------------------------------------");
 		
 //		SolicitarCredito.IngresoPlazos
-		System.out.println("-------------- Ingrese el plazo en meses del crédito --------------");
+		System.out.println("-------------- Ingrese el plazo en meses del crÃ©dito --------------");
 		int plazo = readInt();
 		System.out.println("----------------------------------------------");
-		System.out.println(" Usted ingresó " + plazo);
+		System.out.println(" Usted ingresÃ³ " + plazo);
 		System.out.println("----------------------------------------------");
 		
 //		SolicitarCredito.SolicitarCuenta
@@ -402,7 +402,7 @@ public class Banquero {
 			break;
 		case 3: 
 			System.out.println("----------------------------------------------");
-			System.out.println("Tu solicitud de crédito ha sido aprobada y tu saldo actual es: "+ String.format("%.1f", CuentaSc.getSaldo()) );
+			System.out.println("Tu solicitud de crÃ©dito ha sido aprobada y tu saldo actual es: "+ String.format("%.1f", CuentaSc.getSaldo()) );
 			System.out.println("----------------------------------------------");
 			break;
 		}
@@ -426,16 +426,16 @@ public class Banquero {
 //		RomperTopes.SinCuentaBajoMonto				
 		if(cRT == 0) {
 			System.out.println("----------------------------------------------");
-			System.out.println("Esta funcionalidad no está habilitada para tus cuentas.");
+			System.out.println("Esta funcionalidad no estÃ¡ habilitada para tus cuentas.");
 			System.out.println("----------------------------------------------");
 			return ;
 		}
 		
 //		RomperTopes.ConCuentaBajoMonto
 		System.out.println("----------------------------------------------");
-		System.out.println("¡Recuerde! El procedimiento de romper topes consiste en transformar su cuenta de tipo Bajo monto, ");
+		System.out.println("Â¡Recuerde! El procedimiento de romper topes consiste en transformar su cuenta de tipo Bajo monto, ");
 		System.out.println("a una cuenta de ahorros convencional, eliminando las limitaciones de este tipo de cuentas.");
-		System.out.println("Este proceso tiene un costo de 15.000 pesos que pagará una única vez.");
+		System.out.println("Este proceso tiene un costo de 15.000 pesos que pagarÃ¡ una Ãºnica vez.");
 		System.out.println("----------------------------------------------");
 		
 		int cRT_1 = 0;
@@ -450,7 +450,7 @@ public class Banquero {
 		int rtCuenta = readInt(); 
 		
 		Cuenta CuentaRt = usuario.getCuentasAsociadas().get(rtCuenta-1);	
-		System.out.println("Usted seleccionó: " + CuentaRt.getNroCuenta());
+		System.out.println("Usted seleccionÃ³: " + CuentaRt.getNroCuenta());
 		System.out.println("----------------------------------------------");
 		
 		Banco banco = ((BajoMonto)CuentaRt).getBanco(); 
@@ -475,7 +475,7 @@ public class Banquero {
 //			CuentaRt = null;
 //			System.gc();
 			System.out.println("----------------------------------------------");
-			System.out.println("Tu solicitud ha sido aprobada, se descontará 15.000 de tu saldo para realizar el proceso. Espera un momento...");
+			System.out.println("Tu solicitud ha sido aprobada, se descontarÃ¡ 15.000 de tu saldo para realizar el proceso. Espera un momento...");
 			System.out.println("----------------------------------------------");
 			System.out.println("Tu cuenta ha sido actualizada y ahora no tiene topes.");
 			Cuenta cANueva = banco.extraerCuenta(numeroCuenta);
@@ -488,7 +488,7 @@ public class Banquero {
 //			if(cANueva instanceof BajoMonto) {
 //				System.out.println("AUN ES BAJO MONTO :c");
 //			}else {
-//				System.out.println("Si se actualiz�");
+//				System.out.println("Si se actualizï¿½");
 //			}
 			
 			System.out.println("Tu nueva cuenta de ahorros ahora tiene un saldo de: "+cANueva.getSaldo() +".");
@@ -507,7 +507,7 @@ public class Banquero {
 //				if(CuentaI instanceof BajoMonto) {
 //					System.out.println(cRT_2 + " Cuenta "+ CuentaI.getNroCuenta());				
 //				}else {
-//					System.out.println("Papi todo está melo");
+//					System.out.println("Papi todo estÃ¡ melo");
 //				}
 //			}
 			
@@ -538,8 +538,8 @@ public class Banquero {
 		System.out.println("----------------------------------------------");
 		
 //		Transferir.SeleccionTipoTransferencia
-		System.out.println("-------------- Seleección tipo de transferencia --------------");
-		System.out.println("Selecciona qué tipo de transferencia quieres hacer");
+		System.out.println("-------------- SeleecciÃ³n tipo de transferencia --------------");
+		System.out.println("Selecciona quÃ© tipo de transferencia quieres hacer");
 		System.out.println("1. Pagar credito");
 		System.out.println("2. Transferencia a otra cuenta");
 		System.out.println("----------------------------------------------");
@@ -553,16 +553,16 @@ public class Banquero {
 								
 	//			Transferir.PagarCredito.SinCredito	
 				if(usuario.getCreditoActivo()==null) {
-					System.out.println("No tienes ningún crédito activo para pagar.");
+					System.out.println("No tienes ningÃºn crÃ©dito activo para pagar.");
 					System.out.println("----------------------------------------------");
 					return;
 				}
 	//			Transferir.PagarCredito.ConCredito
 				Credito creditoActivo = usuario.getCreditoActivo();
-				System.out.println("Tu crédito es de "+ creditoActivo.getDeuda() +" y pagarás una cuota de "+creditoActivo.getCuotaMensual()+".");
+				System.out.println("Tu crÃ©dito es de "+ creditoActivo.getDeuda() +" y pagarÃ¡s una cuota de "+creditoActivo.getCuotaMensual()+".");
 				
-				System.out.println("1. Sí");
-				System.out.println("2. Volver al menú de funcionalidades.");
+				System.out.println("1. SÃ­");
+				System.out.println("2. Volver al menÃº de funcionalidades.");
 				int  continuar1 = readInt(); 
 				
 				boolean exito = false;
@@ -592,7 +592,7 @@ public class Banquero {
 				System.out.println("Selecionaste: tranferir a otra cuenta.");
 				
 	//			Transferir.OtraCuenta.SeleccionStatusDeInscripcion
-				System.out.println("Selecciona a qué tipo de cuenta quieres transferir:");
+				System.out.println("Selecciona a quÃ© tipo de cuenta quieres transferir:");
 				System.out.println("1. Cuentas inscritas");
 				System.out.println("2. Cuentas no inscritas");
 				int continuar2 = readInt();
@@ -625,7 +625,7 @@ public class Banquero {
 //					Transferir.OtraCuenta.Inscritas.Error
 					Banco bancoCins = cuentaTIns.getBanco();
 					if(!bancoCins.getListaCuentas().contains(cuentaTIns)) {
-						System.out.println("La cuenta inscrita que ha seleccionado ya no está disponible, por lo tanto será eliminada de su lista de cuentas inscritas.");
+						System.out.println("La cuenta inscrita que ha seleccionado ya no estÃ¡ disponible, por lo tanto serÃ¡ eliminada de su lista de cuentas inscritas.");
 						usuario.removerCuentaIncrita(cuentaT);
 						break;
 					}
@@ -641,7 +641,7 @@ public class Banquero {
 					boolean transferenciaOcIns = cuentaT.transferir(cuentaTIns,valorTransferenciaCI);					
 					
 					if(transferenciaOcIns) {
-						System.out.println("Envío exitoso. El saldo de su cuenta es de "+ cuentaT.getSaldo()  +"." );
+						System.out.println("EnvÃ­o exitoso. El saldo de su cuenta es de "+ cuentaT.getSaldo()  +"." );
 						System.out.println("----------------------------------------------");
 //						System.out.println("CuentaOrigen" + cuentaT.getSaldo());
 //						System.out.println("CuentaDestino" + cuentaTIns.getSaldo());
@@ -649,7 +649,7 @@ public class Banquero {
 						
 						break;
 					}else {
-						System.out.println("Hubo un error en la operación. Verifique que su cuenta de origen tenga y permita mover el saldo indicado.");
+						System.out.println("Hubo un error en la operaciÃ³n. Verifique que su cuenta de origen tenga y permita mover el saldo indicado.");
 						System.out.println("----------------------------------------------");
 						break;
 					}
@@ -666,7 +666,7 @@ public class Banquero {
 					
 //					Transferir.OtraCuenta.NoInscritas.SeleccionBanco
 					
-					System.out.println("-------------- Seleección del banco --------------");
+					System.out.println("-------------- SeleecciÃ³n del banco --------------");
 					int c = 0;
 					for(Banco i: Banco.listaBancos) {
 						System.out.println((c+1) + ". " + i.getNombreBanco());
@@ -674,7 +674,7 @@ public class Banquero {
 					}
 					String nombreBanco = null;
 					System.out.println("----------------------------------------------");
-					System.out.println("Seleccione de qué banco es la cuenta que desea inscribir: ");
+					System.out.println("Seleccione de quÃ© banco es la cuenta que desea inscribir: ");
 					int numBanco = readInt();
 					System.out.println("----------------------------------------------");
 					Banco banco = null;		
@@ -690,10 +690,10 @@ public class Banquero {
 					
 					
 //					Transferir.OtraCuenta.NoInscritas.IngresoNumeroCuenta
-					System.out.print("Ingrese el número de cuenta de destino: ");
+					System.out.print("Ingrese el nÃºmero de cuenta de destino: ");
 					int numCuentaDes = readInt();
 					System.out.println("----------------------------------------------");
-					System.out.println("El número de la cuenta ingresado es: " + numCuentaDes);
+					System.out.println("El nÃºmero de la cuenta ingresado es: " + numCuentaDes);
 					System.out.println("----------------------------------------------");
 					
 					
@@ -715,14 +715,14 @@ public class Banquero {
 					System.out.print("Ingrese el valor a transferir: ");
 					float valorTransf = readLong();
 					System.out.println("----------------------------------------------");
-					System.out.println("El número de la cuenta ingresado es: " + valorTransf);
+					System.out.println("El nÃºmero de la cuenta ingresado es: " + valorTransf);
 					System.out.println("----------------------------------------------");
 					
 					
 //					Transferir.OtraCuenta.NoInscritas.LlamadoFuncion
 					boolean transferenciaOcNOIns = cuentaT.transferir(cuentaDestino,valorTransf);	
 					if(transferenciaOcNOIns) {
-						System.out.println("Envío exitoso. El saldo de su cuenta es de "+ cuentaT.getSaldo()  +"." );
+						System.out.println("EnvÃ­o exitoso. El saldo de su cuenta es de "+ cuentaT.getSaldo()  +"." );
 						System.out.println("----------------------------------------------");
 						System.out.println("Quedaste con un saldo de: " + cuentaT.getSaldo());
 //						System.out.println("CuentaDestino" + cuentaDestino.getSaldo());
@@ -730,7 +730,7 @@ public class Banquero {
 						
 						break;
 					}else {
-						System.out.println("Hubo un error en la operación. Verifique que su cuenta de origen tenga y permita mover el saldo indicado.");
+						System.out.println("Hubo un error en la operaciÃ³n. Verifique que su cuenta de origen tenga y permita mover el saldo indicado.");
 						System.out.println("----------------------------------------------");
 						break;
 					}

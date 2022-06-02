@@ -28,7 +28,7 @@ public class Credito implements Serializable {
 
 	}
 	
-//	-------------------------------------- Métodos get-set --------------------------------------
+//	-------------------------------------- MÃ©todos get-set --------------------------------------
    
 	public static ArrayList<Credito> getCredito() {
         return credito;

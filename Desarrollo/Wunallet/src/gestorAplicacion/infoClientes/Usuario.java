@@ -40,7 +40,7 @@ public class Usuario implements Serializable {
 
 	}
 	
-//	-------------------------------------- Métodos get-set --------------------------------------
+//	-------------------------------------- MÃ©todos get-set --------------------------------------
     
     public static ArrayList<Usuario> getUsuario() {
         return usuario;
@@ -92,7 +92,7 @@ public class Usuario implements Serializable {
 		return this.cuentasAsociadas;
 	}
 	
-//	-------------------------------------- Métodos creados --------------------------------------
+//	-------------------------------------- MÃ©todos creados --------------------------------------
 	public int solicitarCredito(Banco banco, float monto, int plazo,Cuenta cuentaSc) {
 		int salida=0;
 		if(this.getPerfilCrediticio()==null) {
@@ -111,7 +111,7 @@ public class Usuario implements Serializable {
 				Credito credito = new Credito(this,banco,monto,cuotaTentativa);
 				this.setCreditoActivo(credito);
 				cuentaSc.setSaldo(cuentaSc.getSaldo() + monto);
-				banco.añadirCredito(credito);
+				banco.aÃ±adirCredito(credito);
 				
 				salida=3;
 				}
