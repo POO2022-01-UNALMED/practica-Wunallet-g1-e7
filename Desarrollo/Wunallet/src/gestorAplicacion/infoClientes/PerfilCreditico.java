@@ -18,7 +18,6 @@ public class PerfilCreditico implements Serializable{
 		this.user = user;
 		this.capacidadEndeudamiento = (float)0.2*ingresosMensuales;
 		this.comportamientoDePago = nivel;
-		
 		perfilCreditico.add(this);
 	}
 	

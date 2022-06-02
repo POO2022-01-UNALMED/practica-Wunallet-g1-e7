@@ -1,212 +1,93 @@
 package basedatos;
 
-import gestorAplicacion.productosFinancieros.*;
-import gestorAplicacion.infoClientes.*;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.io.*;
+import java.util.List;
 
+import gestorAplicacion.infoClientes.Banco;
+import gestorAplicacion.infoClientes.PerfilCreditico;
+import gestorAplicacion.infoClientes.Transaccion;
+import gestorAplicacion.infoClientes.Usuario;
+
+import gestorAplicacion.productosFinancieros.Ahorro;
+import gestorAplicacion.productosFinancieros.BajoMonto;
+import gestorAplicacion.productosFinancieros.Corriente;
+import gestorAplicacion.productosFinancieros.Credito;
+
+
+
+/**
+ * Clase para deserializar los objetos que se crearon en ejecucion
+ * @author Erik Gonzalez
+ * @author Felipe Miranda
+ */
 public class Deserializador {
+	/**
+	 * Utilizamos clases genericas para permitir reutilizar la funcion para todas
+	 * las clases del proyecto
+	 * 
+	 * @param <E>       el generico se usa para poder agredar las clases que se
+	 *                  crearon
+	 * @param lista     Una lista de objetos
+	 * @param className El nombre de la clase que queremos usar como nombre del
+	 *                  archivo
+	 */
+	public static <E> void deserializador(List<E> list, String className) {
+		FileInputStream fileIn;
+		try {
+			// Creamos una cadena con la ruta del archivo que vamos a cargar
+			String path = System.getProperty("user.dir") + "/src/baseDatos/temp/" + className + ".txt";
+			System.out.println(path);
+			// utilizamos un file para crear este archivo si no existe aun
+			File archivo = new File(path);
+			archivo.createNewFile(); // Crea un nuevo archivo si no existe
 
-    /*
-        Este método es el encargado de deserializar las listas que están en cada clase
-    */
+			// usamos un FileInputStream para poder saber de donde cargar el archivo
+			fileIn = new FileInputStream(path);
 
-    public static void deserializar() {
+			// Si el archivo esta vacio se lanza un throw EOFException y se muestra como un
+			// mensaje de vacio, pero si no se usa el objeto in para leer el archivo
+			ObjectInputStream in = new ObjectInputStream(fileIn);
 
-        FileInputStream fileIn;
-        try {
-            fileIn = new FileInputStream("src\\baseDatos\\temp\\ahorro.txt");
+			// Lee el listado de elementos
+			ArrayList<E> listado = (ArrayList<E>) in.readObject();
 
-            ObjectInputStream in = new ObjectInputStream(fileIn);
+			// Recorro el ArrayList
+			for (E el : listado) {
+				list.add(el);
+			}
 
-            ArrayList<Ahorro> ahorro;
+			in.close();
+			fileIn.close();
 
-            ahorro = (ArrayList<Ahorro>) in.readObject();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Esta vacio");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
-            Ahorro.setAhorro(ahorro);
-
-            in.close();
-            fileIn.close();
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
-            fileIn = new FileInputStream("src\\baseDatos\\temp\\bajoMonto.txt");
-
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
-            ArrayList<BajoMonto> bajoMonto;
-
-            bajoMonto = (ArrayList<BajoMonto>) in.readObject();
-
-            BajoMonto.setBajoMonto(bajoMonto);
-
-            in.close();
-            fileIn.close();
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
-            fileIn = new FileInputStream("src\\baseDatos\\temp\\corriente.txt");
-
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
-            ArrayList<Corriente> corriente;
-
-            corriente = (ArrayList<Corriente>) in.readObject();
-
-            Corriente.setCorriente(corriente);
-
-            in.close();
-            fileIn.close();
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
-            fileIn = new FileInputStream("src\\baseDatos\\temp\\credito.txt");
-
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
-            ArrayList<Credito> credito;
-
-            credito = (ArrayList<Credito>) in.readObject();
-
-            Credito.setCredito(credito);
-
-            in.close();
-            fileIn.close();
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
-            fileIn = new FileInputStream("src\\baseDatos\\temp\\banco.txt");
-
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
-            ArrayList<Banco> banco;
-
-            banco = (ArrayList<Banco>) in.readObject();
-
-            Banco.setBanco(banco);
-
-            in.close();
-            fileIn.close();
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
-            fileIn = new FileInputStream("src\\baseDatos\\temp\\perfilCreditico.txt");
-
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
-            ArrayList<PerfilCreditico> perfilCreditico;
-
-            perfilCreditico = (ArrayList<PerfilCreditico>) in.readObject();
-
-            PerfilCreditico.setPerfilCreditico(perfilCreditico);
-
-            in.close();
-            fileIn.close();
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
-            fileIn = new FileInputStream("src\\baseDatos\\temp\\transaccion.txt");
-
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
-            ArrayList<Transaccion> transaccion;
-
-            transaccion = (ArrayList<Transaccion>) in.readObject();
-
-            Transaccion.setTransaccion(transaccion);
-
-            in.close();
-            fileIn.close();
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
-            fileIn = new FileInputStream("src\\baseDatos\\temp\\usuario.txt");
-
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
-            ArrayList<Usuario> usuario;
-
-            usuario = (ArrayList<Usuario>) in.readObject();
-
-            Usuario.setUsuario(usuario);
-
-            in.close();
-            fileIn.close();
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-
-    }
+	/**
+	 * Funcion para deserializar toda la aplicacion Generic IT
+	 */
+	public static void deserializarTodo() {
+		Deserializador.deserializador(Banco.listaBancos, "Banco");
+		Deserializador.deserializador(PerfilCreditico.getPerfilCreditico(), "PerfilCreditico");
+		Deserializador.deserializador(Transaccion.getTransaccion(), "Transaccion");
+		Deserializador.deserializador(Usuario.getUsuario(), "Usuario");
+		Deserializador.deserializador(Ahorro.getAhorro(), "Ahorro");
+		Deserializador.deserializador(BajoMonto.getBajoMonto(), "BajoMonto");
+		Deserializador.deserializador(Corriente.getCorriente(), "Corriente");
+		Deserializador.deserializador(Credito.getCredito(), "Credito");
+	}
 }

@@ -1,10 +1,12 @@
 package cGrafica;
 import java.util.Scanner;
 
+import basedatos.Deserializador;
 import gestorAplicacion.infoClientes.Banco;
 import gestorAplicacion.infoClientes.PerfilCreditico;
 import gestorAplicacion.infoClientes.Usuario;
 import gestorAplicacion.infoClientes.comportamientoDePago;
+//import gestorAplicacion.personal.Dependiente;
 import gestorAplicacion.productosFinancieros.Ahorro;
 import gestorAplicacion.productosFinancieros.BajoMonto;
 import gestorAplicacion.productosFinancieros.Corriente;
@@ -37,69 +39,105 @@ public class Banquero {
 	
 	public static void main (String args[]) {
 	
-	Deserializador.deserializar();	
 	
-//	CreaciÃ³n de algunos bancos
-	Banco Unalombia = new Banco("Unalombia",(float)1.6);
-	Banco PooBanco = new Banco("PooBanco",(float)2.5);
-	Banco QuitaVivienda = new Banco("QuitaVivienda",(float)36.0);
-	
-
-//	CreaciÃ³n de algunos usuarios
-	Usuario juanPerez = new Usuario(null,1000000,10,null);
-	Usuario hernestoPerez = new Usuario(null,1000000,98,null);
-	
-//	CreaciÃ³n de algunas cuentas
-//	Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres)
-//	BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,float acumuladorTransferencia) 
-//	Corriente(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float sobregiroActual)
-	
-	Cuenta cuenta1 = new Ahorro(89,juanPerez, (float)10000.0 ,QuitaVivienda,"ahorro",(float)36.0);
-	Cuenta cuenta2 = new BajoMonto(69,hernestoPerez, (float)1000000.0,PooBanco, "bajoMonto", (float)5.0,(float)3000000.0,(float)3000000.0);
-	Cuenta cuenta3 = new Corriente(23,juanPerez,(float)50000000.0,Unalombia,"corriente",(float)2000000);
-	Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)6000000.0,Unalombia, "bajoMonto", (float)5000.0,(float)3000.0,(float)3000.0);
+	cargar();
+	inicializa();
 	
 	
 	
-		int optionUser;
-		Usuario usuario;
-		do {
-			System.out.println("----------------------------------------------");
-			System.out.println("Â¿Que usuario desea realizar?");
-			System.out.println(" 1. Juan Perez");
-			System.out.println(" 2. Hernesto Perez");
-			System.out.println(" 0. Salida segura");
-			System.out.println("----------------------------------------------");
-			System.out.print("Ingrese la opcion :");
-			optionUser = (int) readLong();
-			System.out.println("----------------------------------------------");
-			
-				
-			
-			switch (optionUser) {
-//			Primer usuario.
-			case 1: usuario = juanPerez; 
-					funcionalidadesEjecucion(usuario);
+	
+	
+//		int optionUser;
+//		Usuario usuario;
+//		do {
+//			System.out.println("----------------------------------------------");
+//			System.out.println("¿Que usuario desea realizar?");
+//			System.out.println(" 1. Juan Perez");
+//			System.out.println(" 2. Hernesto Perez");
+//			System.out.println(" 0. Salida segura");
+//			System.out.println("----------------------------------------------");
+//			System.out.print("Ingrese la opcion :");
+//			optionUser = (int) readLong();
+//			System.out.println("----------------------------------------------");
+//			
+//				
+//			
+//			switch (optionUser) {
+////			Primer usuario.
+//			case 1: usuario = juanPerez; 
+//					funcionalidadesEjecucion(usuario);
+//					break;
+//					
+//				
+////			Segundo usuario.
+//			case 2: usuario = hernestoPerez;
+//					funcionalidadesEjecucion(usuario);
+//					break;
+//			
+//			case 3: salirDelSistema();break;
+//				
+//			}
+//		} while(optionUser != 5);
+		
+	int optionUser;
+	do {
+		System.out.println("----------------------------------------------");
+		System.out.println("¿Que usuario desea realizar?");
+		int uC = 0;
+		for(Usuario usuarioI:Usuario.getUsuario()) {
+			uC++;
+			System.out.println(uC + ". Usuario con CC: "+ usuarioI.getCc());
+		}
+		System.out.println("0. Salida segura");
+		System.out.print("Ingrese la opcion :");
+		optionUser = (int) readLong();
+		System.out.println("----------------------------------------------");
+		
+		switch (optionUser) {
+	//		Primer usuario.
+			case 1: 
+					System.out.println("Usted seleccionó: "+ Usuario.getUsuario().get(0).getCc());
+					funcionalidadesEjecucion(Usuario.getUsuario().get(0));
 					break;
 					
 				
-//			Segundo usuario.
-			case 2: usuario = hernestoPerez;
-					funcionalidadesEjecucion(usuario);
+	//		Segundo usuario.
+			case 2: 
+					System.out.println("Usted seleccionó: "+ Usuario.getUsuario().get(1).getCc());					
+					funcionalidadesEjecucion(Usuario.getUsuario().get(1));
 					break;
-				
-			}
-		} while(optionUser != 5);
-		
-
-		
-		
+			
+			case 3: salirDelSistema();break;
+		}
+	} while(optionUser != 0);
+	
 		
 		
 		
 	}
 	
+	public static void inicializa() {
+//		Creación de algunos usuarios
+		if ((Banco.listaBancos.isEmpty())) {
+			System.out.println("CREANDO ....");
+			Usuario juanPerez = new Usuario(null,1000000,10,null);
+			Usuario hernestoPerez = new Usuario(null,1000000,98,null);
+
+			Banco Unalombia = new Banco("Unalombia",(float)1.6);
+			Banco PooBanco = new Banco("PooBanco",(float)2.5);
+			Banco QuitaVivienda = new Banco("QuitaVivienda",(float)36.0);
+		
+			Cuenta cuenta1 = new Ahorro(89,juanPerez, (float)10000.0 ,QuitaVivienda,"ahorro",(float)36.0);
+		
+			Cuenta cuenta3 = new Corriente(23,juanPerez,(float)50000000.0,Unalombia,"corriente",(float)2000000);
+			Cuenta cuenta2 = new BajoMonto(69,hernestoPerez, (float)1000000.0,PooBanco, "bajoMonto", (float)5.0,(float)3000000.0,(float)3000000.0);
+			Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)6000000.0,Unalombia, "bajoMonto", (float)5000.0,(float)3000.0,(float)3000.0);
+		}
+	}
 	
+	
+	
+
 	public static void funcionalidadesEjecucion(Usuario usuario) {
 		int option;
 		
@@ -126,9 +164,9 @@ public class Banquero {
 			case 3: solicitarCredito(usuario);break;
 			case 4: verHistorial(usuario);break;
 			case 5: transferir(usuario);break;
-			case 6: break;
-//			Hacen lo mismo xD
+			case 6: salirDelSistema();break;
 			case 7: break;
+//			Hacen lo mismo xD
 			}
 			
 		}while(option != 7);
@@ -707,6 +745,17 @@ public class Banquero {
 
 		
 	}
+	public static void salirDelSistema() {
+		System.out.println("Vuelva pronto");
+		Serializador.serializarTodo();
+		System.exit(0);
+	}
+	
+	public static void cargar() {
+		Deserializador.deserializarTodo();
+	}
+	
+	
 	
 	
 }
