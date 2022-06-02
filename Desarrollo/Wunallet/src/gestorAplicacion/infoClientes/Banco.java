@@ -63,7 +63,7 @@ public class Banco implements Serializable {
 	public static Banco extraerBanco(String nombreBanco) {
 		Banco banco = null;
 		for(Banco i:Banco.listaBancos) {
-			if (nombreBanco == i.getNombreBanco()) {
+			if (nombreBanco.equals(i.getNombreBanco())) {
 				banco = i;
 			}
 		}
