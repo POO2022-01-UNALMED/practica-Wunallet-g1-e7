@@ -77,6 +77,23 @@ asociado.
     Remueve de la lista listaInscritos la cuenta dada en el parámetro.
     
 - **Retorno:** Void
+
+#### public toString()
+
+- **Funcionamiento:** 
+
+    ```java
+	public String toString() {
+		StringBuffer texto = new StringBuffer(110);
+		texto.append("Las cuentas inscritas del usuario "+ this.getCc() +" son: ");
+		for(Cuenta i : this.getListaIncritos()) {
+			texto.append(i.getNroCuenta() + " ");
+		}
+		return texto.toString();
+	}
+    ```
+    
+- **Retorno:** String
 --- 
 
 ## PerfilCreditico

@@ -1,10 +1,17 @@
-package gestorAplicacion.infoClientes;
-import java.util.ArrayList;
+/* Clase Banco
+ *
+ * Cada instancia de esta clase representa uno de los bancos integrados al software, y en sus atributos almacenan toda la
+ * información sobre sus productos e identidad.
+ *
+ */
 
+package gestorAplicacion.infoClientes;
+
+import java.util.ArrayList;
+import java.io.Serializable;
 import gestorAplicacion.productosFinancieros.Corriente;
 import gestorAplicacion.productosFinancieros.Credito;
 import gestorAplicacion.productosFinancieros.Cuenta;
-import java.io.Serializable;
 
 public class Banco implements Serializable {
 	private String nombreBanco;
@@ -17,6 +24,7 @@ public class Banco implements Serializable {
     // Cliente para poder guardar y cargarlas en la serializacion
 	private static ArrayList<Banco> banco = new ArrayList<>();
 	
+    // Constructor
 	public Banco(String nombreBanco,float tasaInteresAnual) {
 		this.nombreBanco = nombreBanco;
 		Banco.listaBancos.add(this);
@@ -25,6 +33,9 @@ public class Banco implements Serializable {
 		banco.add(this);
 	}
 	
+    
+    //Recorre iterativamente la listaBancos de la clase Banco, buscando un banco cuyo nombre coincida con el parámetro ingresado. De
+    //existir retornará el objeto.
 	public static Banco extraerBanco(String nombreBanco) {
 		Banco banco = null;
 		for(Banco i:Banco.listaBancos) {
@@ -35,21 +46,24 @@ public class Banco implements Serializable {
 		return banco;
 	}
 	
+    //Recorre iterativamente la listaDeCuentas del banco desde donde se invoca el método, buscando una cuenta que tenga el numero
+    //de cuenta ingresado. 
 	public Cuenta extraerCuenta(int nroCuenta) {
 		Cuenta cuenta = null;
 		for(Cuenta i: this.getListaCuentas()) {
 			if (nroCuenta == i.getNroCuenta()) {
 				cuenta = i;
-				
 			}
 		}
 		return cuenta;		
 	}	
 	
+    // Añade un crédito a la listaCreditos del banco.
 	public void añadirCredito(Credito credito) {
 		listaCreditos.add(credito);
 	}
 
+    // Remueve la cuenta del parámetro de la listaCuentas del banco.
 	public void removerCuenta(Cuenta cuenta) {
 		this.getListaCuentas().remove(cuenta);
 	}

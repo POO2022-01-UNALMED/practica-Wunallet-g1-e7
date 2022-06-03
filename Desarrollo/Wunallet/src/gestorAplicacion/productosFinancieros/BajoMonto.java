@@ -1,4 +1,9 @@
-
+/* Clase BajoMonto
+ *
+ * Es el resultado de especializar las cuentas Ahorro, ya que si bien disponen de los mismos atributos, sus métodos están limitados
+ * a un tope máximo mensual que pueden transferir.
+ *
+ */
 package gestorAplicacion.productosFinancieros;
 
 import java.util.ArrayList;
@@ -15,6 +20,7 @@ public class BajoMonto extends Ahorro implements Serializable{
     // Cliente para poder guardar y cargarlas en la serializacion
 	private static ArrayList<BajoMonto> bajoMonto = new ArrayList<>();
 	
+    // Constructor
 	public BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,float acumuladorTransferencia) {
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,tasaDeInteres);
 		this.limiteMensual = limiteMensual;
@@ -24,6 +30,9 @@ public class BajoMonto extends Ahorro implements Serializable{
 //		titular.getCuentasAsocidas().add(this);
 	}
 	
+	// Verifica si el usuario cuenta con saldo y capaciadad suficiente en sus límites mensuales para realizar la transacción. De
+    // ser así realiza los ajustes de saldo en cada cuenta, crea el objeto transaccion y lo añade al historial de las cuentas
+    // involucradas.
 	public boolean transferir(Cuenta cuentaDestino, float valorTransferencia) {
 		
 		if(this.saldo >= valorTransferencia && valorTransferencia + acumuladorTransferencia <= limiteMensual ) {
@@ -41,6 +50,9 @@ public class BajoMonto extends Ahorro implements Serializable{
 		}
 	}
 	
+	// Verifica si el usuario cuenta con saldo y capaciadad suficiente en sus límites mensuales para realizar el pago de la cuota
+    // mensual. De ser así realiza los ajustes de saldo en la cuenta y el crédito; crea el objeto transaccion y lo añade al 
+    // historial de la cuenta origen.
 	public boolean transferir(Credito credito) {
 		
 		if(this.saldo >= credito.getCuotaMensual()&& credito.getCuotaMensual() + acumuladorTransferencia <= limiteMensual ) {
@@ -55,6 +67,8 @@ public class BajoMonto extends Ahorro implements Serializable{
 		}
 	}
 	
+    // Verifica que la cuenta tenga un saldo mayor al costo de romper topes, crea una nueva cuenta de ahorro con los datos de la
+    // cuenta bajo monto, y le setea su historial para preservar toda la información de la cuenta.
 	public boolean romperTopes() {
 		boolean salida = false;
 		if(this.getSaldo()<costoRomperTopes) {

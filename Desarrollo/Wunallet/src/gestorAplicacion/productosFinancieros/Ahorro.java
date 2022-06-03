@@ -1,4 +1,9 @@
-
+/* Clase Ahorro
+ *
+ * Es el producto financiero más simple, diferenciándose de su clase padre Cuenta al ofrecer una tasa de interés que producirá 
+ * ingresos en el tiempo.
+ *
+ */
 package gestorAplicacion.productosFinancieros;
 
 import java.util.ArrayList;
@@ -16,6 +21,7 @@ public class Ahorro extends Cuenta implements Serializable{
     // Cliente para poder guardar y cargarlas en la serializacion
 	private static ArrayList<Ahorro> ahorro = new ArrayList<>();
 
+    //Constructor
 	public Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres) {
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
 		this.tasaDeInteres = tasaDeInteres;
@@ -25,6 +31,8 @@ public class Ahorro extends Cuenta implements Serializable{
 		ahorro.add(this);
 	}
 	
+	// Verifica si el usuario cuenta con saldo para realizar la transacción. De ser así realiza los ajustes de saldo en cada cuenta,
+    // crea el objeto transaccion y lo añade al historial de las cuentas involucradas.
 	public boolean transferir(Cuenta cuentaDestino, float valorTransferencia) {
 		if(this.saldo >= valorTransferencia) {
 			this.restarSaldo(valorTransferencia);
@@ -39,6 +47,8 @@ public class Ahorro extends Cuenta implements Serializable{
 		}
 	}
 	
+	// Verifica si el usuario cuenta con saldo para realizar el pago de la cuota mensual. De ser así realiza los ajustes de saldo
+    // en la cuenta origen y la deuda, crea el objeto transaccion y lo añade al historial de la cuenta de origen.
 	public boolean transferir(Credito credito) {
 		if(this.saldo >= credito.getCuotaMensual()) {
 			this.restarSaldo(credito.getCuotaMensual());

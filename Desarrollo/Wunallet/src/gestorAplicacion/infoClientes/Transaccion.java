@@ -1,4 +1,12 @@
+/* Clase Transcacion
+ *
+ * Es una clase que sólamente tiene atributos de tal forma que, en conjunto, permiten reconstruir a detalle la información sobre
+ * una operación bancaria.
+ *
+ */
+
 package gestorAplicacion.infoClientes;
+
 import gestorAplicacion.productosFinancieros.Corriente;
 import gestorAplicacion.productosFinancieros.Cuenta;
 import java.io.Serializable;
@@ -14,18 +22,21 @@ public class Transaccion implements Serializable {
     // Cliente para poder guardar y cargarlas en la serializacion
 	private static ArrayList<Transaccion> transaccion = new ArrayList<>();
 	
+    // Constructor para transferencias entre cuentas
 	public Transaccion(Cuenta cuentaOrigen,Cuenta cuentaDestino,float valorTransaccion) {
 		this.cuentaOrigen = cuentaOrigen;
 		this.cuentaDestino = cuentaDestino;
 		this.valorTransaccion = valorTransaccion;	
 	}
 	
+    // Constructor para pagos de créditos
 	public Transaccion(Cuenta cuentaOrigen,String nombreBanco,float valorTransaccion) {
 		this.cuentaOrigen = cuentaOrigen;
 		this.nombreBanco = nombreBanco;
 		this.valorTransaccion = valorTransaccion;	
 	}
 
+    // Formateo del texto al imprimirse un objeto de tipo transacción
 	public String toString() {
 		
 		if (this.cuentaDestino == null) {
@@ -38,6 +49,7 @@ public class Transaccion implements Serializable {
 
 		}
 	}
+
 //	-------------------------------------- Metodos get-set --------------------------------------
     public static ArrayList<Transaccion> getTransaccion() { return transaccion; }
 

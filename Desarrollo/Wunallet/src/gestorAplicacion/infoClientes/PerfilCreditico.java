@@ -1,10 +1,15 @@
+/* Clase PerfilCreditico
+ * 
+ * Cada instancia está asociada a un usuario, y describe precisamente el perfil crediticio de éste. Es usada por los bancos para 
+ * determinar si una solicitud de crédito se aprueba o rechaza.
+ *
+ */
+
 package gestorAplicacion.infoClientes;
 
 import java.util.ArrayList;
-
-import gestorAplicacion.productosFinancieros.Corriente;
-
 import java.io.Serializable;
+import gestorAplicacion.productosFinancieros.Corriente;
 
 public class PerfilCreditico implements Serializable {
 	private Usuario user;
@@ -15,6 +20,7 @@ public class PerfilCreditico implements Serializable {
 	// Cliente para poder guardar y cargarlas en la serializacion
 	private static ArrayList<PerfilCreditico> perfilCreditico = new ArrayList<>();
 
+    // Constructor
 	public PerfilCreditico(Usuario user, float ingresosMensuales, comportamientoDePago nivel) {
 		this.user = user;
 		this.capacidadEndeudamiento = (float) 0.2 * ingresosMensuales;
@@ -30,17 +36,14 @@ public class PerfilCreditico implements Serializable {
 		PerfilCreditico.perfilCreditico = perfilCreditico;
 	}
 
-//  get-set user
 	public void setNombreBanco(Usuario user) { this.user = user; }
 
 	public Usuario getBanco() {	return this.user; }
 
-//	get-set nivelDeEndeudamiento
 	public void setCapacidadEndeudamiento(float nivelDeEndeudamiento) {	this.capacidadEndeudamiento = nivelDeEndeudamiento;	}
 
 	public float getCapacidadEndeudamiento() { return this.capacidadEndeudamiento;	}
 
-//	get-set nivel
 	public comportamientoDePago getComportamientoDePago() {	return this.comportamientoDePago; }
 
 }

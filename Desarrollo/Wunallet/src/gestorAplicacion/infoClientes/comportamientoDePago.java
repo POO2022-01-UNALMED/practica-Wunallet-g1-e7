@@ -1,4 +1,12 @@
+/* Enum comportamientoDePago
+ *
+ * Este enum es usado como atributo en la clase PerfilCrediticio y según su nivel aprueba o rechaza uno de los filtros
+ * para aprobar una solicitud de crédito
+ *
+ */
+
 package gestorAplicacion.infoClientes;
+
 import java.util.*;
 
 public enum comportamientoDePago {
@@ -12,6 +20,7 @@ public enum comportamientoDePago {
 	private static final int SIZE = VALUES.size();
 	private static final Random RANDOM = new Random();
 
+    // Método para seleccionar aleatoriamente un nivel del enum.
 	public static comportamientoDePago randomNivel()  {
 		return VALUES.get(RANDOM.nextInt(SIZE));
 	}
