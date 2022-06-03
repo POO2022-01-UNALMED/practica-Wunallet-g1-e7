@@ -22,14 +22,21 @@ public class Ahorro extends Cuenta implements Serializable{
 	private static ArrayList<Ahorro> ahorro = new ArrayList<>();
 
     //Constructor
-	public Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres) {
+	public Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres, ArrayList<Transaccion> historial_ant) {
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta);
+		this.historialTransferencia = historial_ant;
 		this.tasaDeInteres = tasaDeInteres;
 		banco.getListaCuentas().add(this);
 		titular.getCuentasAsociadas().add(this);
 		
 		ahorro.add(this);
 	}
+	
+	public Ahorro(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres) {
+		this(nroCuenta,titular,saldo,banco,tipoDeCuenta,tasaDeInteres,new ArrayList<Transaccion>());
+		
+	}
+	
 	
 	// Verifica si el usuario cuenta con saldo para realizar la transacción. De ser así realiza los ajustes de saldo en cada cuenta,
     // crea el objeto transaccion y lo añade al historial de las cuentas involucradas.

@@ -74,8 +74,8 @@ public class BajoMonto extends Ahorro implements Serializable{
 		if(this.getSaldo()<costoRomperTopes) {
 			salida=false;
 		}else {
-			Ahorro nuevaCuentaAhorro = new Ahorro(this.getNroCuenta(),this.getTitular(),(this.getSaldo()-costoRomperTopes),this.getBanco(),"ahorro",this.getTasaDeInteres());
-			nuevaCuentaAhorro.setHistorialTransferencia(this.getHistorialTransferencia());
+			Ahorro nuevaCuentaAhorro = new Ahorro(this.getNroCuenta(),this.getTitular(),(this.getSaldo()-costoRomperTopes),this.getBanco(),"ahorro",this.getTasaDeInteres(), this.getHistorialTransferencia());
+	
 			salida=true;
 		}
 		return salida;
