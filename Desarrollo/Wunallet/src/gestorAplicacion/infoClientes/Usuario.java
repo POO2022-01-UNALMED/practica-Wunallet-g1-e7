@@ -30,69 +30,12 @@ public class Usuario implements Serializable {
 		usuario.add(this);
 	}
 	
-	
-//	Los parametros cc y tipoCuenta no son necesarios porque se utilizan para las verificaciones en Banquero
 	public void inscribir(int numeroCuenta, String nombreBanco) {
 		Banco banco = Banco.extraerBanco(nombreBanco);
 		Cuenta cuenta = banco.extraerCuenta(numeroCuenta);
 		this.listaInscritos.add(cuenta);
-		
+	}
 
-	}
-	
-//	-------------------------------------- Métodos get-set --------------------------------------
-    
-    public static ArrayList<Usuario> getUsuario() {
-        return usuario;
-    }
-
-    public static void setUsuario(ArrayList<Usuario> usuario) {
-        Usuario.usuario = usuario;
-    }
-	
-	//	Get-Set ingresosMensuales
-	public void setIngresosMensuales(float ingresosMensuales) {
-		this.ingresosMensuales = ingresosMensuales;
-	}
-	public float getIngresosMensuales() {
-		return this.ingresosMensuales;
-	}
-	
-//	Get-Set perfilCrediticio
-	public void setPerfilCrediticio(PerfilCreditico perfilCrediticio) {
-		this.perfilCrediticio = perfilCrediticio;
-	}
-	public PerfilCreditico getPerfilCrediticio() {
-		return this.perfilCrediticio;
-	}
-	
-//	Get-Set cc
-	public void setCc(int cc) {
-		this.cc = cc;
-	}
-	public int getCc() {
-		return this.cc;
-	}
-	
-//	Get-Set creditoActivo
-	public void setCreditoActivo(Credito creditoActivo) {
-		this.creditoActivo = creditoActivo;
-	}
-	public Credito getCreditoActivo() {
-		return this.creditoActivo;
-	}
-	
-//	Get listaInscritos
-	public ArrayList<Cuenta> getListaIncritos(){
-		return this.listaInscritos;
-	}
-	
-//	Get cuentasAsociadas
-	public ArrayList<Cuenta> getCuentasAsociadas(){
-		return this.cuentasAsociadas;
-	}
-	
-//	-------------------------------------- Métodos creados --------------------------------------
 	public int solicitarCredito(Banco banco, float monto, int plazo,Cuenta cuentaSc) {
 		int salida=0;
 		if(this.getPerfilCrediticio()==null) {
@@ -101,22 +44,28 @@ public class Usuario implements Serializable {
 		}
 		
 		if(this.getPerfilCrediticio().getComportamientoDePago().getNivel()==3) {
+
 			salida=1;
+
 		}else {
+
 			float cuotaTentativa = Credito.simularCredito(banco, monto, plazo);
 			
 			if(cuotaTentativa>this.getPerfilCrediticio().getCapacidadEndeudamiento()) {
+
 				salida=2;
+
 			}else {
+
 				Credito credito = new Credito(this,banco,monto,cuotaTentativa);
 				this.setCreditoActivo(credito);
 				cuentaSc.setSaldo(cuentaSc.getSaldo() + monto);
 				banco.añadirCredito(credito);
-				
 				salida=3;
+
 				}
 		}
-		
+
 		return salida;
 	}
 	
@@ -136,5 +85,31 @@ public class Usuario implements Serializable {
 		}
 		return texto.toString();
 	}
+
+//	-------------------------------------- Métodos get-set --------------------------------------
+    
+    public static ArrayList<Usuario> getUsuario() { return usuario; }
+
+    public static void setUsuario(ArrayList<Usuario> usuario) { Usuario.usuario = usuario; }
+	
+	public void setIngresosMensuales(float ingresosMensuales) {	this.ingresosMensuales = ingresosMensuales;	}
+
+	public float getIngresosMensuales() { return this.ingresosMensuales; }
+	
+	public void setPerfilCrediticio(PerfilCreditico perfilCrediticio) {	this.perfilCrediticio = perfilCrediticio; }
+
+	public PerfilCreditico getPerfilCrediticio() { return this.perfilCrediticio; }
+	
+	public void setCc(int cc) {	this.cc = cc; }
+
+	public int getCc() { return this.cc; }
+	
+	public void setCreditoActivo(Credito creditoActivo) { this.creditoActivo = creditoActivo; }
+
+	public Credito getCreditoActivo() {	return this.creditoActivo; }
+	
+	public ArrayList<Cuenta> getListaIncritos(){ return this.listaInscritos; }
+	
+	public ArrayList<Cuenta> getCuentasAsociadas(){ return this.cuentasAsociadas; }
 	
 }

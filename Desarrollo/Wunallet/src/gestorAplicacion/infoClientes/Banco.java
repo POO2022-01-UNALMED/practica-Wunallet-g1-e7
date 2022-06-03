@@ -25,41 +25,6 @@ public class Banco implements Serializable {
 		banco.add(this);
 	}
 	
-//	-------------------------------------- Metodos get-set --------------------------------------
-	
-    public static ArrayList<Banco> getBanco() {
-        return banco;
-    }
-
-    public static void setBanco(ArrayList<Banco> banco) {
-        Banco.banco = banco;
-    }
-	
-	
-//	get-set nombreBanco
-	public void setNombreBanco(String nombreBanco) {
-		this.nombreBanco = nombreBanco;
-	}
-	
-	public String getNombreBanco() {
-		return this.nombreBanco;
-	}
-	
-	public ArrayList<Cuenta> getListaCuentas(){
-		return this.listaCuentas;
-	}
-	
-	public ArrayList<Credito> getListaCreditos(){
-		return this.listaCreditos;
-	}
-	
-	
-	public float getTasaInteresAnual() {
-		return this.tasaInteresAnual;
-	}
-	
-//	-------------------------------------- Metodos propuestos --------------------------------------	
-	
 	public static Banco extraerBanco(String nombreBanco) {
 		Banco banco = null;
 		for(Banco i:Banco.listaBancos) {
@@ -84,8 +49,24 @@ public class Banco implements Serializable {
 	public void añadirCredito(Credito credito) {
 		listaCreditos.add(credito);
 	}
+
 	public void removerCuenta(Cuenta cuenta) {
 		this.getListaCuentas().remove(cuenta);
 	}
+
+//	-------------------------------------- Metodos get-set --------------------------------------
+    public static ArrayList<Banco> getBanco() { return banco; }
+
+    public static void setBanco(ArrayList<Banco> banco) { Banco.banco = banco; }
 	
+	public void setNombreBanco(String nombreBanco) { this.nombreBanco = nombreBanco; }
+	
+	public String getNombreBanco() { return this.nombreBanco; }
+	
+	public ArrayList<Cuenta> getListaCuentas(){	return this.listaCuentas; }
+	
+	public ArrayList<Credito> getListaCreditos(){ return this.listaCreditos; }
+	
+	public float getTasaInteresAnual() { return this.tasaInteresAnual; }
 }
+

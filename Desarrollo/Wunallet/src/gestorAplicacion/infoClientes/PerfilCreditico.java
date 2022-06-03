@@ -24,35 +24,23 @@ public class PerfilCreditico implements Serializable {
 
 //	-------------------------------------- Metodos get-set --------------------------------------
 
-	public static ArrayList<PerfilCreditico> getPerfilCreditico() {
-		return perfilCreditico;
-	}
+	public static ArrayList<PerfilCreditico> getPerfilCreditico() { return perfilCreditico;	}
 
 	public static void setPerfilCreditico(ArrayList<PerfilCreditico> perfilCreditico) {
 		PerfilCreditico.perfilCreditico = perfilCreditico;
 	}
 
-	// get-set user
-	public void setNombreBanco(Usuario user) {
-		this.user = user;
-	}
+//  get-set user
+	public void setNombreBanco(Usuario user) { this.user = user; }
 
-	public Usuario getBanco() {
-		return this.user;
-	}
+	public Usuario getBanco() {	return this.user; }
 
 //	get-set nivelDeEndeudamiento
-	public void setCapacidadEndeudamiento(float nivelDeEndeudamiento) {
-		this.capacidadEndeudamiento = nivelDeEndeudamiento;
-	}
+	public void setCapacidadEndeudamiento(float nivelDeEndeudamiento) {	this.capacidadEndeudamiento = nivelDeEndeudamiento;	}
 
-	public float getCapacidadEndeudamiento() {
-		return this.capacidadEndeudamiento;
-	}
+	public float getCapacidadEndeudamiento() { return this.capacidadEndeudamiento;	}
 
 //	get-set nivel
-	public comportamientoDePago getComportamientoDePago() {
-		return this.comportamientoDePago;
-	}
+	public comportamientoDePago getComportamientoDePago() {	return this.comportamientoDePago; }
 
 }

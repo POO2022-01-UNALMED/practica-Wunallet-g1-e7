@@ -6,13 +6,13 @@
  */
 
 package gestorAplicacion.productosFinancieros;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
+import java.io.Serializable;
 import gestorAplicacion.infoClientes.Banco;
 import gestorAplicacion.infoClientes.Gestor; 
 import gestorAplicacion.infoClientes.Transaccion;
 import gestorAplicacion.infoClientes.Usuario;
-import java.io.Serializable;
 
 public abstract class Cuenta implements Gestor,Serializable{
 	
@@ -22,7 +22,6 @@ public abstract class Cuenta implements Gestor,Serializable{
 	protected Banco banco;
 	protected String tipoDeCuenta;
 	protected ArrayList<Transaccion> historialTransferencia = new ArrayList<Transaccion>();
-//	protected ArrayList<Transaccion> historialTransferencia;
 	
 //  Constructor
 	public Cuenta(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta) {
@@ -68,39 +67,23 @@ public abstract class Cuenta implements Gestor,Serializable{
 	
 	public void setTitular(Usuario titular) { this.titular = titular; }
 	
-	public Usuario getTitular() {
-		return this.titular;
-	}
+	public Usuario getTitular() { return this.titular; }
 	
-	public void setSaldo(float saldo) {
-		this.saldo = saldo;
-	}
-	public float getSaldo() {
-		return this.saldo;
-	}
+	public void setSaldo(float saldo) { this.saldo = saldo;	}
+
+	public float getSaldo() { return this.saldo; }
 	
-	public void setBanco(Banco banco) {
-		this.banco = banco;
-	}
-	public Banco getBanco() {
-		return this.banco;
-	}
+	public void setBanco(Banco banco) {	this.banco = banco;	}
+
+	public Banco getBanco() { return this.banco; }
 	
-	public void setTipoCuenta(String tipoDeCuenta) {
-		this.tipoDeCuenta = tipoDeCuenta;
-	}
-	public String getTipoCuenta() {
-		return this.tipoDeCuenta;
-	}
+	public void setTipoCuenta(String tipoDeCuenta) { this.tipoDeCuenta = tipoDeCuenta; }
+
+	public String getTipoCuenta() { return this.tipoDeCuenta; }
 	
-	public ArrayList<Transaccion> getHistorialTransferencia(){
-		return this.historialTransferencia;
-	}
+	public ArrayList<Transaccion> getHistorialTransferencia(){	return this.historialTransferencia;	}
 		
-	public void setHistorialTransferencia(ArrayList<Transaccion> historial){
-		this.historialTransferencia = historial;
-	}
-	
-	//--------------------------------------------------------------------------------------
+	public void setHistorialTransferencia(ArrayList<Transaccion> historial){ this.historialTransferencia = historial; }
+
 }
 
