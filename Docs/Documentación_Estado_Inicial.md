@@ -20,5 +20,21 @@ Descripción de los objetos que deberán ser serializados para conformar el esta
 
 ## Credito
 
+---
 
+### Estado inicial
+
+### Atributos
+
+### Bancos 
+
+Todos los bancos tienen los 3 tipos de cuentas
+
+- Unalombia
+- PooBanco
+- QuitaVivienda
+
+### Juan Perez
+
+#### Atributos
 

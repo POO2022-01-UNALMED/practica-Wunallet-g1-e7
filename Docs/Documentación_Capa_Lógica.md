@@ -28,24 +28,25 @@ asociado.
 
 ### Métodos
 
-#### + Inscribir(int nroCuenta, String nombreBanco)
+#### public Inscribir(int nroCuenta, String nombreBanco)
 
 - **Funcionamiento:** 
 
-    Usará el método de la clase Banco 'extraerBanco(nombreBanco)' que retornará el objeto Banco que tiene dicho nombre.
+    Usará el método de clase Banco 'extraerBanco(nombreBanco)' que retornará el objeto Banco con dicho nombre.
 
-    Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cuentas para buscar alguna cuenta en la que los demás parámetros coincidan mediante el método de clase 'extraerCuenta(int nroCuenta)'.
+    Una vez que se tenga acceso al objeto tipo Banco, se accederá a su lista de cuentas para buscar alguna cuenta en la que el
+    número de cuenta coincida mediante el método de instancia 'extraerCuenta(int nroCuenta)'.
     
     Finalmente se agrega la cuenta a la listaInscritos del usuario.
 
 - **Retorno:** Void
 
 
-#### + solicitarCredito(Banco banco, float monto, int plazo, Cuenta cuentaSeleccionada)
+#### public solicitarCredito(Banco banco, float monto, int plazo, Cuenta cuentaSeleccionada)
 
 - **Funcionamiento:** 
     
-    Se verificará si el usuraio cuenta con un perfil crediticio. De no ser así, se le creará uno y se le asignará a su atributo
+    Se verificará si el usuario cuenta con un perfil crediticio. De no ser así, se le creará uno y se le asignará a su atributo
     perfilCrediticio.
 
     Luego se revisarán los atributos del perfilCrediticio y, en caso de que el comportamientoDePago del usuario sea suficientemente
@@ -60,7 +61,7 @@ asociado.
 - **Retorno:** int
 
 
-#### + removerCuentaAsociada(Cuenta cuenta)
+#### public removerCuentaAsociada(Cuenta cuenta)
 
 - **Funcionamiento:** 
     
@@ -69,7 +70,7 @@ asociado.
 - **Retorno:** Void
 
 
-#### + removerCuentaInscrita(Cuenta cuenta)
+#### public removerCuentaInscrita(Cuenta cuenta)
 
 - **Funcionamiento:** 
     
@@ -78,7 +79,7 @@ asociado.
 - **Retorno:** Void
 --- 
 
-## PerfilCrediticio
+## PerfilCreditico
 
 ### Generalidades
 
@@ -95,14 +96,14 @@ una elección aleatoria en el constructor.
 
 ###  Métodos
 
-#### + Constructor(Usuario usuario, float ingresosMensuales, comportamientoDePago nivel)
+#### public Constructor(Usuario usuario, float ingresosMensuales, comportamientoDePago nivel)
 
 - **Funcionamiento:**
 
     Será invocado en caso de que al solicitarse un crédito el usuario no tenga perfil crediticio. 
     
     Asignará a su atributo usuario el usuario enviado como parámetro. También asignará en la capacidadEndeudamiento el 20% de los
-    ingresos mensuales del usuario, y finalmente asignará el nivel (extraido del enum comportamientoDePago), a su
+    ingresos mensuales del usuario, y finalmente asignará de forma aleatoria el nivel (extraido del enum comportamientoDePago), a su
     comportamientoDePago.
 
 - **Retorno:** Void
@@ -135,14 +136,14 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 
     ```java
     return "Transferencia de " + cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + 
-    " cuentaDestino.getTitular() + " a la cuenta " + cuentaDestino. getNroCuenta() + " por valor de " + \<Valor\> + "."
+    " cuentaDestino.getTitular() + " a la cuenta " + cuentaDestino.getNroCuenta() + " por valor de " + \<Valor\> + "."
     
     ```
 
     2. Para pago de créditos.
 
     ```java
-    return "Tranferencia "+ cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + getNombreBanco() + " por valor de " + getValorTransaccion() + "." 
+    return "Transferencia de "+ cuentaOrigen.getTitular() + " desde la cuenta " + cuentaOrigen.getNroCuenta() + " a " + getNombreBanco() + " por valor de " + getValorTransaccion() + "." 
     ```    
 
 - **Retorno:** String
@@ -158,7 +159,7 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 
 - \- final float TasaInteresAnual: Interés anual que manejan los créditos del banco.
 
-- \- static ArrayList<Banco> listaBancos: Lista con todos los objetos Banco que se han creado.
+- \+ static ArrayList<Banco> listaBancos: Lista con todos los objetos Banco que se han creado.
 
 - \- ArrayList<Cuenta> listaCuentas: Lista con todos los objetos de tipo Cuenta que tiene asociadas un Banco. 
 
@@ -167,7 +168,7 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 
 ###  Métodos
 
-#### + static extraerBanco(String nombreBanco) 
+#### public static extraerBanco(String nombreBanco) 
 
 - **Funcionamiento:**
 
@@ -176,7 +177,7 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 
 - **Retorno:** Banco
 
-#### + extraerCuenta(int nroCuenta)
+#### public extraerCuenta(int nroCuenta)
 
 - **Funcionamiento:**
 
@@ -186,7 +187,7 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 - **Retorno:** Cuenta
 
 
-#### + añadirCredito(Credito credito)
+#### public añadirCredito(Credito credito)
 
 - **Funcionamiento:**
 
@@ -194,13 +195,14 @@ Son objetos sin métodos cuyo fin es encapsular en sus atributos toda la informa
 
 - **Retorno:** Void
 
-#### + removerCuenta(Cuenta cuenta)
+#### public removerCuenta(Cuenta cuenta)
 
 - **Funcionamiento:**
 
     Remueve la cuenta del parámetro de la listaCuentas del banco.
 
 - **Retorno:** Void
+
 ---
 
 ## Credito
@@ -222,11 +224,12 @@ Los objetos de esta clase representan los créditos que otorga un banco a un usu
 
 ### Métodos
 
-#### + static simularCredito(Banco banco, float monto, int plazo)
+#### public static simularCredito(Banco banco, float monto, int plazo)
     
 - **Funcionamiento:**
 
-    Es un método estático que se ejecutará para verificar si, al solicitar un crédito, la cuota mensual esperada no supera la capacidad de endeudamiento del usuario.
+    Es un método estático que se ejecutará para verificar si, al solicitar un crédito, la cuota mensual esperada no supera la
+    capacidad de endeudamiento del usuario.
 
     El método tomará la tasa de interes anual del banco, y hará el siguiente cálculo
 
@@ -346,8 +349,8 @@ float valorTransaccion).
 
 1. Verificar si cuotaMensual <= saldoCuentaOrigen + (capacidadSobregiro - sobregiroActual)
 
-2. En caso de haber usado la capacidad de sobregiro, se setea el atributo sobregiroActual con la cantidad valorTransferencia-saldo
-Esto se debe comprobar con un if, si valorTransferencia-saldo>0.
+2. En caso de haber usado la capacidad de sobregiro, se setea el atributo sobregiroActual con la cantidad cuotaMensual-saldo
+Esto se debe comprobar con un if, si cuotaMensual-saldo>0.
 
 3. Realiza los ajustos de saldo a la cuentaOrigen y al Credito
 
@@ -391,7 +394,7 @@ float valorTransaccion)
 4. Crea el objeto de tipo Transaccion llamando al constructor Transaccion(Cuenta cuentaOrigen, Cuenta cuentaDestino,
 float valorTransaccion) 
 
-5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
+5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen y cuentaDestino.
 
 - **Retorno:** Boolean
 
@@ -424,9 +427,9 @@ float valorTransaccion)
 
 ### Atributos
 
-- \- limiteMensual : Dinero máximo que se puede transferir por mes.
+- \- float limiteMensual : Dinero máximo que se puede transferir por mes.
 
-- \- acumuladorTransferencia : Contador de cuánto dinero se ha transferido de la cuenta durante el mes.
+- \- float acumuladorTransferencia : Contador de cuánto dinero se ha transferido de la cuenta durante el mes.
 
 ### Métodos
 
@@ -434,11 +437,9 @@ float valorTransaccion)
 
 - **Funcionamiento:**
 
-1. Verificar si valorTransferencia <= saldoCuentaOrigen
+1. Verificar si (valorTransferencia <= saldoCuentaOrigen) && (valorTransferencia + acumuladorTransferencia <= limiteMensual)
 
-2. Verificar si valorTransferencia + acumuladorTransferencia <= limiteMensual
-
-3. Realiza los ajustos de saldo a ambas cuentas mediante 
+2. Realiza los ajustos de saldo a ambas cuentas mediante 
 
     ```java
     this.restarSaldo(_)
@@ -448,7 +449,7 @@ float valorTransaccion)
 4. Crea el objeto de tipo Transaccion llamando al constructor Transaccion(Cuenta cuentaOrigen, Cuenta cuentaDestino,
 float valorTransaccion) 
 
-5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
+5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen y cuentaDestino.
 
 - **Retorno:** Boolean
 
@@ -456,21 +457,19 @@ float valorTransaccion)
 
 - **Funcionamiento:**
 
-1. Verificar si cuotaMensual <= saldoCuentaOrigen
+1. Verificar si (cuotaMensual <= saldoCuentaOrigen) && (cuotaMensual + acumuladorTransferencia <= limiteMensual)
 
-2. Verificar si cuotaMensual + acumuladorTransferencia <= limiteMensual
-
-3. Realiza los ajustos de saldo a la cuentaOrigen y al Credito
+2. Realiza los ajustos de saldo a la cuentaOrigen y al Credito
 
     ```java
     this.restarSaldo(cuotaMensual)
     credito.setDeuda(credito.getDeuda()-credito.getCuotaMensual())
     ```
 
-4. Crea el objeto de tipo Transaccion llamando al constructor Transaccion(Cuenta cuentaOrigen, String nombreBanco,
+3. Crea el objeto de tipo Transaccion llamando al constructor Transaccion(Cuenta cuentaOrigen, String nombreBanco,
 float valorTransaccion) 
 
-5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
+4. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
 
 - **Retorno:** Boolean
 
@@ -478,13 +477,16 @@ float valorTransaccion)
 
 - **Funcionamiento:**
 
-1. Se debe verificar que el saldo de la cuenta sea mayor o igual a 15.000 pesos, que es el costo de romper los topes.
+1. Se debe verificar que el saldo de la cuenta sea mayor a 15.000 pesos, que es el costo de romper los topes.
 
 2. Se creará un nuevo objeto de tipo Ahorro asignado a la variable nuevaCuentaAhorro
+
     ```java
     Ahorro nuevaCuentaAhorro = new Ahorro(this.getTitular(), this.getBanco(), this.getSaldo(), this.getNroCuenta(), "Ahorro",
-    this.getHistorialTransferencia(), this.getTasaInteres())
+    this.getTasaInteres())
     ```
+
+3. Setear el historial de la nueva cuenta con el historial de la cuenta BajoMonto.
 
 - **Retorno:** Boolean
 
@@ -499,60 +501,50 @@ Cuenta
 
 ### Atributos
 
-- static final float SOBREGIROMAXIMOCIERRE = 0 : Representa que para cerrar una cuenta se puede tener un sobregiro máximo de 0 pesos
-(no se puede deber al banco).
-
-- static final float SALDOMAXIMOCIERRE = 0 : Para cerrar una cuenta es necesario que no tenga saldo.
+- static final float COSTOROMPERTOPES = 15.000 : Es el costo fijado para actualizar una cuenta de BajoMonto a una de Ahorro
 
 ### Métodos
 
-#### default + eliminarCuenta()
+#### public abstract sumarSaldo(float Valor);
 
 - **Funcionamiento:**
-
-cuenta.eliminarCuenta()
-1. Toma el objeto tipo Usuario que hay en el atributo titular de la cuenta, para remover la cuenta que invoca el método de la lista de cuentasAsociadas que tiene el usuario
-
-```java
-// ver https://www.geeksforgeeks.org/remove-element-arraylist-java/
-
-import java.util.ArrayList;
-import java.util.List;
-
-usuario = this.getTitular()
-usuario.cuentasAsociadas.remove(this)
-
-```
-
-- **Retorno:** Boolean
-
-#### default + sumarSaldo(float Valor);
-
-- **Funcionamiento:**
-    ```java
-    this.setSaldo(this.getSaldo() + valor)
-    ```
+    
+    Metodo para sumar saldo del producto bancario en que se implementa.
 
 - **Retorno:** Void
 
-#### default + restarSaldo(float Valor);
+#### public abstract restarSaldo(float Valor);
 
 - **Funcionamiento:**
-    ```java
-    this.setSaldo(this.getSaldo() - valor)
-    ```
+
+    Metodo para restar saldo del producto bancario en que se implementa.
 
 - **Retorno:**  Void
 
 ---
 
-## Plantilla
+## Enum ComportamientoDePago
 
 ### Generalidades
 
 ### Atributos
 
+- \- int nivel
+
+### Enum
+
+- BUENO(1)
+- REGULAR(2)
+- MALO(3)
+
 ### Métodos
 
+#### public static randomNivel();
+
+- **Funcionamiento:**
+
+    Método para seleccionar aleatoriamente un nivel del enum.
+
+- **Retorno:**  ComportamientoDePago
 
 ---

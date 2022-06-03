@@ -12,22 +12,6 @@ Funcionalidades que ejecutará:
 4. Ver historial de transacciones
 5. Transferir
 
-### Estado inicial
-
-### Atributos
-
-### Bancos 
-
-Todos los bancos tienen los 3 tipos de cuentas
-
-- Unalombia
-- PooBanco
-- QuitaVivienda
-
-### Juan Perez
-
-#### Atributos
-
 
 ### Pantallas
 
