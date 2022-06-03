@@ -80,7 +80,8 @@ public class BajoMonto extends Ahorro implements Serializable{
 			Transaccion trans = new Transaccion(this,cuentaDestino,valorTransferencia);
 			
 			historialTransferencia.add(trans);
-			
+			cuentaDestino.historialTransferencia.add(trans);
+
 			return true;
 		}
 		

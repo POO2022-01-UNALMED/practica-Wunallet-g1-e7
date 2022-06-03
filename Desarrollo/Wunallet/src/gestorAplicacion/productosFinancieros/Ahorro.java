@@ -68,7 +68,8 @@ public class Ahorro extends Cuenta implements Serializable{
 			Transaccion trans = new Transaccion(this,cuentaDestino,valorTransferencia);
 			
 			historialTransferencia.add(trans);
-			
+			cuentaDestino.historialTransferencia.add(trans);
+
 			return true;
 		}
 		

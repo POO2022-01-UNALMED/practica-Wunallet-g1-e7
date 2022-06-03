@@ -74,9 +74,9 @@ public class Corriente extends Cuenta implements Serializable{
 			cuentaDestino.sumarSaldo(valorTransferencia);
 			
 			Transaccion trans = new Transaccion(this,cuentaDestino,valorTransferencia);
-			
 			historialTransferencia.add(trans);
-			
+			cuentaDestino.historialTransferencia.add(trans);
+
 			return true;
 		}
 		
