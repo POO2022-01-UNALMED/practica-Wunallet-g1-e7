@@ -260,41 +260,35 @@ Los objetos de esta clase representan los créditos que otorga un banco a un usu
 
 ### Métodos
 
-#### + verHistorial()
+#### public verHistorial()
 
 - **Funcionamiento:** 
-    
-    *Nota: El método se ejecuta sin parámetros*
 
-    1. Al ser ejecutado desde la cuenta origen, iterará sobre la lista historialTransferencia e imprimirá cada uno de los
+    Al ser ejecutado desde la cuenta origen, iterará sobre la lista historialTransferencia e imprimirá cada uno de los
     objetos ya formateados por el método toString()
 
 
 - **Retorno:** Void
 
-#### abstract - transferir(Cuenta cuentaDestino, float valorTransferencia)
+#### public abstract transferir(Cuenta cuentaDestino, float valorTransferencia)
 
 - **Funcionamiento:**
 
 Ejecutará las comprobaciones y actualizaciones de saldo correspondientes al realizar una transferencia. Este proceso depende del
 tipo de cuenta que lo ejecute, y por eso debe ser un método abstracto.
-
-Este método se ejecuta como cuentaOrigen.transferir(cuentaDestino, valorTransferencia)
     
 - **Retorno:** Boolean
 
-#### abstract - transferir(Credito credito)
+#### public abstract transferir(Credito credito)
 
 - **Funcionamiento:**
 
 Ejecutará las comprobaciones y actualizaciones de saldo correspondientes al realizar el pago de un crédito. Este proceso depende del
 tipo de cuenta que lo ejecute, y por eso debe ser un método abstracto.
 
-Este método se ejecuta como cuentaOrigen.transferir(credito)
-
 - **Retorno:** Boolean
 
-#### sumarSaldo(float valor)
+#### public sumarSaldo(float valor)
 
 - **Funcionamiento:**
 
@@ -302,7 +296,7 @@ Sumará el saldo del parámetro a la cuenta desde la que se invoca el método.
 
 - **Retorno:** Void
 
-#### restarSaldo(float valor)
+#### public restarSaldo(float valor)
 
 - **Funcionamiento:**
 
