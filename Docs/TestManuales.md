@@ -149,7 +149,7 @@ Nota: Puede que los pasos que se crean a continuación no se ejecuten en el sist
 ---
 - ## ***¿Que usuario desea realizar?***
     
-    El segundo usuario con **C: 10** quiere romper topes a sus cuentas
+    El segundo usuario con **C: 10** solicitar un crédito
     
     - juanPerez
 
@@ -187,7 +187,7 @@ Nota: Puede que los pasos que se crean a continuación no se ejecuten en el sist
 
 ---
 - ## ***¿Que usuario desea realizar?***
-    El segundo usuario con **C: 98** quiere romper topes a sus cuentas
+    El segundo usuario con **C: 98** quiere solicitar un crédito
 
     - hernestoPerez
     - **Seleección de la funcionalidad: 3**
@@ -201,9 +201,9 @@ Nota: Puede que los pasos que se crean a continuación no se ejecuten en el sist
 
     - **Las cuentas que tiene asociadas son:**
             
-        **1. Cuenta 69**
+        **1. Cuenta 26**
+        **2. Cuenta 69**
             
-        **2. Cuenta 26**
     
 - Seleccione la cuenta de la que desea guardar el crédito: **1**
 
@@ -252,19 +252,20 @@ cuotaTentativa = 3.700.000/12 = 308.833
         2. Transferencia a otra cuenta: **1**
     
     - Selecionaste: pagar credito
-        Tu crédito es de 3000.0 y pagarás una cuota de 875.0.
+        Tu crédito es de 3000.0 y pagarás una cuota de 650.0.
         1. Sí
         2. Volver al menú de funcionalidades.
         
         **Sí**
         
-        **- Tu pago ha sido exitoso. Tu credito restante es de 1250.0**
+        **- Tu pago ha sido exitoso. Tu credito restante es de 1700.0**
+        **R / Tu cuenta quedó con un saldo de 9350.0**
 
 ---
 
 ---
 - ## ***¿Que usuario desea realizar?***
-    El segundo usuario con **C: 10** transferir
+    El segundo usuario con **C: 98** transferir
     
     - hernestoPerez
     - **Seleección de la funcionalidad: 5**
@@ -362,9 +363,12 @@ cuotaTentativa = 3.700.000/12 = 308.833
     **1. Cuenta 26**
     **2. Cuenta 69**
 
-    Entrada: **26**
+    Entrada: **1**
 
-    **Envío exitoso. El saldo de su cuenta es de 3100.0.**
+    - **Digite el valor que desea transferir: 9000**
+
+    - **R / Valor ingresado: 9000.0**
+    
 ---
 
 

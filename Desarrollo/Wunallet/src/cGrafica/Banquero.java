@@ -745,7 +745,7 @@ public class Banquero {
 					int numBanco = readInt();
 					System.out.println("----------------------------------------------");
 					Banco banco = null;		
-					System.out.println("hasta aca voy bien");
+//					System.out.println("hasta aca voy bien");
 					
 					switch(numBanco) {
 					case 1: banco = Banco.extraerBanco("Unalombia");
