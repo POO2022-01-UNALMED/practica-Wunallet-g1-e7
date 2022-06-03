@@ -1,4 +1,4 @@
-package cGrafica;
+package uiMain;
 import java.util.Scanner;
 
 import basedatos.Deserializador;
@@ -16,7 +16,6 @@ import gestorAplicacion.productosFinancieros.Cuenta;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import basedatos.*;
-
 
 public class Banquero {
 

@@ -20,7 +20,6 @@ import gestorAplicacion.productosFinancieros.Corriente;
 import gestorAplicacion.productosFinancieros.Credito;
 
 
-
 /**
  * Clase para deserializar los objetos que se crearon en ejecucion
  * @author Erik Gonzalez
