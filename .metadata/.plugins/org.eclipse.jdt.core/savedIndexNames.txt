@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\david\Documents\GitHub\practica-Wunallet-g1-e7\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+1039974874.index
+1041869433.index
