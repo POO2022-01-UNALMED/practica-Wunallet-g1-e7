@@ -20,16 +20,14 @@ import basedatos.*;
 
 public class Banquero {
 
+//	Métodos necesarios para la lectura de los datos ingresados por consola
 	static Scanner sc = new Scanner(System.in);
-	
 	static long readLong() {
 		return sc.nextLong();
 	}
-	
 	static int readInt() {
 		return sc.nextInt();
 	}
-	
 	static String readln() {
 		sc.nextLine();
 		return sc.nextLine();
@@ -39,9 +37,12 @@ public class Banquero {
 	
 	public static void main (String args[]) {
 	
-	
+//	Método que se encarga de importar todos los datos provenientes del deserializador
 	cargar();
+//	Método que se ejecuta si no hay objetos desde el deserializador
 	inicializa();
+	
+//	Logo fachero!
 	
     System.out.println("                                                                    :~^^^^^^~:  :~^^^^^^^^  :~^^^^^^^^");                            
 	System.out.println("                                                                    :5PPPPPP5^  :5PPPPPPP~  .YPPPPPPP~");                            
@@ -85,47 +86,14 @@ public class Banquero {
 	System.out.println("                                      ^PP^ :5P!  	~G7 ^G7     .5Y  ?P5.    J5. Y5.     Y5.     7P^     JP:      ~G!   ");                  
 	System.out.println("                                      :PY.  JP~  	:J5Y5Y^     .5Y  :55.   .5J  ?P:     YPJJ7   !PYJJ^  ?PYJJ.   ~P!   ");                   
 	
-//	for(Banco i:Banco.listaBancos) {
-//		System.out.println("Banco "+ i.getNombreBanco());
-//	}
-//	
+//	Primera pantalla de selección de usuario
 	
-//		int optionUser;
-//		Usuario usuario;
-//		do {
-//			System.out.println("----------------------------------------------");
-//			System.out.println("¿Que usuario desea realizar?");
-//			System.out.println(" 1. Juan Perez");
-//			System.out.println(" 2. Hernesto Perez");
-//			System.out.println(" 0. Salida segura");
-//			System.out.println("----------------------------------------------");
-//			System.out.print("Ingrese la opcion :");
-//			optionUser = (int) readLong();
-//			System.out.println("----------------------------------------------");
-//			
-//				
-//			
-//			switch (optionUser) {
-////			Primer usuario.
-//			case 1: usuario = juanPerez; 
-//					funcionalidadesEjecucion(usuario);
-//					break;
-//					
-//				
-////			Segundo usuario.
-//			case 2: usuario = hernestoPerez;
-//					funcionalidadesEjecucion(usuario);
-//					break;
-//			
-//			case 3: salirDelSistema();break;
-//				
-//			}
-//		} while(optionUser != 5);
-		
+//	En esta primera parte se selecciona el usuario con el cual se ejecutarán todas las funcionalidades.
+//	Cuando se seleccione el usuario, se procederá a desplejar en pantalla las funcionalidades.
 	int optionUser;
 	do {
 		System.out.println("----------------------------------------------");
-		System.out.println("	¿Que usuario desea realizar?");
+		System.out.println("	¿Que usuario desea ser?");
 		System.out.println("----------------------------------------------");
 		int uC = 0;
 		for(Usuario usuarioI:Usuario.getUsuario()) {
@@ -139,7 +107,7 @@ public class Banquero {
 		System.out.println("----------------------------------------------");
 		
 		switch (optionUser) {
-	//		Primer usuario.
+//			Primer usuario.
 			case 1: 
 					System.out.println("Usted seleccionó: "+ Usuario.getUsuario().get(0).getCc());
 					System.out.println("----------------------------------------------");
@@ -147,21 +115,27 @@ public class Banquero {
 					break;
 					
 				
-	//		Segundo usuario.
+//			Segundo usuario.
 			case 2: 
 					System.out.println("Usted seleccionó: "+ Usuario.getUsuario().get(1).getCc());					
 					System.out.println("----------------------------------------------");
 					funcionalidadesEjecucion(Usuario.getUsuario().get(1));
 					break;
-			
+					
+//			Salida del sistema
 			case 3: salirDelSistema();break;
 		}
 	} while(optionUser != 0);
 	
 		
 		
+	
+	
 		
 	}
+	
+//	Este método se encarga de crear los objetos iniciales necesarios para la ejecución de las funcionalidades
+//	este método solo se ejecutará si no hay objetos creados o cargados por el deserializador.
 	
 	public static void inicializa() {
 //		Creación de algunos usuarios
@@ -184,7 +158,14 @@ public class Banquero {
 	
 	
 	
-
+// Se despliega en pantalla las funcionalidades disponibles al usuario
+//	Inscribir cuenta
+//	Romper topes
+//	Solicitar credito
+//	Ver historial
+//	Transferir
+//	Salir
+	
 	public static void funcionalidadesEjecucion(Usuario usuario) {
 		int option;
 		
@@ -198,7 +179,7 @@ public class Banquero {
 			System.out.println(" 3. Solicitar credito");
 			System.out.println(" 4. Ver historial de transacciones");
 			System.out.println(" 5. Tranferir");
-			System.out.println(" 6. Volver a seleccionar usuario");
+			System.out.println(" 6. Salir");
 			System.out.println(" 7. Volver al menu de usuarios");
 			System.out.println("----------------------------------------------");
 			System.out.print("Ingrese la opcion :");
@@ -206,15 +187,13 @@ public class Banquero {
 			System.out.println("----------------------------------------------");
 			
 			switch(option) {
-//			case 1: System.out.print("Metodo que ejecuta a inscribir cuentas");break;
-			case 1: inscribirCuenta(usuario);break;
-			case 2: romperTopes(usuario);break;
-			case 3: solicitarCredito(usuario);break;
-			case 4: verHistorial(usuario);break;
-			case 5: transferir(usuario);break;
-			case 6: salirDelSistema();break;
-			case 7: break;
-//			Hacen lo mismo xD
+				case 1: inscribirCuenta(usuario);break;
+				case 2: romperTopes(usuario);break;
+				case 3: solicitarCredito(usuario);break;
+				case 4: verHistorial(usuario);break;
+				case 5: transferir(usuario);break;
+				case 6: salirDelSistema();break;
+				case 7: break;
 			}
 			
 		}while(option != 7);
@@ -226,6 +205,13 @@ public class Banquero {
 //	-------------------------------------- Metodos --------------------------------------	
 	
 	
+//	Esta funcionalidad consiste en vincular a un usuario con una o más cuentas.
+	
+//	Se solicita el banco, tipo de cuenta, número de cuenta inicialamente, a partir de estos datos
+//	se comprueba que el núemro de cuenta ingresado corresponda a una cuenta creada
+//	si si existe dicha cuenta, se prodece a solicitar la cédula del titular de la cuenta a inscribir,
+//	si la cédula corresponde al titular de la cuenta, se llama al método inscribir
+//	de la clase usuario.
 	
 	static void inscribirCuenta(Usuario usuario) {
 		
@@ -335,6 +321,17 @@ public class Banquero {
 	
 	}
 	
+	
+//	Esta funcionalidad consiste en mostrar el hisotorial de transferencias de una cuenta.
+	
+//	El usuario selecciona la cuenta de la cual desea conocer el historial de transacciones.
+//	si el historial de transaciones está vacio, se imprimirá en pantalla el mensaje correspondiente.
+//	si se tiene un hisotrial de transacciones, se mostrará la información de las transacciones 
+//	en el siguiente formato:
+//	Para transferencias; Transferencia de <nroCuentaOrigen> a <nroCuentaDestino> por valor de <valor>.
+//	o
+//	Para pago de créditos: Transferencia de <nroCuentaOrigen> a <nombreBanco> por valor de <valor>.
+	
 	static void verHistorial(Usuario usuario) {
 		System.out.println("----------------------------------------------");
 		System.out.println("		# Ver Historial");
@@ -371,12 +368,20 @@ public class Banquero {
 //			VerHistorial.Historial.ConHistorial
 			cuentaVH.verHistorial();
 		}
-			
-
-		
-		
-		
+	
 	}
+	
+	
+//	Esta funcionalidad crea un crédito a un usuario
+	
+//	Primero se comprueba que el usuario no cuente con un crédito activo al momento.
+//	Luego se procede a seleccionar el banco, cuenta, monto y plazo
+//	con estos datos se procede a llamar el método solicitarCredito, de la clase usuario
+//	los tres posibles retornos son:
+//	
+//	Credito rechazado por mal comportamiento crediticio
+//	Credito rechazado por falta de capacidad de endeudamiento
+//	Tu solicitud de crédito ha sido aprobada y tu saldo actual es: <saldo>
 	
 	
 	static void solicitarCredito(Usuario usuario) {
@@ -469,7 +474,12 @@ public class Banquero {
 		}
 	}
 	
+//	Esta funcionalidad consiste en cmabiar una cuenta de bajo monto en una de ahorros
 	
+//	Primero se verifica que el usuario tenga una cuenta de bajo monto.
+//	Si el usuario tiene por lo menos un cuenta de bajo monto, se solicita que la seleccione
+//	cuando se ingresa, se llama al método romperTopes de la clase bajo monto,
+//	adicionalmente se remueve la cuenta de las listas en las que estaba agregada
 	
 	static void romperTopes(Usuario usuario) {
 		System.out.println("----------------------------------------------");
@@ -480,7 +490,6 @@ public class Banquero {
 		for(Cuenta cuentaI : usuario.getCuentasAsociadas()) {
 			if(cuentaI instanceof BajoMonto) {
 				cRT++;
-//				System.out.println(cRT + " Cuenta "+ cuentaI.getNroCuenta());
 			}
 		}
 		
@@ -520,12 +529,7 @@ public class Banquero {
 		
 		Banco banco = ((BajoMonto)CuentaRt).getBanco(); 
 		
-//		int cRT_3 = 0;
-//		for(Cuenta CuentaI : banco.getListaCuentas()) {
-//			cRT_3++;
-//			System.out.println(cRT_3 + " Cuenta antes de romper topes "+ CuentaI.getNroCuenta());
-//		}	
-		
+	
 		boolean c = ((BajoMonto)CuentaRt).romperTopes();
 		int numeroCuenta = ((BajoMonto)CuentaRt).getNroCuenta();
 		usuario.removerCuentaAsociada(CuentaRt);
@@ -536,48 +540,41 @@ public class Banquero {
 			System.out.println("----------------------------------------------");
 		}else {
 			
-//			CuentaRt = null;
-//			System.gc();
 			System.out.println("R / Tu solicitud ha sido aprobada, se descontarán $15.000 de tu saldo para realizar el proceso. Espera un momento...");
 			System.out.println("----------------------------------------------");
 			System.out.println("R / Tu cuenta ha sido actualizada y ahora no tiene topes.");
 			Cuenta cANueva = banco.extraerCuenta(numeroCuenta);
-//			for(Cuenta cuentaAhorro : banco.getListaCuentas()) {
-////				numeroCuenta
-//				if(cuentaAhorro.getNroCuenta() == numeroCuenta) {
-//					cANueva = cuentaAhorro;
-//				}
-//			}
-//			if(cANueva instanceof BajoMonto) {
-//				System.out.println("AUN ES BAJO MONTO :c");
-//			}else {
-//				System.out.println("Si se actualizï¿½");
-//			}
-			
 			System.out.println("R / Tu nueva cuenta de ahorros ahora tiene un saldo de: "+cANueva.getSaldo() +".");
-			System.out.println("----------------------------------------------");
-			
-//			int cRT_2 = 0;
-//			for(Cuenta cuentaI : usuario.getCuentasAsociadas()) {
-//				if(cuentaI instanceof BajoMonto) {
-//					cRT_2++;
-//					System.out.println(cRT_2 + " Cuenta "+ cuentaI.getNroCuenta());
-//				}
-//			}
-//			int cRT_2 = 0;
-//			for(Cuenta CuentaI : banco.getListaCuentas()) {
-//				cRT_2++;
-//				if(CuentaI instanceof BajoMonto) {
-//					System.out.println(cRT_2 + " Cuenta "+ CuentaI.getNroCuenta());				
-//				}else {
-//					System.out.println("Papi todo estÃ¡ melo");
-//				}
-//			}
-			
+			System.out.println("----------------------------------------------");			
 			
 		}
 		
 	}
+	
+//	Esta funcionalidad tiene dos procesos de ejecución, uno para transferencia a otra cuenta 
+//	y otra para pagar un crédito
+	
+//	Se solicita, el producto de origen,luego se requiere que se decida si se quiere pagar un crédito
+//	trasnferir a otra cuenta
+	
+//	*Pagar credito*
+//	se verifica que el usuario tenga un credito activo, si es el caso se procede a confirmar el pago,
+//	si el pago es confirmado, se llama al metodo transferir(creditoActivo), de la clase cuenta,
+//	donde se realizarán las comprobaciones correspondientes.
+	
+//	*transferencia a otra cuenta*
+//	se debe seleccionar si se realizará una tranferencia a una cuenta inscrita o no inscrita
+
+//	*Inscritas*
+//	Se verifica que el usuario si tenga cuentas inscritas, si si tiene cuentas inscritas
+//	se despliengan todas las cuentas inscritas para que el usuario seleccione una de estas,
+//	la primera comprobación que se hace es mirar que esta cuenta aun exista, si aun existe
+//	se solicita el valor a transferir y se procede a llamar al método transferir.
+						
+//	*No inscritas*
+//	Se debe seleecionar el banco, el número de cuenta de la cuenta de destino, y el valor a transferir
+//	finalmente se llama al método transferir(cuentaDestino,valorTransf) de la clase cuenta.
+
 	
 	
 	static void transferir(Usuario usuario) {
@@ -656,11 +653,6 @@ public class Banquero {
 				
 				}
 				
-				
-				
-					
-				
-				
 				break;
 			case 2: 
 				System.out.println("R / Selecionaste: tranferir a otra cuenta.");
@@ -733,10 +725,6 @@ public class Banquero {
 						break;
 					}
 					
-										
-					
-					
-					
 				case 2: 
 					System.out.println("Selecionaste: cuentas no inscritas.");
 					System.out.println("----------------------------------------------");
@@ -758,15 +746,7 @@ public class Banquero {
 					System.out.println("----------------------------------------------");
 					Banco banco = null;		
 					System.out.println("hasta aca voy bien");
-//					banco = (Banco.extraerBanco("PooBanco"));
-//					System.out.println("ERORR "+ Banco.listaBancos);
 					
-//					Banco banco = Banco.extraerBanco("PooBanco");
-//					for(Banco po:Banco.listaBancos) {
-//						System.out.println("Banco "+ po.getNombreBanco());
-//					}
-//					
-//					System.out.println("ERRORRRRRRRRRRR" + banco.getNombreBanco());
 					switch(numBanco) {
 					case 1: banco = Banco.extraerBanco("Unalombia");
 //							System.out.println(" Usted selecciono " + banco.getNombreBanco());
@@ -848,11 +828,17 @@ public class Banquero {
 
 		
 	}
+	
+//	Cuando el usuario indique que quiere salir del sistema, se procede a hacer la serialización
+//	de todos los objetos creados
+	
 	public static void salirDelSistema() {
 		System.out.println("Vuelva pronto");
 		Serializador.serializarTodo();
 		System.exit(0);
 	}
+	
+//	Se ejecuta al inicio del programa y es el encargado de traer todos los objetos que estaban serializados.
 	
 	public static void cargar() {
 		Deserializador.deserializarTodo();
