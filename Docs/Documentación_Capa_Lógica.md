@@ -292,7 +292,7 @@ tipo de cuenta que lo ejecute, y por eso debe ser un método abstracto.
 
 - **Funcionamiento:**
 
-Sumará el saldo del parámetro a la cuenta desde la que se invoca el método.
+Es un método implementado por requerimiento de la interfaz gestor. Sumará el saldo del parámetro a la cuenta desde la que se invoca el método.
 
 - **Retorno:** Void
 
@@ -317,7 +317,7 @@ Restará el saldo del parámetro a la cuenta desde la que se invoca el método.
 
 ### Métodos
 
-#### + transferir(Cuenta cuentaDestino, float valorTransferencia);
+#### public transferir(Cuenta cuentaDestino, float valorTransferencia);
 
 - **Funcionamiento:**
 
@@ -334,9 +334,9 @@ Esto se debe comprobar con un if, si valorTransferencia-saldo>0.
     ```
 
 4. Crea el objeto de tipo Transaccion llamando al constructor Transaccion(Cuenta cuentaOrigen, Cuenta cuentaDestino,
-float valorTransaccion) 
+float valorTransaccion).
 
-5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen
+5. Agrega el objeto creado en el paso anterior a la lista historialTransferencia de la cuentaOrigen y cuentaDestino.
 
 - **Retorno:** Boolean
 
