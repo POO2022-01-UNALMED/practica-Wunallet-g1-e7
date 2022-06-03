@@ -64,13 +64,10 @@ public abstract class Cuenta implements Gestor,Serializable{
 
 	public void setNroCuenta(int nroCuenta) { this.nroCuenta = nroCuenta;}
 
-	public int getNroCuenta() {
-		return this.nroCuenta;
-	}
+	public int getNroCuenta() {return this.nroCuenta; }
 	
-	public void setTitular(Usuario titular) {
-		this.titular = titular;
-	}
+	public void setTitular(Usuario titular) { this.titular = titular; }
+	
 	public Usuario getTitular() {
 		return this.titular;
 	}
