@@ -16,7 +16,7 @@ public class BajoMonto extends Ahorro implements Serializable{
     // El Array de clase de clientes de encarga de guardar todas las instancias de
     // Cliente para poder guardar y cargarlas en la serializacion
 	private static ArrayList<BajoMonto> bajoMonto = new ArrayList<>();
-	private final float costoRomperTopes = (float)15000.0;
+	
 	
 	public BajoMonto(int nroCuenta, Usuario titular,float saldo,Banco banco,String tipoDeCuenta,float tasaDeInteres,float limiteMensual,float acumuladorTransferencia) {
 		super(nroCuenta,titular,saldo,banco,tipoDeCuenta,tasaDeInteres);
@@ -69,12 +69,8 @@ public class BajoMonto extends Ahorro implements Serializable{
 		if(this.saldo >= valorTransferencia && valorTransferencia + acumuladorTransferencia <= limiteMensual ) {
 			
 
-			
-			
 			this.restarSaldo(valorTransferencia);
 
-			
-			
 			cuentaDestino.sumarSaldo(valorTransferencia);
 			
 			Transaccion trans = new Transaccion(this,cuentaDestino,valorTransferencia);

@@ -18,13 +18,12 @@ public enum comportamientoDePago {
 		return this.nivel;
 	}
 	
-	private static final List<comportamientoDePago> VALUES =
-		    Collections.unmodifiableList(Arrays.asList(values()));
-		  private static final int SIZE = VALUES.size();
-		  private static final Random RANDOM = new Random();
+	private static final List<comportamientoDePago> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
+	private static final int SIZE = VALUES.size();
+	private static final Random RANDOM = new Random();
 
-		  public static comportamientoDePago randomNivel()  {
-		    return VALUES.get(RANDOM.nextInt(SIZE));
-		  }
+	public static comportamientoDePago randomNivel()  {
+		return VALUES.get(RANDOM.nextInt(SIZE));
+	}
 
 }
