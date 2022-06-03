@@ -498,10 +498,10 @@ public class Banquero {
 		System.out.println("----------------------------------------------");
 		System.out.println("¡Recuerde! El procedimiento de romper topes consiste en transformar su cuenta de tipo Bajo monto, ");
 		System.out.println("a una cuenta de ahorros convencional, eliminando las limitaciones de este tipo de cuentas.");
-		System.out.println("Este proceso tiene un costo de 15.000 pesos que pagarÃ¡ una Ãºnica vez.");
+		System.out.println("Este proceso tiene un costo de 15.000 pesos que pagará una única vez.");
 		System.out.println("----------------------------------------------");
 		
-		System.out.println("	- Selección de cuenta");
+		System.out.println("	- Selecci�n de cuenta");
 		System.out.println("----------------------------------------------");
 		int cRT_1 = 0;
 		for(Cuenta cuentaI : usuario.getCuentasAsociadas()) {
@@ -644,10 +644,10 @@ public class Banquero {
 					
 					exito = cuentaT.transferir(creditoActivo);
 					if(exito==true) {
-						System.out.println("Tu pago ha sido exitoso. Tu credito restante es de "+ (creditoActivo.getDeuda()-creditoActivo.getCuotaMensual()) );
+						System.out.println("R / Tu pago ha sido exitoso. Tu credito restante es de "+ (creditoActivo.getDeuda()-creditoActivo.getCuotaMensual()) );
 						System.out.println("----------------------------------------------");
 					}else {
-						System.out.println("Tu pago ha sido rechazado ya que no cuentas con saldo suficiente o tu producto de origen no permite mover el valor indicado.");
+						System.out.println("R / Tu pago ha sido rechazado ya que no cuentas con saldo suficiente o tu producto de origen no permite mover el valor indicado.");
 						System.out.println("----------------------------------------------");
 					}
 				
@@ -745,7 +745,7 @@ public class Banquero {
 					
 //					Transferir.OtraCuenta.NoInscritas.SeleccionBanco
 					
-					System.out.println("-------------- SeleecciÃ³n del banco --------------");
+					System.out.println("	- Seleección del banco");
 					int c = 0;
 					for(Banco i: Banco.listaBancos) {
 						System.out.println((c+1) + ". " + i.getNombreBanco());
@@ -753,7 +753,7 @@ public class Banquero {
 					}
 					String nombreBanco = null;
 					System.out.println("----------------------------------------------");
-					System.out.println("Seleccione de quÃ© banco es la cuenta que desea inscribir: ");
+					System.out.println("Seleccione de que banco es la cuenta que desea inscribir: ");
 					int numBanco = readInt();
 					System.out.println("----------------------------------------------");
 					Banco banco = null;		
@@ -788,7 +788,7 @@ public class Banquero {
 					System.out.print("Ingrese el nÃºmero de cuenta de destino: ");
 					int numCuentaDes = readInt();
 					System.out.println("----------------------------------------------");
-					System.out.println("El nÃºmero de la cuenta ingresado es: " + numCuentaDes);
+					System.out.println("El número de la cuenta ingresado es: " + numCuentaDes);
 					System.out.println("----------------------------------------------");
 					
 					
@@ -825,7 +825,7 @@ public class Banquero {
 //					Transferir.OtraCuenta.NoInscritas.LlamadoFuncion
 					boolean transferenciaOcNOIns = cuentaT.transferir(cuentaDestino,valorTransf);	
 					if(transferenciaOcNOIns) {
-						System.out.println("EnvÃ­o exitoso. El saldo de su cuenta es de "+ cuentaT.getSaldo()  +"." );
+						System.out.println("Envio exitoso. El saldo de su cuenta es de "+ cuentaT.getSaldo()  +"." );
 						System.out.println("----------------------------------------------");
 						System.out.println("Quedaste con un saldo de: " + cuentaT.getSaldo());
 //						System.out.println("CuentaDestino" + cuentaDestino.getSaldo());
@@ -833,7 +833,7 @@ public class Banquero {
 						
 						break;
 					}else {
-						System.out.println("Hubo un error en la operaciÃ³n. Verifique que su cuenta de origen tenga y permita mover el saldo indicado.");
+						System.out.println("Hubo un error en la operación. Verifique que su cuenta de origen tenga y permita mover el saldo indicado.");
 						System.out.println("----------------------------------------------");
 						break;
 					}
