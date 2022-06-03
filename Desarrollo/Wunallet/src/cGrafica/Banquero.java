@@ -142,17 +142,16 @@ public class Banquero {
 		if ((Banco.listaBancos.isEmpty()) && (Usuario.getUsuario().isEmpty())) {
 			System.out.println("CREANDO ....");
 			Usuario juanPerez = new Usuario(null,1000000,10,null);
-			Usuario hernestoPerez = new Usuario(null,1000000,98,null);
+			Usuario hernestoPerez = new Usuario(null,2000000,98,null);
 
 			Banco Unalombia = new Banco("Unalombia",(float)1.6);
 			Banco PooBanco = new Banco("PooBanco",(float)2.5);
 			Banco QuitaVivienda = new Banco("QuitaVivienda",(float)36.0);
 		
-			Cuenta cuenta1 = new Ahorro(89,juanPerez, (float)10000.0 ,QuitaVivienda,"ahorro",(float)36.0);
-		
-			Cuenta cuenta3 = new Corriente(23,juanPerez,(float)50000000.0,Unalombia,"corriente",(float)2000000);
-			Cuenta cuenta2 = new BajoMonto(69,hernestoPerez, (float)1000000.0,PooBanco, "bajoMonto", (float)5.0,(float)3000000.0,(float)3000000.0);
-			Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)6000000.0,Unalombia, "bajoMonto", (float)5000.0,(float)3000.0,(float)3000.0);
+			Cuenta cuenta1 = new Ahorro(89,juanPerez, (float)10000.0 ,QuitaVivienda,"ahorro",(float)2.5);
+			Cuenta cuenta3 = new Corriente(23,juanPerez,(float)50000000.0,Unalombia,"corriente",(float)1.2);
+			Cuenta cuenta2 = new BajoMonto(69,hernestoPerez, (float)1000000.0,PooBanco, "bajoMonto", (float)2.2,(float)3000000.0,(float)3000000.0);
+			Cuenta cuenta4 = new BajoMonto(26,hernestoPerez, (float)6000000.0,Unalombia, "bajoMonto", (float)1.3,(float)200000.0,(float)200000.0);
 		}
 	}
 	
@@ -642,6 +641,7 @@ public class Banquero {
 					exito = cuentaT.transferir(creditoActivo);
 					if(exito==true) {
 						System.out.println("R / Tu pago ha sido exitoso. Tu credito restante es de "+ (creditoActivo.getDeuda()-creditoActivo.getCuotaMensual()) );
+						System.out.println("R / Tu cuenta quedó con un saldo de "+ (cuentaT.getSaldo()) );
 						System.out.println("----------------------------------------------");
 					}else {
 						System.out.println("R / Tu pago ha sido rechazado ya que no cuentas con saldo suficiente o tu producto de origen no permite mover el valor indicado.");
@@ -765,7 +765,7 @@ public class Banquero {
 					
 					
 //					Transferir.OtraCuenta.NoInscritas.IngresoNumeroCuenta
-					System.out.print("Ingrese el nÃºmero de cuenta de destino: ");
+					System.out.print("Ingrese el número de cuenta de destino: ");
 					int numCuentaDes = readInt();
 					System.out.println("----------------------------------------------");
 					System.out.println("El número de la cuenta ingresado es: " + numCuentaDes);
