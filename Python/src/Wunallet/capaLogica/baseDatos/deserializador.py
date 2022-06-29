@@ -5,91 +5,43 @@ import os
 import pathlib
 import pickle
 
-from gestorAplicacion.infoClientes.banco import Banco
-from gestorAplicacion.infoClientes.perfilCrediticio import PerfilCrediticio
-from gestorAplicacion.infoClientes.transaccion import Transaccion
-from gestorAplicacion.infoClientes.usuario import Usuario
+from Wunallet.capaLogica.gestorAplicacion.infoClientes.banco import Banco
+from Wunallet.capaLogica.gestorAplicacion.infoClientes.perfilCrediticio import PerfilCrediticio
+from Wunallet.capaLogica.gestorAplicacion.infoClientes.transaccion import Transaccion
+from Wunallet.capaLogica.gestorAplicacion.infoClientes.usuario import Usuario
 
-from gestorAplicacion.productosFinancieros.ahorro import Ahorro
-from gestorAplicacion.productosFinancieros.bajoMonto import BajoMonto
-from gestorAplicacion.productosFinancieros.corriente import Corriente
-from gestorAplicacion.productosFinancieros.credito import Credito
+from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.ahorro import Ahorro
+from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.bajoMonto import BajoMonto
+from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.corriente import Corriente
+from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.credito import Credito
 
-#Se llaman a todas las funciones de deserialización
-def deserializar():
-    deserializarBanco()
-    deserializarPerfilCrediticio()
-    deserializarTransaccion()
-    deserializarUsuario()
-
-    deserializarAhorro()
-    deserializarBajoMonto()
-    deserializarCorriente()
-    deserializarCredito()
-
-def deserializarBanco():
-    #Apertura del archivo donde será leido el flujo de bytes que representen el objeto. En este caso se trata de banco
-    fichero_banco=open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\banco.pkl"), "rb")
-    #Indicamos la variable donde se guardará el objeto deserializado. En este caso la lista de banco
-    Banco.setBanco(pickle.load(fichero_banco))
-    #Se cierra el archivo abierto
-    fichero_banco.close()
-
-def deserializarPerfilCrediticio():
-    #Apertura del archivo donde será leido el flujo de bytes que representen el objeto. En este caso se trata de PerfilCrediticio
-    fichero_perfil=open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\perfilCrediticio.pkl"), "rb")
-    #Indicamos la variable donde se guardará el objeto deserializado. En este caso la lista de PerfilCrediticio
-    PerfilCrediticio.setPerfilCrediticio(pickle.load(fichero_perfil))
-    #Se cierra el archivo abierto
-    fichero_perfil.close()
-
-def deserializarTransaccion():
-    #Apertura del archivo donde será leido el flujo de bytes que representen el objeto. En este caso se trata de Transaccion
-    fichero_trans=open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\transaccion.pkl"), "rb")
-    #Indicamos la variable donde se guardará el objeto deserializado. En este caso la lista de Transaccion
-    Transaccion.setTransaccion(pickle.load(fichero_trans))
-    #Se cierra el archivo abierto
-    fichero_trans.close()
-
-def deserializarUsuario():
-    #Apertura del archivo donde será leido el flujo de bytes que representen el objeto. En este caso se trata de Usuario
-    fichero_usuario=open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\usuario.pkl"), "rb")
-    #Indicamos la variable donde se guardará el objeto deserializado. En este caso la lista de Usuario
-    Usuario.setUsuario(pickle.load(fichero_usuario))
-    #Se cierra el archivo abierto
-    fichero_usuario.close()
-
-
-
-def deserializarAhorro():
-    #Apertura del archivo donde será leido el flujo de bytes que representen el objeto. En este caso se trata de Ahorro
-    fichero_ahorro=open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\ahorro.pkl"), "rb")
-    #Indicamos la variable donde se guardará el objeto deserializado. En este caso la lista de Ahorro
-    Ahorro.setAhorro(pickle.load(fichero_ahorro))
-    #Se cierra el archivo abierto
-    fichero_ahorro.close()
-
-def deserializarBajoMonto():
-    #Apertura del archivo donde será leido el flujo de bytes que representen el objeto. En este caso se trata de BajoMonto
-    fichero_bajo=open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\bajoMonto.pkl"), "rb")
-    #Indicamos la variable donde se guardará el objeto deserializado. En este caso la lista de BajoMonto
-    BajoMonto.setBajoMonto(pickle.load(fichero_bajo))
-    #Se cierra el archivo abierto
-    fichero_bajo.close()
-
-def deserializarCorriente():
-    #Apertura del archivo donde será leido el flujo de bytes que representen el objeto. En este caso se trata de Corriente
-    fichero_corriente=open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\corriente.pkl.pkl"), "rb")
-    #Indicamos la variable donde se guardará el objeto deserializado. En este caso la lista de Corriente
-    Corriente.setCorriente(pickle.load(fichero_corriente))
-    #Se cierra el archivo abierto
-    fichero_corriente.close()
-
-def deserializarCredito():
-    #Apertura del archivo donde será leido el flujo de bytes que representen el objeto. En este caso se trata de Credito
-    fichero_credito=open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\credito.pkl.pkl"), "rb")
-    #Indicamos la variable donde se guardará el objeto deserializado. En este caso la lista de Credito
-    Credito.setCredito(pickle.load(fichero_credito))
-    #Se cierra el archivo abierto
-    fichero_credito.close()
-
+class Deserializador():
+    
+    def deserializar(lista, className):
+        def camino(className):
+            string = os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\"+className+".txt")
+            return string
+        # Leo el archivo
+        try:
+            picklefile = open(camino(className), 'rb')
+        except:
+            picklefile = open(camino(className), 'x')
+            picklefile = open(camino(className), 'rb')
+        # unpickle los datos
+        if os.path.getsize(camino(className)) > 0:
+            lista = pickle.load(picklefile)
+        
+        # Cierro el archivo
+        picklefile.close()
+        return lista
+        # Cierro el archivo
+    
+    def deserializarTodo():
+        Banco.banco = Deserializador.deserializar(Banco.banco, "Banco")
+        PerfilCrediticio._perfilCrediticio = Deserializador.deserializar(PerfilCrediticio._perfilCrediticio, "PerfilCrediticio")
+        Transaccion._transaccion =  Deserializador.deserializar(Transaccion._transaccion, "Transaccion")
+        Usuario._usuario = Deserializador.deserializar(Usuario._usuario, "Usuario")
+        Ahorro.ahorro = Deserializador.deserializar(Ahorro.ahorro, "Ahorro")
+        BajoMonto._bajoMonto = Deserializador.deserializar(BajoMonto._bajoMonto, "BajoMonto")
+        Corriente._corriente = Deserializador.deserializar(Corriente._corriente, "Corriente")
+        Credito._componentes = Deserializador.deserializar(Credito._credito, "Credito")

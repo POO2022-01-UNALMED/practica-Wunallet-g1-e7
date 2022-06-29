@@ -6,98 +6,50 @@ import os
 import pathlib
 import pickle
 
-from gestorAplicacion.infoClientes.banco import Banco
-from gestorAplicacion.infoClientes.perfilCrediticio import PerfilCrediticio
-from gestorAplicacion.infoClientes.transaccion import Transaccion
-from gestorAplicacion.infoClientes.usuario import Usuario
+from Wunallet.capaLogica.gestorAplicacion.infoClientes.banco import Banco
+from Wunallet.capaLogica.gestorAplicacion.infoClientes.perfilCrediticio import PerfilCrediticio
+from Wunallet.capaLogica.gestorAplicacion.infoClientes.transaccion import Transaccion
+from Wunallet.capaLogica.gestorAplicacion.infoClientes.usuario import Usuario
 
-from gestorAplicacion.productosFinancieros.ahorro import Ahorro
-from gestorAplicacion.productosFinancieros.bajoMonto import BajoMonto
-from gestorAplicacion.productosFinancieros.corriente import Corriente
-from gestorAplicacion.productosFinancieros.credito import Credito
+from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.ahorro import Ahorro
+from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.bajoMonto import BajoMonto
+from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.corriente import Corriente
+from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.credito import Credito
 
-# Se llaman a todas las funciones de serilización
-def serializar():
-    serializarBanco()
-    serializarPerfilCrediticio()
-    serializarTransaccion()
-    serializarUsuario()
+class Serializador():
+    
+    def serializar(lista, className):
+        def camino(className):
+            string = os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\"+className+".txt")
+            return string
+        try:
+            # Creo el archivo pickle para guardar los objetos
+            picklefile = open(camino(className), 'wb')
+            # pickle el objeto en el archivo
+            pickle.dump(lista, picklefile)
+            # cierro el archivo para guardar
+            picklefile.close()
+            
+        except:
+            print("paila tuqui tuqui muñeco")
 
-    serializarAhorro()
-    serializarBajoMonto()
-    serializarCorriente()
-    serializarCredito()
+    def serializarTodo():
+        print("Estoy aca en serializador, debería funcionar")
+        Serializador.serializar(Banco.banco, "Banco")
+        Serializador.serializar(PerfilCrediticio._perfilCrediticio, "PerfilCreditico")
+        Serializador.serializar(Transaccion.getTransaccion(), "Transaccion")
+        Serializador.serializar(Usuario.getUsuario(), "Usuario")
+        Serializador.serializar(Ahorro.getAhorro(), "Ahorro")
+        Serializador.serializar(BajoMonto.getBajoMonto(), "BajoMonto")
+        Serializador.serializar(Corriente.getCorriente(), "Corriente")
+        Serializador.serializar(Credito.getCredito(), "Credito")
+        # Serializador.serializar(Empleado.getEmpleados(), "Empleados")
 
-
-def serializarBanco():
-    # Creación y apertura del archivo donde será guardado el flujo de bytes que representen el objeto. En este caso se trata de banco
-    fichero_banco = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\banco.pkl"), "wb")
-    # Indicamos el dato que será serializado. En este caso el valor de la caja de banco
-    pickle.dump(Banco.getBanco(), fichero_banco)
-    # Se cierra el archivo creado
-    fichero_banco.close()
-
-
-def serializarPerfilCrediticio():
-    # Creación y apertura del archivo donde será guardado el flujo de bytes que representen el objeto. En este caso se trata de PerfilCrediticio
-    fichero_perfil = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\perfilCrediticio.pkl"), "wb")
-    # Indicamos el dato que será serializado. En este caso la lista de PerfilCrediticio
-    pickle.dump(PerfilCrediticio.getPerfilCrediticio(), fichero_perfil)
-    # Se cierra el archivo creado
-    fichero_perfil.close()
-
-
-def serializarTransaccion():
-    # Creación y apertura del archivo donde será guardado el flujo de bytes que representen el objeto. En este caso se trata de Transaccion
-    fichero_trans = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\transaccion.pkl"), "wb")
-    # Indicamos el dato que será serializado. En este caso la lista de Transaccion
-    pickle.dump(Transaccion.getTransaccion(), fichero_trans)
-    # Se cierra el archivo creado
-    fichero_trans.close()
-
-
-def serializarUsuario():
-    # Creación y apertura del archivo donde será guardado el flujo de bytes que representen el objeto. En este caso se trata de Usuario
-    fichero_usuario = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\usuario.pkl"), "wb")
-    # Indicamos el dato que será serializado. En este caso la lista de Usuario
-    pickle.dump(Usuario.getUsuario(), fichero_usuario)
-    # Se cierra el archivo creado
-    fichero_usuario.close()
-
-
-
-
-
-def serializarAhorro():
-    # Creación y apertura del archivo donde será guardado el flujo de bytes que representen el objeto. En este caso se trata de Ahorro
-    fichero_ahorro = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\ahorro.pkl"), "wb")
-    # Indicamos el dato que será serializado. En este caso la lista de Ahorro
-    pickle.dump(Ahorro.getAhorro(), fichero_ahorro)
-    # Se cierra el archivo creado
-    fichero_ahorro.close()
-
-
-def serializarBajoMonto():
-    # Creación y apertura del archivo donde será guardado el flujo de bytes que representen el objeto. En este caso se trata de BajoMonto
-    fichero_bajoMonto = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\bajoMonto.pkl"), "wb")
-    # Indicamos el dato que será serializado. En este caso la lista de BajoMonto
-    pickle.dump(BajoMonto.getBajoMonto(), fichero_bajoMonto)
-    # Se cierra el archivo creado
-    fichero_bajoMonto.close()
-
-
-def serializarCorriente():
-    # Creación y apertura del archivo donde será guardado el flujo de bytes que representen el objeto. En este caso se trata de Corriente
-    fichero_corriente = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\corriente.pkl"), "wb")
-    # Indicamos el dato que será serializado. En este caso la lista de Corriente
-    pickle.dump(Corriente.getCorriente(), fichero_corriente)
-    # Se cierra el archivo creado
-    fichero_corriente.close()
-
-def serializarCredito():
-    # Creación y apertura del archivo donde será guardado el flujo de bytes que representen el objeto. En este caso se trata de Credito
-    fichero_credito = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\credito.pkl"), "wb")
-    # Indicamos el dato que será serializado. En este caso la lista de Credito
-    pickle.dump(Credito.getCredito(), fichero_credito)
-    # Se cierra el archivo creado
-    fichero_credito.close()
+        print("Banco:", Banco.banco)
+        print("PerfilCrediticio:", PerfilCrediticio._perfilCrediticio)
+        print("Transaccion:", Transaccion.getTransaccion())
+        print("Usuario:", Usuario.getUsuario())
+        print("Ahorro:", Ahorro.getAhorro())
+        print("BajoMonto:", BajoMonto.getBajoMonto())
+        print("Corriente:", Corriente.getCorriente())
+        print("Credito:", Credito.getCredito())

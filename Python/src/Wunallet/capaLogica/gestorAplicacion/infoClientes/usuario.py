@@ -109,6 +109,6 @@ class Usuario:
 
     def  getCreditoActivo(self) :	return self._creditoActivo
 
-    def  getListaIncritos(self): return self._listaInscritos
+    def  getListaInscritos(self): return self._listaInscritos
 
     def  getCuentasAsociadas(self): return self._cuentasAsociadas
