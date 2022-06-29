@@ -430,7 +430,8 @@ class V_P(tk.Tk):
                 ## DANIEL -> Este try nunca va a tirar un except porque la cuenta siempre sale del combobox que muestra precisamente
                 # las cuentas asociadas del usuario, no?
                 try:
-                    cuentaSol= [cuenta for cuenta in usuarioActivo.getCuentasAsociadas() if cuenta.getNroCuenta()==int(inputsF3["Cuentas Disponibles"])][0]
+                    cuentaSol = bancoSol.extraerCuenta(int(inputsF3["Cuentas Disponibles"]))
+                    #cuentaSol= [cuenta for cuenta in usuarioActivo.getCuentasAsociadas() if cuenta.getNroCuenta()==int(inputsF3["Cuentas Disponibles"])][0]
                     credit=usuarioActivo.solicitarCredito(user=usuarioActivo,banco=bancoSol,monto=float(inputsF3.get("Monto")),plazo=int(inputsF3.get("Plazo")),cuentaSc=cuentaSol)
                     if credit ==1:
                         messagebox.showinfo("Credito","Credito rechazado por mal comportamiento crediticio")
@@ -439,7 +440,13 @@ class V_P(tk.Tk):
                     else:
                         messagebox.showinfo("Credito",f'Tu solicitud de credito ha sido aprobada y tu saldo actual es: {str(cuentaSol.getSaldo()+float(inputsF3.get("Monto")))}')
                 except:
-                    messagebox.showerror("Error Cuenta-Banco",f'Numero de cuenta {inputsF3.get("Cuentas Disponibles")} no existe en el banco: {inputsF3.get("Banco")}')
+                    try:
+                        raise ErrorExtraccion("El", f"número de cuenta {inputsF3['Cuentas Disponibles']}",
+                            f" en {inputsF3['Banco']}")
+                    except:
+                        messagebox.showerror(ErrorExtraccion.mensajeGeneral, 
+                                ErrorExtraccion("El", f"número de cuenta {inputsF3['Cuentas Disponibles']}",
+                                f" en {inputsF3['Banco']}").getMensajeEspecifico())
                 
 
             botonesSolicitar=PairButton(frame=frameF2,

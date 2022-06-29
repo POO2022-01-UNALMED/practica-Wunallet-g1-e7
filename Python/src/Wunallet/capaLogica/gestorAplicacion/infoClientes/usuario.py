@@ -49,26 +49,25 @@ class Usuario:
             perfil = PerfilCrediticio(_user=user,_ingresosMensuales=user.getIngresosMensuales(),_nivel=comportamientoDePago.randomNivel())
             user.setPerfilCrediticio(perfil)
             
-        print(salida,"Se creo PC")
-        print(user.getPerfilCrediticio().getComportamientoDePago().getNivel())
+        
         if user.getPerfilCrediticio().getComportamientoDePago().getNivel()==3 :
             salida=1
             
         else:
-            print(salida,"Credito Rechazado 1")
-            datos = [banco,monto,plazo]
-            print(datos)
+            
+            #datos = [banco,monto,plazo]
+            
             cuotaTentativa=Credito.simularCredito(banco,monto,plazo)
-            print(salida,"Se creo CT")
+            
             if cuotaTentativa>self.getPerfilCrediticio().getCapacidadEndeudamiento():
                 salida=2
-                print(salida,"Credito Rechazado 2")
+                
             else:
                 credito = Credito(self, banco, monto, cuotaTentativa)
                 self.setCreditoActivo(credito)
                 cuentaSc.setSaldo(cuentaSc.getSaldo()+monto)
                 salida=3
-                print(salida,"Credito Aceptado 3")
+                
 
         return salida
 
