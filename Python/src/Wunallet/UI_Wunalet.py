@@ -470,17 +470,17 @@ class V_P(tk.Tk):
                 if continuar:
                     # Seleccionar el objeto cuenta que seleccionó el usuario mediante el número
                     for cuentaAsociada in usuarioActivo.getCuentasAsociadas():
-                        if cuenta.getNroCuenta()==int(inputsF4["Cuentas Disponibles"]):
+                        if cuentaAsociada.getNroCuenta()==int(inputsF4["Cuentas Disponibles"]):
                             cuentaObjetivo = cuentaAsociada
 
                     # cuentaObjetivo.romperTopes verifica si la cuenta se puede subir de categoría y de ser así
                     # retorna un True. En caso contrario retorna un false.
                     if not cuentaObjetivo.romperTopes():
                         try:
-                            raise ErrorNoSaldo(cuentaRomper.getSaldo(), "15.000", "romper topes")
+                            raise ErrorNoSaldo(cuentaObjetivo.getSaldo(), "15.000", "romper topes")
                         except:
                             messagebox.showerror(ErrorNoSaldo.mensajeGeneral,
-                                    ErrorNoSaldo(cuentaRomper.getSaldo(), "15.000", "romper topes"))
+                                    ErrorNoSaldo(cuentaObjetivo.getSaldo(), "15.000", "romper topes"))
                             return
 
                     # banco asociado a la cuenta de bajo monto que se eliminará
@@ -542,7 +542,7 @@ class V_P(tk.Tk):
                 # Capturamos el objeto cuenta asociada al usuario que se seleccionó mediante el número
                 for cuentaAsociada in usuarioActivo.getCuentasAsociadas():
                     if cuentaAsociada.getNroCuenta() == int(inputsInicial["Cuentas disponibles"]):
-                        cuenta = cuentaAsocida
+                        cuentaOrigen = cuentaAsociada
 
                 if inputsInicial.get("Tipo Transferencia")=="Pagar credito":
                     if usuarioActivo.getCreditoActivo() is None:
@@ -603,8 +603,8 @@ class V_P(tk.Tk):
 
                             # Capturamos el objeto cuenta asociada al usuario que se seleccionó mediante el número
                             for cuentaAsociada in usuarioActivo.getListaInscritos():
-                                if cuenta.getNroCuenta()==int(inputsIns["Cuentas Disponibles"]):
-                                    cuentaDestino = cuentaAsocida
+                                if cuentaAsociada.getNroCuenta()==int(inputsIns["Cuentas Disponibles"]):
+                                    cuentaDestino = cuentaAsociada
 
                             bancoDestino = cuentaDestino.getBanco()
 
@@ -649,15 +649,13 @@ class V_P(tk.Tk):
                                     messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
                                     return
 
-                            if float(inputsIns.get("Valor"))<0:
+                            if float(inputsNoIns.get("Valor"))<0:
                                 try:
                                     raise ErrorDeTipo()
                                 except:
                                     messagebox.showerror(ErrorDeTipo.mensajeGeneral,
                                             ErrorDeTipo("El valor debe ser positivo"))
                                     return
-
-                            if (not canBeInt(inputsNoIns.get("Numero Cuenta"))) or 
 
                             # Cheque de tipo en el input
                             if (not canBeInt(inputsNoIns.get("Numero Cuenta"))) or (int(inputsNoIns.get("Numero Cuenta"))<0):
