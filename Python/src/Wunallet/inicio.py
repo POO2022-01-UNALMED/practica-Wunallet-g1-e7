@@ -2,13 +2,10 @@ import tkinter as tk
 import os
 from tkinter import Label, Entry, Button, Text, PhotoImage, Frame, INSERT, scrolledtext
 from PIL import Image,ImageTk
-import os 
 import pathlib
-import codecs
-import io
-import sys
 from Wunallet.UI_Wunalet import V_P
 from Wunallet.capaGrafica.fieldFrame import FieldFrame
+from tkinter import ttk
 
 path = os.path.join(pathlib.Path(__file__).parent.absolute())
 
@@ -98,7 +95,6 @@ class FramefrP1(Frame):
     def __init__(self, ventana):
         super().__init__(ventana)
         self._ventana = ventana
-        # Definir los Frames 
 
         # ---- #
         # frP3 #
@@ -106,7 +102,6 @@ class FramefrP1(Frame):
         
         self._frP3 = Frame(self, height="420")
         
-        # Contenido del frame frP3
         textoNombreSaludo = "¡Bienvenido a Wunallet!"
         self._labelSaludo = Label(self._frP3, text = textoNombreSaludo, font = ("Verdana", 16), fg = "#AD3DE1")
         self._labelSaludo.pack(side="top",padx=10,pady=10)
@@ -125,7 +120,6 @@ class FramefrP1(Frame):
         # - frP4_1 - #
         # ---------- #
         
-        # Despliegue de las imagenes del sistema
         self._frImgSistema = Frame(self._frP4)
         # Imagen inicial 
         imagenIterante = ImageTk.PhotoImage(Image.open(path+"/capaGrafica/img/sistema1.jpg"))
@@ -143,10 +137,14 @@ class FramefrP1(Frame):
 
         
         self._frBtVentanaPrincipal = Frame(self._frP4)
-        
-         # Boton de acceso a la aplicacion abajo en P4
 
-        self._boton = Button(self._frBtVentanaPrincipal, text = "Ingresar", command = self.abrir_ventana_principal)
+        style = ttk.Style()
+        style.map("C.TButton",
+            foreground=[('pressed', 'red'), ('active', 'blue')],
+            background=[('pressed', '!disabled', 'black'), ('active', 'white')]
+            )
+
+        self._boton = ttk.Button(self._frBtVentanaPrincipal, text = "Ingresar",style="C.TButton", command = self.abrir_ventana_principal)
         self._boton.pack()
         self._frBtVentanaPrincipal.pack(side="bottom", fill="both",expand="true")
 
@@ -211,14 +209,12 @@ class FramefrP2(Frame):
         
         self._frP6 = Frame(self)
 
-        #Create an object of tkinter ImageTk
         imgHV1 = ImageTk.PhotoImage(Image.open(path+"/capaGrafica/img/"+str(n_inicial)+"HV1.jpg"))
         imgHV2 = ImageTk.PhotoImage(Image.open(path+"/capaGrafica/img/"+str(n_inicial)+"HV2.jpg"))
         imgHV3 = ImageTk.PhotoImage(Image.open(path+"/capaGrafica/img/"+str(n_inicial)+"HV3.jpg"))
         imgHV4 = ImageTk.PhotoImage(Image.open(path+"/capaGrafica/img/"+str(n_inicial)+"HV4.jpg"))
 
 
-        #Create a Label Widget to display the text or Image
         iHV1 = tk.Label(self._frP6, image = imgHV1)
         iHV1.image = imgHV1
         iHV1.grid(row=0, column=0)
