@@ -100,7 +100,12 @@ menuPrincipal.add_cascade(label="Ayuda",menu=ayuda)
 def archivoAplicacion():
     messagebox.showinfo("Aplicación","Explicación de lo que hace WUNALLET")
 
+def archivoSalir():
+    pass
+
 archivo.add_command(label="Aplicación",command=archivoAplicacion)
+archivo.add_command(label="Salir",command=archivoSalir)
+
 
 # Estructura menu Procesos y Consultas
 
