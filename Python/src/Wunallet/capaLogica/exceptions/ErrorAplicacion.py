@@ -4,7 +4,7 @@ class ErrorAplicacion(Exception):
 
     def __init__(self, cadena):
         self.mensajeEspecifico =  cadena
-        super().__init__(self.mensajeEspecifico + self.mensajeGeneral)
+        super().__init__(self.mensajeEspecifico)
 
     def getMensajeEspecifico(self):
         return self.mensajeEspecifico

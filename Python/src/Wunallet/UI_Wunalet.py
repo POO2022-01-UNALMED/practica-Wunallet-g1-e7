@@ -14,6 +14,7 @@ from Wunallet.capaLogica.exceptions.ErrorDeTipo import ErrorDeTipo
 from Wunallet.capaLogica.exceptions.ErrorExtraccion import ErrorExtraccion
 from Wunallet.capaLogica.exceptions.ErrorCuentaCC import ErrorCuentaCC
 from Wunallet.capaLogica.exceptions.ErrorNoSaldo import ErrorNoSaldo
+from Wunallet.capaLogica.exceptions.ErrorMaximoNoInscrito import ErrorMaximoNoInscrito
 
 # Importamos las clases de la aplicación
 # Se imoprtan las clases con información de los clientes
@@ -293,7 +294,7 @@ class V_P(tk.Tk):
             
             
         # Funcionalidad Inscribir Cuentas
-        menuFuncionalidades.add_command(label="F1",command=F1)
+        menuFuncionalidades.add_command(label="Inscribir cuenta",command=F1)
 
         def F2():
             hide_all_frames()
@@ -349,7 +350,7 @@ class V_P(tk.Tk):
             frameVer.pack(expand=True,anchor='s')
             frameF2.pack(expand=True,anchor='n')
 
-        menuFuncionalidades.add_command(label="F2",command=F2)
+        menuFuncionalidades.add_command(label="Ver historial de transacciones",command=F2)
 
         def F3():
             hide_all_frames()
@@ -422,7 +423,7 @@ class V_P(tk.Tk):
             frameSolicitar.pack(expand=True,anchor='s')
             frameF2.pack(expand=True,anchor='n')
 
-        menuFuncionalidades.add_command(label="F3",command=F3)
+        menuFuncionalidades.add_command(label="Solicitar crédito",command=F3)
 
         def F4():
             hide_all_frames()
@@ -467,9 +468,14 @@ class V_P(tk.Tk):
                 'Este proceso tiene un costo de 15.000 pesos que pagará una unica vez.')
 
                 if continuar:
-                    cuentaRomper = [cuenta for cuenta in usuarioActivo.getCuentasAsociadas() if cuenta.getNroCuenta()==int(inputsF4["Cuentas Disponibles"])][0]
-                    #FALTA TESTEAR
-                    if not cuentaRomper.romperTopes():
+                    # Seleccionar el objeto cuenta que seleccionó el usuario mediante el número
+                    for cuentaAsociada in usuarioActivo.getCuentasAsociadas():
+                        if cuenta.getNroCuenta()==int(inputsF4["Cuentas Disponibles"]):
+                            cuentaObjetivo = cuentaAsociada
+
+                    # cuentaObjetivo.romperTopes verifica si la cuenta se puede subir de categoría y de ser así
+                    # retorna un True. En caso contrario retorna un false.
+                    if not cuentaObjetivo.romperTopes():
                         try:
                             raise ErrorNoSaldo(cuentaRomper.getSaldo(), "15.000", "romper topes")
                         except:
@@ -477,15 +483,17 @@ class V_P(tk.Tk):
                                     ErrorNoSaldo(cuentaRomper.getSaldo(), "15.000", "romper topes"))
                             return
 
-                    bancoRomper = cuentaRomper.getBanco()
+                    # banco asociado a la cuenta de bajo monto que se eliminará
+                    bancoCuentaObjetivo = cuentaObjetivo.getBanco()
                     # Se remueve la cuenta del banco
-                    bancoRomper.removerCuenta(cuentaRomper)
+                    bancoCuentaObjetivo.removerCuenta(cuentaObjetivo)
                     # Se elimina la cuenta de bajo monto de las asociadas que tenia el usuario
-                    usuarioActivo.removerCuentaAsociada(cuentaRomper)
-                    # Cuenta nueva
-                    numeroCuentaNueva = cuentaRomper.getNroCuenta()
-                    cuentaNueva = bancoRomper.extraerCuenta(numeroCuentaNueva)
-                    #PROPUESTA
+                    usuarioActivo.removerCuentaAsociada(cuentaObjetivo)
+                    # Se extrae el nuevo objeto cuenta de ahorro del banco objetivo mediante el nroCuenta que es el mismo de la
+                    # cuenta bajo monto
+                    numeroCuentaNueva = cuentaObjetivo.getNroCuenta()
+                    cuentaNueva = bancoCuentaObjetivo.extraerCuenta(numeroCuentaNueva)
+
                     messagebox.showinfo("Romper Topes",f'Tu solicitud ha sido aprobada y tu nueva cuenta de ahorros quedó con' \
                             f'un saldo de {str(cuentaNueva.getSaldo())} pesos.')
 
@@ -498,7 +506,7 @@ class V_P(tk.Tk):
             frameRomper.pack(expand=True,anchor='s')
             frameF2.pack(expand=True,anchor='n')
 
-        menuFuncionalidades.add_command(label="F4",command=F4)
+        menuFuncionalidades.add_command(label="Romper topes",command=F4)
 
         def F5():
             hide_all_frames()
@@ -538,7 +546,7 @@ class V_P(tk.Tk):
 
                 if inputsInicial.get("Tipo Transferencia")=="Pagar credito":
                     if usuarioActivo.getCreditoActivo() is None:
-                        messagebox.showerror("Error","No tienes ningun credito activo para pagar.")
+                        messagebox.showinfo("Credito","No tienes ningun credito activo para pagar.")
                     else:
                         creditoActivo = usuarioActivo.getCreditoActivo()
                         messagebox.showinfo("Credito",f'Tu credito es de {creditoActivo.getDeuda()} y pagaras una cuota de {creditoActivo.getCuotaMensual()}.')
@@ -554,7 +562,7 @@ class V_P(tk.Tk):
 # Voy aquí
                     if inputsInicial.get("Tipo Transferencia")=="A otra cuenta - Inscrita":
                         if len(usuarioActivo.getListaIncritos())==0:
-                            messagebox.showerror("Error","No tiene cuentas inscritas")
+                            messagebox.showinfo("Transferencia-Inscrita","No tiene cuentas inscritas")
                         else:
 
                             clearFrame(frameTransferir)
@@ -576,32 +584,44 @@ class V_P(tk.Tk):
                                 if isinstance(entry,tk.Entry) or isinstance(entry,ttk.Combobox)],["Cuentas Disponibles","Valor"]):
                                     inputsIns[criterio] = widget.get()
 
-                            # Si hay algun input vacio, se saca una ventana emergente, sino se procede a verificar los tipos de entrada
+                            # Si hay algun input vacio, se saca una ventana emergente
                             if any(inputsIns.get(entry)=="" for entry in inputsIns):
                                 try:
                                     raise ErrorCamposVacios()
                                 except:
-                                    messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
-                            elif float(inputsIns.get("Valor"))<0:
-                                messagebox.showerror("Error","El valor debe ser positivo")
+                                    messagebox.showerror(ErrorCamposVacios.mensajeGeneral, 
+                                            ErrorCamposVacios().getMensajeEspecifico())
+                                    return
+
+                            if float(inputsIns.get("Valor"))<0:
+                                try:
+                                    raise ErrorDeTipo()
+                                except:
+                                    messagebox.showerror(ErrorDeTipo.mensajeGeneral,
+                                            ErrorDeTipo("El valor debe ser positivo"))
+                                    return
+
+                            # Capturamos el objeto cuenta asociada al usuario que se seleccionó mediante el número
+                            for cuentaAsociada in usuarioActivo.getListaInscritos():
+                                if cuenta.getNroCuenta()==int(inputsIns["Cuentas Disponibles"]):
+                                    cuentaDestino = cuentaAsocida
+
+                            bancoDestino = cuentaDestino.getBanco()
+
+                            if not cuentaDestino in bancoDestino.getListaCuentas():
+                                messagebox.showinfo("Transferencia-Inscrita",
+                                        "La cuenta inscrita que ha seleccionado ya no esta disponible, por lo tanto sera eliminada de su lista de cuentas inscritas.")
+                                usuarioActivo.removerCuentaInscrita(cuentaDestino)
+
                             else:
-                                cuentaDestino = [cuenta for cuenta in usuarioActivo.getListaIncritos() if cuenta.getNroCuenta()==int(inputsIns["Cuentas Disponibles"])][0]
-                                bancoDestino = cuentaDestino.getBanco()
-
-                                if not cuentaDestino in bancoDestino.getListaCuentas():
-                                    messagebox.showerror("Error","La cuenta inscrita que ha seleccionado ya no esta disponible, por lo tanto sera eliminada de su lista de cuentas inscritas.")
-                                    usuarioActivo.removerCuentaInscrita(cuentaDestino)
-
-                                    
-                                else:
-                                    opcion=messagebox.askokcancel("Confirma Transferencia","¿Desea confirmar la transferencia?")
-                                    if opcion:
-                                        exito = cuentaOrigen.transferir(cuentaDestino,float(inputsIns.get("Valor")))
-                                        if exito:
-                                            messagebox.showinfo("Transferencia Exitosa",f'Transferencia exitosa.')
-                                            messagebox.showinfo("Transferencia Exitosa",f'Tu cuenta queda con un saldo de {cuentaOrigen.getSaldo()}.')
-                                        else:
-                                            messagebox.showerror("Transferencia Rechazada","Tu pago ha sido rechazado ya que no cuentas con saldo suficiente o tu producto de origen no permite mover el valor indicado.")
+                                decision=messagebox.askokcancel("Confirma Transferencia","¿Desea confirmar la transferencia?")
+                                if decision:
+                                    exito = cuentaOrigen.transferir(cuentaDestino,float(inputsIns.get("Valor")))
+                                    if exito:
+                                        messagebox.showinfo("Transferencia Exitosa",f'Transferencia exitosa.')
+                                        messagebox.showinfo("Transferencia Exitosa",f'Tu cuenta queda con un saldo de {cuentaOrigen.getSaldo()}.')
+                                    else:
+                                        messagebox.showerror("Transferencia Rechazada","Tu pago ha sido rechazado ya que no cuentas con saldo suficiente o tu producto de origen no permite mover el valor indicado.")
                                     
                         getattr(botonesTransferir,'_LBoton').config(command=values_FrameIns)
                         getattr(botonesTransferir,'_RBoton').config(command=lambda :PairButton.borrarCampos(frameTransferir))
@@ -627,38 +647,67 @@ class V_P(tk.Tk):
                                     raise ErrorCamposVacios()
                                 except:
                                     messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
-                            elif float(inputsNoIns.get("Valor"))<0:
-                                messagebox.showerror("Error","El valor debe ser positivo")
-                            else:
-                                try:
-                                    int(inputsNoIns.get("Numero Cuenta"))
-                                    if int(inputsNoIns.get("Numero Cuenta"))<0:
-                                        messagebox.showerror("Error","El Numero Cuenta debe ser entero positivo")
-                                    else:
-                                        try:
-                                            bancoDestino = Banco.extraerBanco(inputsNoIns.get("Banco"))
-                                            cuentaDestino = bancoDestino.extraerCuenta(int(inputsNoIns.get("Numero Cuenta")))
+                                    return
 
-                                            if not cuentaDestino in bancoDestino.getListaCuentas():
-                                                messagebox.showerror("Error","La cuenta inscrita que ha seleccionado ya no esta disponible, por lo tanto sera eliminada de su lista de cuentas inscritas.")
-                                                usuarioActivo.removerCuentaInscrita(cuentaDestino)   
-                                            else:
-                                                opcion=messagebox.askokcancel("Confirma Transferencia","¿Desea confirmar la transferencia?")
-                                                if opcion:
-                                                    if float(inputsNoIns.get("Valor"))>3000000:
-                                                        messagebox.showerror("Error","El valor que ingreso supera el valor pertitido para cuentas no inscritas")
-                                                        messagebox.showinfo("Recordatorio","Recuerde que valor maximo a transferir a una cuenta no inscirta es de 3'000.000")
-                                                    else:
-                                                        exito = cuentaOrigen.transferir(cuentaDestino,float(inputsNoIns.get("Valor")))
-                                                        if exito:
-                                                            messagebox.showinfo("Transferencia Exitosa",f'Transferencia exitosa.')
-                                                            messagebox.showinfo("Transferencia Exitosa",f'El saldo de su cuenta es de {cuentaOrigen.getSaldo()}.')
-                                                        else:
-                                                            messagebox.showerror("Error","Hubo un error en la operacion. Verifique que su cuenta de origen tenga y permita mover el saldo indicado.")
-                                        except:
-                                            messagebox.showerror("Error",f'Numero de cuenta {inputsNoIns.get("Numero Cuenta")} no existe en el banco: {inputsNoIns["Banco"]}')
+                            if float(inputsIns.get("Valor"))<0:
+                                try:
+                                    raise ErrorDeTipo()
                                 except:
-                                    messagebox.showerror("Error","El Numero Cuenta debe ser entero")     
+                                    messagebox.showerror(ErrorDeTipo.mensajeGeneral,
+                                            ErrorDeTipo("El valor debe ser positivo"))
+                                    return
+
+                            if (not canBeInt(inputsNoIns.get("Numero Cuenta"))) or 
+
+                            # Cheque de tipo en el input
+                            if (not canBeInt(inputsNoIns.get("Numero Cuenta"))) or (int(inputsNoIns.get("Numero Cuenta"))<0):
+                                try:
+                                    raise ErrorDeTipo("El número de cuenta debe ser un entero positivo")
+                                except:
+                                    messagebox.showerror(ErrorDeTipo.mensajeGeneral,
+                                            ErrorDeTipo("El número de cuenta debe ser un entero positivo").getMensajeEspecifico())
+                                    return
+
+                            try:
+                                bancoDestino = Banco.extraerBanco(inputsNoIns.get("Banco"))
+                            except:
+                                    try:
+                                        raise ErrorExtraccion("El", f"número de cuenta {inputsNoIns.get('Numero Cuenta')}",
+                                                f" en {inputsNoIns.get('Banco')}")
+                                    except:
+                                        messagebox.showerror(ErrorExtraccion.mensajeGeneral, 
+                                                ErrorExtraccion("El", f"número de cuenta {inputsNoIns.get('Numero Cuenta')}",
+                                                    f" en {inputsNoIns.get('Banco')}").getMensajeEspecifico())
+                                        return
+
+
+                            cuentaDestino = bancoDestino.extraerCuenta(int(inputsNoIns.get("Numero Cuenta")))
+
+                            if not cuentaDestino in bancoDestino.getListaCuentas():
+                                messagebox.showinfo("Transferencia-Inscrita",
+                                        "La cuenta inscrita que ha seleccionado ya no esta disponible, por lo tanto sera eliminada de su lista de cuentas inscritas.")
+                                usuarioActivo.removerCuentaInscrita(cuentaDestino)
+
+                            else:
+                                decision=messagebox.askokcancel("Confirma Transferencia","¿Desea confirmar la transferencia?")
+                                if decision:
+                                    if float(inputsNoIns.get("Valor"))>3000000:
+                                        try:
+                                            raise ErrorMaximoNoInscrito()
+                                        except:
+                                            messagebox.showerror(ErrorMaximoNoInscrito.mensajeGeneral,
+                                                    ErrorMaximoNoInscrito.getMensajeEspecifico())
+                                    else:
+                                        exito = cuentaOrigen.transferir(cuentaDestino,float(inputsNoIns.get("Valor")))
+                                        if exito:
+                                            messagebox.showinfo("Transferencia Exitosa",
+                                                    f'Transferencia exitosa.\n El saldo de su cuenta es de {cuentaOrigen.getSaldo()}.')
+                                        else:
+                                            try:
+                                                raise ErrorNoSaldo()
+                                            except:
+                                                messagebox.showerror(ErrorNoSaldo.mensajeGeneral,
+                                                        ErrorNoSaldo(considerarLimiteSaldo=True).getMensajeEspecifico())
 
                         getattr(botonesTransferir,'_LBoton').config(command=values_FrameNoIns)
                         getattr(botonesTransferir,'_RBoton').config(command=lambda :PairButton.borrarCampos(frameTransferir))
@@ -669,7 +718,7 @@ class V_P(tk.Tk):
 
             frameTransferir.pack(expand=True,anchor='s')
             frameF2.pack(expand=True,anchor='n')
-        menuFuncionalidades.add_command(label="F5",command=F5)
+        menuFuncionalidades.add_command(label="Transferir",command=F5)
 
         # Estructura menu AYUDA
 
@@ -677,12 +726,5 @@ class V_P(tk.Tk):
             messagebox.showinfo("Acerca de:","Daniel \n Diego \n David \n Cesar")
 
         ayuda.add_command(label="Autores:",command=acercaDe)
-
-
-
-
-
-
-
 
         ventana.mainloop()
