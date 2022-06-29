@@ -1,3 +1,4 @@
+from email import header
 import tkinter as tk
 from tkinter import messagebox,ttk
 from tokenize import Double
@@ -140,7 +141,8 @@ def values_frameF0():
                     messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
                     return
 
-            # Chequeo de tipo en el input
+
+            # Cheque de tipo en el input
             if (not canBeInt(inputsF0[criterio[0]])) or (int(inputsF0[criterio[0]])<0):
                 try:
                     raise ErrorDeTipo("El número de cédula debe ser un entero positivo")
@@ -180,6 +182,8 @@ frameSolicitar = tk.Frame(ventana,width=400,height=250)
 frameRomper = tk.Frame(ventana,width=400,height=250)
 frameTransferir = tk.Frame(ventana,width=400,height=250)
 
+frameHistoriales = tk.Frame(ventana,width=800,height=500)
+
             
 # Se debe definir una función para esconder los frames abiertos cuando se abre otro
 def hide_all_frames():
@@ -196,6 +200,7 @@ def hide_all_frames():
     frameTransferir.pack_forget()
     #PairButton.borrarCampos(frameTransferir)
     resultado.pack_forget()
+    frameHistoriales.pack_forget()
     
 
 def F1():
@@ -230,7 +235,7 @@ def F1():
                 messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
                 return
 
-        # Chequeo de tipo
+        # Chequeo de tipo en el input
         if any(not canBeInt(inputsF1.get(entry)) or  int(inputsF1.get(entry))<0 for entry in list(inputsF1)[2:]):
             try:
                 raise ErrorDeTipo("Todos los campos deben ser enteros positivos")
@@ -304,18 +309,20 @@ def F2():
                 messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
                 return
 
-        # Seleccionar el objeto cuenta que seleccionó el usuario mediante el número
         for cuentaAsociada in usuarioActivo.getCuentasAsociadas():
             if cuentaAsociada.getNroCuenta() == int(inputsF2["Cuentas Disponibles"]):
                 cuenta = cuentaAsociada
                 
-        # Se verifica si la cuenta seleccionada tiene alguna transacción para mostrar en su historial
         if len(cuenta.getHistorialTransferencia())==0:
             messagebox.showinfo("Ver Historial",
                     f'La cuenta {int(inputsF2["Cuentas Disponibles"])} no tiene historial de transacciones')
         else:
-            messagebox.showinfo("Ver Historial", "Formato: cc origen - cuenta origen - cc destino - cuenta destino - valor \n" +
-                    cuenta.verHistorial())             
+            hide_all_frames()
+            clearFrame(frameVer)
+            labelHistoriales = tk.Label(frameHistoriales,text=cuenta.verHistorial())
+            labelHistoriales.pack(anchor="center")
+            #messagebox.showinfo("Ver Historial", "Formato: cc origen - cuenta origen - cc destino - cuenta destino - valor \n" +
+                    #cuenta.verHistorial())             
 
     botonesVer= PairButton(frame=frameF2,
                             LBotonTitulo="Aceptar")                        
