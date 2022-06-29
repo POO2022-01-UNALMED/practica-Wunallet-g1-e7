@@ -8,11 +8,11 @@ from pairButton import PairButton
 
 # Importación clases manejo de excepciones
 
-from ErrorCamposVacios import ErrorCamposVacios
-from ErrorDeTipo import ErrorDeTipo
-from ErrorExtraccion import ErrorExtraccion
-from ErrorCuentaCC import ErrorCuentaCC
-from ErrorNoSaldo import ErrorNoSaldo
+from exceptions.ErrorCamposVacios import ErrorCamposVacios
+from exceptions.ErrorDeTipo import ErrorDeTipo
+from exceptions.ErrorExtraccion import ErrorExtraccion
+from exceptions.ErrorCuentaCC import ErrorCuentaCC
+from exceptions.ErrorNoSaldo import ErrorNoSaldo
 
 # Importamos las clases de la aplicación
 # Se imoprtan las clases con información de los clientes
@@ -356,7 +356,7 @@ def F3():
                 messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
 
         # MODIFICADO Chequeo de tipo en el input (si alguna entrada no es entera o es menor a cero, se llama el error)
-        elif any(not canBeInt(inputsF1.get(entry)) or  int(inputsF1.get(entry))<0 for entry in list(inputsF1)[2:]):
+        elif any(not canBeInt(inputsF3.get(entry)) or  int(inputsF3.get(entry))<0 for entry in list(inputsF3)[2:]):
             try:
                 raise ErrorDeTipo("Todos los campos deben ser enteros positivos")
             except:
