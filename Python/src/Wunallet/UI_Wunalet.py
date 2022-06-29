@@ -69,7 +69,7 @@ class V_P(tk.Tk):
         cuenta1 = Ahorro(nroCuenta=89,titular=juanPerez, saldo=10000.0 ,banco=QuitaVivienda,tipoDeCuenta="ahorro",tasaDeInteres=2.5)
         cuenta3 = Corriente(23,juanPerez,50000000.0,Unalombia,"corriente",1.2)
         cuenta2 = BajoMonto(69,hernestoPerez, 1000000.0,PooBanco, "bajoMonto", 2.2,3000000.0,3000000.0)
-        cuenta4 = BajoMonto(26,hernestoPerez, 6000000.0,Unalombia, "bajoMonto", 1.3,200000.0,200000.0)
+        cuenta4 = BajoMonto(26,hernestoPerez, 14000.0,Unalombia, "bajoMonto", 1.3,200000.0,200000.0)
 
         listaUsuarios = [juanPerez, hernestoPerez]
         variables = vars()
@@ -486,8 +486,8 @@ class V_P(tk.Tk):
                     numeroCuentaNueva = cuentaRomper.getNroCuenta()
                     cuentaNueva = bancoRomper.extraerCuenta(numeroCuentaNueva)
                     #PROPUESTA
-                    messagebox.showinfo("Romper Topes",'''Tu solicitud ha sido aprobada y tu nueva cuenta de ahorros quedó con
-                            un saldo de {str(cuentaNueva.getSaldo())} pesos.''')
+                    messagebox.showinfo("Romper Topes",f'Tu solicitud ha sido aprobada y tu nueva cuenta de ahorros quedó con' \
+                            f'un saldo de {str(cuentaNueva.getSaldo())} pesos.')
 
 
             botonesRomper = PairButton(frame=frameF2,
