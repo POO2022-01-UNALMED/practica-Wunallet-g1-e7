@@ -1,1 +1,1 @@
-Cesar Augusto Ospina Muñoz es un estudiante de Ingeniería de control, tiene <XX> años y en sus tiempos libres le gusta <actividades favoritas>. Programa en <lista de lenguajes> pero su lenguaje favorito es <lenguaje favorito>.
+Cesar Augusto Ospina Muñoz es un estudiante de Ingeniería de control, tiene 22 años y en sus tiempos libres le gusta hacer ejercicio. Programa en Java, Python y Matlab pero su lenguaje favorito es Matlab.

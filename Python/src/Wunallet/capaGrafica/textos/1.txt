@@ -1,1 +1,1 @@
-Daniel Escobar David es un estudiante de Estadistica, tiene <XX> años y en sus tiempos libres le gusta <actividades favoritas>. Programa en <lista de lenguajes> pero su lenguaje favorito es <lenguaje favorito>.
+Daniel Escobar David es un estudiante de estadística, tiene 22 años y en sus tiempos libres le gusta hacer ejercicio y leer. Programa en R, Python y Java pero su lenguaje favorito es R.

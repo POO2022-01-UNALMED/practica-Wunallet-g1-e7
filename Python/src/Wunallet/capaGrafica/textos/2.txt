@@ -1,1 +1,1 @@
-David Cardona es un estudiante de Ingeniría de sistemas, tiene <XX> años y en sus tiempos libres le gusta <actividades favoritas>. Programa en <lista de lenguajes> pero su lenguaje favorito es <lenguaje favorito>.
+David Cardona Duque es un estudiante de Ingeniería de sistemas e informática, tiene 20 años y en sus tiempos libres le gusta  dormir. Programa en Java, Python, R y C pero su lenguaje favorito es Python.
