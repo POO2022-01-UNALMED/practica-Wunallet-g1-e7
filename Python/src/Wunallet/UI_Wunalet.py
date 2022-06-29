@@ -31,14 +31,11 @@ from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.credito import Cr
 from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.cuenta import Cuenta
 from Wunallet.capaLogica.gestorAplicacion.infoClientes.usuario import Usuario
 
-
-
-
 class V_P(tk.Tk):
 
     def __init__(self):
 
-            #-----------------------#
+        #-----------------------#
         # FUNCIONES AUXILIDARES #
         #-----------------------#
 
@@ -326,10 +323,12 @@ class V_P(tk.Tk):
                         messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
                         return
 
+                # Seleccionar el objeto cuenta que seleccionó el usuario mediante el número
                 for cuentaAsociada in usuarioActivo.getCuentasAsociadas():
                     if cuentaAsociada.getNroCuenta() == int(inputsF2["Cuentas Disponibles"]):
                         cuenta = cuentaAsociada
                         
+                # Se verifica si la cuenta seleccionada tiene alguna transacción para mostrar en su historial
                 if len(cuenta.getHistorialTransferencia())==0:
                     messagebox.showinfo("Ver Historial",
                             f'La cuenta {int(inputsF2["Cuentas Disponibles"])} no tiene historial de transacciones')
@@ -349,9 +348,6 @@ class V_P(tk.Tk):
 
             frameVer.pack(expand=True,anchor='s')
             frameF2.pack(expand=True,anchor='n')
-
-        
-            
 
         menuFuncionalidades.add_command(label="F2",command=F2)
 
@@ -381,25 +377,17 @@ class V_P(tk.Tk):
                     except:
                         messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
 
-                # MODIFICADO Chequeo de tipo en el input (si alguna entrada no es entera o es menor a cero, se llama el error)
-                elif any(not canBeInt(inputsF3.get(entry)) or  int(inputsF3.get(entry))<0 for entry in list(inputsF3)[2:]):
+                # Chequeo de tipo en el input (si alguna entrada no es entera o es menor a cero, se llama el error)
+                if any(not canBeInt(inputsF3.get(entry)) or  int(inputsF3.get(entry))<0 for entry in list(inputsF3)[2:]):
                     try:
                         raise ErrorDeTipo("Todos los campos deben ser enteros positivos")
                     except:
                         messagebox.showerror(ErrorDeTipo.mensajeGeneral,
                                 ErrorDeTipo("Todos los campos deben ser enteros positivos").getMensajeEspecifico())
+                        return
 
-                # else:
-                # for entry in list(inputsF3)[2:]:
-                            # try:
-                                # int(inputsF3.get(entry))
-                                # if int(inputsF3.get(entry))<0:
-                                    # messagebox.showerror("Error",f"El campo {entry} debe ser un entero positivio")
-                                # else:
-                                    # entradasF3 = True
-                            # except:
-                                # messagebox.showerror("Error",f"El campo {entry} debe ser entero")
-
+                # Pedir explicación de la secuencia de errores. Nunca va a fallar la extracción de cuentas por ser combobox, entonces
+                # el único error sería la solicitud de crédito, no?
                 else:
                     
                     if usuarioActivo.getCreditoActivo()!=None:
@@ -470,36 +458,36 @@ class V_P(tk.Tk):
                         raise ErrorCamposVacios()
                     except:
                         messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
-                else:
-                    # Se pregunta si se desea continuar con el proceso
-                    continuar = messagebox.askokcancel("Confirmacion Romper Topes",
-                    '''¡Recuerde! El procedimiento de romper topes consiste en transformar su cuenta de tipo Bajo monto,
-                    a una cuenta de ahorros convencional, eliminando las limitaciones de este tipo de cuentas.\n 
-                    Este proceso tiene un costo de 15.000 pesos que pagará una unica vez.''')
-                    if continuar:
-                        cuentaRomper = [cuenta for cuenta in usuarioActivo.getCuentasAsociadas() if cuenta.getNroCuenta()==int(inputsF4["Cuentas Disponibles"])][0]
-                        #FALTA TESTEAR
-                        if not cuentaRomper.romperTopes():
-                            try:
-                                raise ErrorNoSaldo(cuentaRomper.getSaldo(), "15.000", "romper topes")
-                            except:
-                                messagebox.showerror(ErrorNoSaldo.mensajeGeneral,
-                                        ErrorNoSaldo(cuentaRomper.getSaldo(), "15.000", "romper topes"))
-                        else:
-                            bancoRomper = cuentaRomper.getBanco()
-                            # Se remueve la cuenta del banco
-                            bancoRomper.removerCuenta(cuentaRomper)
-                            # Se elimina la cuenta de bajo monto de las asociadas que tenia el usuario
-                            usuarioActivo.removerCuentaAsociada(cuentaRomper)
-                            # Cuenta nueva
-                            numeroCuentaNueva = cuentaRomper.getNroCuenta()
-                            cuentaNueva = bancoRomper.extraerCuenta(numeroCuentaNueva)
-                            #PROPUESTA
-                            messagebox.showinfo("Romper Topes",'''Tu solicitud ha sido aprobada y tu nueva cuenta de ahorros quedó con
-                                    un saldo de {str(cuentaNueva.getSaldo())} pesos.''')
-                            # messagebox.showinfo("Romper Topes","Tu solicitud ha sido aprobada, se descontaran $15.000 de tu saldo para realizar el proceso. Espera un momento...")
-                            # messagebox.showinfo("Romper Topes","Tu cuenta ha sido actualizada y ahora no tiene topes.")
-                            # messagebox.showinfo("Romper Topes",f'Tu nueva cuenta de ahorros ahora tiene un saldo de: {str(cuentaNueva.getSaldo())}.')
+                        return
+
+                # Se pregunta si se desea continuar con el proceso
+                continuar = messagebox.askokcancel("Confirmacion Romper Topes",
+                '¡Recuerde! El procedimiento de romper topes consiste en transformar su cuenta de tipo Bajo monto'\
+                ' a una cuenta de ahorros convencional, eliminando las limitaciones de este tipo de cuentas.\n' \
+                'Este proceso tiene un costo de 15.000 pesos que pagará una unica vez.')
+
+                if continuar:
+                    cuentaRomper = [cuenta for cuenta in usuarioActivo.getCuentasAsociadas() if cuenta.getNroCuenta()==int(inputsF4["Cuentas Disponibles"])][0]
+                    #FALTA TESTEAR
+                    if not cuentaRomper.romperTopes():
+                        try:
+                            raise ErrorNoSaldo(cuentaRomper.getSaldo(), "15.000", "romper topes")
+                        except:
+                            messagebox.showerror(ErrorNoSaldo.mensajeGeneral,
+                                    ErrorNoSaldo(cuentaRomper.getSaldo(), "15.000", "romper topes"))
+                            return
+
+                    bancoRomper = cuentaRomper.getBanco()
+                    # Se remueve la cuenta del banco
+                    bancoRomper.removerCuenta(cuentaRomper)
+                    # Se elimina la cuenta de bajo monto de las asociadas que tenia el usuario
+                    usuarioActivo.removerCuentaAsociada(cuentaRomper)
+                    # Cuenta nueva
+                    numeroCuentaNueva = cuentaRomper.getNroCuenta()
+                    cuentaNueva = bancoRomper.extraerCuenta(numeroCuentaNueva)
+                    #PROPUESTA
+                    messagebox.showinfo("Romper Topes",'''Tu solicitud ha sido aprobada y tu nueva cuenta de ahorros quedó con
+                            un saldo de {str(cuentaNueva.getSaldo())} pesos.''')
 
 
             botonesRomper = PairButton(frame=frameF2,
@@ -541,26 +529,30 @@ class V_P(tk.Tk):
                         raise ErrorCamposVacios()
                     except:
                         messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
+                        return
 
-                else:
+                # Capturamos el objeto cuenta asociada al usuario que se seleccionó mediante el número
+                for cuentaAsociada in usuarioActivo.getCuentasAsociadas():
+                    if cuentaAsociada.getNroCuenta() == int(inputsInicial["Cuentas disponibles"]):
+                        cuenta = cuentaAsocida
 
-                    cuentaOrigen = [cuenta for cuenta in usuarioActivo.getCuentasAsociadas() if cuenta.getNroCuenta()==int(inputsInicial["Cuentas Disponibles"])][0]
+                if inputsInicial.get("Tipo Transferencia")=="Pagar credito":
+                    if usuarioActivo.getCreditoActivo() is None:
+                        messagebox.showerror("Error","No tienes ningun credito activo para pagar.")
+                    else:
+                        creditoActivo = usuarioActivo.getCreditoActivo()
+                        messagebox.showinfo("Credito",f'Tu credito es de {creditoActivo.getDeuda()} y pagaras una cuota de {creditoActivo.getCuotaMensual()}.')
+                        opcion=messagebox.askokcancel("Confirma Pago","¿Desea confirmar el pago del credito?")
+                        if opcion:
+                            exito = cuentaOrigen.transferir(creditoActivo)
+                            if exito:
+                                messagebox.showinfo("Transferencia Exitosa",f'Tu pago ha sido exitoso. Tu credito restante es de {creditoActivo.getDeuda()-creditoActivo.getCuotaMensual()}')
+                                messagebox.showinfo("Transferencia Exitosa",f'Tu cuenta queda con un saldo de {cuentaOrigen.getSaldo()}.')
+                            else:
+                                messagebox.showerror("Transferencia Rechazada","Tu pago ha sido rechazado ya que no cuentas con saldo suficiente o tu producto de origen no permite mover el valor indicado.")
 
-                    if inputsInicial.get("Tipo Transferencia")=="Pagar credito":
-                        if usuarioActivo.getCreditoActivo() is None:
-                            messagebox.showerror("Error","No tienes ningun credito activo para pagar.")
-                        else:
-                            creditoActivo = usuarioActivo.getCreditoActivo()
-                            messagebox.showinfo("Credito",f'Tu credito es de {creditoActivo.getDeuda()} y pagaras una cuota de {creditoActivo.getCuotaMensual()}.')
-                            opcion=messagebox.askokcancel("Confirma Pago","¿Desea confirmar el pago del credito?")
-                            if opcion:
-                                exito = cuentaOrigen.transferir(creditoActivo)
-                                if exito:
-                                    messagebox.showinfo("Transferencia Exitosa",f'Tu pago ha sido exitoso. Tu credito restante es de {creditoActivo.getDeuda()-creditoActivo.getCuotaMensual()}')
-                                    messagebox.showinfo("Transferencia Exitosa",f'Tu cuenta queda con un saldo de {cuentaOrigen.getSaldo()}.')
-                                else:
-                                    messagebox.showerror("Transferencia Rechazada","Tu pago ha sido rechazado ya que no cuentas con saldo suficiente o tu producto de origen no permite mover el valor indicado.")
-                    elif inputsInicial.get("Tipo Transferencia")=="A otra cuenta - Inscrita":
+# Voy aquí
+                    if inputsInicial.get("Tipo Transferencia")=="A otra cuenta - Inscrita":
                         if len(usuarioActivo.getListaIncritos())==0:
                             messagebox.showerror("Error","No tiene cuentas inscritas")
                         else:
