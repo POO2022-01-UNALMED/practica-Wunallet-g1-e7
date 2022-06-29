@@ -1,7 +1,7 @@
-'''/* Clase Credito
+# Clase Credito
 
-Son los objetos creados cuando a un usuario se le aprueba su solicitud de crédito. Su función va desde almacenar los detalles del
-préstamo y a qué banco pertenece, hasta ofrecer simulaciones de crédito.'''
+# Son los objetos creados cuando a un usuario se le aprueba su solicitud de crédito. Su función va desde almacenar los detalles del
+# préstamo y a qué banco pertenece, hasta ofrecer simulaciones de crédito.
 
 from Wunallet.capaLogica.gestorAplicacion.infoClientes.banco import Banco
 #from gestorAplicacion.infoClientes.usuario import Usuario

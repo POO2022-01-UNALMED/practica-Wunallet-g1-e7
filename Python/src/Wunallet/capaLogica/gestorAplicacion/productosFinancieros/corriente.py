@@ -1,6 +1,8 @@
-'''Clase Corriente
- Siendo una clase hija de Cuenta, se diferencia por incluir la capacidad de sobregirarse, de tal forma que el usuario puede
- realizar transferencias de mayor cantidad que las de su saldo.'''
+# Clase Corriente
+
+# Siendo una clase hija de Cuenta, se diferencia por incluir la capacidad de sobregirarse, de tal forma que el usuario puede
+# realizar transferencias de mayor cantidad que las de su saldo.
+
 from multipledispatch import dispatch
 
 from Wunallet.capaLogica.gestorAplicacion.infoClientes.transaccion import Transaccion

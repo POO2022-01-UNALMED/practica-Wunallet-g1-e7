@@ -1,6 +1,8 @@
-'''Enum comportamientoDePago
- Este enum es usado como atributo en la clase PerfilCrediticio y según su nivel aprueba o rechaza uno de los filtros
- para aprobar una solicitud de crédito'''
+# Enum comportamientoDePago
+
+# Este enum es usado como atributo en la clase PerfilCrediticio y según su nivel aprueba o rechaza uno de los filtros
+# para aprobar una solicitud de crédito
+
 import random
 from enum import Enum
 

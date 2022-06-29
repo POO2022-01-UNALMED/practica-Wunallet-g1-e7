@@ -1,6 +1,7 @@
-'''Clase Banco
- Cada instancia de esta clase representa uno de los bancos integrados al software, y en sus atributos almacenan toda la
- información sobre sus productos e identidad.'''
+# Clase Banco
+
+# Cada instancia de esta clase representa uno de los bancos integrados al software, y en sus atributos almacenan toda la
+# información sobre sus productos e identidad.
 
 #from gestorAplicacion.productosFinancieros.corriente import Corriente
 #from gestorAplicacion.productosFinancieros.credito import Credito

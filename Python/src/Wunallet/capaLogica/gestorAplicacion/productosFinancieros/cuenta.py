@@ -1,7 +1,7 @@
-''' Clase Abstracta Cuenta
+# Clase Abstracta Cuenta
 
- Como clase abstracta se encarga de dar el cuerpo, a nivel de atributos y métodos, a sus clases hijas: Ahorro, Corriente y
- BajoMonto. Siempre están asociadas a un banco y _usuario.'''
+# Como clase abstracta se encarga de dar el cuerpo, a nivel de atributos y métodos, a sus clases hijas: Ahorro, Corriente y
+# BajoMonto. Siempre están asociadas a un banco y usuario.
 
 from abc import ABC, abstractmethod
 from Wunallet.capaLogica.gestorAplicacion.infoClientes.gestor import Gestor

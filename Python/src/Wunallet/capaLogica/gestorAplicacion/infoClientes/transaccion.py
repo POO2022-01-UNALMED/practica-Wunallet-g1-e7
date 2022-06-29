@@ -1,6 +1,7 @@
-'''/* Clase Transcacion
- Es una clase que sólamente tiene atributos de tal forma que, en conjunto, permiten reconstruir a detalle la información sobre
- una operación bancaria.'''
+# Clase Transcacion
+
+# Es una clase que sólamente tiene atributos de tal forma que, en conjunto, permiten reconstruir a detalle la información sobre
+# una operación bancaria.
 
 from multipledispatch import dispatch
 

@@ -1,6 +1,8 @@
-'''Clase Ahorro
- Es el producto financiero más simple, diferenciándose de su clase padre Cuenta al ofrecer una tasa de interés que producirá
- ingresos en el tiempo. '''
+# Clase Ahorro
+
+# Es el producto financiero más simple, diferenciándose de su clase padre Cuenta al ofrecer una tasa de interés que producirá
+# ingresos en el tiempo.
+
 from multipledispatch import dispatch
 from Wunallet.capaLogica.gestorAplicacion.infoClientes.transaccion import Transaccion
 from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.credito import Credito

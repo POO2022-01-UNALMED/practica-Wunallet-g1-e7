@@ -1,6 +1,8 @@
-'''Clase BajoMonto
- Es el resultado de especializar las cuentas Ahorro, ya que si bien disponen de los mismos atributos, sus métodos están limitados
- a un tope máximo mensual que pueden transferir.'''
+# Clase BajoMonto
+ 
+# Es el resultado de especializar las cuentas Ahorro, ya que si bien disponen de los mismos atributos, sus métodos están limitados
+# a un tope máximo mensual que pueden transferir.
+
 from multipledispatch import dispatch
 
 from Wunallet.capaLogica.gestorAplicacion.infoClientes.gestor import Gestor

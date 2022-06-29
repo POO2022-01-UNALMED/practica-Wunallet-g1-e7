@@ -1,6 +1,8 @@
-'''Clase Usuario
- Como piedra angular del diseño, cada instancia de esta clase representa un _usuario. Es su información y operaciones las que dan
- sentido y cohesión a todas las demás clases, y es el único parámetro que todas las funcionalidades deben garantizar.'''
+# Clase Usuario
+
+# Como piedra angular del diseño, cada instancia de esta clase representa un _usuario. Es su información y operaciones las que dan
+# sentido y cohesión a todas las demás clases, y es el único parámetro que todas las funcionalidades deben garantizar.
+
 from Wunallet.capaLogica.gestorAplicacion.infoClientes.banco import Banco
 from Wunallet.capaLogica.gestorAplicacion.infoClientes.perfilCrediticio import PerfilCrediticio
 from Wunallet.capaLogica.gestorAplicacion.infoClientes.comportamientoDePago import comportamientoDePago

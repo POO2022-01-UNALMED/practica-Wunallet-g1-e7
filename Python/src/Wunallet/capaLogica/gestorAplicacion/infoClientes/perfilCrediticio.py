@@ -1,6 +1,8 @@
-'''/* Clase PerfilCrediticio
- Cada instancia está asociada a un usuario, y describe precisamente el perfil crediticio de éste. Es usada por los bancos para
- determinar si una solicitud de crédito se aprueba o rechaza.'''
+# Clase PerfilCrediticio
+
+# Cada instancia está asociada a un usuario, y describe precisamente el perfil crediticio de éste. Es usada por los bancos para
+# determinar si una solicitud de crédito se aprueba o rechaza.
+
 #from gestorAplicacion.productosFinancieros.corriente import Corriente
 
 

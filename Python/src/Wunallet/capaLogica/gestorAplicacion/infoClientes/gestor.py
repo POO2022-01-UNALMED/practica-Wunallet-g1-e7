@@ -1,6 +1,7 @@
-'''/Interface Gestor
-Esta interface le exige a las clases que la implementan que declaren métodos de gestión de dichos productos financieros.
- Adicionalmente almacena constantes relevantes para la gestión de dichos productos.'''
+# Interface Gestor
+
+# Esta interface le exige a las clases que la implementan que declaren métodos de gestión de dichos productos financieros.
+# Adicionalmente almacena constantes relevantes para la gestión de dichos productos.
 
 from abc import ABC, abstractmethod
 
