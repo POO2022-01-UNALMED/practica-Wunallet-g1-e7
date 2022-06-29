@@ -1,4 +1,4 @@
-from ErrorEjecucion import ErrorEjecucion
+from exceptions.ErrorEjecucion import ErrorEjecucion
 
 class ErrorDeTipo(ErrorEjecucion):
 

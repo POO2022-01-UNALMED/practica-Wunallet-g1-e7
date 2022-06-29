@@ -1,4 +1,4 @@
-from ErrorAplicacion import ErrorAplicacion
+from exceptions.ErrorAplicacion import ErrorAplicacion
 
 class ErrorEjecucion(ErrorAplicacion):
 

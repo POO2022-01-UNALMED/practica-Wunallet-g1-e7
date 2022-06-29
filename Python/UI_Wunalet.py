@@ -319,7 +319,7 @@ def F2():
         else:
             hide_all_frames()
             clearFrame(frameVer)
-            labelHistoriales = tk.Label(frameHistoriales,text=cuenta.verHistorial())
+            labelHistoriales = tk.Label(frameHistoriales,text=cuenta.verHistorial(),height=500)
             labelHistoriales.pack(anchor="center")
             #messagebox.showinfo("Ver Historial", "Formato: cc origen - cuenta origen - cc destino - cuenta destino - valor \n" +
                     #cuenta.verHistorial())             

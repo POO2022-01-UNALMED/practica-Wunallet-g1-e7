@@ -1,4 +1,4 @@
-from ErrorLogico import ErrorLogico
+from exceptions.ErrorLogico import ErrorLogico
 
 class ErrorNoSaldo(ErrorLogico):
 
