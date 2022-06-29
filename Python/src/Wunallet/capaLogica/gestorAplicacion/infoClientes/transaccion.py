@@ -34,11 +34,11 @@ class Transaccion:
 
     def getDescripcion(self):
         if hasattr(self, '_cuentaDestino') is False:
-            return f"Transferencia de {self._cuentaOrigen.getTitular().getCc()} desde la cuenta " \
+            return f"Transferencia del usuario {self._cuentaOrigen.getTitular().getCc()} desde la cuenta " \
             f"{self._cuentaOrigen.getNroCuenta()} a {self.getNombreBanco()} por valor de " \
             f"{self.getValorTransaccion()}."
         else:
-            return f"Transferencia de {self._cuentaOrigen.getTitular().getCc()} desde la cuenta " \
+            return f"Transferencia del usuario {self._cuentaOrigen.getTitular().getCc()} desde la cuenta " \
             f"{self.getCuentaOrigen().getNroCuenta()} al usuario con CC: {self._cuentaDestino.getTitular().getCc()} con cuenta " \
             f"{self._cuentaDestino.getNroCuenta()} por valor de {self.getValorTransaccion()}."
 

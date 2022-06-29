@@ -21,6 +21,8 @@ class Serializador():
     def serializar(lista, className):
         def camino(className):
             string = os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\"+className+".txt")
+            # string = os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\"+className)
+            print("La ruta es",string)
             return string
         try:
             # Creo el archivo pickle para guardar los objetos
@@ -45,11 +47,11 @@ class Serializador():
         Serializador.serializar(Credito.getCredito(), "Credito")
         # Serializador.serializar(Empleado.getEmpleados(), "Empleados")
 
-        print("Banco:", Banco.banco)
-        print("PerfilCrediticio:", PerfilCrediticio._perfilCrediticio)
-        print("Transaccion:", Transaccion.getTransaccion())
-        print("Usuario:", Usuario.getUsuario())
-        print("Ahorro:", Ahorro.getAhorro())
-        print("BajoMonto:", BajoMonto.getBajoMonto())
-        print("Corriente:", Corriente.getCorriente())
-        print("Credito:", Credito.getCredito())
+        # print("Banco:", Banco.banco)
+        # print("PerfilCrediticio:", PerfilCrediticio._perfilCrediticio)
+        # print("Transaccion:", Transaccion.getTransaccion())
+        # print("Usuario:", Usuario.getUsuario())
+        # print("Ahorro:", Ahorro.getAhorro())
+        # print("BajoMonto:", BajoMonto.getBajoMonto())
+        # print("Corriente:", Corriente.getCorriente())
+        # print("Credito:", Credito.getCredito())

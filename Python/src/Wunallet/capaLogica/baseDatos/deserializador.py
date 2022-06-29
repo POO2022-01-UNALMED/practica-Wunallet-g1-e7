@@ -16,10 +16,11 @@ from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.corriente import 
 from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.credito import Credito
 
 class Deserializador():
-    
+    print("Entré a deserializar")
     def deserializar(lista, className):
         def camino(className):
             string = os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\"+className+".txt")
+            print("La ruta donde estoy buscando", string)
             return string
         # Leo el archivo
         try:
@@ -33,6 +34,7 @@ class Deserializador():
         
         # Cierro el archivo
         picklefile.close()
+        print("Si funcioné", lista)
         return lista
         # Cierro el archivo
     
@@ -44,4 +46,30 @@ class Deserializador():
         Ahorro.ahorro = Deserializador.deserializar(Ahorro.ahorro, "Ahorro")
         BajoMonto._bajoMonto = Deserializador.deserializar(BajoMonto._bajoMonto, "BajoMonto")
         Corriente._corriente = Deserializador.deserializar(Corriente._corriente, "Corriente")
-        Credito._componentes = Deserializador.deserializar(Credito._credito, "Credito")
+        Credito._credito = Deserializador.deserializar(Credito._credito, "Credito")
+
+
+        # b = Deserializador.deserializar(Banco.banco, "Banco")
+        # Banco.setBanco(b)
+
+        # # p = Deserializador.deserializar(PerfilCrediticio._perfilCrediticio, "PerfilCrediticio")
+        # # PerfilCrediticio.setPerfilCrediticio(p)
+        
+        # t =  Deserializador.deserializar(Transaccion._transaccion, "Transaccion")
+        # Transaccion.setTransaccion(t)
+        # print("SI LO ESTOY HACIENDO",t)
+
+        # u = Deserializador.deserializar(Usuario._usuario, "Usuario")
+        # Usuario.setUsuario(u)
+
+        # a = Deserializador.deserializar(Ahorro.ahorro, "Ahorro")
+        # Ahorro.setAhorro(a)
+
+        # ba = Deserializador.deserializar(BajoMonto._bajoMonto, "BajoMonto")
+        # BajoMonto.setBajoMonto(ba)
+
+        # co = Deserializador.deserializar(Corriente._corriente, "Corriente")
+        # Corriente.setCorriente(co)
+
+        # cre = Deserializador.deserializar(Credito._credito, "Credito")
+        # Credito.setCredito(cre)

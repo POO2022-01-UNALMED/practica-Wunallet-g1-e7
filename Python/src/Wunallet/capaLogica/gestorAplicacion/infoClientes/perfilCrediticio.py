@@ -24,7 +24,7 @@ class PerfilCrediticio:
     def getPerfilCrediticio(cls): return PerfilCrediticio._perfilCrediticio
 
     @classmethod
-    def setPerfilCrediticio(cls, PerfilCrediticio): PerfilCrediticio._PerfilCrediticio = PerfilCrediticio
+    def setPerfilCrediticio(cls, PerfilCrediticio): PerfilCrediticio._perfilCrediticio = PerfilCrediticio
 
     def  setNombreBanco(self, user) : self._user = user
 

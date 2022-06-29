@@ -26,7 +26,6 @@ class Ahorro(Cuenta):
         titular.getCuentasAsociadas().append(self)
 
 
-
         Ahorro.ahorro.append(self)
 
     '''Verifica si el usuario cuenta con saldo para realizar la transacción. De ser así realiza los ajustes de saldo en cada cuenta,

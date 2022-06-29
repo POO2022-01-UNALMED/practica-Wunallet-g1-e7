@@ -6,6 +6,11 @@ from tokenize import Double
 from setuptools import Command
 from Wunallet.capaGrafica.fieldFrame import FieldFrame
 from Wunallet.capaGrafica.pairButton import PairButton
+from Wunallet.capaLogica.baseDatos.serializador import Serializador
+from Wunallet.capaLogica.baseDatos.serializado import serializar
+from Wunallet.capaLogica.baseDatos.deserializador import Deserializador
+# from Wunallet.capaLogica.baseDatos.deserializado import deserializar
+
 
 # Importación clases manejo de excepciones
 
@@ -32,10 +37,12 @@ from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.credito import Cr
 from Wunallet.capaLogica.gestorAplicacion.productosFinancieros.cuenta import Cuenta
 from Wunallet.capaLogica.gestorAplicacion.infoClientes.usuario import Usuario
 
+
+
 class V_P(tk.Tk):
 
     def __init__(self):
-
+        
         #-----------------------#
         # FUNCIONES AUXILIDARES #
         #-----------------------#
@@ -74,6 +81,7 @@ class V_P(tk.Tk):
 
         listaUsuarios = [juanPerez, hernestoPerez]
         variables = vars()
+        # Deserializador.deserializarTodo()
         #-----------------------------
         #-----------------------------
         #-----------------------------
@@ -82,7 +90,7 @@ class V_P(tk.Tk):
         ventana.geometry("800x500")
         ventana.option_add('*tearOff',False)
 
-
+        
         #------#
         # MENU #
         #------#
@@ -107,6 +115,8 @@ class V_P(tk.Tk):
 
         def archivoSalir():
             # Importación de la aplicacion de inicio
+            Serializador.serializarTodo()
+            # serializar()
 
             from Wunallet.inicio import Inicio
             ventana.destroy()
@@ -351,6 +361,9 @@ class V_P(tk.Tk):
                         cuenta = cuentaAsociada
                         
                 # Se verifica si la cuenta seleccionada tiene alguna transacción para mostrar en su historial
+                print("Historial vacio?",cuenta.getHistorialTransferencia())
+                print("tipo1",type(cuenta))
+                print("tipo2",type(cuenta.getHistorialTransferencia()))
                 if len(cuenta.getHistorialTransferencia())==0:
                     messagebox.showinfo("Ver Historial",
                             f'La cuenta {int(inputsF2["Cuentas Disponibles"])} no tiene historial de transacciones')
