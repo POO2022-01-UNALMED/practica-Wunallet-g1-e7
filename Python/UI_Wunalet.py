@@ -6,6 +6,13 @@ from setuptools import Command
 from fieldFrame import FieldFrame
 from pairButton import PairButton
 
+# Importación clases manejo de excepciones
+
+from ErrorCamposVacios import ErrorCamposVacios
+from ErrorDeTipo import ErrorDeTipo
+from ErrorExtraccion import ErrorExtraccion
+from ErrorCuentaCC import ErrorCuentaCC
+from ErrorNoSaldo import ErrorNoSaldo
 
 # Importamos las clases de la aplicación
 # Se imoprtan las clases con información de los clientes
@@ -22,6 +29,23 @@ from gestorAplicacion.productosFinancieros.corriente import Corriente
 from gestorAplicacion.productosFinancieros.credito import Credito
 from gestorAplicacion.productosFinancieros.cuenta import Cuenta
 from gestorAplicacion.infoClientes.usuario import Usuario
+
+#-----------------------#
+# FUNCIONES AUXILIDARES #
+#-----------------------#
+
+# Función para chequear si un elemento puede castearse a entero
+def canBeInt(candidato):
+    try:
+        int(candidato)
+        return True
+    except:
+        return False
+
+# Función para eliminar los widget asociados a un frame
+def clearFrame(frame):
+    for widget in frame.winfo_children():
+        widget.destroy()
 
 #-------------------#
 # OBJETOS DE PRUEBA #
@@ -42,6 +66,7 @@ cuenta3 = Corriente(23,juanPerez,50000000.0,Unalombia,"corriente",1.2)
 cuenta2 = BajoMonto(69,hernestoPerez, 1000000.0,PooBanco, "bajoMonto", 2.2,3000000.0,3000000.0)
 cuenta4 = BajoMonto(26,hernestoPerez, 6000000.0,Unalombia, "bajoMonto", 1.3,200000.0,200000.0)
 
+listaUsuarios = [juanPerez, hernestoPerez]
 variables = vars()
 #-----------------------------
 #-----------------------------
@@ -50,6 +75,7 @@ ventana = tk.Tk()
 ventana.title("WUNALLET")
 ventana.geometry("800x500")
 ventana.option_add('*tearOff',False)
+
 
 #------#
 # MENU #
@@ -83,8 +109,9 @@ procesosYconsultas.add_cascade(label="Funcionalidades",menu=menuFuncionalidades)
 # Frame para mostrar los resultados
 resultado = tk.Frame(ventana,width=400,height=250)
 # Selección De Usuario
-frameF1 =  tk.Frame(ventana,width=800,height=250) # Frame para el ingreso del ususario
-frameF2 =  tk.Frame(ventana,width=800,height=250) # Frame para el mensaje de usuario seleccionado
+frameF1 =  tk.Frame(ventana,width=800,height=250) # Frame para el formulario de login
+frameF2 =  tk.Frame(ventana,width=800,height=250) # Frame para los botones
+
 FieldFrame(frame=frameF1,
                 tituloFuncion="Selección de usuario",
                 descripcion="A continuación seleccione el usuario con el que desea ingresar. Una vez ingrese\n dirijace al menu de Procesos y Consultas, alli podra encontrar un listado de\n funcionalidades de la cuales podra hacer uso con su usuario.",
@@ -96,37 +123,51 @@ FieldFrame(frame=frameF1,
 botonesUsuario=PairButton(frame=frameF2,
         LBotonTitulo="Aceptar")
  
+# Frame de login al sistema
 def values_frameF0():
+    global usuarioActivo
     criterio = ["Usuario"]
     inputsF0 = {} 
     for widget in frameF1.winfo_children():
         if isinstance(widget, tk.Entry):
             inputsF0[criterio[0]] = widget.get()
-            try:
-                int(inputsF0[criterio[0]])
-                if int(inputsF0[criterio[0]])<0:
-                    messagebox.showerror("Error","El numero de cuenta debe ser un entero positivio")
-                else:
-                    for var in list(variables):
-                        if isinstance(variables.get(var),Usuario):
-                            if getattr(variables.get(var),"_cc")==int(inputsF0[criterio[0]]):
-                                messagebox.showinfo("Usuario",f"Usted selecciono {int(inputsF0[criterio[0]])}.\n Ahora dirijace al menu de Procesos y Consultas")
-                                widget.configure(state="disable")
-                                # global: Para que la variable se conozca en otras funciones
-                                global usuarioActivo
-                                usuarioActivo = variables.get(var)
-                                break
-                    if all([getattr(variables.get(user),"_cc")!=int(inputsF0[criterio[0]]) for user in variables if isinstance(variables.get(user),Usuario)]):
-                        widget.delete(0,last="end") 
-                        messagebox.showerror("Error","El usuario no existe")
-                            
-                                            
-            except:
-                if inputsF0[criterio[0]]=="":
-                    messagebox.showerror("Error","Se deben llenar todos los campos")
-                else:
-                    messagebox.showerror("Error","El numero de cuenta debe ser entero")
 
+            # Chequeo campo vacío 
+            if any(inputsF0.get(entry)=="" for entry in inputsF0):
+                try:
+                    raise ErrorCamposVacios()
+                except:
+                    messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
+                    return
+
+
+            # Cheque de tipo en el input
+            if (not canBeInt(inputsF0[criterio[0]])) or (int(inputsF0[criterio[0]])<0):
+                try:
+                    raise ErrorDeTipo("El número de cédula debe ser un entero positivo")
+                except:
+                    messagebox.showerror(ErrorDeTipo.mensajeGeneral,
+                            ErrorDeTipo("El número de cédula debe ser un entero positivo").getMensajeEspecifico())
+                    return
+
+            # Si el input es correcto se itera sobre todas las variables y si alguna es instancia de Usuario y su atributo 
+            # cédula coincide con el valor ingresado, se fija como usuario activo durante el resto del programa y 
+            # se le indica qué hacer al usuario mediante la GUI.
+            for usuario in listaUsuarios:
+                if getattr(usuario,"_cc") == int(inputsF0[criterio[0]]):
+                    messagebox.showinfo("Usuario",
+                            f"Usted selecciono {int(inputsF0[criterio[0]])}.\n Ahora diríjase al menu de Procesos y Consultas")
+                    widget.configure(state="disable")
+                    usuarioActivo = usuario
+                    return
+            widget.delete(0,last="end") 
+            try:
+                raise ErrorExtraccion("El", "usuario")
+            except:
+                messagebox.showerror(ErrorExtraccion.mensajeGeneral, 
+                        ErrorExtraccion("El", "usuario").getMensajeEspecifico())
+
+        
 getattr(botonesUsuario,'_LBoton').config(command=values_frameF0)
 getattr(botonesUsuario,'_RBoton').config(command=lambda :PairButton.borrarCampos(frameVer))
 frameF1.pack(expand=True,anchor='s')
@@ -134,23 +175,19 @@ frameF2.pack(expand=True,anchor='n')
 
 # Frames para el menu Procesos y Consultas
 
-frameIncribir =  tk.Frame(ventana,width=400,height=250)
+frameInscribir =  tk.Frame(ventana,width=400,height=250)
 frameVer = tk.Frame(ventana,width=400,height=250)
 frameSolicitar = tk.Frame(ventana,width=400,height=250)
 frameRomper = tk.Frame(ventana,width=400,height=250)
 frameTransferir = tk.Frame(ventana,width=400,height=250)
 
-# Se debe definir una función para eliminar los widget abiertos del frame cuando se vuelva a abrir el menu
-def clearFrame(frame):
-    for widget in frame.winfo_children():
-        widget.destroy()
             
 # Se debe definir una función para esconder los frames abiertos cuando se abre otro
 def hide_all_frames():
     frameF1.pack_forget()
     frameF2.pack_forget()
-    frameIncribir.pack_forget()
-    #PairButton.borrarCampos(frameIncribir)
+    frameInscribir.pack_forget()
+    #PairButton.borrarCampos(frameInscribir)
     frameVer.pack_forget()
     #PairButton.borrarCampos(frameVer)
     frameSolicitar.pack_forget()
@@ -164,55 +201,76 @@ def hide_all_frames():
 
 def F1():
     hide_all_frames()
-    clearFrame(frameIncribir) 
-    FieldFrame(frame=frameIncribir,
+    clearFrame(frameInscribir) 
+
+    FieldFrame(frame=frameInscribir,
                 tituloFuncion="Inscribir Cuenta",
-                descripcion="Esta funcionalidad consiste en vincular a un usuario con una o mas cuentas.",
+                descripcion='''Esta funcionalidad te permite guardar una cuenta que uses frecuentemente. Así no tendrás que
+                        ingresar sus datos cada vez que quieras transferir pues quedará asociada a tu usuario.''',
                 tituloCriterios="Criterio",
                 criterios= ["Banco", "Tipo Cuenta", "Numero Cuenta", "Numero Cedula"],
                 tituloValores= "Valor",
                 valores= ["","","",""])
 
-    botonesIncribir=PairButton(frame=frameF2,
+    botonesInscribir=PairButton(frame=frameF2,
         LBotonTitulo="Aceptar")
+
     def values_frameF1():
         criterios = ["Banco", "Tipo Cuenta", "Numero Cuenta", "Numero Cedula"]
-        entradasF1 = False
         inputsF1 = {}
+
         # Obtengo todos los inputs
-        for widget,criterio in zip([entry for entry in frameIncribir.winfo_children() if isinstance(entry,tk.Entry) or isinstance(entry,ttk.Combobox)],criterios):
+        for widget,criterio in zip([entry for entry in frameInscribir.winfo_children() if isinstance(entry,tk.Entry) or isinstance(entry,ttk.Combobox)],criterios):
             inputsF1[criterio] = widget.get()
-        
-        #Si hay algun input vacio, se saca una ventana emergente, sino se procede a verificar los tipos de entrada
+
+        # Chequeo campos vacío
         if any(inputsF1.get(entry)=="" for entry in inputsF1):
-            messagebox.showerror("Error","Se deben llenar todos los campos")
-        else:
-            for entry in list(inputsF1)[2:]:
-                    try:
-                        int(inputsF1.get(entry))
-                        if int(inputsF1.get(entry))<0:
-                            messagebox.showerror("Error",f"El campo {entry} debe ser un entero positivio")
-                        else:
-                            entradasF1 = True
-                    except:
-                        messagebox.showerror("Error",f"El campo {entry} debe ser entero")
-        if entradasF1:
             try:
-                bancoInscribir = Banco.extraerBanco(_nombreBanco=inputsF1["Banco"])
-                cuentaInscribir=bancoInscribir.extraerCuenta(nroCuenta=int(inputsF1["Numero Cuenta"]))
-                existeUsuario = cuentaInscribir.getTitular().getCc()==int(inputsF1["Numero Cedula"])
-                if(not existeUsuario):
-                    messagebox.showerror("Error Usuario",f'Numero de cedula {inputsF1.get("Numero Cedula")} no concuerda con la cuenta')
-                else:
-                    usuarioActivo.inscribir(numeroCuenta=int(inputsF1["Numero Cuenta"]),nombreBanco=inputsF1["Banco"])
-                    messagebox.showinfo("Incribir Cuenta","La inscripción a sido exitosa")
+                raise ErrorCamposVacios()
             except:
-                messagebox.showerror("Error Cuenta-Banco",f'Numero de cuenta {inputsF1.get("Numero Cuenta")} no existe en el banco: {inputsF1["Banco"]}')
+                messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
+                return
 
-    getattr(botonesIncribir,'_LBoton').config(command=values_frameF1)
-    getattr(botonesIncribir,'_RBoton').config(command=lambda :PairButton.borrarCampos(frameIncribir))
+        # Chequeo de tipo en el input
+        if any(not canBeInt(inputsF1.get(entry)) or  int(inputsF1.get(entry))<0 for entry in list(inputsF1)[2:]):
+            try:
+                raise ErrorDeTipo("Todos los campos deben ser enteros positivos")
+            except:
+                messagebox.showerror(ErrorDeTipo.mensajeGeneral,
+                        ErrorDeTipo("Todos los campos deben ser enteros positivos").getMensajeEspecifico())
+                return
 
-    frameIncribir.pack(expand=True,anchor='s')
+        # Proceso que ejecuta la funcionalidad
+        bancoInscribir = Banco.extraerBanco(_nombreBanco=inputsF1["Banco"])
+        try:
+            cuentaInscribir=bancoInscribir.extraerCuenta(nroCuenta=int(inputsF1["Numero Cuenta"]))
+        except:
+                try:
+                    raise ErrorExtraccion("El", f"número de cuenta {inputsF1['Numero Cuenta']}",
+                            f" en {inputsF1['Banco']}")
+                except:
+                    messagebox.showerror(ErrorExtraccion.mensajeGeneral, 
+                            ErrorExtraccion("El", f"número de cuenta {inputsF1['Numero Cuenta']}",
+                                f" en {inputsF1['Banco']}").getMensajeEspecifico())
+
+        concuerdaUsuarioYCc = cuentaInscribir.getTitular().getCc()==int(inputsF1["Numero Cedula"])
+        if (not concuerdaUsuarioYCc):
+            try:
+                raise ErrorCuentaCC(f"El número de cédula {inputsF1.get('Numero Cedula')}",
+                        "la cuenta {inputsF1['Numero Cuenta'])}")
+            except:
+                messagebox.showerror(ErrorCuentaCC.mensajeGeneral, 
+                        ErrorCuentaCC(f"El número de cédula {inputsF1.get('Numero Cedula')}", 
+                            f"la cuenta {inputsF1['Numero Cuenta']}").getMensajeEspecifico())                
+                return
+
+        usuarioActivo.inscribir(numeroCuenta=int(inputsF1["Numero Cuenta"]),nombreBanco=inputsF1["Banco"])
+        messagebox.showinfo("Exito","La inscripción ha sido exitosa")
+
+    getattr(botonesInscribir,'_LBoton').config(command=values_frameF1)
+    getattr(botonesInscribir,'_RBoton').config(command=lambda :PairButton.borrarCampos(frameInscribir))
+
+    frameInscribir.pack(expand=True,anchor='s')
     frameF2.pack(expand=True,anchor='n')
     
     
@@ -220,7 +278,6 @@ def F1():
 menuFuncionalidades.add_command(label="F1",command=F1)
 
 def F2():
-    
     hide_all_frames()
     clearFrame(frameVer)
     FieldFrame(frame=frameVer,
@@ -235,20 +292,29 @@ def F2():
     def values_frameF2():
         inputsF2 = {}
         criterios = ["Cuentas Disponibles"]
+
         # Obtengo todos los inputs
         for widget,criterio in zip([entry for entry in frameVer.winfo_children() if isinstance(entry,ttk.Combobox)],criterios):
             inputsF2[criterio] = widget.get()
         
-        #Si hay algun input vacio, se saca una ventana emergente, sino se procede a verificar los tipos de entrada
+        # Chequeo campos vacío
         if any(inputsF2.get(entry)=="" for entry in inputsF2):
-            messagebox.showerror("Error","Se deben llenar todos los campos")
+            try:
+                raise ErrorCamposVacios()
+            except:
+                messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
+                return
+
+        for cuentaAsociada in usuarioActivo.getCuentasAsociadas():
+            if cuentaAsociada.getNroCuenta() == int(inputsF2["Cuentas Disponibles"]):
+                cuenta = cuentaAsociada
+                
+        if len(cuenta.getHistorialTransferencia())==0:
+            messagebox.showinfo("Ver Historial",
+                    f'La cuenta {int(inputsF2["Cuentas Disponibles"])} no tiene historial de transacciones')
         else:
-           cuenta= [cuenta for cuenta in usuarioActivo.getCuentasAsociadas() if cuenta.getNroCuenta()==int(inputsF2["Cuentas Disponibles"])][0]
-           
-           if len(cuenta.getHistorialTransferencia())==0:
-            messagebox.showinfo("Ver Historial",f'La cuenta {int(inputsF2["Cuentas Disponibles"])} no tiene historial de transacciones')
-           else:
-            messagebox.showinfo("Ver Historial",cuenta.verHistorial())             
+            messagebox.showinfo("Ver Historial", "Formato: cc origen - cuenta origen - cc destino - cuenta destino - valor \n" +
+                    cuenta.verHistorial())             
 
     botonesVer= PairButton(frame=frameF2,
                             LBotonTitulo="Aceptar")                        
@@ -276,47 +342,61 @@ def F3():
                 val = [cuentas.getNroCuenta() for cuentas in usuarioActivo.getCuentasAsociadas()])
 
     def values_frameF3():
-        entradasF3 = False
         inputsF3 = {}
         criterios = ["Banco","Cuentas Disponibles","Monto","Plazo"]
         # Obtengo todos los inputs
         for widget,criterio in zip([entry for entry in frameSolicitar.winfo_children() if isinstance(entry,tk.Entry) or isinstance(entry,ttk.Combobox)],criterios):
             inputsF3[criterio] = widget.get()
         
-        #Si hay algun input vacio, se saca una ventana emergente, sino se procede a verificar los tipos de entrada
+        # Chequeo campos vacío
         if any(inputsF3.get(entry)=="" for entry in inputsF3):
-            messagebox.showerror("Error","Se deben llenar todos los campos")
-        else:
-           for entry in list(inputsF3)[2:]:
-                    try:
-                        int(inputsF3.get(entry))
-                        if int(inputsF3.get(entry))<0:
-                            messagebox.showerror("Error",f"El campo {entry} debe ser un entero positivio")
-                        else:
-                            entradasF3 = True
-                    except:
-                        messagebox.showerror("Error",f"El campo {entry} debe ser entero")
-        if entradasF3:
-           if usuarioActivo.getCreditoActivo()!=None:
-            messagebox.showinfo("Credito","Esta cuenta ya tiene un credito activo")
-           else:
-            #print(usuarioActivo.getUsuario())
             try:
-                bancoSol = Banco.extraerBanco(_nombreBanco=inputsF3["Banco"])
-                cuentaSol= [cuenta for cuenta in usuarioActivo.getCuentasAsociadas() if cuenta.getNroCuenta()==int(inputsF3["Cuentas Disponibles"])][0]
-                credit=usuarioActivo.solicitarCredito(user=usuarioActivo,banco=bancoSol,monto=float(inputsF3.get("Monto")),plazo=int(inputsF3.get("Plazo")),cuentaSc=cuentaSol)
-                print("no estamos :(")
-                if credit ==1:
-                    print("estamos 1")
-                    messagebox.showinfo("Credito","Credito rechazado por mal comportamiento crediticio")
-                elif credit==2:
-                    print("estamos 2")
-                    messagebox.showinfo("Credito rechazado por falta de capacidad de endeudamiento")
-                else:
-                    print("estamos 3")
-                    messagebox.showinfo("Credito",f'Tu solicitud de credito ha sido aprobada y tu saldo actual es: {str(cuentaSol.getSaldo()+float(inputsF3.get("Monto")))}')
+                raise ErrorCamposVacios()
             except:
-                messagebox.showerror("Error Cuenta-Banco",f'Numero de cuenta {inputsF3.get("Cuentas Disponibles")} no existe en el banco: {inputsF3.get("Banco")}')
+                messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
+
+        # MODIFICADO Chequeo de tipo en el input (si alguna entrada no es entera o es menor a cero, se llama el error)
+        elif any(not canBeInt(inputsF1.get(entry)) or  int(inputsF1.get(entry))<0 for entry in list(inputsF1)[2:]):
+            try:
+                raise ErrorDeTipo("Todos los campos deben ser enteros positivos")
+            except:
+                messagebox.showerror(ErrorDeTipo.mensajeGeneral,
+                        ErrorDeTipo("Todos los campos deben ser enteros positivos").getMensajeEspecifico())
+
+        # else:
+           # for entry in list(inputsF3)[2:]:
+                    # try:
+                        # int(inputsF3.get(entry))
+                        # if int(inputsF3.get(entry))<0:
+                            # messagebox.showerror("Error",f"El campo {entry} debe ser un entero positivio")
+                        # else:
+                            # entradasF3 = True
+                    # except:
+                        # messagebox.showerror("Error",f"El campo {entry} debe ser entero")
+
+        else:
+           if usuarioActivo.getCreditoActivo()!=None:
+                messagebox.showinfo("Credito","Esta cuenta ya tiene un credito activo")
+
+        # Pedir explicación de la secuencia de errores. Nunca va a fallar la extracción de cuentas por ser combobox, entonces
+        # el único error sería la solicitud de crédito, no?
+           else:
+                bancoSol = Banco.extraerBanco(_nombreBanco=inputsF3["Banco"])
+                try:
+                    cuentaSol= [cuenta for cuenta in usuarioActivo.getCuentasAsociadas() if cuenta.getNroCuenta()==int(inputsF3["Cuentas Disponibles"])][0]
+                    credit=usuarioActivo.solicitarCredito(user=usuarioActivo,banco=bancoSol,monto=float(inputsF3.get("Monto")),plazo=int(inputsF3.get("Plazo")),cuentaSc=cuentaSol)
+                    print("no estamos :(")
+                    if credit ==1:
+                        print("estamos 1")
+                        messagebox.showinfo("Credito","Credito rechazado por mal comportamiento crediticio")
+                    elif credit==2:
+                        print("estamos 2")
+                        messagebox.showinfo("Credito rechazado por falta de capacidad de endeudamiento")
+                    else:
+                        print("estamos 3")
+                        messagebox.showinfo("Credito",f'Tu solicitud de credito ha sido aprobada y tu saldo actual es: {str(cuentaSol.getSaldo()+float(inputsF3.get("Monto")))}')
+                except:
+                    messagebox.showerror("Error Cuenta-Banco",f'Numero de cuenta {inputsF3.get("Cuentas Disponibles")} no existe en el banco: {inputsF3.get("Banco")}')
             
 
     botonesSolicitar=PairButton(frame=frameF2,
@@ -357,16 +437,27 @@ def F4():
         for widget,criterio in zip([entry for entry in frameRomper.winfo_children() if isinstance(entry,tk.Entry) or isinstance(entry,ttk.Combobox)],criterios):
             inputsF4[criterio] = widget.get()
 
-        # Si hay algun input vacio, se saca una ventana emergente, sino se procede a verificar los tipos de entrada
+        # Si hay algun input vacio se saca una ventana emergente, sino se procede a verificar los tipos de entrada
         if any(inputsF4.get(entry)=="" for entry in inputsF4):
-            messagebox.showerror("Error","Se deben llenar todos los campos")
+            try:
+                raise ErrorCamposVacios()
+            except:
+                messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
         else:
             # Se pregunta si se desea continuar con el proceso
-            opcion = messagebox.askokcancel("Confirmacion Romper Topes","¡Recuerde! El procedimiento de romper topes consiste en transformar su cuenta de tipo Bajo monto, a una cuenta de ahorros convencional, eliminando las limitaciones de este tipo de cuentas.\n Este proceso tiene un costo de 15.000 pesos que pagara una unica vez.")
-            if opcion:
+            continuar = messagebox.askokcancel("Confirmacion Romper Topes",
+            '''¡Recuerde! El procedimiento de romper topes consiste en transformar su cuenta de tipo Bajo monto,
+            a una cuenta de ahorros convencional, eliminando las limitaciones de este tipo de cuentas.\n 
+            Este proceso tiene un costo de 15.000 pesos que pagará una unica vez.''')
+            if continuar:
                 cuentaRomper = [cuenta for cuenta in usuarioActivo.getCuentasAsociadas() if cuenta.getNroCuenta()==int(inputsF4["Cuentas Disponibles"])][0]
+                #FALTA TESTEAR
                 if not cuentaRomper.romperTopes():
-                    messagebox.showerror("Error","Tu solicitud ha sido rechazada ya que no cuentas con saldo suficiente en tu cuenta para realizar el proceso.")
+                    try:
+                        raise ErrorNoSaldo(cuentaRomper.getSaldo(), "15.000", "romper topes")
+                    except:
+                        messagebox.showerror(ErrorNoSaldo.mensajeGeneral,
+                                ErrorNoSaldo(cuentaRomper.getSaldo(), "15.000", "romper topes"))
                 else:
                     bancoRomper = cuentaRomper.getBanco()
                     # Se remueve la cuenta del banco
@@ -376,9 +467,12 @@ def F4():
                     # Cuenta nueva
                     numeroCuentaNueva = cuentaRomper.getNroCuenta()
                     cuentaNueva = bancoRomper.extraerCuenta(numeroCuentaNueva)
-                    messagebox.showinfo("Romper Topes","Tu solicitud ha sido aprobada, se descontaran $15.000 de tu saldo para realizar el proceso. Espera un momento...")
-                    messagebox.showinfo("Romper Topes","Tu cuenta ha sido actualizada y ahora no tiene topes.")
-                    messagebox.showinfo("Romper Topes",f'Tu nueva cuenta de ahorros ahora tiene un saldo de: {str(cuentaNueva.getSaldo())}.')
+                    #PROPUESTA
+                    messagebox.showinfo("Romper Topes",'''Tu solicitud ha sido aprobada y tu nueva cuenta de ahorros quedó con
+                            un saldo de {str(cuentaNueva.getSaldo())} pesos.''')
+                    # messagebox.showinfo("Romper Topes","Tu solicitud ha sido aprobada, se descontaran $15.000 de tu saldo para realizar el proceso. Espera un momento...")
+                    # messagebox.showinfo("Romper Topes","Tu cuenta ha sido actualizada y ahora no tiene topes.")
+                    # messagebox.showinfo("Romper Topes",f'Tu nueva cuenta de ahorros ahora tiene un saldo de: {str(cuentaNueva.getSaldo())}.')
 
 
     botonesRomper = PairButton(frame=frameF2,
@@ -416,11 +510,19 @@ def F5():
 
         # Si hay algun input vacio, se saca una ventana emergente, sino se procede a verificar los tipos de entrada
         if any(inputsInicial.get(entry)=="" for entry in inputsInicial):
-            messagebox.showerror("Error","Se deben llenar todos los campos")
+            try:
+                raise ErrorCamposVacios()
+            except:
+                messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
+
         else:
+
             cuentaOrigen = [cuenta for cuenta in usuarioActivo.getCuentasAsociadas() if cuenta.getNroCuenta()==int(inputsInicial["Cuentas Disponibles"])][0]
+
             if inputsInicial.get("Tipo Transferencia")=="Pagar credito":
-                if usuarioActivo.getCreditoActivo() is not None:
+                if usuarioActivo.getCreditoActivo() is None:
+                    messagebox.showerror("Error","No tienes ningun credito activo para pagar.")
+                else:
                     creditoActivo = usuarioActivo.getCreditoActivo()
                     messagebox.showinfo("Credito",f'Tu credito es de {creditoActivo.getDeuda()} y pagaras una cuota de {creditoActivo.getCuotaMensual()}.')
                     opcion=messagebox.askokcancel("Confirma Pago","¿Desea confirmar el pago del credito?")
@@ -431,8 +533,6 @@ def F5():
                             messagebox.showinfo("Transferencia Exitosa",f'Tu cuenta queda con un saldo de {cuentaOrigen.getSaldo()}.')
                         else:
                             messagebox.showerror("Transferencia Rechazada","Tu pago ha sido rechazado ya que no cuentas con saldo suficiente o tu producto de origen no permite mover el valor indicado.")
-                else:
-                    messagebox.showerror("Error","No tienes ningun credito activo para pagar.")
             elif inputsInicial.get("Tipo Transferencia")=="A otra cuenta - Inscrita":
                 if len(usuarioActivo.getListaIncritos())==0:
                     messagebox.showerror("Error","No tiene cuentas inscritas")
@@ -451,12 +551,16 @@ def F5():
                 
                 def values_FrameIns():
                     inputsIns = {}
-                    for widget,criterio in zip([entry for entry in frameTransferir.winfo_children() if isinstance(entry,tk.Entry) or isinstance(entry,ttk.Combobox)],["Cuentas Disponibles","Valor"]):
+                    for widget,criterio in zip([entry for entry in frameTransferir.winfo_children()
+                        if isinstance(entry,tk.Entry) or isinstance(entry,ttk.Combobox)],["Cuentas Disponibles","Valor"]):
                             inputsIns[criterio] = widget.get()
 
                     # Si hay algun input vacio, se saca una ventana emergente, sino se procede a verificar los tipos de entrada
                     if any(inputsIns.get(entry)=="" for entry in inputsIns):
-                        messagebox.showerror("Error","Se deben llenar todos los campos")
+                        try:
+                            raise ErrorCamposVacios()
+                        except:
+                            messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
                     elif float(inputsIns.get("Valor"))<0:
                         messagebox.showerror("Error","El valor debe ser positivo")
                     else:
@@ -498,7 +602,10 @@ def F5():
 
                     # Si hay algun input vacio, se saca una ventana emergente, sino se procede a verificar los tipos de entrada
                     if any(inputsNoIns.get(entry)=="" for entry in inputsNoIns):
-                        messagebox.showerror("Error","Se deben llenar todos los campos")
+                        try:
+                            raise ErrorCamposVacios()
+                        except:
+                            messagebox.showerror(ErrorCamposVacios.mensajeGeneral, ErrorCamposVacios().getMensajeEspecifico())
                     elif float(inputsNoIns.get("Valor"))<0:
                         messagebox.showerror("Error","El valor debe ser positivo")
                     else:

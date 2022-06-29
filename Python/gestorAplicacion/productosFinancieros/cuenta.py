@@ -23,8 +23,10 @@ class Cuenta(Gestor,ABC):
     objetos ya formateados por el método toString()'''
 
     def verHistorial(self):
+        historialString = ''
         for i in range(len(self.historialTransferencia)):
-            print(self.historialTransferencia[i])
+            historialString += self.historialTransferencia[i].getDescripcion() + '\n'
+        return historialString
 
     '''Ejecutará las comprobaciones y actualizaciones de saldo correspondientes al realizar una transferencia. Este proceso depende
     del tipo de cuenta que lo ejecute, y por eso debe ser un método abstracto. Ademas se utiliza *args ya que deberia existir una sobrecarga

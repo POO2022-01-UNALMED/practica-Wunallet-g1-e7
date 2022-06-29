@@ -18,24 +18,29 @@ class Transaccion:
     def __init__(self, cuentaOrigen, cuentaDestino, valorTransaccion):
         self._cuentaOrigen=cuentaOrigen
         self._cuentaDestino=cuentaDestino
-        self._valorTransaccon=valorTransaccion
+        self._valorTransaccion=valorTransaccion
         Transaccion._transaccion.append(self)
 
     @dispatch(Cuenta,str,float)
     def __init__(self,cuentaOrigen,nombreBanco,valorTransaccion):
         self._cuentaOrigen=cuentaOrigen
         self._nombreBanco=nombreBanco
-        self._valorTransaccon=valorTransaccion
+        self._valorTransaccion=valorTransaccion
         Transaccion._transaccion.append(self)
 
 
     #Formateo del texto al imprimirse un objeto de tipo transacción
 
-    def __str__(self):
+    def getDescripcion(self):
         if hasattr(self, '_cuentaDestino') is False:
-            return "Transferencia de" + self.cuentaOrigen.getTitular().getCc() + " desde la cuenta " + self.cuentaOrigen.getNroCuenta() + " a " + self.getNombreBanco() + " por valor de " + self.getValorTransaccion() + ".";
+            return f"Transferencia de {self._cuentaOrigen.getTitular().getCc()} desde la cuenta" \
+            f"{self._cuentaOrigen.getNroCuenta()} a {self.getNombreBanco()} por valor de " \
+            f"{self.getValorTransaccion()}."
         else:
-            return "Transferencia de " + self.cuentaOrigen.getTitular().getCc() + " desde la cuenta " + self.getCuentaOrigen().getNroCuenta() + " al usuario con CC: " + self.cuentaDestino.getTitular().getCc() + " con cuenta " + self.cuentaDestino.getNroCuenta() + " por valor de " + self.getValorTransaccion() + ".";
+            return f"Transferencia de {self._cuentaOrigen.getTitular().getCc()} desde la cuenta" \
+            f"{self.getCuentaOrigen().getNroCuenta()} al usuario con CC: {self._cuentaDestino.getTitular().getCc()} con cuenta" \
+            f"{self._cuentaDestino.getNroCuenta()} por valor de {self.getValorTransaccion()}."
+
 
     '''-------------------------------------- Metodos get-set --------------------------------------'''
     @classmethod
